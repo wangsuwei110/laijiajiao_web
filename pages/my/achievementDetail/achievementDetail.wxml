@@ -1,0 +1,7 @@
+<view class="achievement">
+  <view class="name"><text>{{achievementInfo.pictureTitle}}</text></view>
+  <view class="desc"><text>{{achievementInfo.pictureDesc}}</text></view>
+  <view class="content">
+    <image bindtap="previewImg" data-url="{{item}}" wx:for="{{achievementInfo.pictureUrl}}" wx:key="{{index}}" class="pic" mode="aspectFill" lazy-load="true" src="{{item}}"></image>
+  </view>
+</view>

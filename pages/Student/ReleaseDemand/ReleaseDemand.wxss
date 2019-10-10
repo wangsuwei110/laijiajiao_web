@@ -1,0 +1,42 @@
+/* pages/Student/ReleaseDemand/ReleaseDemand.wxss */
+
+.container{
+    margin: 20rpx;
+    background-color: #fff;
+    padding: 0 20rpx;
+}
+
+.saveBtnWrap{
+    margin: 22rpx 20rpx 0rpx 20rpx;
+}
+
+.saveBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height:76rpx;
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+    border-radius:5rpx;
+
+    font-size:32rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color: #fff;
+}
+
+
+.title{
+    padding: 30rpx 0 13rpx 0;
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #000;
+}
+
+.label{
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color: #737373;
+}

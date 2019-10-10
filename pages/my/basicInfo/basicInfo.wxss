@@ -1,0 +1,47 @@
+@import "../../../css/common.wxss";
+.basic-info {
+  font-weight: 300;
+}
+.basic-info .basic-avatar {
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx;
+  height: 118rpx;
+  font-size: 30rpx;
+  color: #222224;
+  background-color: #ffffff;
+}
+.basic-avatar .label {
+  flex: 1;
+}
+.basic-avatar .avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 1rpx solid #f2eff6;
+}
+.birthplace-item {
+  position: relative;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-weight: 400;
+}
+.birthplace-item::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.birthplace-item .label {
+  display: inline-block;
+  width: 140rpx;
+  color: #222224;
+  font-weight: 300;
+}

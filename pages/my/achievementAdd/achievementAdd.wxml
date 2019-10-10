@@ -1,0 +1,26 @@
+<view class="sub-my-container">
+  <view class="tip">
+    <image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image>成功案例能增加家长对您的认可和信心！
+  </view>
+  <view class="panel-wrapper-3">
+    <view class="panel-item">
+      <input bindblur="getAchievementName" type="text" placeholder="标题：如补习后成绩稳定在前几名" value="{{achievement.name}}"></input>
+    </view>
+    <view class="panel-item">
+      <textarea bindblur="getAchievementDesc" placeholder="成功案例具体描述" value="{{achievement.desc}}"></textarea>
+    </view>
+    <view class="panel-item">
+      <view bindtap="uploadImg" class="upload-pic-btn">
+        <image mode="scaleToFill" class="add-icon" src="../../../images/add_icon.png"></image><text>上传证明照片</text>
+      </view>
+    </view>
+    <view wx:if="{{achievement.pic.length > 0}}" class="pic">
+      <view class="pic-item" wx:for="{{achievement.pic}}" wx:key="{{index}}">
+        <view bindtap="removePic" data-index="{{index}}" class="close-icon">×</view>
+        <image lazy-load="true" mode="aspectFill" src="{{RESOURCE_PERFIX + item}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="addAchievement" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

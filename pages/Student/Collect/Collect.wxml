@@ -1,0 +1,22 @@
+<!--pages/Student/Collect/Collect.wxml-->
+
+<view class='item'>
+    <view class='logo'>
+        <image class='logoIcon' mode='aspectFill'/>
+        <text class='level'>T3</text>
+    </view>
+
+    <view class='content'>
+        <view class='nameWrap'>
+            <text class='name'>李教员</text>
+            <image src='../../../images/students/Authentication.png' class='authentication' mode='widthFix'/>
+        </view>
+
+        <view class='school'>上海交通大学 | 大二在校</view>
+    </view>
+
+    <view class='cancelBtn'>
+        <image src='../../../images/students/collect.png' class='cancelIcon' mode='widthFix'/>
+        取消收藏
+    </view>
+</view>

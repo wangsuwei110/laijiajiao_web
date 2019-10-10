@@ -1,0 +1,33 @@
+<!--components/Student/OrderListItem/OrderListItem.wxml-->
+<view class='container'>
+    <view class='inner'>
+        <view class='topBox'>
+            <text class='date'>2019-07-02 21:32</text>
+
+            <view class='topAction'>支付记录</view>
+        </view>
+
+        <view class='title'>李教员 | 张小二 | 一年级数学
+            <text class='price'>¥100/时</text>
+        </view>
+        <view class='paramItem'>
+            <text class='label'>具体辅导需求：</text>
+            文字描述文字描述文字描述文字描述
+        </view>
+        <view class='paramItem'>
+            <text class='label'>具体辅导需求：</text>
+            文字描述文字描述文字描述文字描述
+        </view>
+        <view class='paramItem'>
+            <text class='label'>具体辅导需求：</text>
+            文字描述文字描述文字描述文字描述
+        </view>
+
+
+        <view class='evaluate'>
+            <text>2019-07-15 12:20 （好评）</text>
+            <view class='evaluateTxt'>评价内容评价内容评价内容评价内容评价内容评价</view>
+        </view>
+    </view>
+    
+</view>

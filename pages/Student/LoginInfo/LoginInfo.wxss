@@ -1,0 +1,119 @@
+/* pages/Student/LoginInfo/LoginInfo.wxss */
+
+
+page{
+    display: flex;
+    flex-flow: column;
+
+    box-sizing: border-box;
+
+    height: 100%;
+    background-color: #F5F5F5;
+
+    padding: 20rpx;
+}
+
+.mainContainer{
+    flex: 1;
+}
+
+.phoneBox{
+    background-color: #fff;
+    padding: 30rpx 24rpx;
+}
+
+.title{
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:#000;
+}
+
+
+.phoneContent{
+    display: flex;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.phoneNum{
+    flex: 1;
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+}
+
+.phoneChange{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(30,154,231,1);
+}
+
+
+.contenBox{
+    background-color: #fff;
+    padding: 30rpx 24rpx 0 24rpx;
+    margin-top: 20rpx;
+}
+
+.stdNameBox{
+    display: flex;
+    align-items: center;
+    height: 92rpx;
+    border-bottom: 2rpx solid #F5F5F5;
+}
+
+.inputBox{
+    flex: 1;
+    height: 100%;
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    padding: 0 20rpx;
+}
+
+.label{
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+}
+
+
+.selectContianer{
+    display: flex;
+    align-items: center;
+}
+
+.selectItem{
+    flex:1;
+    height: 92rpx;
+}
+
+.selectItem + .selectItem{
+    margin-left: 50rpx;
+}
+
+.selectItemContent{
+    flex: 1;
+}
+
+.submitBtnWrap{
+    margin-top: 22rpx;
+}
+
+.submitBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:76rpx;
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+    border-radius:5rpx;
+
+    font-size:32rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color: #fff;
+}

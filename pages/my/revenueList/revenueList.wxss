@@ -1,0 +1,78 @@
+page {
+  height: 100%;
+}
+.revenue-list-container {
+  height: 100%;
+  font-size: 30rpx;
+}
+.tabs-wrapper {
+  position: relative;
+  display: flex;
+  background-color: #ffffff;
+  color: #666465;
+  text-align: center;
+  box-shadow: 0 2rpx 5rpx 0 rgba(179, 179, 179, 0.35);
+  z-index: 2;
+}
+.tabs-wrapper .tabs-item {
+  position: relative;
+  flex: 1;
+  line-height: 1;
+  padding: 30rpx 0;
+}
+.tabs-wrapper .tabs-item::after {
+  display: block;
+  content: "";
+  width: 2rpx;
+  height: 30rpx;
+  background-color: #e5e5e5;
+  position: absolute;
+  right: 0;
+  top: 30rpx;
+}
+.tabs-wrapper .active {
+  color: #e50505;
+}
+.list-content {
+  padding: 0 28rpx;
+  margin-top: 26rpx;
+}
+.list-content .list-item {
+  padding: 32rpx 26rpx;
+  margin-bottom: 20rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+}
+.list-item .top {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 20rpx;
+}
+.list-item .top .sign {
+  vertical-align: bottom;
+}
+.list-item .top .name {
+  flex: 1;
+  line-height: 1;
+  color: #000000;
+  font-weight: normal;
+}
+.list-item .top .number {
+  line-height: 1;
+  margin-right: 16rpx;
+  font-size: 32rpx;
+  font-weight: normal;
+}
+.list-item .top .color-1 {
+  color: #e50505;
+}
+.list-item .top .color-2 {
+  color: #497c00;
+}
+.list-item .date {
+  display: inline-block;
+  line-height: 1;
+  color: #999999;
+  font-size: 26rpx;
+}

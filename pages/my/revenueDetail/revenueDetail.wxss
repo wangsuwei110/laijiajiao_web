@@ -1,0 +1,4 @@
+.revenue-list-container {
+  font-size: 30rpx;
+  font-weight: 300;
+}

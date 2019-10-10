@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "PageLayout": "/components/PageLayout/PageLayout",
+    "HomeContentBox": "/components/Student/HomeContentBox/HomeContentBox",
+    "HomeTeacher": "/components/Student/HomeTeacher/HomeTeacher",
+    "HomeReportItem": "/components/Student/HomeReportItem/HomeReportItem"
+  }
+}

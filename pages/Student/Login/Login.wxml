@@ -1,0 +1,25 @@
+<!--pages/Student/Login/Login.wxml-->
+
+<view class='_container'>
+    <view class='section'>
+        <image mode="aspectFix" src="../../../images/phone-icon.png" class='iconBox'/>
+        <input class='inputBox' bindinput="onPhoneChange" type="number" name="phone" placeholder="请输入手机号码" maxlength='11'/>
+    </view>
+
+    <view class='section'>
+        <image mode="aspectFix" src="../../../images/code-icon.png" class='iconBox'/>
+        <input bindinput="onCodeChange" name="code" class='inputBox' placeholder="请输入验证码" maxlength='6'/>
+
+        <ClickContainer disabled='{{seconds<=60}}'>
+            <view catchtap="onSendCode" class="sendBtn {{seconds<=60 ? 'disabled' : ''}}">{{seconds>60?'获取验证码':(seconds+'s')}}</view>
+        </ClickContainer>
+    </view>
+
+    <ClickContainer class='loginBtnWrap'>
+        <view class='loginBtn'>登录
+            <button class='loginOriginBtn' open-type='getUserInfo' bindgetuserinfo='onGotUserInfo'/>
+        </view>
+    </ClickContainer>
+
+    <navigator open-type='reLaunch' url='/pages/login/login' class='isOther'>我是教员</navigator>
+</view>

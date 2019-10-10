@@ -1,0 +1,19 @@
+<view class="revenue-list-container">
+  <view id="tabsView" class="tabs-wrapper">
+    <view bindtap="switchTab" wx:for="{{tabs}}" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList">
+    <view class="list-content">
+      <view bindtap="revenueDetail" wx:for="{{revenueLists}}" wx:key="{{index}}" class="list-item">
+        <view class="top">
+          <text class="name">{{item.name}}</text>
+          <text class="sign {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.type == 1 ? "-" : "+"}}</text><text class="number {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.money}}</text>
+          <view class="arrow-icon arrow-right"></view>
+        </view>
+        <text class="date">{{item.date}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

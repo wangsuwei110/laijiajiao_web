@@ -1,0 +1,22 @@
+<!--pages/Student/Setting/Setting.wxml-->
+
+<view class='mainContainer'>
+    <view class='topBox'>
+        <view class='row'>
+            <text class='content'>{{student.parentPhoneNum}}</text>
+            <text class='date'>{{student.createTime}}创建</text>
+        </view>
+        <view class='row'>
+            <text class='content'>推荐给好友</text>
+            <text class='arrow'/>
+        </view>
+        <view class='row'>
+            <text class='content'>关于我们</text>
+            <text class='arrow'/>
+        </view>
+    </view>
+
+    <view class='submitBtn' bindtap='onSignOut'>确定</view>
+</view>
+
+<BottomInfo/>

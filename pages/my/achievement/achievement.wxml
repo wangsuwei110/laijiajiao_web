@@ -1,0 +1,14 @@
+<view class="sub-my-container">
+  <view class="tip"><image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image>成功案例能增加家长对您的认可和信心！</view>
+  <view class="meta-panel">
+    <view bindtap="achievementDetail" data-id="{{item.pictureId}}" wx:for="{{achievement}}" wx:key="{{index}}" class="panel-item">
+      <text class="name">{{item.pictureTitle}}</text>
+      <view class="arrow-icon arrow-right"></view>
+    </view>
+  </view>
+  <view class="btn-bar">
+    <view bindtap="addAchievement" class="add-btn">
+      <image class="add-btn-icon" mode="scaleToFill" src="../../../images/add_icon_1.png"></image><text class="add-btn-name">新增案例</text>
+    </view>
+  </view>
+</view>

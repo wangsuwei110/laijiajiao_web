@@ -1,0 +1,103 @@
+@import "../../../css/common.wxss";
+.vita-info {
+  width: 100%;
+  overflow: hidden;
+}
+.userinfo {
+  display: flex;
+  padding: 28rpx;
+  height: 140rpx;
+  background-color: #ffffff;
+}
+.userinfo .avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 100%;
+  border: 2rpx solid #f2eff5;
+  overflow: hidden;
+}
+.userinfo .userinfo-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 28rpx;
+  font-size: 26rpx;
+  font-weight: 300;
+}
+.userinfo-content .name {
+  font-size: 32rpx;
+  color: #333234;
+  font-weight: 500;
+}
+.userinfo-content .con-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 40rpx;
+}
+.userinfo-content .con-1 .con-1-l {
+  flex: 1;
+}
+.userinfo-content .con-1 .check-status {
+  color: #5f5d62;
+}
+.userinfo-content .con-1 .link-btn {
+  line-height: 1;
+  color: #0082a8;
+}
+.userinfo-content .progress-num {
+  display: inline-block;
+  line-height: 1;
+  margin-top: 14rpx;
+  color: #5f5d62;
+}
+.meta-panel {
+  line-height: 1;
+  padding-left: 28rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.meta-panel .panel-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 30rpx 28rpx 30rpx 0;
+}
+.meta-panel .panel-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.meta-panel .panel-item:last-child:after {
+  display: none;
+}
+.meta-panel .panel-item .panel-item-l {
+  flex: 1;
+}
+.meta-panel .panel-item .panel-item-r text {
+  line-height: 1;
+  vertical-align: middle;
+  color: #c9c9c9;
+}
+.panel-item-l .label {
+  color: #242424;
+}
+.panel-item-l .required {
+  margin-left: 10rpx;
+  color: #e50505;
+}
+.panel-item-r .link-icon {
+  width: 26rpx;
+  height: 16rpx;
+  transform: rotateZ(-90deg)
+}

@@ -1,0 +1,22 @@
+/* components/Student/BottomInfo/BottomInfo.wxss */
+:host{
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.bottomContainer{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20rpx;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+}
+
+.bottomTxt{
+    margin-top: 14rpx;
+}

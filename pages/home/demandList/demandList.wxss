@@ -1,0 +1,155 @@
+page {
+  height: 100%;
+}
+.demand-list-container {
+  height: 100%;
+  font-size: 26rpx;
+  font-weight: 300;
+}
+.tabs-wrapper {
+  position: relative;
+  display: flex;
+  background-color: #ffffff;
+  color: #666465;
+  text-align: center;
+  box-shadow: 0 2rpx 5rpx 0 rgba(179, 179, 179, 0.35);
+  z-index: 2;
+  font-size: 30rpx;
+  font-weight: normal;
+}
+
+.tabs-wrapper .tabs-item {
+  position: relative;
+  flex: 1;
+  line-height: 1;
+  padding: 30rpx 0;
+}
+
+.tabs-wrapper .tabs-item::after {
+  display: block;
+  content: "";
+  width: 2rpx;
+  height: 30rpx;
+  background-color: #e5e5e5;
+  position: absolute;
+  right: 0;
+  top: 30rpx;
+}
+
+.tabs-wrapper .tabs-item text {
+  position: relative;
+  display: inline-block;
+}
+
+.tabs-wrapper .tabs-item text::after {
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 12rpx;
+  right: -20rpx;
+  border-style: solid;
+  border-color: #9a9a9a transparent transparent transparent;
+  border-width: 8rpx;
+}
+.tabs-wrapper .active {
+  color: #e50505;
+}
+.tabs-wrapper .active text::after {
+  border-top-color: #e50505;
+}
+.demand-wrapper {
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+}
+.demand-list {
+  padding: 0 26rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+}
+.demand-item {
+  position: relative;
+  padding: 40rpx 0 20rpx 0;
+}
+.demand-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+
+.demand-item:last-child:after {
+  display: none;
+}
+
+.demand-item .item-title {
+  position: relative;
+  padding: 0 120rpx 0 38rpx;
+  margin-bottom: 25rpx;
+}
+
+.demand-item .item-title .dot {
+  position: absolute;
+  left: 0;
+  top: 15rpx;
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: rgba(229, 5, 5, 0.18);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.demand-item .item-title .name {
+  display: inline-block;
+  line-height: 1.4;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #434343;
+}
+.demand-item .item-title .date {
+  position: absolute;
+  top: 6rpx;
+  right: 0;
+  font-size: 24rpx;
+  color: #adadad;
+}
+.demand-item .join {
+  line-height: 1;
+  margin-left: 38rpx;
+  font-size: 26rpx;
+  color: #737373;
+}
+
+.demand-item .join .join-num {
+  font-size: 28rpx;
+  font-weight: normal;
+  color: #e50505;
+}
+
+.demand-item .demand-ul {
+  padding-left: 38rpx;
+  margin-top: 40rpx;
+  font-size: 26rpx;
+}
+
+.demand-ul .demand-li {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.demand-ul .demand-li .label {
+  width: 135rpx;
+  color: #a0a0a0;
+}
+
+.demand-ul .demand-li .cont {
+  flex: 1;
+}

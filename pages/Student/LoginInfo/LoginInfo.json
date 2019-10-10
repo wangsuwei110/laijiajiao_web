@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "信息补全",
+  "usingComponents": {
+    "Switch": "/components/Student/Switch/Switch",
+    "BottomInfo": "/components/Student/BottomInfo/BottomInfo",
+    "ClickContainer": "/components/ClickContainer/ClickContainer",
+    "ToggleTechType": "/components/ToggleTechType/ToggleTechType"
+  }
+}

@@ -1,0 +1,15 @@
+<!--components/Student/HomeTeacher/HomeTeacher.wxml-->
+<navigator class='container {{first?"first":""}}'>
+    <view class='iconImgWrap'>
+        <image class='iconImg' mode='aspectFill'/>
+        <image class='rankIcon' mode='aspectFill'/>
+    </view>
+
+    <view class='infoWrap'>
+        <view>
+            <text class='teacherName'>李教员</text>
+        </view>
+        <view>上海交通大学 | 大二在校</view>
+        <view>小学语文，小学数学，初中数学</view>
+    </view>
+</navigator>

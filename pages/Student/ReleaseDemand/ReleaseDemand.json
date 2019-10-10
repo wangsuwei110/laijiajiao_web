@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ClickContainer": "/components/ClickContainer/ClickContainer",
+    "ToggleTechType": "/components/ToggleTechType/ToggleTechType"
+  }
+}

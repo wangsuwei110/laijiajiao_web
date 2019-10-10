@@ -1,0 +1,34 @@
+<!--pages/Student/LoginInfo/LoginInfo.wxml-->
+<view class='mainContainer' bindtap='onCloseClick'>
+    <view class='phoneBox'>
+        <view class='title'>注册手机</view>
+
+        <view class='phoneContent'>
+            <text class='phoneNum'>{{student.parentPhoneNum}}</text>
+            <navigator open-type='reLaunch' url='/pages/Student/Login/Login' class='phoneChange'>更换</navigator>
+        </view>
+    </view>
+
+    <view class='contenBox'>
+        <view class='title'>学员信息</view>
+        <view class='stdNameBox'>
+            <text class='label'>学员姓名</text>
+            <input class='inputBox' value='{{student.studentName || ""}}' maxlength='6' bindinput='onNameChange'/>
+
+            <Switch options='{{grenderList}}' value='{{student.sex}}' bind:onChange='onGrederChange'/>
+        </view>
+
+        <view class='selectContianer'>
+            <ToggleTechType id='grade' class='selectItem' options='{{gradeList}}' nameKey='value' label='选择年级' multiple='{{false}}' value='{{[student.grade]}}' bind:onChange='onGradeChange'/>
+
+            <ToggleTechType id='subject' class='selectItem' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' multiple='{{false}}' value='{{[student.subjectId]}}' bind:onChange='onSubjectChange'/>
+        </view>
+    </view>
+
+    <ClickContainer class='submitBtnWrap'>
+        <view class='submitBtn' bindtap='onSubmit'>提交信息</view>
+    </ClickContainer>
+</view>
+
+
+<BottomInfo/>

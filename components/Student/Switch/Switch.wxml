@@ -1,0 +1,6 @@
+<!--components/Student/Switch/Switch.wxml-->
+<view class='container'>
+    <view wx:for='{{options}}' wx:key='{{index}}' class='item {{index?"":"first"}} {{index+1 === options.length?"last":""}} {{item[valueKey] === value?"active":""}}' data-index='{{index}}' catchtap='onChange'>
+        {{item[nameKey]}}
+    </view>
+</view>

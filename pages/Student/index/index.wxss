@@ -1,0 +1,41 @@
+/* pages/Student/index/index.wxss */
+
+.swiper{
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+/* 科目 */
+.subjectContainer{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+
+.subjectItem{
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 25%;
+    height: 155rpx;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subjectIcon{
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.subjectTxt{
+    font-family:Noto Sans S Chinese;
+    font-size:24rpx;
+    font-weight:300;
+    color:rgba(102,102,102,1);
+    margin-top: 10rpx
+}
+/* 科目END */

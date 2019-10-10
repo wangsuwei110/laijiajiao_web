@@ -1,0 +1,136 @@
+<view class="tutor-detail-container">
+  <view class="spacing-10"></view>
+  <view class="tutor-panel">
+    <view class="panel-top">
+      <view class="dot-icon"></view><text class="title">基本信息</text>
+    </view>
+    <view class="panel-body">
+      <view class="baseinfo">
+        <view class="baseinfo-item"><text class="label">发布时间：</text><text class="cont">2019-07-24 19:55:00</text></view>
+        <view class="baseinfo-item"><text class="label">上课地址：</text><text class="cont">上海市浦东新区张江镇碧波路上海市浦东新区张江镇碧波路</text></view>
+        <view class="baseinfo-item"><text class="label">年级科目：</text><text class="cont">三年级数学</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="tutor-panel">
+    <view class="panel-top">
+      <view class="dot-icon"></view><text class="title">预计上课时段</text>
+    </view>
+    <view class="panel-body">
+      <view class="school-timetable">
+        <view class="timetable">
+          <view class="table-title">
+            <text class="time-name">时间</text>
+            <text class="week-name">一</text>
+            <text class="week-name">二</text>
+            <text class="week-name">三</text>
+            <text class="week-name">四</text>
+            <text class="week-name">五</text>
+            <text class="week-name">六</text>
+            <text class="week-name">七</text>
+          </view>
+          <view class="table-body">
+            <view class="table-item">
+              <view class="time">
+                <text>上午</text>
+                <text class="time-period">（8:00-12:00）</text>
+              </view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+            </view>
+            <view class="table-item">
+              <view class="time">
+                <text>下午</text>
+                <text class="time-period">（12:00-18:00）</text>
+              </view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+            </view>
+            <view class="table-item">
+              <view class="time">
+                <text>晚上</text>
+                <text class="time-period">（18:00-23:00）</text>
+              </view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+              <view class="week"><view class="checkbox checked"></view></view>
+            </view>
+          </view>
+        </view>
+        <view class="explanation">
+          <image mode="scaleFill" src="../../../images/expl_icon.png"></image>
+          <text>每周上课次数:</text><text class="num">一周两次</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="tutor-panel">
+    <view class="panel-top">
+      <view class="dot-icon"></view><text class="title">具体需求</text>
+    </view>
+    <view class="panel-body">
+      <view class="demand">
+        <text>的建设新的伟大工程，是引领伟大斗争、伟大事业，最终实现伟大梦想的根本保证。党的十八大以来，习近平总书记多次以形象的比喻“点睛”。</text>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="tutor-panel applicant">
+    <view class="panel-top">
+      <view class="dot-icon"></view><text class="title">已有<text class="applicant-num">2</text>位教员报名</text>
+    </view>
+    <view class="panel-body">
+      <view class="applicant-list">
+        <view class="applicant-item">
+          <view class="applicant-avatar">
+            <image mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
+          </view>
+          <view class="applicant-desc">
+            <view>
+              <text class="name">朱学员</text>
+              <image class="gender" mode="scaleToFill" src="../../../images/gender0.png"></image>
+              <text class="date">2019.07.07</text>
+            </view>
+            <view class="cont">
+              <text>最近登录了系统</text>
+            </view>
+          </view>
+        </view>
+        <view class="applicant-item">
+          <view class="applicant-avatar">
+            <image mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
+          </view>
+          <view class="applicant-desc">
+            <view>
+              <text class="name">朱学员</text>
+              <image class="gender" mode="scaleToFill" src="../../../images/gender0.png"></image>
+              <text class="date">2019.07.07</text>
+            </view>
+            <view class="cont">
+              <text>最近登录了系统</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="applyTutor" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">立即报名</view>
+</view>

@@ -1,0 +1,38 @@
+<view class="vita-info">
+  <view class="userinfo">
+    <image class="avatar" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../../images/avatar.png'}}"></image>
+    <view class="userinfo-content">
+      <view class="con-1">
+        <view class="con-1-l">
+          <text class="name">{{userinfo.teacherName || ''}}</text><text class="check-status">（{{auditStatusStr || '-'}}）</text>
+        </view>
+        <text bindtap="basicInfo" class="link-btn">基础信息></text>
+      </view>
+      <progress class="progress-bar" percent="{{userinfo.resumeComplete}}" active-mode="forwards" backgroundColor="#f2eff6" activeColor="#32be78" stroke-width="4" border-radius="4"  active />
+      <text class="progress-num">完成度{{userinfo.resumeComplete || '-'}}%</text>
+    </view>
+  </view>
+  <view class="tip">您的简历是家长选择的重要依据</view>
+  <view class="meta-panel">
+    <view bindtap="attestIdentity" class="panel-item">
+      <view class="panel-item-l"><text class="label">身份认证</text><text class="required">*</text></view>
+      <view class="panel-item-r"><text>{{logonStatusStr}}</text><view class="arrow-icon arrow-right"></view></view>
+    </view>
+    <view bindtap="education" class="panel-item">
+      <view class="panel-item-l"><text class="label">学历信息</text><text class="required">*</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+    <view bindtap="attestAbility" class="panel-item">
+      <view class="panel-item-l"><text class="label">能力认证</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+    <view bindtap="achievement" class="panel-item">
+      <view class="panel-item-l"><text class="label">成功案例</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+    <view bindtap="userLabel" class="panel-item">
+      <view class="panel-item-l"><text class="label">我的标签</text><text class="required">*</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+  </view>
+</view>

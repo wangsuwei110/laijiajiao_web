@@ -1,0 +1,15 @@
+<!--components/Student/HomeContentBox/HomeContentBox.wxml-->
+<view class='container'>
+    <view class='titleWrap'>
+        <text class='titleTxt'>{{title}}</text>
+        <view class='titleAppend'>
+            <slot name="titleAppend"/>
+        </view>
+    </view>
+    <view class='contentWrap'>
+        <slot/>
+        <navigator url='{{moreUrl}}' class='moreContainer' wx:if='{{moreUrl}}'>
+            查看更多
+        </navigator>
+    </view>
+</view>

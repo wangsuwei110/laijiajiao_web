@@ -1,0 +1,137 @@
+/* components/Student/OrderListItem/OrderListItem.wxss */
+
+
+.container{
+    margin: 20rpx;
+    background-color: #fff;
+}
+
+.inner{
+    padding: 0 24rpx;
+}
+
+
+.topBox{
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(153,153,153,1);
+}
+
+.topBox::before{
+    content: '';
+    display: inline-block;
+    width:12rpx;
+    height:12rpx;
+    background:rgba(77,182,245,1);
+    border-radius:50%;
+    margin-right: 20rpx;
+}
+
+.date{
+    flex: 1;
+}
+
+.topAction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:125rpx;
+    height:34rpx;
+    border:2rpx solid rgba(122,197,247,1);
+    border-radius:5rpx;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(77,182,245,1);
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    font-size:26rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(51,51,51,1);
+}
+
+.price{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(185,185,185,1);
+    margin-left: 26rpx;
+}
+
+.paramItem{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:#5C5C5C;
+    margin-top: 20rpx;
+}
+
+.label{
+    color:#AEAEAE
+}
+
+
+.evaluate{
+    border:2rpx solid rgba(245,245,245,1);
+    border-radius:5rpx;
+
+    padding: 16rpx 24rpx 24rpx 24rpx;
+
+    font-size:22rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(143,143,143,1);
+
+    margin-top: 24rpx;
+}
+
+.evaluateTxt{
+    margin-top: 12rpx;
+}
+
+.payBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:66rpx;
+    background:rgba(40,158,230,1);
+    border-radius:0 0 5rpx 5rpx;
+
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(255,255,255,1);
+
+    margin-top: 38rpx;
+}
+
+.evaluate + .payBtn{
+    margin-top: 22rpx;
+}
+
+.signUpCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 66rpx;
+    border-top: 2rpx solid #F5F5F5;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(153,153,153,1);
+}
+
+.emphasis{
+    color: #1988CA;
+}

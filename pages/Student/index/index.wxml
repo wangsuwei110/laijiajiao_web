@@ -1,0 +1,31 @@
+<!--pages/Student/index/index.wxml-->
+<PageLayout isStudent='true'>
+    <swiper class='swiper'>
+        <swiper-item>
+            <image class='swiper' mode='widthFix' src=''/>
+        </swiper-item>
+    </swiper>
+
+
+    <view class='subjectContainer'>
+        <navigator class='subjectItem' wx:for='{{subjectList}}'>
+            <image class='subjectIcon' mode='aspectFix' />
+            <text class='subjectTxt'>{{item}}</text>
+        </navigator>
+    </view>
+
+    <HomeContentBox title='教员风采' moreUrl='a'>
+        <text slot='titleAppend'>累计教员 326名 ></text>
+        <view>
+            <HomeTeacher first='true'/>
+        </view>
+    </HomeContentBox>
+
+    <HomeContentBox title='学员反馈' moreUrl='a'>
+        <text slot='titleAppend'>好评率99.8%</text>
+        <view>
+            <HomeReportItem first='true'/>
+        </view>
+    </HomeContentBox>
+
+</PageLayout>

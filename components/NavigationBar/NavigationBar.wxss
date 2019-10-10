@@ -1,0 +1,44 @@
+/* components/NavigationBar/NavigationBar.wxss */
+
+.container{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+.item{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 108rpx;
+
+    color:rgba(115,115,115,1);
+}
+
+.ipx .item{
+    height: 168rpx;
+}
+
+.icon{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.txt{
+    font-size:24rpx;
+    line-height:26rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    
+    margin-top: 8rpx;
+}
+
+.item.active{
+    color: #e50505;
+}
+
+.student .item.active{
+    color:rgba(40,158,230,1);
+}

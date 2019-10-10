@@ -1,0 +1,9 @@
+<!--pages/Student/Mailbox/Mailbox.wxml-->
+<view class='_container'>
+    <textarea class='textArea' placeholder-class='placeholder' placeholder='请填写您的宝贵建议，以便我们为您更好的服务' maxlength='200' value='{{adviseDesc}}' bindinput='onDescChange'/>
+
+
+    <ClickContainer>
+        <view class='addBtn' bindtap='onSubmitClick'>确认提交</view>
+    </ClickContainer>
+</view>

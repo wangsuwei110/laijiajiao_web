@@ -1,0 +1,9 @@
+@import "../../../css/common.wxss";
+.feedback-content {
+  background-color: #fff;
+  padding: 38rpx 26rpx;
+}
+.feedback-content textarea {
+  width: 100%;
+  font-size: 14px;
+}

@@ -1,0 +1,91 @@
+.revenue-container {
+  font-size: 30rpx;
+  font-weight: 300;
+}
+.revenue-container text {
+  display: inline-block;
+  line-height: 1;
+}
+.revenur-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 330rpx;
+  background-color: #000000;
+}
+.revenur-top .revenue-num {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 280rpx;
+  height: 280rpx;
+  color: #ffffff;
+}
+.revenur-top .revenue-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.revenur-top .revenue-num text {
+  font-size: 22rpx;
+  color: #21ffce;
+}
+.revenur-top .revenue-num .num {
+  margin-bottom: 32rpx;
+  font-size: 50rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+.meta-panel .total-name {
+  margin-right: 14rpx;
+  font-size: 28rpx;
+  color: #646464;
+  vertical-align: middle;
+}
+.meta-panel .total-num {
+  font-size: 36rpx;
+  color: #e50505;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.meta-panel {
+  line-height: 1;
+  padding: 0 28rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.meta-panel .panel-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.meta-panel .panel-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.meta-panel .panel-item:last-child::after {
+  display: none;
+}
+.meta-panel .panel-item .name {
+  flex: 1;
+  font-size: 30rpx;
+}
+.meta-panel .panel-item .usage-time {
+  font-size: 28rpx;
+  color: #646464;
+}

@@ -1,0 +1,4 @@
+<!--components/ClickContainer/ClickContainer.wxml-->
+<view class='container {{disabled?"disabled":""}}' hover-class='{{disabled?"":"active"}}'>
+    <slot/>
+</view>

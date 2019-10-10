@@ -1,0 +1,61 @@
+@import "../../../css/common.wxss";
+.panel-wrapper-1 .education-pic {
+  margin-top: 30rpx;
+  margin-bottom: 22rpx;
+}
+.panel-wrapper-1 .education-pic image {
+  width: 100%;
+  height: 400rpx;
+}
+.pic-item {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+  background-color: #f2eff6;
+}
+.pic-item image {
+  width: 100%;
+  height: 400rpx;
+}
+.pic-item .close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333;
+}
+.pick-item {
+  position: relative;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-weight: 400;
+}
+.pick-item::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.pick-item .label {
+  display: inline-block;
+  width: 140rpx;
+  color: #222224;
+  font-weight: 300;
+}
+.pick-item .arrow-icon {
+  position: absolute;
+  top: 35.5rpx;
+  right: 0;
+}

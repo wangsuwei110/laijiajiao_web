@@ -1,0 +1,17 @@
+/* components/ClickContainer/ClickContainer.wxss */
+
+:host{
+    display: block;
+}
+
+.container{
+    transition: opacity 0.3s cubic-bezier(.645, .045, .355, 1);
+}
+
+.active{
+    opacity: 0.7;
+}
+
+.disabled{
+    opacity: 1;
+}

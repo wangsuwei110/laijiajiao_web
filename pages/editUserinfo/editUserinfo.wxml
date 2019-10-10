@@ -1,0 +1,88 @@
+<view class="edit-userinfo-container" catchtap="hideTeachBox">
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">注册手机</text>
+    </view>
+    <view class="panel-body">
+      <view class="res-panel">
+        <view class="body-item">
+          <text>{{userinfo.phone}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">教员信息</text>
+    </view>
+    <view class="panel-body">
+      <view class="basic-panel">
+        <view class="panel-item">
+          <text class="label">教员姓名</text>
+          <input bindinput="getUserName" class="cont" type="text" value="{{userinfo.name}}" placeholder="请输入教员姓名 "placeholder-class="placeholder"></input>
+        </view>
+        <view class="panel-item">
+          <text class="label">大学名称</text>
+          <input bindinput="getUserSchool" class="cont" type="text" value="{{userinfo.school}}" placeholder="请输入大学名称" placeholder-class="placeholder"></input>
+        </view>
+        <view class="panel-item">
+          <text class="label">详细住址</text>
+          <input bindinput="getUserAddress" class="cont" type="text" value="{{userinfo.address}}" placeholder="请输入详细住址" placeholder-class="placeholder"></input>
+        </view>
+        <view catchtap="toggleTechType" data-id="2" class="panel-item">
+          <text class="label">辅导年级</text>
+          <text class="cont">{{userinfo.grade}}</text>
+          <view class="arrow-icon arrow-bottom"></view>
+          <view class="item-content {{currentIdx == 2 ? 'show' : 'hide'}}">
+            <view class="item-content-inner">
+              <scroll-view scroll-y style="max-height: 400rpx;">
+                <view catchtap="selectTeach" data-parentid="2" data-id="{{index}}" data-item="{{item}}" wx:for="{{grades}}" wx:key="{{index}}" class="content-item">
+                  <view class="item-icon {{item.isHave == 1 ? 'selected': ''}}"></view>
+                  <text class="{{item.isHave == 1 ? 'selected': ''}}">{{item.name}}</text>
+                  <image hidden="{{item.isHave == 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+        <view catchtap="toggleTechType" data-id="3" class="panel-item">
+          <text class="label">主授科目</text>
+          <text class="cont">{{userinfo.subject}}</text>
+          <view class="arrow-icon arrow-bottom"></view>
+          <view class="item-content {{currentIdx == 3 ? 'show' : 'hide'}}">
+            <view class="item-content-inner">
+              <scroll-view scroll-y style="max-height: 400rpx;">
+                <view catchtap="selectTeach" data-parentid="3" data-id="{{index}}" data-item="{{item}}" wx:for="{{subjects}}" wx:key="{{index}}" class="content-item">
+                  <view class="item-icon {{item.parameterId == subjectsId ? 'selected': ''}}"></view>
+                  <text class="{{item.parameterId == subjectsId ? 'selected': ''}}">{{item.name}}</text>
+                  <image hidden="{{item.parameterId !== subjectsId}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+        <view catchtap="toggleTechType" data-id="4" class="panel-item">
+          <text class="label">辅授科目</text>
+          <text class="cont">{{userinfo.subject}}</text>
+          <view class="arrow-icon arrow-bottom"></view>
+          <view class="item-content {{currentIdx == 4 ? 'show' : 'hide'}}">
+            <view class="item-content-inner">
+              <scroll-view scroll-y style="max-height: 400rpx;">
+                <view catchtap="selectTeach" data-parentid="4" data-id="{{index}}" data-item="{{item}}" wx:for="{{subjects1}}" wx:key="{{index}}" class="content-item">
+                  <view class="item-icon {{item.isHave == 1 ? 'selected': ''}}"></view>
+                  <text class="{{item.isHave == 1 ? 'selected': ''}}">{{item.name}}</text>
+                  <image hidden="{{item.isHave == 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button bindtap="editUserinfo">提交信息</button>
+  <view class="slogan">学帮帮，专注上门家教一对一</view>
+</view>

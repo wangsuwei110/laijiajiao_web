@@ -1,0 +1,29 @@
+<view class="basic-info">
+  <view bindtap="updateAvatar" class="basic-avatar">
+    <text class="label">头像（本人正面照片）</text>
+    <image class="avatar" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../../images/avatar.png'}}"></image>
+    <view class="arrow-icon arrow-right"></view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="basic-panel">
+    <view class="panel-item">
+      <text class="label">姓名</text>
+      <input bindinput="getTeachName" class="cont" type="text" value="{{userinfo.teacherName}}"></input>
+    </view>
+    <picker class="birthplace-item" mode="region" bindchange="bindRegionChange">
+      <view class="picker">
+        <text class="label">籍贯</text>{{userinfo.home || ''}}
+      </view>
+    </picker>
+    <view class="panel-item">
+      <text class="label">微信号</text>
+      <input bindinput="getWeiChar" class="cont" type="text" value="{{userinfo.weiChar}}"></input>
+    </view>
+    <view class="panel-item">
+      <text class="label">QQ</text>
+      <input bindinput="getQQ" class="cont" type="number" value="{{userinfo.QQ}}"></input>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="saveUserinfo" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

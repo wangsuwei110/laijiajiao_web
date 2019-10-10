@@ -1,0 +1,48 @@
+@import "../../../css/common.wxss";
+.meta-panel {
+  line-height: 1;
+  padding-left: 28rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.meta-panel .panel-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 30rpx 28rpx 30rpx 0;
+}
+.meta-panel .panel-item.pd-4 {
+  padding: 12rpx 28rpx 12rpx 0;
+}
+.meta-panel .panel-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.meta-panel .panel-item:last-child:after {
+  display: none;
+}
+.meta-panel .panel-item .panel-item-l {
+  flex: 1;
+}
+.meta-panel .panel-item .panel-item-r text {
+  line-height: 1;
+  vertical-align: middle;
+  color: #c9c9c9;
+}
+.panel-item-l .label {
+  color: #242424;
+}
+.panel-item-r .link-icon {
+  width: 26rpx;
+  height: 16rpx;
+  transform: rotateZ(-90deg)
+}

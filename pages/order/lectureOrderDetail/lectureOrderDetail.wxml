@@ -1,0 +1,73 @@
+<view class="order-detail-container">
+  <view class="order-panel">
+    <view class="paenel-title">二年级数学</view>
+    <view class="panel-cont">
+      <view class="cont-item">
+        <text class="label">发布时间</text>
+        <text class="text">2018-12-23 12:32:32</text>
+      </view>
+      <view class="cont-item">
+        <text class="label">投递时间</text>
+        <text class="text">2018-12-23 12:32:32</text>
+      </view>
+      <view class="cont-item">
+        <text class="label">上课地址</text>
+        <text class="text">上海市浦东新区张江镇碧波路xx号</text>
+      </view>
+      <view class="explanation">
+        <image mode="scaleFill" src="../../../images/expl_icon.png"></image>
+        <text>每周上课次数:</text><text class="num">一周两次</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="spacing-10"></view>
+  <view class="panel period">
+    <view class="panel-top">
+      <view class="dot-icon"></view><text class="title">预计上课时段</text>
+    </view>
+    <view class="panel-body">
+      <view class="time-item">
+        <view class="radio checked"></view>
+        <text class="date">周一（2019.07.08）上午</text>
+        <view class="time-select">
+          <view class="selected-time">
+            <text>08:00</text>
+            <view class="arrow-icon arrow-bottom"></view>
+          </view>
+          <view wx:if="{{selectedPeriod === 'morgning'}}" class="select-box">
+            <text wx:for="{{period.morning}}" wx:key="{{index}}">{{item}}</text>
+          </view>
+        </view> 
+      </view>
+      <view class="time-item">
+        <view class="radio checked"></view>
+        <text class="date">周一（2019.07.08）中午</text>
+        <view class="time-select">
+          <view class="selected-time">
+            <text>08:00</text>
+            <view class="arrow-icon arrow-bottom"></view>
+          </view>
+          <view wx:if="{{selectedPeriod === 'noon'}}" class="select-box">
+            <text wx:for="{{period.noon}}" wx:key="{{index}}">{{item}}</text>
+          </view>
+        </view> 
+      </view>
+      <view class="time-item">
+        <view class="radio checked"></view>
+        <text class="date">周一（2019.07.08）晚上</text>
+        <view class="time-select">
+          <view class="selected-time">
+            <text>08:00</text>
+            <view class="arrow-icon arrow-bottom"></view>
+          </view>
+          <view wx:if="{{selectedPeriod === 'evening'}}" class="select-box">
+            <text wx:for="{{period.evening}}" wx:key="{{index}}">{{item}}</text>
+          </view>
+        </view> 
+      </view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="applyTutor" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">立即报名</view>
+</view>

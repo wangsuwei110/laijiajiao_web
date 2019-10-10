@@ -1,0 +1,44 @@
+/* components/Student/HomeContentBox/HomeContentBox.wxss */
+
+.container{
+    margin: 20rpx 20rpx 0 20rpx;
+    background:#fff;
+    border-radius:5rpx;
+}
+
+.titleWrap{
+    display: flex;
+    align-items: center;
+    padding: 30rpx 24rpx 4rpx 24rpx;
+}
+
+.titleTxt{
+    flex: 1;
+    font-size:26rpx;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+}
+
+.titleAppend{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+}
+
+.contentWrap{
+    padding: 0 22rpx
+}
+
+.moreContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70rpx;
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+    border-top: 2rpx solid #F5F5F5;
+}

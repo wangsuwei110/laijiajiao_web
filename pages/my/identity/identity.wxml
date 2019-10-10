@@ -1,0 +1,29 @@
+<view class="sub-my-container">
+  <view class="tip"><image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image> 真实身份，让家长放心、信赖！</view>
+  <view class="basic-panel">
+    <view class="panel-item">
+      <text class="label">身份证号</text>
+      <input bindinput="getIDcardNumber" class="cont" type="text" placeholder="请输入身份证号码" value="{{userinfo.IDcardNumber}}"></input>
+    </view>
+  </view>
+  <view class="panel-wrapper-1">
+    <view class="panel-content">
+      <view bindtap="uploadImg" class="upload-pic-btn">
+        <image mode="scaleToFill" class="add-icon" src="../../../images/add_icon.png"></image><text>上传手持身份证照片</text>
+      </view>
+      <view class="tip-2">
+        <text>1. 脸部清晰\n</text>
+        <text>2. 身份证信息清晰无遮挡</text>
+      </view>
+      <view class="identity-pic">
+        <image hidden="{{userinfo.IDcardPic.length > 0}}" mode="scaleToFill" src="../../../images/IDcard.jpg"></image>
+        <view class="pic-item" wx:for="{{userinfo.IDcardPic}}" wx:key="{{index}}">
+          <view hidden="{{userinfo.logonStatus == '1'}}" bindtap="removePic" data-index="{{index}}" class="close-icon">×</view>
+          <image bindtap="previewImg" data-url="{{item}}" data-urls="{{userinfo.IDcardPic}}" mode="aspectFill" src="{{item}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="saveUserinfo" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

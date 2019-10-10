@@ -1,0 +1,20 @@
+<view class="sub-my-container">
+  <view class="tip">
+    <image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image>能力认证能增加家长的认可度和选择几率！
+  </view>
+  <view class="panel-wrapper-2">
+    <view wx:for="{{ability}}" wx:for-index="idx" wx:key="{{index}}" class="panel-item">
+      <view class="title"><text>{{item.pictureTitle}}</text></view>
+      <view class="content">
+        <view bindtap="previewImg" data-url="{{item}}" data-id="{{idx}}" class="pic-item" wx:for="{{item.pictureUrl}}" wx:key="sindex">
+          <image class="pic" mode="aspectFill" lazy-load="true" src="{{item}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btn-bar">
+    <view bindtap="openAddPage" class="add-btn">
+      <image class="add-btn-icon" mode="scaleToFill" src="../../../images/add_icon_1.png"></image><text class="add-btn-name">新增认证</text>
+    </view>
+  </view>
+</view>

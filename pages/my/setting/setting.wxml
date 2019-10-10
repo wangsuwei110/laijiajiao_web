@@ -1,0 +1,22 @@
+<view class="setting-container">
+<view class="meta-panel">
+    <view bindtap="attestIdentity" class="panel-item">
+      <view class="panel-item-l"><text class="label">账号：13700224385</text></view>
+      <view class="panel-item-r"><text>2019-09-10注册</text></view>
+    </view>
+    <view bindtap="education" class="panel-item">
+      <view class="panel-item-l"><text class="label">实习证明</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+    <view bindtap="attestAbility" class="panel-item pd-4">
+      <view class="panel-item-l"><text class="label">寒暑假可接单</text></view>
+      <view class="panel-item-r"><switch checked bindchange="switchChange"/></view>
+    </view>
+    <view bindtap="achievement" class="panel-item">
+      <view class="panel-item-l"><text class="label">关于我们</text></view>
+      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="addAbility" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">退出登录</view>
+</view>

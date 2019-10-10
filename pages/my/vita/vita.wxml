@@ -1,0 +1,225 @@
+<view class="vita-container">
+  <view class="school-img">
+    <image mode="aspectFill" src="../../../images/img/school_pic.png"></image>
+  </view>
+  <view class="userinfo">
+    <view class="avatar">
+      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : '../../../images/avatar.png'}}"></image>
+    </view>
+    <view class="info">
+      <view class="info-meta">
+        <view class="meta-l">
+          <text class="name">{{userinfo.name}}</text>
+          <image mode="widthFix" wx:if="{{userinfo.sex === 2}}" class="gender" src="../../../images/gender0.png"></image>
+          <image mode="widthFix" wx:if="{{userinfo.sex === 1}}" class="gender" src="../../../images/gender1.png"></image>
+        </view>
+        <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
+      </view>
+      <view class="info-meta attest">
+        <image mode="widthFix" src="../../../images/attest_icon.png"></image>
+        <text>证件认证</text>
+      </view>
+      <view class="info-meta">
+        <text class="label">服务学员：<text class="ftc-E50505">5</text></text>
+        <text class="label">已授课时：<text class="ftc-E50505">120</text></text>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="level-panel">
+    <view class="title">
+      <text>教员\n等级</text>
+    </view>
+    <view class="level-num">
+      <text>{{userinfo.teacherLevel}}</text>
+    </view>
+    <view class="info">
+      <text class="sub-title">学帮帮智能教务系统评定</text>
+      <view class="type">
+        <view class="type-item">
+          <canvas canvas-id="employRate" id="employRate" class='ring-wrapper'></canvas>
+          <text class="name">聘用\n指数</text>
+        </view>
+        <view class="type-item">
+          <canvas canvas-id="resumptionRate" id="resumptionRate" class='ring-wrapper'></canvas>
+          <text class="name">续课\n指数</text>
+        </view>
+        <view class="type-item">
+          <canvas canvas-id="praiseRate" id="praiseRate" class='ring-wrapper'></canvas>
+          <text class="name">好评\n指数</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <!-- 信息面板 -->
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">基本信息</text>
+    </view>
+    <view class="panel-body identity">
+      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home}}</text></view>
+        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime}}</text></view>
+        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school}}</text></view>
+        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major}}</text></view>
+        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address}}</text></view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">个人标签</text>
+    </view>
+    <view class="panel-body">
+      <text class="tag" wx:for="{{labels}}" wx:key="index">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">家教经验</text>
+    </view>
+    <view class="panel-body">
+      <view wx:for="{{experienceList}}"  wx:for-item="experience" wx:key="{{index}}" class="experience">
+        <view class="experience-text">
+          <!-- <text>{{item.pictureTitle}}</text> -->
+          <text>{{experience.pictureDesc}}</text>
+        </view>
+        <view class="experience-pic">
+          <view class="pic-inner">
+            <image bindtap="previewImg" data-url="{{item}}" data-urls="{{experience.pictureUrl}}" wx:for="{{experience.pictureUrl}}" wx:key="{{index}}" mode="aspectFill" src="{{item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">所获证书</text>
+    </view>
+    <view class="panel-body">
+      <view class="certificate">
+        <view class="certificate-inner">
+          <view wx:for="{{certificateList}}" wx:for-item="certificate" wx:key="{{index}}" class="certificate-item">
+            <image bindtap="previewImg" data-url="{{item}}" data-urls="{{certificate.pictureUrl}}" wx:for="{{certificate.pictureUrl}}" wx:key="{{index}}" mode="aspectFill" src="{{item}}"></image>
+            <text>{{certificate.pictureTitle}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">可教科目</text>
+    </view>
+    <view class="panel-body">
+      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="spacing-10"></view>
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">可教区域</text>
+    </view>
+    <view class="panel-body">
+      <text wx:for="{{teachAddress}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">预计上课时段</text>
+    </view>
+    <view class="timetable">
+      <view class="table-title">
+        <text class="time-name">时间</text>
+        <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
+      </view>
+      <view class="table-body">
+        <view class="table-item">
+          <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
+            <text>{{item.name}}</text>
+            <text class="time-period">（{{item.period}}）</text>
+          </view>
+        </view>
+        <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
+          <view wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="service">
+    <view class="service-tab">
+      <view bindtap="toggleService" data-id="1" class="tab {{serviceTabIndex == 1 ? 'active' : ''}}">服务记录</view>
+      <view bindtap="toggleService" data-id="2" class="tab {{serviceTabIndex == 2 ? 'active' : ''}}">服务评价</view>
+    </view>
+    <view class="servie-content">
+      <!-- 服务记录 -->
+      <block wx:if="{{serviceTabIndex == 1}}">
+        <view class="service-log">
+          <!-- <view class="log-table">
+            <view class="table-thead">
+              <text class="t-1">订单号</text>
+              <text class="t-2">年级科目</text>
+              <text class="t-2">接单时间</text>
+            </view>
+            <view class="table-body">
+              <view class="body-item">
+                <text class="t-1">190190190190190190190190</text>
+                <text class="t-2">小学数学</text>
+                <text class="t-2">2019-09-16</text>
+              </view>
+              <view class="body-item">
+                <text class="t-1">190190</text>
+                <text class="t-2">小学数学</text>
+                <text class="t-2">2019-09-16</text>
+              </view>
+            </view>
+          </view> -->
+          <view class="null-tip"><text>暂无数据</text></view>
+        </view>
+      </block> 
+      <!-- 服务评价 -->
+      <block wx:else="{{serviceTabIndex == 2}}">
+        <view class="service-talk">
+          <!-- <view class="talk">
+            <image class="talk-icon" mode="widthFix" src=""></image>
+            <view class="talk-user">
+              <text class="name">朱学员</text><text class="date">2019-09-08</text>
+              <view class="content">
+                <text>老师教学方法很好，上课生动活泼，很容易理解老师教学方法很好上课生动活泼，很容易理解老师教学方法很好，上课生动活泼，很容易理解</text>
+              </view>
+            </view>
+          </view>
+          <view class="talk">
+            <image class="talk-icon" mode="widthFix" src=""></image>
+            <view class="talk-user">
+              <text class="name">朱学员</text><text class="date">2019-09-08</text>
+              <view class="content">
+                <text>老师教学方法很好，上课生动活泼，很容易理解老师教学方法很好上课生动活泼，很容易理解老师教学方法很好，上课生动活泼，很容易理解</text>
+              </view>
+            </view>
+          </view> -->
+          <view class="null-tip"><text>暂无数据</text></view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

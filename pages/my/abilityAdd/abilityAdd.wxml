@@ -1,0 +1,23 @@
+<view class="sub-my-container">
+  <view class="tip">
+    <image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image>能力认证能增加家长的认可度和选择几率！
+  </view>
+  <view class="panel-wrapper-3">
+    <view class="panel-item">
+      <input bindblur="getAbilityName" type="text" placeholder="标题：如全国高中数学联赛一等奖" value="{{ability.name}}"></input>
+    </view>
+    <view wx:if="{{ability.pic.length <= 0}}" class="panel-item">
+      <view bindtap="uploadImg" class="upload-pic-btn">
+        <image mode="scaleToFill" class="add-icon" src="../../../images/add_icon.png"></image><text>上传证明照片</text>
+      </view>
+    </view>
+    <view wx:if="{{ability.pic.length > 0}}" class="pic">
+      <view class="pic-item" wx:for="{{ability.pic}}" wx:key="{{index}}">
+        <view bindtap="removePic" data-index="{{index}}" class="close-icon">×</view>
+        <image mode="aspectFill" src="{{RESOURCE_PERFIX + item}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="addAbility" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

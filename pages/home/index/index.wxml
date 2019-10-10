@@ -1,0 +1,122 @@
+<view class="container">
+  <view class="top-info">
+    <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
+    <view class="top-info-item"><text class="numeral">100%</text><text>聘用率</text></view>
+    <view class="top-info-item center"><text class="numeral">T3</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view class="top-info-item"><text class="numeral">90%</text><text>续课率</text></view>
+  </view>
+  <view class="fast-entrance">
+    <view class="entrance">
+      <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_1.png"></image>
+      <text class="entrance-name">家教中心</text>
+    </view>
+    <view class="entrance">
+      <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_2.png"></image>
+      <text class="entrance-name">帮助中心</text>
+    </view>
+  </view>
+  <view class="main-content">
+    <view class="spacing-10"></view>
+    <view class="remind-panel">
+      <view class="remind-new">
+        <image mode="scaleToFill" src="../../../images/jb_icon.png"></image>
+        <text>新</text>
+      </view>
+      <image class="remind-icon" mode="scaleToFill" src="../../../images/jb_icon.png"></image>
+      <view class="remind-info">
+        <view class="remind-info-item">
+          <text class="remind-name">新的试讲订单</text>
+          <text class="remind-time">12:21</text>
+        </view>
+        <view class="remind-info-item">
+          <text class="remind-type">三年级 数学</text>
+          <image class="boll-icon" mode="scaleToFill" src="../../../images/boll_icon.png"></image>
+          <text class="remind-text">请尽快确认试讲时间</text>
+        </view>
+      </view>
+    </view>
+    <view class="spacing-10"></view>
+    <!-- 家教需求 -->
+    <view class="panel-wrapper-4">
+      <view class="panel-head">
+        <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_1.png"></image>
+        <text class="head-title">适合我的家教需求</text>
+        <text bindtap="demandList" class="head-link-btn">更多></text>
+      </view>
+      <view class="panel-body">
+        <view class="demand-wrapper">
+          <view bindtap="demandDetail" class="demand-item">
+            <view class="item-title">
+              <text class="dot"></text>
+              <text class="name">三年级数学、语文</text>
+              <text class="date">2019.07.22</text>
+            </view>
+            <view class="join">
+              <text class="join-num">1</text><text>人报名</text>
+            </view>
+            <view class="demand-ul">
+              <view class="demand-li">
+                <text class="label">授课地址:</text><text class="cont">上海市浦东新区碧波路</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">授课时间:</text><text class="cont">每周2次（可选周一上午、周二下午、周三上午、周三晚上、周四上午）</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
+              </view>
+            </view>
+          </view>
+          <view class="demand-item">
+            <view class="item-title">
+              <text class="dot"></text>
+              <text class="name">三年级数学、语文</text>
+              <text class="date">2019.07.22</text>
+            </view>
+            <view class="join">
+              <text class="join-num">1</text><text>人报名</text>
+            </view>
+            <view class="demand-ul">
+              <view class="demand-li">
+                <text class="label">授课地址:</text><text class="cont">上海市浦东新区碧波路</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">授课时间:</text><text class="cont">每周2次（可选周一上午、周二下午、周三上午、周三晚上、周四上午）</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="spacing-10"></view>
+    <!-- 最新动态 -->
+    <view class="panel-wrapper-4">
+      <view class="panel-head">
+        <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_2.png"></image>
+        <text class="head-title">最新动态</text>
+      </view>
+      <view class="panel-body">
+        <view class="dynamic-wrapper">
+          <view class="dynamic-item">
+            <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
+            <view class="user-desc">
+              <text class="name">朱学员</text>
+              <text class="date">2019.07.07</text>
+              <view class="cont"><text>最近登录了系统</text></view>
+            </view>
+          </view>
+          <view class="dynamic-item">
+            <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
+            <view class="user-desc">
+              <text class="name">朱学员</text>
+              <text class="date">2019.07.07</text>
+              <view class="cont"><text>最近登录了系统</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

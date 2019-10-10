@@ -1,0 +1,143 @@
+@import "../../../css/common.wxss";
+.order-detail-container {
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.order-panel {
+  padding: 0 28rpx;
+}
+.order-panel .paenel-title {
+  padding: 28rpx 0;
+  font-weight: normal;
+  color: #666465;
+}
+.order-panel .panel-cont {
+  padding: 0 26rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+}
+.panel-cont .cont-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.panel-cont .cont-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.cont-item .label {
+  width: 140rpx;
+  color: #646464;
+}
+.cont-item .text {
+  flex: 1;
+  text-align: right;
+  color: #989898;
+}
+.explanation {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+}
+.explanation image {
+  width: 28rpx;
+  height: 28rpx;
+}
+.explanation text {
+  margin-left: 16rpx;
+  color: #5c5c5c;
+}
+.explanation .num {
+  color: #e50505;
+}
+.panel {
+  margin: 0 28rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+.panel .panel-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 85rpx;
+  padding: 0 26rpx;
+}
+.panel .panel-top .dot-icon {
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: rgba(229, 5, 5, 0.18);
+  border-radius: 100%;
+  overflow: hidden;
+}
+.panel .panel-top .title {
+  margin-left: 15rpx;
+  font-size: 32rpx;
+  color: #434343;
+  font-weight: 500;
+}
+.panel .panel-body {
+  padding: 0 28rpx 30rpx 28rpx;
+}
+.period {
+  overflow: initial;
+}
+.period .time-item {
+  display: flex;
+  align-items: center;
+  margin: 30rpx 0;
+}
+.period .time-item .date {
+  flex: 1;
+  margin-left: 14rpx;
+}
+.period .time-item .time-select {
+  position: relative;
+  width: 160rpx;
+  height: 44rpx;
+  background-color: #fbfbfb;
+  border: 1px solid #f2eff6;
+  border-radius: 5rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+.time-select .selected-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+}
+.time-select .selected-time text {
+  line-height: 1;
+}
+.time-select .selected-time .arrow-icon {
+  margin-left: 22rpx;
+  width: 12rpx;
+  height: 12rpx;
+  vertical-align: middle;
+}
+.time-select .select-box {
+  position: absolute;
+  left: 0;
+  top: 46rpx;
+  width: 100%;
+  height: 160rpx;
+  overflow-y: auto;
+}
+.time-select .select-box text {
+  display: block;
+  line-height: 2;
+  white-space: nowrap;
+  background-color: #fbfbfb;
+}

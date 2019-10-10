@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "OrderListItem": "/components/Student/OrderListItem/OrderListItem"
+  }
+}

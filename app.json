@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/index/index",
+    "pages/home/demandList/demandList",
+    "pages/home/demandDetail/demandDetail",
+    "pages/curricul/index",
+    "pages/order/index",
+    "pages/order/orderDetail/orderDetail",
+    "pages/order/lectureOrderDetail/lectureOrderDetail",
+    "pages/my/index",
+    "pages/my/vita/vita",
+    "pages/my/label/label",
+    "pages/my/basicInfo/basicInfo",
+    "pages/my/identity/identity",
+    "pages/my/education/education",
+    "pages/my/ability/ability",
+    "pages/my/abilityAdd/abilityAdd",
+    "pages/my/achievement/achievement",
+    "pages/my/achievementDetail/achievementDetail",
+    "pages/my/achievementAdd/achievementAdd",
+    "pages/my/teaching/teaching",
+    "pages/my/revenue/revenue",
+    "pages/my/vitaInfo/vitaInfo",
+    "pages/my/revenueList/revenueList",
+    "pages/my/revenueDetail/revenueDetail",
+    "pages/my/feedback/feedback",
+    "pages/editUserinfo/editUserinfo",
+    "pages/my/setting/setting",
+    "pages/Student/ReleaseDemand/ReleaseDemand",
+    "pages/Student/Login/Login",
+    "pages/Student/index/index",
+    "pages/Student/LoginInfo/LoginInfo",
+    "pages/Student/OrderList/OrderList",
+    "pages/Student/Mailbox/Mailbox",
+    "pages/Student/EditStudent/EditStudent",
+    "pages/Student/StudentList/StudentList",
+    "pages/Student/Setting/Setting",
+    "pages/Student/Collect/Collect"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f2eff6",
+    "navigationBarBackgroundColor": "#e50505",
+    "navigationBarTitleText": "学帮帮",
+    "navigationBarTextStyle": "white"
+  },
+  "debug": true,
+  "tabBar": {
+    "color": "#737373",
+    "selectedColor": "#e50505",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index/index",
+        "text": "首页",
+        "iconPath": "./images/index.png",
+        "selectedIconPath": "./images/index_active.png"
+      },
+      {
+        "pagePath": "pages/curricul/index",
+        "text": "课表",
+        "iconPath": "./images/curricul.png",
+        "selectedIconPath": "./images/curricul_active.png"
+      },
+      {
+        "pagePath": "pages/order/index",
+        "text": "订单",
+        "iconPath": "./images/order.png",
+        "selectedIconPath": "./images/order_active.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "./images/my.png",
+        "selectedIconPath": "./images/my_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

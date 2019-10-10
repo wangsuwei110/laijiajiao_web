@@ -1,0 +1,103 @@
+/* pages/Student/StudentList/StudentList.wxss */
+
+.container{
+    margin: 20rpx;
+    background-color: #fff;
+    border-radius:5rpx;
+    padding-right: 24rpx;
+}
+
+.nameBox{
+    display: flex;
+    align-items: center;
+    padding-top: 30rpx;
+}
+
+.nameWrap{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.point{
+    display: flex;
+    justify-content: center;
+    width: 46rpx;
+}
+
+.point::before{
+    content: '';
+    width:12rpx;
+    height:12rpx;
+    border-radius: 100%;
+    background-color: rgba(77,182,245,1);
+}
+
+.name{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+}
+
+.edit{
+    font-size:24rpx;
+font-family:Noto Sans S Chinese;
+font-weight:300;
+color:rgba(12,142,221,1);
+}
+
+.girlIcon{
+    width: 25rpx;
+    margin-left: 12rpx;
+}
+
+.editIcon{
+    width: 20rpx;
+    margin-right: 10rpx;
+}
+
+.params{
+    display: flex;
+    align-items: center;
+    padding-left: 46rpx;
+    margin-top: 6rpx;
+    padding-bottom: 26rpx;
+
+    
+}
+
+.grade{
+    flex: 1;
+    font-size:26rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color:rgba(67,67,67,1);
+}
+
+.date{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(67,67,67,1);
+}
+
+.addIcon{
+    width: 21rpx;
+    margin-left: 14rpx;
+}
+
+.addBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 78rpx 20rpx 0 20rpx;
+    height: 76rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
+
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}

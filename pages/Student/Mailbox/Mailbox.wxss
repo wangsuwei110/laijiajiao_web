@@ -1,0 +1,36 @@
+/* pages/Student/Mailbox/Mailbox.wxss */
+
+._container{
+    padding: 20rpx;
+}
+
+.textArea{
+    box-sizing: border-box;
+    width: 100%;
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+
+    padding: 22rpx;
+    background-color: #fff;
+    height: 360rpx;
+}
+
+.placeholder{
+    color:rgba(199,199,199,1);
+}
+
+.addBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22rpx;
+    height: 76rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
+
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}

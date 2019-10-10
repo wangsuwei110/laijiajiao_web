@@ -1,0 +1,36 @@
+@import "../../../css/common.wxss";
+.meta-panel {
+  line-height: 1;
+  padding: 0 28rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.meta-panel .panel-item {
+  position: relative;
+  padding: 30rpx 28rpx 30rpx 0;
+}
+.meta-panel .panel-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.meta-panel .panel-item .name {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.meta-panel .panel-item .arrow-icon {
+  position: absolute;
+  top: 38rpx;
+  right: 0;
+}

@@ -1,0 +1,103 @@
+page {
+  background-color: #fff;
+  height: 100%;
+  overflow: hidden;
+}
+.container {
+  font-weight: 300;
+  overflow: hidden;
+}
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 100rpx auto;
+  background-color: #e50505;
+  border-radius: 20%;
+  box-shadow: 0 0 4px #e50505;
+}
+.logo image {
+  width: 100%;
+  height: 100%;
+}
+.form {
+  padding: 0 70rpx;
+}
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+.section::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1rpx;
+  bottom: 0;
+  right: 0;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.section .section-title {
+  display: inline-block;
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.section .section-title image {
+  width: 100%;
+}
+.section .section-content {
+  flex: 1;
+}
+.section input {
+  line-height: 1;
+  padding: 28rpx 0;
+}
+.section .code {
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+  line-height: 1;
+  padding: 15rpx 20rpx;
+  background-color: #e50505;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 14px;
+  z-index: 10;
+}
+.section .code.disabled {
+  background-color: #e5e5e5;
+  color: #333;
+}
+.btn-area {
+  margin-top: 100rpx;
+}
+.btn-area button {
+  border-radius: 100rpx;
+  background-color: #e50505;
+  color: #fff;
+}
+.btn-area button::after {
+  border-radius: 100rpx;
+  border: none;
+}
+.btn-text {
+  margin-top: 10rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  color: #333;
+  text-align: center;
+  font-size: 18px;
+}
+.hot-tel {
+  position: absolute;
+  left: 0;
+  bottom: 26rpx;
+  width: 100%;
+  font-size: 14px;
+  color: #848484;
+  text-align: center;
+}

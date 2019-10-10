@@ -1,0 +1,30 @@
+<view class="revenue-container">
+  <view class="revenur-top">
+    <view class="revenue-num">
+      <image class="revenue-bg" mode="scaleToFill" src="../../../images/revenue_bg.png"></image>
+      <text class="num">8888</text>
+      <text>账户余额</text>
+    </view>
+  </view>
+  <view class="meta-panel">
+    <view class="panel-item">
+      <view class="name">
+        <text class="total-name">总收入</text>
+        <text class="total-num">12,050</text>
+      </view>
+      <text class="usage-time">6个月12天</text>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="meta-panel">
+    <view bindtap="revenueDetail" class="panel-item">
+      <text class="name">账户明细</text>
+      <view class="arrow-icon arrow-right"></view>
+    </view>
+    <view bindtap="achievementDetail" class="panel-item">
+      <text class="name">我要提现</text>
+      <view class="arrow-icon arrow-right"></view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+</view>

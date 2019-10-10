@@ -1,0 +1,160 @@
+@import "../../../css/common.wxss";
+.order-detail-container {
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.order-panel {
+  padding: 0 28rpx;
+}
+.order-panel .paenel-title {
+  padding: 28rpx 0;
+  font-weight: normal;
+  color: #666465;
+}
+.order-panel .panel-cont {
+  padding: 0 26rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+}
+.panel-cont .cont-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.panel-cont .cont-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.panel-cont .cont-item:last-child:after {
+  display: none;
+}
+.cont-item .label {
+  width: 140rpx;
+  color: #646464;
+}
+.cont-item .text {
+  flex: 1;
+  text-align: right;
+  color: #989898;
+}
+.tutor-panel,
+.pay-panel {
+  margin: 0 28rpx;
+  background-color: #ffffff;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+.tutor-panel .panel-top,
+.pay-panel .panel-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 85rpx;
+  padding: 0 26rpx;
+}
+.tutor-panel .panel-top .dot-icon,
+.pay-panel .panel-top .dot-icon {
+  display: inline-block;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: rgba(229, 5, 5, 0.18);
+  border-radius: 100%;
+  overflow: hidden;
+}
+.tutor-panel .panel-top .title,
+.pay-panel .panel-top .title {
+  flex: 1;
+  margin-left: 15rpx;
+  font-size: 32rpx;
+  color: #434343;
+  font-weight: 500;
+}
+.tutor-panel .panel-body {
+  padding: 0 28rpx 30rpx 28rpx;
+}
+.timetable .table-title {
+  display: flex;
+  padding: 18rpx 0;
+  background-color: #f2eff6;
+  text-align: center;
+}
+.table-title .time-name {
+  width: 160rpx;
+  color: #646464;
+}
+.table-title .week-name {
+  flex: 1;
+  color: #646464;
+}
+.table-body .table-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 106rpx;
+}
+.table-body .table-item::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.table-item .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 160rpx;
+  color: #5c5c5c;
+}
+.table-item .time .time-period {
+  white-space: nowrap;
+  font-size: 22rpx;
+}
+.table-item .week {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.explanation {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+.explanation image {
+  width: 28rpx;
+  height: 28rpx;
+}
+.explanation text {
+  margin-left: 16rpx;
+  color: #5c5c5c;
+}
+.explanation .num {
+  color: #e50505;
+}
+.pay-panel .panel-top .cost {
+  line-height: 1;
+  font-size: 32rpx;
+  color: #e50505;
+}
+.pay-panel .panel-top .meta {
+  line-height: 1;
+  font-size: 32rpx;
+  color: #646464;
+}

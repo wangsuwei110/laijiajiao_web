@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="logo">
+    <image src=""></image>
+  </view>
+  <view class="form">
+    <form>
+      <view class="section">
+        <view class="section-title code-title">
+          <image mode="widthFix" src="../../images/phone-icon.png"></image>
+        </view>
+        <view class="section-content">
+          <input bindinput="getPhone" type="number" name="phone" placeholder="请输入手机号码" />
+        </view>
+      </view>
+      <view class="section">
+        <view class="section-title code-title">
+          <image mode="widthFix" src="../../images/code-icon.png"></image>
+        </view>
+        <view class="section-content">
+          <input bindinput="getCode" name="code" placeholder="请输入验证码" />
+          <view catchtap="getVerificationCode" class="code {{!isClick ? 'disabled' : ''}}">{{codeText}}</view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
+        <navigator open-type='reLaunch' url='/pages/Student/Login/Login' class="btn-text">我是学员</navigator>
+      </view>
+    </form>
+  </view>
+  <view class="hot-tel">家教热线：021-66019906</view>
+</view>

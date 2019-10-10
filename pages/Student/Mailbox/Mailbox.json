@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "校长信箱",
+  "usingComponents": {
+    "ClickContainer": "/components/ClickContainer/ClickContainer"
+  }
+}

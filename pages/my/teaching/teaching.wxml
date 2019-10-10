@@ -1,0 +1,45 @@
+<view class="teach-container" catchtap="hideTeachBox">
+  <view class="teach">
+    <view catchtap="toggleTechType" data-type="{{item.type}}" data-idx="{{idx}}" wx:for="{{teachData}}" wx:key="{{index}}" wx:for-index="idx" class="teach-item">
+      <view class="teach-item-inner">
+        <view class="item-label">
+          <text>{{item.name}}</text>
+          <view class="arrow-icon arrow-bottom"></view>
+        </view>
+        <view class="item-content {{currentIdx == idx ? 'show' : 'hide'}}">
+          <view class="item-content-inner">
+            <scroll-view scroll-y style="max-height: 600rpx;">
+              <view catchtap="selectTeach" data-parentid="{{idx}}" data-id="{{index}}" data-item="{{item}}" wx:for="{{item.content}}" wx:key="{{index}}" class="content-item">
+                <view class="item-icon {{item.flag? 'selected': ''}}"></view>
+                <text class="{{item.flag ? 'selected': ''}}">{{item.name}}{{item.type}}</text>
+                <image hidden="{{!item.flag}}" class="hook-icon" mode="scaleToFill" src="../../../images/hook_icon.png"></image>
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="school-timetable">
+      <view class="title"><text>授课时间</text></view>
+      <view class="timetable">
+        <view class="table-title">
+          <text class="time-name">时间</text>
+          <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
+        </view>
+        <view class="table-body">
+          <view class="table-item">
+            <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
+              <text>{{item.name}}</text>
+              <text class="time-period">（{{item.period}}）</text>
+            </view>
+          </view>
+          <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
+            <view bindtap="selectWeekDay" data-id="{{idx}}" data-sid="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="saveTeaching" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

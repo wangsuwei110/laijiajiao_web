@@ -1,0 +1,7 @@
+@import "../../../css/common.wxss";
+.panel-item .content .pic-item {
+  margin-bottom: 20rpx;
+}
+.panel-item .content .pic-item .pic {
+  height: 350rpx;
+}

@@ -1,0 +1,26 @@
+@import "../../../css/common.wxss";
+.label-panel {
+  padding: 26rpx 30rpx;
+  background-color: #fff;
+}
+.label-panel .label {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  padding: 16rpx 50rpx;
+  margin-right: 16rpx;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  color: #7d7d7e;
+  border: 1rpx solid #f2eff6;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+.label-panel .label .label-icon {
+  display: block;
+  width: 37rpx;
+  height: 36rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

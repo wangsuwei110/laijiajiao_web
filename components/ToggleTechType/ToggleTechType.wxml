@@ -1,0 +1,17 @@
+<!--components/ToggleTechType/ToggleTechType.wxml-->
+<view catchtap="onToggleModal" data-id="2" class="panel-item">
+    <text class="label">{{label}}</text>
+    <text class="cont">{{names}}</text>
+    <view class="arrow-icon arrow-bottom"></view>
+    <view class="item-content {{show ? 'show' : 'hide'}}">
+    <view class="item-content-inner">
+        <scroll-view scroll-y style="max-height: 400rpx;">
+        <view catchtap="onItemClick" data-index="{{index}}" wx:for="{{options}}" wx:key="{{item[valueKey] || index}}" class="content-item">
+            <view class="item-icon {{selectedList[index] ? 'selected': ''}}"></view>
+            <text class="{{selectedList[index] ? 'selected': ''}}">{{item[nameKey]}}</text>
+            <image hidden="{{!selectedList[index]}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
+        </view>
+        </scroll-view>
+    </view>
+    </view>
+</view>

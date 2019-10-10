@@ -1,0 +1,7 @@
+<!--components/PageLayout/PageLayout.wxml-->
+<scroll-view scroll-y='true' style='height:{{height}};' bindscrolltolower='onScrollToLower'>
+    <slot/>
+</scroll-view>
+<NavigationBar isStudent='{{isStudent}}' id='bottomNavigation'>
+    <slot name='bottom'/>
+</NavigationBar>

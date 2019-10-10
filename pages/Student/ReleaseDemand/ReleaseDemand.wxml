@@ -1,0 +1,13 @@
+<!--pages/Student/ReleaseDemand/ReleaseDemand.wxml-->
+<view class='container'>
+    <view class='title'>学员信息</view>
+
+
+    <ToggleTechType options='{{options}}'>
+        <text class='label' slot='label'>学员姓名</text>
+    </ToggleTechType>
+
+</view>
+<ClickContainer class='saveBtnWrap'>
+    <view class='saveBtn'>发布需求</view>
+</ClickContainer>

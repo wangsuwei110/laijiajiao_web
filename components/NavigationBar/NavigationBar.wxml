@@ -1,0 +1,8 @@
+<!--components/NavigationBar/NavigationBar.wxml-->
+<slot/>
+<view class='container {{isIPhoneX?"ipx":""}} {{isStudent?"student":""}}'>
+    <navigator open-type='switchTab' class='item {{activeIndex===index?"active":""}}' wx:for='{{isStudent?student:teacher}}' wx:key='{{teacher.pagePath}}' url='/{{item.pagePath}}'>
+        <image class='icon' src='{{activeIndex===index?item.selectedIconPath:item.iconPath}}' mode='aspectFit'/>
+        <text class='txt'>{{item.text}}</text>
+    </navigator>
+</view>

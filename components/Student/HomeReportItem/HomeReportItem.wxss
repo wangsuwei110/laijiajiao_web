@@ -1,0 +1,34 @@
+/* components/Student/HomeReportItem/HomeReportItem.wxss */
+
+.container{
+    position: relative;
+    padding: 30rpx 0 30rpx 44 rpx;
+    border-top: 2rpx solid #F2EFF6;
+}
+
+.container.first{
+    border-top: 0;
+}
+
+.icon{
+    width: 22rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.studentName{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(67,67,67,1);
+}
+
+.content{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+    margin-top: 12rpx;
+}

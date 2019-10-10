@@ -1,0 +1,8 @@
+<view class="sub-my-container">
+  <view class="tip"><image class="horn_icon" mode="scaleToFill" src="../../../images/horn_icon.png"></image> 请选择标签，最多选5个</view>
+  <view class="label-panel">
+    <view bindtap="toggleTagStatus" data-flag="{{item.flag}}" data-index="{{index}}" data-id="{{item.parameterId}}" wx:for="{{labels}}" wx:key="{{index}}" class="label"><text>{{item.name}}</text><image wx:if="{{item.flag}}" mode="scaleToFill" src="../../../images/label_icon.png" class="label-icon"></image></view>
+  </view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="saveUserinfoTags" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

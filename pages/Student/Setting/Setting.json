@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "BottomInfo": "/components/Student/BottomInfo/BottomInfo"
+  }
+}
