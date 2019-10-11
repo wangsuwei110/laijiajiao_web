@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "TeacherFilter": "/components/Student/TeacherFilter/TeacherFilter"
+  }
+}

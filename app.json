@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/Student/TeacherList/TeacherList",
+    
     "pages/login/login",
     "pages/home/index/index",
     "pages/home/demandList/demandList",

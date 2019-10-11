@@ -1,0 +1,11 @@
+<!--components/Student/SubjectFilterModal/SubjectFilterModal.wxml-->
+
+<view class='container' style='display:{{show?"":"none"}};'>
+    <scroll-view class='leftBox' scroll-y='true'>
+
+    </scroll-view>
+
+    <scroll-view class='rightBox' scroll-y='true'>
+        <view></view>
+    </scroll-view>
+</view>

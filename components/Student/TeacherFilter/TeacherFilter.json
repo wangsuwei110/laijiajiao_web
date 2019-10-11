@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "DistrictFilterModal": "/components/Student/DistrictFilterModal/DistrictFilterModal",
+    "SchoolFilterModal": "/components/Student/SchoolFilterModal/SchoolFilterModal",
+    "TeacherFilterModal": "/components/Student/TeacherFilterModal/TeacherFilterModal",
+    "SubjectFilterModal": "/components/Student/SubjectFilterModal/SubjectFilterModal"
+  }
+}

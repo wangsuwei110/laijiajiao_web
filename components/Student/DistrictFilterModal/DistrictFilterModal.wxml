@@ -1,0 +1,6 @@
+<!--components/Student/DistrictFilterModal/DistrictFilterModal.wxml-->
+<view class='container' style='display:{{show?"":"none"}};'>
+    <view class='itemWrap' wx:for='{{address}}' wx:key='{{item.key}}' data-value='{{item.key}}' catchtap='onChange'>
+        <view class='item {{addressId===item.key?"active":""}}'>{{item.value}}</view>
+    </view>
+</view>

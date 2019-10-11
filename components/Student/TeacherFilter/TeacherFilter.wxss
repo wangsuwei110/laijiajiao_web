@@ -1,0 +1,49 @@
+/* components/Student/TeacherFilter/TeacherFilter.wxss */
+.container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+
+    box-shadow:0px 2rpx 5rpx 0px rgba(179, 179, 179, 0.35);
+}
+
+.item{
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85rpx;
+    font-size:28rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(102,100,101,1);
+    
+}
+
+.item::after{
+    content: '';
+    width: 15rpx;
+    height: 15rpx;
+    border-color: #b4b4b6;
+    border-style: solid;
+    border-width: 2rpx 2rpx 0 0;
+    transform: rotate(135deg);
+    margin-left: 16rpx;
+    position: relative;
+    top: -6rpx;
+}
+
+.item.active{
+    color:#006FEB;
+}
+
+.item.active::after{
+    border-color:#006FEB;
+}
+
+.space{
+    width:2rpx;
+    height:29rpx;
+    background:rgba(229,229,229,1);
+}

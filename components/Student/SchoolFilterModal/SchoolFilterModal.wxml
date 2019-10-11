@@ -1,0 +1,6 @@
+<!--components/Student/SchoolFilterModal/SchoolFilterModal.wxml-->
+<view class='container' style='display:{{show?"":"none"}};'>
+    <view class='itemWrap'>
+        <view class='item'>曹路</view>
+    </view>
+</view>

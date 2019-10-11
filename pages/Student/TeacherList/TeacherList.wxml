@@ -1,0 +1,30 @@
+<!--pages/Student/TeacherList/TeacherList.wxml-->
+
+<TeacherFilter searchParams='{{searchData}}' bind:onChange='onChange' id='teacherFilter'/>
+<view bindtap='onCancel'>
+<view class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
+    <view class='itemInner'>
+        <view class='logo'>
+            <image class='logoIcon' mode='aspectFill'/>
+            <text class='level'>T3</text>
+        </view>
+
+        <view class='content'>
+            <view class='nameWrap'>
+                <view class='nameInner'>
+                    <text class='name'>{{teacherName}}</text>
+                    <image src='../../../images/students/Authentication.png' class='authentication' mode='widthFix'/>
+                </view>
+                <text class='price'>{{item.chargesStandard}}</text>
+            </view>
+            
+            <view class='params'>{{item.schoolName}} | {{item.currentStatus}}</view>
+            <view class='params'>{{item.teachBranchSlave}}</view>
+        </view>
+    </view>
+    
+    <view class='tags'>
+        <text class='tag' wx:for='{{item.teacherTag}}' wx:key='this'>{{item}}</text>
+    </view>
+</view>
+</view>

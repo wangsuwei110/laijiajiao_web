@@ -1,0 +1,116 @@
+/* pages/Student/TeacherList/TeacherList.wxss */
+
+
+.item{
+    background-color: #fff;
+    padding: 20rpx;
+    margin-top: 20rpx;
+}
+
+.itemTop{
+    display: flex;
+    align-items: flex-start;
+}
+
+.tags{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 2rpx solid #F5F5F5;
+    margin-top: 30rpx;
+}
+
+.tag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30rpx;
+    height: 40rpx;
+    background-color: #F7F7F7;
+
+    font-size:22rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+}
+
+.logo{
+    position: relative;
+    width:110rpx;
+    height:110rpx;
+    margin-right: 20rpx;
+}
+
+.logoIcon{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+}
+
+.level{
+    position: absolute;
+    right: 0;
+    bottom: 5rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28rpx;
+    height: 28rpx;
+    border-radius:50%;
+    background-color: #FA0C0C;
+    font-size:20rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #fff;
+}
+
+
+.content{
+    flex: 1;
+    width: 1%;
+}
+
+.nameWrap{
+    display: flex;
+    align-items: center;
+}
+
+.name{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+    margin-right: 16rpx;
+}
+
+.nameInner{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.authentication{
+    width: 84rpx;
+}
+
+.params{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+    margin-top: 12rpx;
+}
+
+.params + .params{
+    margin-top:0;
+}
+
+.price{
+    font-size:24rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+}

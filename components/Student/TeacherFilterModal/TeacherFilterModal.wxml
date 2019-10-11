@@ -1,0 +1,20 @@
+<!--components/Student/TeacherFilterModal/TeacherFilterModal.wxml-->
+
+<view class='container' style='display:{{show?"":"none"}};'>
+
+    <view class='row'>
+        <text class='label'>类型：</text>
+        <view wx:for='{{statusList}}' wx:key='{{item.key}}' class='btn {{_type===item.key?"active":""}}' data-value='{{item.key}}' catchtap='onStatusChange'>
+            {{item.name}}
+        </view>
+    </view>
+
+    <view class='row'>
+        <text class='label'>性别：</text>
+        <view wx:for='{{grenderList}}' wx:key='{{item.key}}' class='btn {{_sex===item.key?"active":""}}' data-value='{{item.key}}' catchtap='onSexChange'>
+            {{item.name}}
+        </view>
+    </view>
+
+    <view class='submitBtn' catchtap='onSubmitClick'>筛选学员</view>
+</view>

@@ -1,0 +1,13 @@
+<!--components/Student/TeacherFilter/TeacherFilter.wxml-->
+<view class='container' catchtap='onStop'>
+
+    <block wx:for='{{itemList}}' wx:key='this'>
+        <view class='space' wx:if='{{index}}'/>
+        <view class='item {{activeIndex===index+1?"active":""}}' data-index='{{index+1}}' catchtap='onItemClick'>{{item}}</view>
+    </block>
+
+    <DistrictFilterModal show='{{activeIndex===2}}' address='{{address}}' addressId='{{searchParams.addressId}}' bind:onChange='onFilterChange'/>
+    <SchoolFilterModal show='{{activeIndex===3}}' schoolId='{{searchParams.schoolId}}' bind:onChange='onFilterChange'/>
+    <TeacherFilterModal show='{{activeIndex===4}}' sex='{{searchParams.sex}}' type='{{searchParams.type}}' bind:onChange='onFilterChange'/>
+    <SubjectFilterModal show='{{activeIndex===1}}' subjects='{{subjects}}' subjectId='{{searchParams.subjectId}}' bind:onChange='onFilterChange'/>
+</view>
