@@ -1,0 +1,66 @@
+<view class="grade-container">
+  <view class="grade-bg"></view>
+  <view class="grade-content">
+    <view class="grade-top">
+      <view class="grade-top-item">
+        <image class="icon"></image>
+        <text class="key">我的等级：</text>
+        <text class="value">T3</text>
+      </view>
+      <view class="grade-top-item">
+        <image class="icon"></image>
+        <text class="key">我的积分：</text>
+        <text class="value">601</text>
+      </view>
+    </view>
+    <view class="grade-center">
+      <view class="grade-type-head">
+        <view bindtap="switchTab" wx:for="{{tabs}}" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="type-head-item {{activeIdx == index ? 'active' : ''}}"><text>{{item.name}}</text></view>
+      </view>
+      <view class="grade-type-body">
+        <view hidden="{{activeIdx != 0}}">
+          <view class="row thead">
+            <view class="column"><text>等级</text></view>
+            <view class="column"><text>积分</text></view>
+            <view class="column"><text>续课率</text></view>
+            <view class="column"><text>费用/课时</text></view>
+          </view>
+          <view class="tbody">
+            <view wx:for="{{gradeList}}" wx:key="index" class="row">
+              <view class="column"><text>{{item.grade}}</text></view>
+              <view class="column"><text>{{item.integral}}</text></view>
+              <view class="column"><text>{{item.continuationRate}}</text></view>
+              <view class="column"><text>{{item.classFee}}</text></view>
+            </view>
+          </view>
+        </view>
+        <view hidden="{{activeIdx != 1}}">
+          <view class="row thead">
+            <view class="column"><text>积分</text></view>
+            <view class="column"><text>任务</text></view>
+          </view>
+          <view class="tbody">
+            <view wx:for="{{integralList}}" wx:key="index" class="row">
+              <view class="column {{item.type == 1 ? 'green' : 'red'}}"><text>{{item.integral}}</text></view>
+              <view class="column text-left"><text>{{item.integralDesc}}</text></view>
+            </view>
+          </view>
+        </view>
+        <view hidden="{{activeIdx != 2}}">
+          <view class="row thead">
+            <view class="column"><text>等级</text></view>
+            <view class="column"><text>积分</text></view>
+            <view class="column"><text>续课率</text></view>
+          </view>
+          <view class="tbody">
+            <view wx:for="{{integralLogList}}" wx:key="index" class="row">
+              <view class="column {{item.type == 1 ? 'green' : 'red'}}">{{item.integral}}</view>
+              <view class="column text-left">{{item.integralDesc}}</view>
+              <view class="column">{{item.integralTime}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

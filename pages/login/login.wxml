@@ -23,7 +23,7 @@
       </view>
       <view class="btn-area">
         <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
-        <navigator open-type='reLaunch' url='/pages/Student/Login/Login' class="btn-text">我是学员</navigator>
+        <view bindtap="openStudent" class="btn-text">我是学员</view>
       </view>
     </form>
   </view>

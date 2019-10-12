@@ -1,6 +1,6 @@
 <view class="feedback-container">
   <view class="feedback-content">
-    <textarea bindinput="getContent" placeholder="请填写您的宝贵建议，以便我们为您更好的服务"></textarea>
+    <textarea bindinput="getContent" placeholder="请填写您的宝贵建议，以便我们为您更好的服务" value="{{propose}}"></textarea>
   </view>
   <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
   <view bindtap="submitPropose" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提交</view>

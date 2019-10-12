@@ -29,6 +29,7 @@
     "pages/my/feedback/feedback",
     "pages/editUserinfo/editUserinfo",
     "pages/my/setting/setting",
+    "pages/my/grade/grade",
     "pages/Student/ReleaseDemand/ReleaseDemand",
     "pages/Student/Login/Login",
     "pages/Student/index/index",

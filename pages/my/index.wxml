@@ -39,7 +39,7 @@
         <image mode="widthFix" class="meta-icon" src="../../images/my_meta_5.png"></image>
         <text class="meta-name">更多设置</text>
       </view>
-      <view class="meta">
+      <view bindtap="openHelp" class="meta">
         <image mode="widthFix" class="meta-icon" src="../../images/my_meta_6.png"></image>
         <text class="meta-name">帮助中心</text>
       </view>

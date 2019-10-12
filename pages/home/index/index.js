@@ -17,5 +17,10 @@ Page({
     wx.navigateTo({
       url: '../demandDetail/demandDetail?id=41241',
     })
+  },
+  openGrade: function () {
+    wx.navigateTo({
+      url: '/pages/my/grade/grade',
+    })
   }
 })

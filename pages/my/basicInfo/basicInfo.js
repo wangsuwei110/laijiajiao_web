@@ -3,10 +3,20 @@ Page({
   data: {
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     isIPX: getApp().isIPX,
-    userinfo: {}
+    userinfo: {
+      headPicture: '',
+      teacherName: '',
+      home: '',
+      address: '',
+      weiChar: '',
+      QQ: ''
+    }
   },
   getTeachName: function (e) {
     this.setData({ 'userinfo.teacherName': e.detail.value })
+  },
+  getAddress: function (e) {
+    this.setData({ 'userinfo.address': e.detail.value })
   },
   getWeiChar: function (e) {
     this.setData({ 'userinfo.weiChar': e.detail.value })
@@ -79,12 +89,36 @@ Page({
   },
   saveUserinfo: function () {
     var _userinfo = this.data.userinfo
+    console.log(typeof _userinfo.teacherName)
+    console.log(typeof _userinfo.weiChar)
+    var tipText = ''
+    if (_userinfo.headPicture.trim() == '') {
+      tipText = '请上传头像'
+    } else if (_userinfo.teacherName.trim() == '') {
+      tipText = '请输入姓名'
+    } else if (_userinfo.home.trim() == '') {
+      tipText = '请选择籍贯'
+    } else if (_userinfo.address.trim() == '') {
+      tipText = '请输入详细住址'
+    } else if (_userinfo.weiChar.trim() == '') {
+      tipText = '请输入微信号'
+    } else if (_userinfo.QQ.trim() == '') {
+      tipText = '请输入QQ号'
+    }
+    if (tipText != '') {
+      wx.showToast({
+        title: tipText,
+        icon: 'none'
+      })
+      return
+    }
     wx.showLoading({'mask': true})
     var params = {
       teacherId: wx.getStorageSync('user_id'),
       teacherName: _userinfo.teacherName,
       weiChar: _userinfo.weiChar,
       pictureUrl: _userinfo.headPicture,
+      address: _userinfo.address,
       home: _userinfo.home,
       qqh: _userinfo.QQ,
       pictureType: 1
