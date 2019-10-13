@@ -15,7 +15,7 @@
         </view>
         <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
       </view>
-      <view class="info-meta attest">
+      <view wx:if="{{userinfo.logonStatus === 1}}" class="info-meta attest">
         <image mode="widthFix" src="../../../images/attest_icon.png"></image>
         <text>证件认证</text>
       </view>

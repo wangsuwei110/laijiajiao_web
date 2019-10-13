@@ -25,12 +25,12 @@ Page({
       telephone: wx.getStorageSync('user_phone')
     }
     wx.showLoading({
-      title: '提交中...',
+      title: '提交中...'
     })
     http.post('/ComplaintSuggestion/addComplaintSuggestion', params, function (res) {
       wx.showToast({
         title: '提交成功',
-        icon: 'none'
+        icon: 'success'
       })
       that.setData({
         'propose': ''

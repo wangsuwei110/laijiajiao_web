@@ -64,9 +64,8 @@ Page({
   },
   // 打开学员端页面
   openStudent: function () {
-    wx.showToast({
-      title: '我是学员',
-      icon: 'none'
+    wx.reLaunch({
+      url: '/pages/Student/Login/Login'
     })
   },
   // 登录、注册账号
@@ -128,6 +127,8 @@ Page({
       wx.setStorageSync('user_id', res.data.teacherId)
       wx.setStorageSync('user_name', res.data.teacherName)
       wx.setStorageSync('user_phone', res.data.telephone)
+      wx.setStorageSync('registerDate', res.data.registerDate)
+      wx.setStorageSync('vacationStatus', res.data.vacationStatus)
       wx.setStorageSync('user_type', 2)
       if (!res.data.teacherName || res.data.teacherName == '') {
         wx.redirectTo({
@@ -146,12 +147,5 @@ Page({
     }, function () {
       wx.hideLoading()
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
-  },
+  }
 })

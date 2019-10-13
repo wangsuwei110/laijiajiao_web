@@ -16,8 +16,12 @@
       </view>
     </picker>
     <view class="panel-item">
+      <text class="label">住址</text>
+      <input bindinput="getAddress" class="cont" type="text" value="{{userinfo.address}}" placeholder="请输入详细住址"></input>
+    </view>
+    <view class="panel-item">
       <text class="label">微信号</text>
-      <input bindinput="getWeiChar" class="cont" type="text" value="{{userinfo.weiChar}}"></input>
+      <input bindinput="getWeiChar" class="cont" type="text" value="{{userinfo.weiChar}}" placeholder="请输入微信号"></input>
     </view>
     <view class="panel-item">
       <text class="label">QQ</text>

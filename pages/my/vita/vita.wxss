@@ -41,8 +41,12 @@
   display: flex;
   line-height: 1;
   margin-left: 32rpx;
+  margin-bottom: 20rpx;
   font-size: 28rpx;
   color: #646464;
+}
+.userinfo .info .info-meta:last-child {
+  margin-bottom: 0;
 }
 .info-meta .meta-l {
   flex: 1;
@@ -57,9 +61,6 @@
   margin-left: 16rpx;
   width: 28rpx;
   height: 28rpx;
-}
-.info-meta.attest{
-  margin: 20rpx 0;
 }
 .info-meta.attest image {
   width: 24rpx;

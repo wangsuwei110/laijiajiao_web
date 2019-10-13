@@ -34,6 +34,12 @@ Page({
       url: './setting/setting',
     })
   },
+  openHelp: function () {
+    wx.showToast({
+      title: '页面开发中，敬请期待',
+      icon: 'none'
+    })
+  },
   getUserInfo: function () {
     var that = this
     var params = {

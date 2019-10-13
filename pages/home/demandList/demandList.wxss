@@ -17,14 +17,12 @@ page {
   font-size: 30rpx;
   font-weight: normal;
 }
-
 .tabs-wrapper .tabs-item {
   position: relative;
   flex: 1;
   line-height: 1;
   padding: 30rpx 0;
 }
-
 .tabs-wrapper .tabs-item::after {
   display: block;
   content: "";
@@ -35,12 +33,10 @@ page {
   right: 0;
   top: 30rpx;
 }
-
 .tabs-wrapper .tabs-item text {
   position: relative;
   display: inline-block;
 }
-
 .tabs-wrapper .tabs-item text::after {
   display: block;
   content: "";
@@ -84,17 +80,14 @@ page {
   -webkit-transform: scale(1, 0.5);
   transform: scale(1, 0.5);
 }
-
 .demand-item:last-child:after {
   display: none;
 }
-
 .demand-item .item-title {
   position: relative;
   padding: 0 120rpx 0 38rpx;
   margin-bottom: 25rpx;
 }
-
 .demand-item .item-title .dot {
   position: absolute;
   left: 0;
@@ -106,7 +99,6 @@ page {
   border-radius: 100%;
   overflow: hidden;
 }
-
 .demand-item .item-title .name {
   display: inline-block;
   line-height: 1.4;
@@ -127,29 +119,24 @@ page {
   font-size: 26rpx;
   color: #737373;
 }
-
 .demand-item .join .join-num {
   font-size: 28rpx;
   font-weight: normal;
   color: #e50505;
 }
-
 .demand-item .demand-ul {
   padding-left: 38rpx;
   margin-top: 40rpx;
   font-size: 26rpx;
 }
-
 .demand-ul .demand-li {
   display: flex;
   margin-bottom: 20rpx;
 }
-
 .demand-ul .demand-li .label {
   width: 135rpx;
   color: #a0a0a0;
 }
-
 .demand-ul .demand-li .cont {
   flex: 1;
 }
