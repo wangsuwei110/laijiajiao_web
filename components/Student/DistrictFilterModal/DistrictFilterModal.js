@@ -31,7 +31,7 @@ Component({
   methods: {
     onChange(e) {
       const addressId = Number(e.currentTarget.dataset.value)
-      this.triggerEvent('onChange', { addressId })
+      this.triggerEvent('onChange', { addressId: addressId || null })
     },
   }
 })

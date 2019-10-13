@@ -1,0 +1,10 @@
+/* pages/Student/MyCurriculum/MyCurriculum.wxss */
+
+page{
+    padding: 20rpx 25rpx;
+}
+
+.topBox{
+    height: 124rpx;
+    background-color: #088BDB;
+}

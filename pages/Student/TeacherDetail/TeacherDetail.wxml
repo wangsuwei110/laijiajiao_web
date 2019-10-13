@@ -1,0 +1,154 @@
+<!--pages/Student/TeacherDetail/TeacherDetail.wxml-->
+<view class="vita-container">
+  <view class="school-img">
+    <image mode="aspectFill" src="../../../images/img/school_pic.png"></image>
+  </view>
+  <view class="userinfo">
+    <view class="avatar">
+      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : '../../../images/avatar.png'}}"></image>
+    </view>
+    <view class="teacherinfo">
+        <view class='teacherNameWrap'>
+            <text class='teacherName'>{{userinfo.name}}</text>
+            <image wx:if='{{userinfo.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
+            <image wx:elif='{{userinfo.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
+            <image src='../../../images/students/Authentication.png' class='authentication' mode='widthFix'/>
+
+            <view class='priceBox'>
+                <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
+            </view>
+        </view>
+
+        <view class="infoMeta">
+            <text class="item">服务学员：<text class="value">5</text></text>
+            <text class='sapce'/>
+            <text class="item">已授课时：<text class="value">120</text></text>
+        </view>
+        
+    </view>
+
+
+    <view class='collect' catchtap='onCollectTeacher'>
+        <view class='collectInner'>
+            <image class='collectIcon' src='../../../images/students/collect.png' mode='widthFix'/>
+            <text>已收藏</text>
+        </view>
+    </view>
+    
+  </view>
+  <view class="spacing-10"></view>
+  <view class="level-panel">
+    <view class="title">
+      <text>教员\n等级</text>
+    </view>
+    <view class="level-num">
+      <text>{{userinfo.teacherLevel}}</text>
+    </view>
+    <view class="info">
+      <text class="sub-title">学帮帮智能教务系统评定</text>
+      <view class="type">
+        <view class="type-item">
+          <canvas canvas-id="employRate" id="employRate" class='ring-wrapper'></canvas>
+          <text class="name">聘用\n指数</text>
+        </view>
+        <view class="type-item">
+          <canvas canvas-id="resumptionRate" id="resumptionRate" class='ring-wrapper'></canvas>
+          <text class="name">续课\n指数</text>
+        </view>
+        <view class="type-item">
+          <canvas canvas-id="praiseRate" id="praiseRate" class='ring-wrapper'></canvas>
+          <text class="name">好评\n指数</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <!-- 信息面板 -->
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">基本信息</text>
+    </view>
+    <view class="panel-body identity">
+      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home}}</text></view>
+        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime}}</text></view>
+        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school}}</text></view>
+        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major}}</text></view>
+        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address}}</text></view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">个人标签</text>
+    </view>
+    <view class="panel-body">
+      <text class="tag" wx:for="{{labels}}" wx:key="index">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">家教经验</text>
+    </view>
+    <view class="panel-body">
+      <view wx:for="{{experienceList}}"  wx:for-item="experience" wx:key="{{index}}" class="experience">
+        <view class="experience-text">
+          <!-- <text>{{item.pictureTitle}}</text> -->
+          <text>{{experience.pictureDesc}}</text>
+        </view>
+        <view class="experience-pic">
+          <view class="pic-inner">
+            <image bindtap="previewImg" data-url="{{item}}" data-urls="{{experience.pictureUrl}}" wx:for="{{experience.pictureUrl}}" wx:key="{{index}}" mode="aspectFill" src="{{item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">所获证书</text>
+    </view>
+    <view class="panel-body">
+      <view class="certificate">
+        <view class="certificate-inner">
+          <view wx:for="{{certificateList}}" wx:for-item="certificate" wx:key="{{index}}" class="certificate-item">
+            <image bindtap="previewImg" data-url="{{item}}" data-urls="{{certificate.pictureUrl}}" wx:for="{{certificate.pictureUrl}}" wx:key="{{index}}" mode="aspectFill" src="{{item}}"></image>
+            <text>{{certificate.pictureTitle}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">可教科目</text>
+    </view>
+    <view class="panel-body">
+      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="spacing-10"></view>
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">可教区域</text>
+    </view>
+    <view class="panel-body">
+      <text wx:for="{{teachAddress}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <view class='submitBtn'>预约教员</view>
+</view>

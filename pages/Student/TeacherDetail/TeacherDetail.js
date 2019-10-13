@@ -1,4 +1,6 @@
-var http = require('../../../utils/api.js')
+// pages/Student/TeacherDetail/TeacherDetail.js
+
+var http = require('../../../utils/api')
 Page({
   data: {
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
@@ -125,12 +127,26 @@ Page({
       ]
     ]
   },
+
+
+
   toggleService: function (event) {
     var that = this;
     that.setData({
       serviceTabIndex: event.target.dataset.id
     })
   },
+
+
+  onCollectTeacher() {
+    http.postPromise('/teacher/connect', { teacherId: this.teacherId, studentId: wx.getStorageSync('user_id') }).then(data => {
+      wx.showToast({
+        title: data.msg,
+        icon: 'none',
+      });
+    })
+  },
+
   /**
    * 获取简历信息
    */
@@ -270,13 +286,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this.fromStudent = !!options.id
-    if (this.fromStudent) {
-      wx.setNavigationBarTitle({
-        title: '教员信息',
-      });
-    }
-    this.getUserinfo(options.id || wx.getStorageSync('user_id'))
-
+    this.teacherId = options.id
+    this.getUserinfo(options.id)
   }
 })

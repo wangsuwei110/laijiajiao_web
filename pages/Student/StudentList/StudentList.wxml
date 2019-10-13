@@ -5,9 +5,10 @@
         <view class='point'/>
         <view class='nameWrap'>
             <text class='name'>{{item.studentName}}</text>
-            <image wx:if='{{item.sex === 2}}' class='girlIcon' src='../../../images/Students/girl.png' mode='widthFix'/>
+            <image wx:if='{{item.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
+            <image wx:elif='{{item.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
         </view>
-
+        
         <image class='editIcon' src='../../../images/Students/edit.png' mode='widthFix'/>
         <text class='edit'>修改</text>
     </view>

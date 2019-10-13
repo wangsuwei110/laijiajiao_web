@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/Student/TeacherList/TeacherList",
-    
     "pages/login/login",
     "pages/home/index/index",
     "pages/home/demandList/demandList",
@@ -38,7 +36,11 @@
     "pages/Student/EditStudent/EditStudent",
     "pages/Student/StudentList/StudentList",
     "pages/Student/Setting/Setting",
-    "pages/Student/Collect/Collect"
+    "pages/Student/Collect/Collect",
+    "pages/Student/MyCurriculum/MyCurriculum",
+    "pages/Student/TeacherList/TeacherList",
+    "pages/Student/TeacherDetail/TeacherDetail",
+    "pages/Student/My/My"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -49,6 +51,7 @@
   },
   "debug": true,
   "tabBar": {
+    "custom": true,
     "color": "#737373",
     "selectedColor": "#e50505",
     "backgroundColor": "#ffffff",
@@ -77,6 +80,12 @@
         "text": "我的",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/my_active.png"
+      },
+      {
+        "pagePath": "pages/Student/index/index",
+        "text": "首页",
+        "iconPath": "./images/students/home.png",
+        "selectedIconPath": "./images/students/homeActive.png"
       }
     ]
   },
