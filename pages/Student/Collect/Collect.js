@@ -15,10 +15,6 @@ Page({
         collectList: data.data
       })
     })
-
-    http.postPromise('/parameter/queryParameters', { parentId: '62,78', teacherId: this.studentId }).then(data => {
-
-    })
   },
 
   onCancelCollect(e) {
@@ -33,7 +29,7 @@ Page({
       confirmColor: '#3CC51F',
       success: (result) => {
         if (result.confirm) {
-          http.getPromise('/teacher/connect', { deleteStatus: 1, studentId: this.studentId, teacherId }).then(data => {
+          http.getPromise('/teacher/cancelConnect', { studentId: this.studentId, teacherId }).then(data => {
             this.fetchList()
           })
         }
