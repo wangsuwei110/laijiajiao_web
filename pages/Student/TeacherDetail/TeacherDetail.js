@@ -153,7 +153,8 @@ Page({
   getUserinfo: function (teacherId) {
     var that = this
     var params = {
-      teacherId
+      teacherId,
+      studentId: wx.getStorageSync('user_id')
     }
     http.post('/userInfo/queryUserInfosDetail', params, function (res) {
       var data = res.data
