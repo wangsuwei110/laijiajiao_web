@@ -2,32 +2,65 @@
 <view class='container'>
     <view class='inner'>
         <view class='topBox'>
-            <text class='date'>2019-07-02 21:32</text>
+            <text class='date'>{{item.createTime}}</text>
 
-            <view class='topAction'>支付记录</view>
+            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction'>支付记录</view>
         </view>
 
-        <view class='title'>李教员 | 张小二 | 一年级数学
+        <view class='title'>{{item.status?item.teachName:""}}{{item.status?" | ":""}}{{item.studentName}} | {{item.grageSubject}}
             <text class='price'>¥100/时</text>
         </view>
         <view class='paramItem'>
-            <text class='label'>具体辅导需求：</text>
-            文字描述文字描述文字描述文字描述
+            <text class='label'>预计上课时段</text>
+            {{item.timeRange}}
+        </view>
+        <view class='paramItem'>
+            <text class='label'>每周上课次数：</text>
+            一周{{item.classNum}}次
         </view>
         <view class='paramItem'>
             <text class='label'>具体辅导需求：</text>
-            文字描述文字描述文字描述文字描述
+            {{item.demandDesc}}
         </view>
-        <view class='paramItem'>
-            <text class='label'>具体辅导需求：</text>
-            文字描述文字描述文字描述文字描述
-        </view>
-
-
-        <view class='evaluate'>
+        
+        <view class='evaluate' wx:if='{{item.appraise}}'>
             <text>2019-07-15 12:20 （好评）</text>
-            <view class='evaluateTxt'>评价内容评价内容评价内容评价内容评价内容评价</view>
+            <view class='evaluateTxt'>{{item.appraise}}</view>
         </view>
+
+        <view class='signUpCount' wx:if='{{item.status===0}}'>
+            已有<text class='emphasis'>{{item.orderTeachCount}}</text>教员报名
+        </view>
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 1}}'>
+            预计试讲时间：{{item.orderTeachTime}}
+        </view>
+
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 2}}'>
+            <view class='passBtn'>试讲通过</view>
+            <view class='unPassBtn'>试讲不通过</view>
+        </view>
+
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 3}}'>
+            <view class='unPassBtn'>试讲不通过</view>
+        </view>
+
+        <view class='payBtn' wx:elif='{{item.subscribeStatus === 2}}'>
+            去支付
+        </view>
+
+        <view class='payBtn' wx:elif='{{item.subscribeStatus === 2}}'>
+            去支付
+        </view>
+
+        <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
+            <view class='payBtn shrink'>
+                续课
+            </view>
+            <view class='evaluateBtn' wx:if='{{!item.appraise}}'>
+                评价
+            </view>
+        </view>
+
     </view>
     
 </view>

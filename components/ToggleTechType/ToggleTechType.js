@@ -32,6 +32,11 @@ Component({
       value: ''
     },
 
+    custom: {
+      type: Boolean,
+      value: false,
+    },
+
     value: {
       type: Array,
       value: [],

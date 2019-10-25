@@ -1,0 +1,13 @@
+<!--pages/Student/NotPass/NotPass.wxml-->
+
+
+<view class='container'>
+    <view class='title'>
+        张小二 | 二年级数学
+    </view>
+
+    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写试讲不通过的原因，以便我们为您更好的服务'/>
+</view>
+
+
+

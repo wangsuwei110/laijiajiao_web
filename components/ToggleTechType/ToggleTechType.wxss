@@ -2,6 +2,9 @@
 
 .panel-item {
     position: relative;
+}
+
+.panelContainer{
     display: flex;
     height: 86rpx;
     align-items: center;

@@ -28,11 +28,9 @@
     "pages/editUserinfo/editUserinfo",
     "pages/my/setting/setting",
     "pages/my/grade/grade",
-    "pages/Student/ReleaseDemand/ReleaseDemand",
     "pages/Student/Login/Login",
     "pages/Student/index/index",
     "pages/Student/LoginInfo/LoginInfo",
-    "pages/Student/OrderList/OrderList",
     "pages/Student/Mailbox/Mailbox",
     "pages/Student/EditStudent/EditStudent",
     "pages/Student/StudentList/StudentList",
@@ -41,7 +39,12 @@
     "pages/Student/MyCurriculum/MyCurriculum",
     "pages/Student/TeacherList/TeacherList",
     "pages/Student/TeacherDetail/TeacherDetail",
-    "pages/Student/My/My"
+    "pages/Student/My/My",
+    "pages/Student/OrderList/OrderList",
+    "pages/Student/ViewAppointment/ViewAppointment",
+    "pages/Student/SelectClassTime/SelectClassTime",
+    "pages/Student/ReleaseDemand/ReleaseDemand",
+    "pages/Student/NotPass/NotPass"
   ],
   "window": {
     "backgroundTextStyle": "light",

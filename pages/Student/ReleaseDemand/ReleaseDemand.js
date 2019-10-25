@@ -1,26 +1,216 @@
 // pages/Student/ReleaseDemand/ReleaseDemand.js
+const http = require('../../../utils/api')
+var appInst = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    options: [
+    grenderList: [
       {
         key: 1,
-        name: 'test'
+        name: '男'
       },
       {
         key: 2,
-        name: 'test2'
+        name: '女'
       }
-    ]
+    ],
+    studentList: [],
+    subjectList: [],
+    gradeList: [],
+    student: {
+      sid: 0
+    }
+  },
+
+  onPhoneChange(e) {
+    const { student } = this.data
+    student.parentPhoneNum = e.detail.value
+    this.setData({ student })
+  },
+
+  onNameChange(e) {
+    const { student } = this.data
+    student.studentName = e.detail.value
+    this.setData({ student })
+  },
+
+  onAddressChange(e) {
+    const { student } = this.data
+    student.demandAddress = e.detail.value
+    this.setData({ student })
+  },
+
+  onDescChange(e) {
+    const { student } = this.data
+    student.demandDesc = e.detail.value
+    this.setData({ student })
+  },
+
+  onGradeChange(e) {
+    const { student } = this.data
+    student.grade = e.detail[0]
+    this.setData({ student })
+  },
+
+  onSubjectChange(e) {
+    const { student } = this.data
+    student.subjectId = e.detail[0]
+    this.setData({ student })
+  },
+
+  onGrederChange(event) {
+    const { student } = this.data
+    student.sex = event.detail.value
+    this.setData({ student })
+  },
+
+
+
+
+  //选择当前学员
+  onStudentChange(e) {
+    const { studentList } = this.data
+
+    const student = studentList.find(item => item.sid === e.detail[10])
+    if (student) {
+      this.setData({
+        student: Object.assign({}, student)
+      })
+    }
+  },
+
+
+  onSubmit() {
+    const { student } = this.data
+    const demandType = 2 //demandType  :订单类型：1:单独预约，2:快速请家教
+    const { demandAddress, demandDesc,
+      grade: demandGrade,
+      sid, sex,
+      studentName, parentPhoneNum,
+      timeRange, weekNum } = student
+
+    let res = ''
+
+    if (!studentName) {
+      res = '请输入学员名称'
+    } else if (!parentPhoneNum || !/^1\d{10}$/.test(parentPhoneNum)) {
+      res = '请输入11位联系手机'
+    } else if (!demandAddress) {
+      res = '请输入上课地址'
+    } else if (!timeRange || !weekNum) {
+      res = '请选择预计上课时段'
+    } else if (!demandDesc) {
+      res = '请输入您的具体需求'
+    }
+
+    if (res) {
+      wx.showToast({
+        title: res,
+        icon: 'none',
+      });
+    } else {
+      wx.showLoading();
+
+      http.postPromise('/StudentDemand/addStudentDemand', {
+        studentId: sid,
+        demandType,
+        demandAddress,
+        demandDesc,
+        demandGrade,
+        sex,
+        studentName,
+        parentPhoneNum,
+        timeRange,
+        weekNum
+      }).then(data => {
+        wx.hideLoading();
+      }).catch(e => {
+        wx.hideLoading();
+      })
+    }
+
+    /* 
+    classNum*	integer($int32)
+每周上课次数
+
+createTime*	string($date-time)
+创建时间
+
+createUser*	string
+创建人
+
+demandAddress*	string
+上课地址
+
+demandDesc*	string
+具体需求
+
+demandGrade*	integer($int32)
+补习年级
+
+offset	integer($int32)
+orderMoney*	number($float)
+订单金额
+
+orderStart*	string($date-time)
+付费订单开始时间
+
+orderType*	integer($int32)
+订单类型,1:试讲订单,2:付费订单
+
+pageIndex	integer($int32)
+页码，从1开始
+
+pageSize	integer($int32)
+每页记录数
+
+sid	integer($int64)
+status*	integer($int32)
+状态 0:未发布，1:发布中;2:已接单;3:结单
+
+studentId*	integer($int32)
+学员ID
+
+subjectId*	integer($int32)
+辅导科目id
+
+timeRange*	string
+每周上课时间范围
+
+updateTime*	string($date-time)
+修改时间
+
+updateUser*	string
+修改人
+
+weekNum*	integer($int32)
+订单周数
+
+} */
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const sid = wx.getStorageSync('user_id')
+
+    http.postPromise('/student/findStudent', { findType: 1, sid }).then(data => {
+      const student = data.data.find(item => item.sid === sid)
+      this.setData({ studentList: data.data, student })
+    })
+
+    http.postPromise('/subject/list').then(data => {
+      this.setData({ subjectList: data.data.dataList })
+    })
+
+    http.postPromise('/grade/list').then(data => {
+      this.setData({ gradeList: data.data })
+    })
 
   },
 
@@ -35,7 +225,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const { student } = this.data
+    if (student.sid && appInst.globalData.weekData) {
+      student.timeRange = appInst.globalData.weekData.timeRange
+      student.weekNum = appInst.globalData.weekData.weekNum
+    }
+    appInst.globalData.weekData = null
   },
 
   /**

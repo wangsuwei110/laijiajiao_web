@@ -1,0 +1,109 @@
+/* pages/Student/SelectClassTime/SelectClassTime.wxss */
+
+
+page{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.container{
+    flex: 1;
+}
+
+.contentBox{
+    margin: 20rpx;
+    background-color: #fff;
+    padding: 0rpx 24rpx;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    height: 68rpx;
+    border-bottom: 2rpx solid #F2EFF6;
+}
+
+.title::before{
+    content: '';
+    display: inline-block;
+    width:12rpx;
+    height:12rpx;
+    background:rgba(77,182,245,1);
+    border-radius:50%;
+    margin-right: 12rpx;
+}
+
+.titleName{
+    flex: 1;
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+}
+
+.subTitle{
+    font-size:22rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(108,108,108,1);
+}
+
+.frequencyList{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 40rpx;
+}
+
+.itemWrap{
+    box-sizing: border-box;
+    width: 50%;
+    margin-top: 32rpx;
+    padding-right: 10rpx;
+}
+
+.itemWrap:nth-of-type(even){
+    padding-right: 0rpx;
+    padding-left:10rpx;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:52rpx;
+    background-color:#fff;
+    border:2rpx solid rgba(245, 246, 251, 1);
+    border-radius:5rpx;
+
+    font-size:24rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:#737373;
+
+    
+}
+
+
+
+.saveBtnWrap{
+    margin: 22rpx 20rpx 0rpx 20rpx;
+}
+
+.saveBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height:76rpx;
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+    border-radius:5rpx;
+
+    font-size:32rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color: #fff;
+}
+
+
