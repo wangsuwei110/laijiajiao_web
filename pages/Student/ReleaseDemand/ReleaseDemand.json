@@ -3,7 +3,6 @@
   "usingComponents": {
     "ClickContainer": "/components/ClickContainer/ClickContainer",
     "ToggleTechType": "/components/ToggleTechType/ToggleTechType",
-    "SelectClassTime": "/components/Student/SelectClassTime/SelectClassTime",
     "Switch": "/components/Student/Switch/Switch"
   }
 }

@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    teacherInfo: null,
     grenderList: [
       {
         key: 1,
@@ -85,8 +86,8 @@ Page({
 
 
   onSubmit() {
-    const { student } = this.data
-    const demandType = 2 //demandType  :订单类型：1:单独预约，2:快速请家教
+    const { student, teacherInfo } = this.data
+    const demandType = teacherInfo ? 1 : 2 //demandType  :订单类型：1:单独预约，2:快速请家教
     const { demandAddress, demandDesc,
       grade: demandGrade,
       sid, sex,
@@ -117,6 +118,7 @@ Page({
 
       http.postPromise('/StudentDemand/addStudentDemand', {
         studentId: sid,
+        teacherId: teacherInfo && teacherInfo.teacherId,
         demandType,
         demandAddress,
         demandDesc,
@@ -198,6 +200,15 @@ weekNum*	integer($int32)
    */
   onLoad: function (options) {
     const sid = wx.getStorageSync('user_id')
+
+    if (options.teacherid) {
+      http.postPromise('/userInfo/queryUserInfosDetail', {
+        teacherId: options.teacherid,
+        studentId: sid
+      }).then(data => {
+        this.setData({ teacherInfo: data.data.baseInfo })
+      })
+    }
 
     http.postPromise('/student/findStudent', { findType: 1, sid }).then(data => {
       const student = data.data.find(item => item.sid === sid)

@@ -12,7 +12,7 @@ App({
     var token = wx.getStorageSync('token')
     var userName = wx.getStorageSync('user_name')
     var userType = wx.getStorageSync('user_type') || 1
-    /* if (token) {
+    if (token) {
       if (userName == null || userName == '') {
         wx.reLaunch({
           url: userType === 1 ? '/pages/Student/LoginInfo/LoginInfo' : '/pages/editUserinfo/editUserinfo',
@@ -27,7 +27,7 @@ App({
       wx.reLaunch({
         url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/login',
       })
-    } */
+    }
   },
   isIPX: false
 })

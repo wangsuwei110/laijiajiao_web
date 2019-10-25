@@ -1,9 +1,9 @@
 <!--pages/Student/ReleaseDemand/ReleaseDemand.wxml-->
 
-<view class='container'>
+<view class='container' wx:if='{{teacherInfo}}'>
     <view class='title'>教员信息</view>
     <view class='stdContent'>
-        <text class='stdName'>李教员（女）上海交通大学</text>
+        <text class='stdName'>{{teacherInfo.name}}{{teacherInfo.sex?'（'+(teacherInfo.sex===1?'男':'女')+'）':' '}}{{teacherInfo.school}}</text>
         <text class='stdChange'>更换</text>
     </view>
 </view>
@@ -34,16 +34,12 @@
 
     <navigator class='item' url='/pages/Student/SelectClassTime/SelectClassTime'>
         <text class='label'>预计上课时段</text>
-        <text class='inputTxt'>
-            {{student.timeRange && student.weekNum?"已":"未"}}选择
-        </text>
+        <text class='inputTxt'>{{student.timeRange && student.weekNum?"已":"未"}}选择</text>
     </navigator>
 
     <textarea class='textArea' value='{{student.demandDesc}}' maxlength='200' placeholder-class='placeHolder' placeholder='为了更好的保证教育质量，请描述您的具体需求...' bindinput='onDescChange'/>
 </view>
 
-<SelectClassTime/>
-
 <ClickContainer class='saveBtnWrap'>
-    <view class='saveBtn'>发布需求</view>
+    <view class='saveBtn' bindtap='onSubmit'>发布需求</view>
 </ClickContainer>

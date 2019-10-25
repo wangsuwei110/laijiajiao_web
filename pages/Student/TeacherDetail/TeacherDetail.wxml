@@ -63,7 +63,7 @@
     </view>
   </view>
   <view class="spacing-10"></view>
-
+  
   <!-- 信息面板 -->
   <view class="panel">
     <view class="panel-top">
@@ -150,5 +150,5 @@
     </view>
   </view>
   
-  <view class='submitBtn'>预约教员</view>
+  <navigator class='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</navigator>
 </view>
