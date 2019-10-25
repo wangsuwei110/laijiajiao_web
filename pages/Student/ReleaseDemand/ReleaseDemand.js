@@ -91,6 +91,7 @@ Page({
     const { demandAddress, demandDesc,
       grade: demandGrade,
       sid, sex,
+      subjectId,
       studentName, parentPhoneNum,
       timeRange, weekNum } = student
 
@@ -123,10 +124,11 @@ Page({
         demandAddress,
         demandDesc,
         demandGrade,
+        subjectId,
         sex,
         studentName,
         parentPhoneNum,
-        timeRange,
+        timeRange: JSON.stringify(timeRange),
         weekNum
       }).then(data => {
         wx.hideLoading();

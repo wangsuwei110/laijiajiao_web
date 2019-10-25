@@ -4,7 +4,6 @@
     <view class='title'>教员信息</view>
     <view class='stdContent'>
         <text class='stdName'>{{teacherInfo.name}}{{teacherInfo.sex?'（'+(teacherInfo.sex===1?'男':'女')+'）':' '}}{{teacherInfo.school}}</text>
-        <text class='stdChange'>更换</text>
     </view>
 </view>
 
