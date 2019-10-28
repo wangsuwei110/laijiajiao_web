@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "教员",
   "usingComponents": {
+    "DropDown": "/components/DropDown/DropDown",
     "PageLayout": "/components/PageLayout/PageLayout",
     "TeacherFilter": "/components/Student/TeacherFilter/TeacherFilter"
   }

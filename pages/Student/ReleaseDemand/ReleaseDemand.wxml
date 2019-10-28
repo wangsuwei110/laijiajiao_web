@@ -18,7 +18,7 @@
 
     <view class='item'>
         <text class='label'>联系手机</text>
-        <input class='inputBox' type='number' value='{{student.parentPhoneNum}}' maxlength='11' bindinput='onPhoneChange'/>
+        <text class='inputTxt'>{{student.parentPhoneNum}}</text>
     </view>
 
     <view class='item'>
@@ -27,14 +27,14 @@
     </view>
 
     <view class='item'>
-        <ToggleTechType id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='选择年级' multiple='{{false}}' value='{{[student.grade]}}' bind:onChange='onGradeChange'/>
-        <ToggleTechType id='subject' class='selectBox' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' multiple='{{false}}' value='{{[student.subjectId]}}' bind:onChange='onSubjectChange'/>
+        <Picker id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='选择年级' value='{{student.grade}}' bind:onChange='onGradeChange'/>
+        <Picker id='subject' class='selectBox' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' value='{{student.subjectId}}' bind:onChange='onSubjectChange'/>
     </view>
 
-    <navigator class='item' url='/pages/Student/SelectClassTime/SelectClassTime'>
+    <view class='item' bindtap='onGoSelectTime'>
         <text class='label'>预计上课时段</text>
-        <text class='inputTxt'>{{student.timeRange && student.weekNum?"已":"未"}}选择</text>
-    </navigator>
+        <text class='inputTxt'>{{student.timeRange && student.classNum?"已":"未"}}选择</text>
+    </view>
 
     <textarea class='textArea' value='{{student.demandDesc}}' maxlength='200' placeholder-class='placeHolder' placeholder='为了更好的保证教育质量，请描述您的具体需求...' bindinput='onDescChange'/>
 </view>

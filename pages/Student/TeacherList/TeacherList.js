@@ -65,6 +65,7 @@ private Integer sex;
     teacherList: [],
     pageIndex: 1,
     pageCount: 100,
+    isEnd: false,
   },
 
   running: false,
@@ -87,6 +88,7 @@ private Integer sex;
         this.setData({
           teacherList: pageIndex === 1 ? data.data : data.data ? [...teacherList, ...data.data] : teacherList,
           pageIndex,
+          isEnd: !data.data,
           pageCount: data.data ? 1000 : pageIndex
         })
         this.running = false

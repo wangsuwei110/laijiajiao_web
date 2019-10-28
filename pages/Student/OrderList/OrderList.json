@@ -1,5 +1,8 @@
 {
+  "navigationBarTitleText": "服务订单",
   "usingComponents": {
+    "Empty": "/components/Empty/Empty",
+    "DropDown": "/components/DropDown/DropDown",
     "OrderListItem": "/components/Student/OrderListItem/OrderListItem"
   }
 }

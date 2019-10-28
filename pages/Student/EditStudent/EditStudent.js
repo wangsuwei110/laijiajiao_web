@@ -101,7 +101,7 @@ Page({
       })
 
       http.postPromise('/student/findStudent', { sid: options.id }).then(data => {
-        this.setData({ student: data.data })
+        this.setData({ student: data.data[0] })
       })
     }
 

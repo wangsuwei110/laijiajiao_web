@@ -27,5 +27,7 @@
             <text class='tag' wx:for='{{item.teacherTag}}' wx:key='this'>{{item}}</text>
         </view>
     </navigator>
+
+    <DropDown isEnd='{{isEnd}}'/>
 </view>
 </PageLayout>

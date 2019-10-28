@@ -106,6 +106,7 @@
 
     .authentication{
         width: 84rpx;
+        height: 27rpx;
         margin-left: 16rpx;
     }
 

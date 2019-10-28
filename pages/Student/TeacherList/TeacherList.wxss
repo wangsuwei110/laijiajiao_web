@@ -94,6 +94,7 @@
 
 .authentication{
     width: 84rpx;
+    height: 27rpx;
 }
 
 .params{

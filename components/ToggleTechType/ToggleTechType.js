@@ -26,7 +26,7 @@ Component({
         Observer.call(this, options, value, valueKey, nameKey)
       }
     },
-
+    
     placeholder: {
       type: String,
       value: ''

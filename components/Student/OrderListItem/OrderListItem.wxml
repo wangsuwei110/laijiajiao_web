@@ -27,8 +27,10 @@
             <text>2019-07-15 12:20 （好评）</text>
             <view class='evaluateTxt'>{{item.appraise}}</view>
         </view>
+        
+        <view class='btnSpace'/>
 
-        <view class='signUpCount' wx:if='{{item.status===0}}'>
+        <view class='signUpCount' wx:if='{{!item.status}}'>
             已有<text class='emphasis'>{{item.orderTeachCount}}</text>教员报名
         </view>
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 1}}'>

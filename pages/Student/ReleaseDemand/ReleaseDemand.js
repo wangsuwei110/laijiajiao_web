@@ -27,11 +27,6 @@ Page({
     }
   },
 
-  onPhoneChange(e) {
-    const { student } = this.data
-    student.parentPhoneNum = e.detail.value
-    this.setData({ student })
-  },
 
   onNameChange(e) {
     const { student } = this.data
@@ -41,6 +36,7 @@ Page({
 
   onAddressChange(e) {
     const { student } = this.data
+    console.log(student)
     student.demandAddress = e.detail.value
     this.setData({ student })
   },
@@ -53,13 +49,14 @@ Page({
 
   onGradeChange(e) {
     const { student } = this.data
-    student.grade = e.detail[0]
+    student.grade = e.detail.value
     this.setData({ student })
   },
 
   onSubjectChange(e) {
     const { student } = this.data
-    student.subjectId = e.detail[0]
+    student.subjectId = e.detail.value
+    console.log(student, e)
     this.setData({ student })
   },
 
@@ -85,6 +82,15 @@ Page({
   },
 
 
+  onGoSelectTime() {
+    const { classNum = 0, timeRange = [] } = this.data.student
+    appInst.globalData.weekData = { timeRange, classNum }
+
+    wx.navigateTo({
+      url: '/pages/Student/SelectClassTime/SelectClassTime',
+    });
+  },
+
   onSubmit() {
     const { student, teacherInfo } = this.data
     const demandType = teacherInfo ? 1 : 2 //demandType  :订单类型：1:单独预约，2:快速请家教
@@ -92,18 +98,16 @@ Page({
       grade: demandGrade,
       sid, sex,
       subjectId,
-      studentName, parentPhoneNum,
-      timeRange, weekNum } = student
+      studentName,
+      timeRange, classNum } = student
 
     let res = ''
 
     if (!studentName) {
       res = '请输入学员名称'
-    } else if (!parentPhoneNum || !/^1\d{10}$/.test(parentPhoneNum)) {
-      res = '请输入11位联系手机'
     } else if (!demandAddress) {
       res = '请输入上课地址'
-    } else if (!timeRange || !weekNum) {
+    } else if (!timeRange || !classNum) {
       res = '请选择预计上课时段'
     } else if (!demandDesc) {
       res = '请输入您的具体需求'
@@ -127,10 +131,24 @@ Page({
         subjectId,
         sex,
         studentName,
-        parentPhoneNum,
         timeRange: JSON.stringify(timeRange),
-        weekNum
+        classNum,
+        orderType: 1,
       }).then(data => {
+        wx.showModal({
+          title: '提示',
+          content: data.msg,
+          showCancel: false,
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if (result.confirm) {
+              wx.navigateBack({
+                delta: 1
+              });
+            }
+          },
+        });
         wx.hideLoading();
       }).catch(e => {
         wx.hideLoading();
@@ -212,9 +230,9 @@ weekNum*	integer($int32)
       })
     }
 
-    http.postPromise('/student/findStudent', { findType: 1, sid }).then(data => {
-      const student = data.data.find(item => item.sid === sid)
-      this.setData({ studentList: data.data, student })
+    http.postPromise('/student/findStudent', { sid }).then(data => {
+      //const student = data.data.find(item => item.sid === sid)
+      this.setData({ student: data.data[0] })
     })
 
     http.postPromise('/subject/list').then(data => {
@@ -241,7 +259,8 @@ weekNum*	integer($int32)
     const { student } = this.data
     if (student.sid && appInst.globalData.weekData) {
       student.timeRange = appInst.globalData.weekData.timeRange
-      student.weekNum = appInst.globalData.weekData.weekNum
+      student.classNum = appInst.globalData.weekData.classNum
+      this.setData({ student })
     }
     appInst.globalData.weekData = null
   },

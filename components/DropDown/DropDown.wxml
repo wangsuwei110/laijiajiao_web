@@ -1,0 +1,5 @@
+<!--components/DropDown/DropDown.wxml-->
+<view class='container'>
+    <text wx:if='{{isEnd}}' class='txt'>没有更多了哦</text>
+    <image wx:else class='img' animation='{{animationData}}' src='../../../../../images/Students/loading.png' bindtransitionend="reAnimation"/>
+</view>

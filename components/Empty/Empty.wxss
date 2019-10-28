@@ -1,0 +1,13 @@
+/* components/Empty/Empty.wxss */
+.container{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt{
+    font-size: 24rpx;
+    color: #999;
+}

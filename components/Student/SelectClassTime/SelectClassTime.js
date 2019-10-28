@@ -10,7 +10,8 @@ Component({
       observer(weekData) {
         const _weekData = {}
         weekData.map(item => {
-          _weekData[item.week] = item.time
+          _weekData[item.week] = _weekData[item.week] || {}
+          _weekData[item.week][item.time] = true
         })
 
         this.setData({ _weekData })
@@ -51,16 +52,20 @@ Component({
       const { _weekData } = this.data
       const week = Number(e.currentTarget.dataset.week)
       const time = Number(e.currentTarget.dataset.time)
-      if (_weekData[week] === time) {
-        delete _weekData[week]
+      if (_weekData[week] && _weekData[week][time]) {
+        delete _weekData[week][time]
       } else {
-        _weekData[week] = time
+        const data = _weekData[week] || {}
+        data[time] = true
+        _weekData[week] = data
       }
 
-      const weekList = Object.keys(_weekData).map(key => ({ week: key, time: _weekData[key] }))
-
+      const weekList = Object.keys(_weekData).reduce((list, week) => {
+        return [...list, ...Object.keys(_weekData[week]).map(time => ({ week: Number(week), time: Number(time) }))]
+      }, [])
+      //console.log(weekList)
       this.triggerEvent('onChange', weekList)
-      
+
       this.setData({ _weekData })
     },
   }

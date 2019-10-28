@@ -24,7 +24,7 @@
             </view>
 
             <view class='cell tdCell' wx:for='{{week}}' wx:key='this' wx:for-item='id' data-time='{{item.id}}' data-week='{{id}}' bindtap='onWeekChange'>
-                <image wx:if='{{_weekData[id] === item.id}}' src='../../../images/students/checked.png' class='checkIcon' mode='widthFix'/>
+                <image wx:if='{{_weekData[id] && _weekData[id][item.id]}}' src='../../../images/students/checked.png' class='checkIcon' mode='widthFix'/>
                 <image wx:else src='../../../images/students/uncheck.png' class='checkIcon' mode='widthFix'/>
             </view>
         </view>

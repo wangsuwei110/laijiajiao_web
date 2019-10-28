@@ -2,7 +2,7 @@
   "navigationBarTitleText": "发布需求",
   "usingComponents": {
     "ClickContainer": "/components/ClickContainer/ClickContainer",
-    "ToggleTechType": "/components/ToggleTechType/ToggleTechType",
+    "Picker": "/components/Picker/Picker",
     "Switch": "/components/Student/Switch/Switch"
   }
 }

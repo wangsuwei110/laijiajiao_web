@@ -82,13 +82,18 @@ Page({
    */
   data: {
     orderList: [],
+    isEnd: false,
+    loaded: false,
   },
 
+  pageIndex: 1,
 
   fetchOrderList(pageIndex = 1) {
-    const { orderList } = this.data
-    http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize: 10, studentId: wx.getStorageSync('user_id') }).then(data => {
-      this.setData({ orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
+    const { orderList, isEnd } = this.data
+    
+    isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize: 10, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
+      this.pageIndex = pageIndex
+      this.setData({ loaded: true, isEnd: !data.data || !data.data.length, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
     })
   },
 
@@ -110,7 +115,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.fetchOrderList()
+    this.fetchOrderList(this.pageIndex + 1)
   },
 
   /**
@@ -138,7 +143,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.fetchOrderList()
   },
 
   /**

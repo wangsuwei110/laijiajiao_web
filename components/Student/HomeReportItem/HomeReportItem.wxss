@@ -2,7 +2,7 @@
 
 .container{
     position: relative;
-    padding: 30rpx 0 30rpx 44 rpx;
+    padding: 30rpx 0 30rpx 44rpx;
     border-top: 2rpx solid #F2EFF6;
 }
 

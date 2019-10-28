@@ -115,8 +115,12 @@
     margin-top: 38rpx;
 }
 
-.evaluate + .payBtn{
-    margin-top: 22rpx;
+.evaluate + .btnSpace{
+    padding-top: 22rpx;
+}
+
+.paramItem + .btnSpace{
+    padding-top: 36rpx;
 }
 
 .signUpCount{

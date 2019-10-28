@@ -8,7 +8,7 @@ Page({
    */
   data: {
 
-    weekNum: 0,
+    classNum: 0,
     timeRange: [],
 
     frequencyList: [
@@ -37,15 +37,15 @@ Page({
 
 
   onWeekNumChange(e) {
-    this.setData({ weekNum: Number(e.currentTarget.dataset.id) })
+    this.setData({ classNum: Number(e.currentTarget.dataset.id) })
   },
 
   onSubmit() {
     let res = ''
-    const { timeRange, weekNum } = this.data
+    const { timeRange, classNum } = this.data
     if (!timeRange.length) {
       res = '请选择上课时间 '
-    } else if (!weekNum) {
+    } else if (!classNum) {
       res = '请选择每周课数'
     }
     
@@ -55,7 +55,7 @@ Page({
         icon: 'none',
       });
     } else {
-      appInst.globalData.weekData = { timeRange, weekNum }
+      appInst.globalData.weekData = { timeRange, classNum }
       wx.navigateBack({
         delta: 1
       });
@@ -68,7 +68,7 @@ Page({
   onLoad: function (options) {
     const weekData = appInst.globalData.weekData
     if (weekData) {
-      this.setData({ weekNum: weekData.weekNum, timeRange: weekData.timeRange })
+      this.setData({ classNum: weekData.classNum, timeRange: weekData.timeRange })
     }
     appInst.globalData.weekData = null
   },
