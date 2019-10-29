@@ -84,16 +84,17 @@ Page({
     orderList: [],
     isEnd: false,
     loaded: false,
+    pageSize: 20,
   },
 
   pageIndex: 1,
 
   fetchOrderList(pageIndex = 1) {
-    const { orderList, isEnd } = this.data
-    
-    isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize: 10, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
+    const { orderList, isEnd, pageSize } = this.data
+
+    isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
       this.pageIndex = pageIndex
-      this.setData({ loaded: true, isEnd: !data.data || !data.data.length, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
+      this.setData({ loaded: true, isEnd: !data.data || data.data.length < pageSize, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
     })
   },
 
@@ -115,7 +116,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.fetchOrderList(this.pageIndex + 1)
+    this.fetchOrderList()
   },
 
   /**
@@ -143,7 +144,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.fetchOrderList()
+    this.fetchOrderList(this.pageIndex + 1)
   },
 
   /**

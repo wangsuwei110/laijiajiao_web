@@ -9,6 +9,7 @@ Page({
    */
   data: {
     teacherInfo: null,
+    areaList: [],
     grenderList: [
       {
         key: 1,
@@ -31,6 +32,12 @@ Page({
   onNameChange(e) {
     const { student } = this.data
     student.studentName = e.detail.value
+    this.setData({ student })
+  },
+
+  onAreaChange(e) {
+    const { student } = this.data
+    student.parameterId = e.detail.value
     this.setData({ student })
   },
 
@@ -99,12 +106,15 @@ Page({
       sid, sex,
       subjectId,
       studentName,
+      parameterId,
       timeRange, classNum } = student
 
     let res = ''
 
     if (!studentName) {
       res = '请输入学员名称'
+    } else if (!parameterId) {
+      res = '请选择上课区域'
     } else if (!demandAddress) {
       res = '请输入上课地址'
     } else if (!timeRange || !classNum) {
@@ -130,6 +140,7 @@ Page({
         demandGrade,
         subjectId,
         sex,
+        parameterId,
         studentName,
         timeRange: JSON.stringify(timeRange),
         classNum,
@@ -143,8 +154,8 @@ Page({
           confirmColor: '#3CC51F',
           success: (result) => {
             if (result.confirm) {
-              wx.navigateBack({
-                delta: 1
+              wx.redirectTo({
+                url: '/pages/Student/OrderList/OrderList'
               });
             }
           },
@@ -241,6 +252,10 @@ weekNum*	integer($int32)
 
     http.postPromise('/grade/list').then(data => {
       this.setData({ gradeList: data.data })
+    })
+
+    http.postPromise('/parameter/queryParametersByType', { parentId: 78 }).then(data => {
+      this.setData({ areaList: data.data })
     })
 
   },

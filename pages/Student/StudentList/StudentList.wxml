@@ -1,22 +1,25 @@
 <!--pages/Student/StudentList/StudentList.wxml-->
-
-<navigator url='/pages/Student/EditStudent/EditStudent?id={{item.sid}}' class='container' wx:for='{{studentList}}' wx:key='{{item.sid}}'>
-    <view class='nameBox'>
-        <view class='point'/>
-        <view class='nameWrap'>
-            <text class='name'>{{item.studentName}}</text>
-            <image wx:if='{{item.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
-            <image wx:elif='{{item.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
+<scroll-view scroll-y='true' style='height:{{height}};'>
+    <navigator url='/pages/Student/EditStudent/EditStudent?id={{item.sid}}' class='containerItem' wx:for='{{studentList}}' wx:key='{{item.sid}}'>
+        <view class='nameBox'>
+            <view class='point'/>
+            <view class='nameWrap'>
+                <text class='name'>{{item.studentName}}</text>
+                <image wx:if='{{item.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
+                <image wx:elif='{{item.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
+            </view>
+            
+            <image class='editIcon' src='../../../images/Students/edit.png' mode='widthFix'/>
+            <text class='edit'>修改</text>
         </view>
-        
-        <image class='editIcon' src='../../../images/Students/edit.png' mode='widthFix'/>
-        <text class='edit'>修改</text>
-    </view>
-    <view class='params'>
-        <text class='grade'>{{item.gradeName}}</text>
-        <text class='date'>{{item.createTime}}</text>
-        <image class='addIcon' src='../../../images/Students/add.png' mode='widthFix'/>
-    </view>
-</navigator>
+        <view class='params'>
+            <text class='grade'>{{item.gradeName}}</text>
+            <text class='date'>{{item.createTime}}</text>
+            <image class='addIcon' src='../../../images/Students/add.png' mode='widthFix'/>
+        </view>
+    </navigator>
 
-<navigator url='/pages/Student/EditStudent/EditStudent' class='addBtn'>添加学员</navigator>
+    <Empty wx:if='{{loaded && !studentList.length}}'/>
+</scroll-view>
+
+<navigator url='/pages/Student/EditStudent/EditStudent' class='addBtn' id='bottomBtn'>添加学员</navigator>

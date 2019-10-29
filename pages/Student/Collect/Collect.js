@@ -16,7 +16,7 @@ Page({
       })
     })
   },
-
+  
   onCancelCollect(e) {
     const teacherId = Number(e.currentTarget.dataset.id)
     wx.showModal({
@@ -29,7 +29,12 @@ Page({
       confirmColor: '#3CC51F',
       success: (result) => {
         if (result.confirm) {
-          http.getPromise('/teacher/cancelConnect', { studentId: this.studentId, teacherId }).then(data => {
+          http.postPromise('/teacher/cancelConnect', { studentId: this.studentId, teacherId }).then(data => {
+            wx.showToast({
+              title: '取消关注成功',
+              icon: 'none',
+            });
+            
             this.fetchList()
           })
         }

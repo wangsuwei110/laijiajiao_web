@@ -49,6 +49,11 @@ page{
     color:rgba(108,108,108,1);
 }
 
+.table{
+    display: block;
+    margin-top: 30rpx;
+}
+
 .frequencyList{
     display: flex;
     align-items: center;

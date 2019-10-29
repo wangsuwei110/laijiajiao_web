@@ -12,8 +12,8 @@ Component({
         console.log(show, old)
         if (show && !old && !this.loaded) {
           this.loaded = true
-          http.getPromise('/teacher/listSubject').then(data => {
-            
+          http.postPromise('/teacher/listSubject', {}).then(data => {
+
           })
         }
       }
@@ -41,6 +41,6 @@ Component({
   },
 
   attached() {
-
+    
   }
 })

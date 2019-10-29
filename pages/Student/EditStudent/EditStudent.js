@@ -73,8 +73,19 @@ Page({
     } else {
 
       student.sex = ~~student.sex
-      delete student.deleteStatus
-      http.postPromise('/student/update', student).then(data => {
+      const { sex,
+        sid,
+        studentName,
+        subjectId,
+        grade } = student
+
+      http.postPromise('/student/update', {
+        sex,
+        sid,
+        studentName,
+        subjectId,
+        grade
+      }).then(data => {
         wx.navigateBack({
           delta: 1
         });
@@ -89,7 +100,7 @@ Page({
     grade && grade.onCancel()
     subject && subject.onCancel()
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -86,5 +86,6 @@ page{
 
 .cancelIcon{
     width: 25rpx;
+    height: 25rpx;
     margin-right: 12rpx;
 }

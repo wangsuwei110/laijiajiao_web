@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "学员信息",
-  "usingComponents": {}
+  "usingComponents": {
+    "Empty": "/components/Empty/Empty"
+  }
 }

@@ -20,7 +20,9 @@
         <text class='label'>联系手机</text>
         <text class='inputTxt'>{{student.parentPhoneNum}}</text>
     </view>
-
+    <view class='item'>
+        <Picker class='selectBox' options='{{areaList}}' nameKey='name' valueKey='parameterId' label='上课区域' value='{{student.parameterId}}' bind:onChange='onAreaChange'/>
+    </view>
     <view class='item'>
         <text class='label'>上课地址</text>
         <input class='inputBox' value='{{student.demandAddress}}' maxlength='100' bindinput='onAddressChange'/>

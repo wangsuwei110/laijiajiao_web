@@ -64,7 +64,7 @@ private Integer sex;
     },
     teacherList: [],
     pageIndex: 1,
-    pageCount: 100,
+    pageSize: 20,
     isEnd: false,
   },
 
@@ -83,13 +83,13 @@ private Integer sex;
 
     if (!this.running) {
       this.running = true
-      const { searchData, teacherList } = this.data
-      http.postPromise('/teacher/list', Object.assign({}, searchData, { pageIndex })).then(data => {
+      const { searchData, teacherList, pageSize } = this.data
+      http.postPromise('/teacher/list', Object.assign({}, searchData, { pageIndex, pageSize })).then(data => {
         this.setData({
           teacherList: pageIndex === 1 ? data.data : data.data ? [...teacherList, ...data.data] : teacherList,
           pageIndex,
-          isEnd: !data.data,
-          pageCount: data.data ? 1000 : pageIndex
+          isEnd: !data.data || data.data.length < pageSize,
+          //pageCount: data.data ? 1000 : pageIndex
         })
         this.running = false
       })

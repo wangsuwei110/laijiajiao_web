@@ -1,32 +1,25 @@
 <!--components/Student/SelectClassTime/SelectClassTime.wxml-->
-<view class='container'>
-    <view class='title'>
-        <text class='titleName'>上课时间</text>
-        <text class='subTitle'>根据孩子的空闲时间，勾选可能上课的时间段</text>
+<view class='table'>
+    <view class='header'>
+        <text class='labelCell headerCell'>时间</text>
+        <text class='cell headerCell'>一</text>
+        <text class='cell headerCell'>二</text>
+        <text class='cell headerCell'>三</text>
+        <text class='cell headerCell'>四</text>
+        <text class='cell headerCell'>五</text>
+        <text class='cell headerCell'>六</text>
+        <text class='cell headerCell'>七</text>
     </view>
 
-    <view class='table'>
-        <view class='header'>
-            <text class='labelCell headerCell'>时间</text>
-            <text class='cell headerCell'>一</text>
-            <text class='cell headerCell'>二</text>
-            <text class='cell headerCell'>三</text>
-            <text class='cell headerCell'>四</text>
-            <text class='cell headerCell'>五</text>
-            <text class='cell headerCell'>六</text>
-            <text class='cell headerCell'>七</text>
+    <view class='row' wx:for='{{dataList}}' wx:key='{{item.id}}'>
+        <view class='labelCell tdCell'>
+            <text>{{item.name}}</text>
+            <text class='date'>{{item.time}}</text>
         </view>
 
-        <view class='row' wx:for='{{dataList}}' wx:key='{{item.id}}'>
-            <view class='labelCell tdCell'>
-                <text>{{item.name}}</text>
-                <text class='date'>{{item.time}}</text>
-            </view>
-
-            <view class='cell tdCell' wx:for='{{week}}' wx:key='this' wx:for-item='id' data-time='{{item.id}}' data-week='{{id}}' bindtap='onWeekChange'>
-                <image wx:if='{{_weekData[id] && _weekData[id][item.id]}}' src='../../../images/students/checked.png' class='checkIcon' mode='widthFix'/>
-                <image wx:else src='../../../images/students/uncheck.png' class='checkIcon' mode='widthFix'/>
-            </view>
+        <view class='cell tdCell' wx:for='{{week}}' wx:key='this' wx:for-item='id' data-time='{{item.id}}' data-week='{{id}}' bindtap='onWeekChange'>
+            <image wx:if='{{_weekData[id] && _weekData[id][item.id]}}' src='../../../images/students/checked.png' class='checkIcon' mode='widthFix'/>
+            <image wx:else src='../../../images/students/uncheck.png' class='checkIcon' mode='widthFix'/>
         </view>
     </view>
 </view>

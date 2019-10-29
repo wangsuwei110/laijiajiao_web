@@ -44,7 +44,8 @@
     "pages/Student/ViewAppointment/ViewAppointment",
     "pages/Student/SelectClassTime/SelectClassTime",
     "pages/Student/ReleaseDemand/ReleaseDemand",
-    "pages/Student/NotPass/NotPass"
+    "pages/Student/NotPass/NotPass",
+    "pages/Student/OrderPass/OrderPass"
   ],
   "window": {
     "backgroundTextStyle": "light",
