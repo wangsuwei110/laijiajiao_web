@@ -1,6 +1,15 @@
+var http = require('../../../utils/api.js')
+var util = require('../../../utils/util.js')
 Page({
   data: {
     activeIdx: 0,
+    teacherLevel: 'T0',
+    totalPoints: '',
+    scrollHeight: 0,
+    bottomText: '',
+    isMore: false,
+    pageIndex: 1,
+    pageSize: 10,
     tabs: [
       {
         name: "等级规则",
@@ -15,87 +24,113 @@ Page({
         code: 2
       }
     ],
-    gradeList: [
-      {
-        grade: '实习',
-        integral: '-',
-        continuationRate: '-',
-        classFee: '100.00'
-      },
-      {
-        grade: 'T1',
-        integral: '100-300',
-        continuationRate: '≥60%',
-        classFee: '120.00'
-      },
-      {
-        grade: 'T2',
-        integral: '301-600',
-        continuationRate: '≥70%',
-        classFee: '160.00'
-      },
-      {
-        grade: 'T3',
-        integral: '601以上',
-        continuationRate: '≥80%',
-        classFee: '200.00'
-      }
-    ],
-    integralList: [
-      {
-        integral: '+1/天',
-        integralDesc: '打开系统',
-        type: 1
-      },
-      {
-        integral: '+10/天',
-        integralDesc: '确定开讲时间',
-        type: 1
-      },
-      {
-        integral: '-50/次',
-        integralDesc: '教员问题导致的退款',
-        type: 0
-      },
-      {
-        integral: '-20/次',
-        integralDesc: '教员问题导致的退款',
-        type: 0
-      }
-    ],
-    integralLogList: [
-      {
-        integral: '+1/天',
-        integralDesc: '打开系统',
-        integralTime: '2019-09-12 12:23',
-        type: 1
-      },
-      {
-        integral: '+10/天',
-        integralDesc: '确定开讲时间',
-        integralTime: '2019-09-12 12:23',
-        type: 1
-      },
-      {
-        integral: '-50/次',
-        integralDesc: '教员问题导致的退款',
-        integralTime: '2019-09-12 12:23',
-        type: 0
-      }
-    ]
+    gradeList: [],
+    integralList: [],
+    integralLogList: []
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
     if (this.data.activeIdx == _idx) {
       return;
     }
-    this.setData({
-      activeIdx: _idx
-    })
+    this.setData({activeIdx: _idx})
     // 请求数据
+    if (_idx == 0) {
+      this.getGradeList()
+    } else if (_idx == 1) {
+      this.getIntegralList()
+    } else {
+      this.getIntegralLogList()
+    }
     console.log(e.currentTarget.dataset)
   },
-  onLoad: function (options) {
+  getGradeList: function () {
+    var that = this;
+    http.get('/levelRules/queryAllLevelRules', function (res) {
+      console.log(res)
+      that.setData({ 'gradeList': res.data.dataList })
+    }, function (err) {
 
+    }, function () { })
+  },
+  getIntegralList: function () {
+    var that = this;
+    http.get('/pointRules/queryAllPointsRules', function (res) {
+      that.setData({ 'integralList': res.data.dataList })
+    }, function (err) {
+
+    }, function () { })
+  },
+  // 积分记录
+  getIntegralLogList: function () {
+    var that = this;
+    var _integralLogList = that.data.integralLogList;
+    var _pageIndex = that.data.pageIndex;
+    var params = {
+      teacherId: wx.getStorageSync('user_id'),
+      pageIndex: _pageIndex,
+      pageSize: that.data.pageSize
+    }
+    that.setData({ 'bottomText': '' })
+    http.post('/order/queryAllPointsLogByTeacherId', params, function (res) {
+      var list = res.data.pointsLog.dataList;
+      if (list.length < 10) {
+        if (_integralLogList.length === 0 && list.length === 0) {
+          // 暂无记录
+          that.setData({
+            'bottomText': '暂无记录',
+            'isMore': false
+          })
+          that.isMore = false;
+        } else {
+          // 没有更多
+          that.setData({
+            'bottomText': '没有更多',
+            'isMore': false
+          })
+        }
+      } else {
+        // 加载更多
+        that.setData({
+          'bottomText': '加载更多',
+          'isMore': true
+        })
+      }
+      if (list.length > 0) {
+        list.forEach(function (item) {
+          item.createTime = util.formatTime(new Date(item.createTime).getTime(), '{y}-{m}-{d} {h}:{i}')
+        })
+      }
+      _integralLogList = _integralLogList.concat(list)
+      _pageIndex++
+      that.setData({
+        'integralLogList': _integralLogList,
+        'totalPoints': res.data.totalPoints,
+        'pageIndex': _pageIndex
+      })
+    }, function (err) {
+      wx.showToast({
+        title: err.msg,
+        icon: 'none'
+      })
+    }, function () { })
+  },
+  lower: function (e) {
+    console.log(e)
+    if (this.data.isMore) {
+      this.getIntegralLogList()
+    }
+  },
+  onLoad: function (options) {
+    var query = wx.createSelectorQuery();
+    query.select('#tBody').boundingClientRect();
+    query.exec((res) => {
+      this.setData({
+        'teacherLevel': wx.getStorageSync('teacherLevel'),
+        'scrollHeight': wx.getSystemInfoSync().windowHeight - (res[0].top + 40)
+      })
+    })
+    this.getGradeList()
+    this.getIntegralLogList()
   }
 })

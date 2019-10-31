@@ -10,7 +10,7 @@
       <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_1.png"></image>
       <text class="entrance-name">家教中心</text>
     </view>
-    <view class="entrance">
+    <view bindtap="openHelp" class="entrance">
       <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_2.png"></image>
       <text class="entrance-name">帮助中心</text>
     </view>

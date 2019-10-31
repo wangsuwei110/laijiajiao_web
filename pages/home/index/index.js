@@ -22,5 +22,11 @@ Page({
     wx.navigateTo({
       url: '/pages/my/grade/grade',
     })
+  },
+  openHelp: function () {
+    wx.showToast({
+      title: '页面开发中，敬请期待',
+      icon: 'none'
+    })
   }
 })

@@ -51,6 +51,7 @@ Page({
         that.setData({
           userinfo: res.data
         })
+        wx.setStorageSync('teacherLevel', res.data.teacherLevel)
       } else {
         wx.showToast({
           title: res.msg,

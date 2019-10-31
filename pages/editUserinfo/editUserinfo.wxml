@@ -41,7 +41,7 @@
               <scroll-view scroll-y style="max-height: 400rpx;">
                 <view catchtap="selectTeach" data-parentid="2" data-id="{{index}}" data-item="{{item}}" wx:for="{{grades}}" wx:key="{{index}}" class="content-item">
                   <view class="item-icon {{item.isHave == 1 ? 'selected': ''}}"></view>
-                  <text class="{{item.isHave == 1 ? 'selected': ''}}">{{item.name}}</text>
+                  <text class="{{item.isHave == 1 ? 'selected': ''}}">{{item.teachGradeName}}</text>
                   <image hidden="{{item.isHave == 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
                 </view>
               </scroll-view>

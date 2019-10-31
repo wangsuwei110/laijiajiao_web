@@ -9,9 +9,9 @@
         <view class="item-content {{currentIdx == idx ? 'show' : 'hide'}}">
           <view class="item-content-inner">
             <scroll-view scroll-y style="max-height: 600rpx;">
-              <view catchtap="selectTeach" data-parentid="{{idx}}" data-id="{{index}}" data-item="{{item}}" wx:for="{{item.content}}" wx:key="{{index}}" class="content-item">
-                <view class="item-icon {{item.flag? 'selected': ''}}"></view>
-                <text class="{{item.flag ? 'selected': ''}}">{{item.name}}{{item.type}}</text>
+              <view catchtap="selectTeach" data-parentid="{{idx}}" data-id="{{index}}" data-item="{{item}}" wx:for="{{item.content}}" wx:key="{{index}}" wx:for-item="item" class="content-item">
+                <view class="item-icon {{ item.flag ? 'selected': ''}}"></view>
+                <text class="{{item.flag ? 'selected': ''}}">{{item.name}}</text>
                 <image hidden="{{!item.flag}}" class="hook-icon" mode="scaleToFill" src="../../../images/hook_icon.png"></image>
               </view>
             </scroll-view>

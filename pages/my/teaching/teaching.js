@@ -126,6 +126,9 @@ Page({
     teachAddress: [],  // 授课区域
     currentType: ''
   },
+  onLoad: function () {
+    this.getData()
+  },
   onShow: function () {
     this.getGradesAndSubject()
   },
@@ -137,7 +140,7 @@ Page({
     // 1:教员等级 11:收费标准 31:授课学段 38:学员年级 54:日期 62:个人标签 78:授课区域 95:科目:小学
     var params = {
       teacherId: wx.getStorageSync('user_id'),
-      parentId: '31,38,78,95'
+      parentId: '62,78'
     }
     wx.showLoading({})
     var _teachData = []
@@ -148,15 +151,18 @@ Page({
     var _teachAddress = {}  // 授课区域
     var _weekTime = []  // 授课时间
     http.post('/parameter/queryParameters', params, function (res) {
-      console.log(res.data)
       var data = res.data[0]
       _teachLevel.name = '授课学段'
       _teachLevel.content = data.teachLevel
-      _teachLevel.type = data.teachLevel[0].parentId + ''
+      _teachLevel.type = '31'
       _teachData.push(_teachLevel)
+      console.log(data.teachLevel.length)
+
       if (data.teachLevel.length > 0) {
         var __teachLevel = []
         data.teachLevel.forEach(function (item) {
+          item.name = item.teachLevelName
+          item.parameterId = item.teachLevelId
           if (item.flag) {
             __teachLevel.push(item.parameterId)
           }
@@ -168,12 +174,14 @@ Page({
 
       _teachClass.name = '授课年级'
       _teachClass.content = data.teachGrade
-      _teachClass.type = data.teachGrade[0].parentId + ''
+      _teachClass.type = '38'
       _teachData.push(_teachClass)
-      
+
       if (data.teachGrade.length > 0) {
         var __teachGrade = []
         data.teachGrade.forEach(function (item) {
+          item.name = item.teachGradeName
+          item.parameterId = item.teachGradeId
           if (item.flag) {
             __teachGrade.push(item.parameterId)
           }
@@ -184,15 +192,16 @@ Page({
       }
 
       _teachBrance.name = '主授科目'
-      _teachBrance.type = data.teachBrance[0].parentId + '-1'
+      _teachBrance.type = '95-1'
       _teachData.push(_teachBrance)
-      if (data.teachBrance.length > 0) {
-        var _content = data.teachBrance
+      var _content = data.teachBranchMaster
+      if (_content.length > 0) {
         var __teachBrance = []
-        data.teachBrance.forEach(function (item) {
+        _content.forEach(function (item) {
+          item.name = item.teachBranchName
+          item.parameterId = item.teachBranchId
           if (item.flag && item.branchType == 'master') {
             __teachBrance.push(item.parameterId)
-            item.flag = true
           } else {
             item.flag = false
           }
@@ -204,20 +213,21 @@ Page({
       }
 
       _teachBrance1.name = '辅授科目'
-      _teachBrance1.type = data.teachBrance[0].parentId + '-2'
+      _teachBrance1.type = '95-2'
       _teachData.push(_teachBrance1)
-      if (data.teachBranceSlave.length > 0) {
-        var _content = data.teachBranceSlave
+      var _content1 = data.teachBranchSlave
+      if (_content1.length > 0) {
         var __teachBranceSlave = []
-        data.teachBranceSlave.forEach(function (item) {
+        _content1.forEach(function (item) {
+          item.name = item.teachBranchName
+          item.parameterId = item.teachBranchId
           if (item.flag && item.branchType == 'slave') {
             __teachBranceSlave.push(item.parameterId)
-            item.flag = true
           } else {
             item.flag = false
           }
         })
-        _teachBrance1.content = _content
+        _teachBrance1.content = _content1
         that.setData({
           'teachBranchSlave': __teachBranceSlave
         })
@@ -225,10 +235,9 @@ Page({
 
       _teachAddress.name = '授课区域'
       _teachAddress.content = data.teachAddress
-      _teachAddress.type = data.teachAddress[0].parentId + ''
+      _teachAddress.type = '78'
       _teachData.push(_teachAddress)
-
-      if (data.teachAddress.length > 0) {
+      if (data.teachAddress && data.teachAddress.length > 0) {
         var __teachAddress = []
         data.teachAddress.forEach(function (item) {
           if (item.flag) {
@@ -268,6 +277,7 @@ Page({
       that.setData({
         'teachData': _teachData
       })
+      console.log(that.data.teachData)
 
     }, function (err) {
       console.log(err)
@@ -319,7 +329,6 @@ Page({
     if (_currentType == '95-1') {
       var _branch = []
       this.data.teachData.forEach(function (item) {
-        console.log(item)
         if (item.type == '95-1' && item.content.length > 0) {
           item.content.forEach(function (_item, _index) {
             _item.flag = false
@@ -348,6 +357,7 @@ Page({
       this.setData({
         'teachLevel': _teachLevel
       })
+      console.log(this.data.teachLevel)
     } else if (_currentType == '38') { // 授课年级
       var _teachGrade = this.data.teachGrade
       if (_flag) {
@@ -358,6 +368,7 @@ Page({
       this.setData({
         'teachGrade': _teachGrade
       })
+      console.log(this.data.teachGrade)
     } else if (_currentType == '95-1') { // 主授科目
       var _teachBrance = []
 
@@ -369,6 +380,7 @@ Page({
       this.setData({
         'teachBrance': _teachBrance
       })
+      console.log(this.data.teachBrance)
     } else if (_currentType == '95-2') { // 辅授科目
       var _teachBranchSlave = this.data.teachBranchSlave
       if (_flag) {
@@ -379,6 +391,7 @@ Page({
       this.setData({
         'teachBranchSlave': _teachBranchSlave
       })
+      console.log(this.data.teachBranchSlave)
     } else if (_currentType == '78') { // 授课区域
       var _teachAddress = this.data.teachAddress
       if (_flag) {
@@ -389,6 +402,7 @@ Page({
       this.setData({
         'teachAddress': _teachAddress
       })
+      console.log(this.data.teachAddress)
     }
   },
   /**
@@ -476,6 +490,21 @@ Page({
   hideTeachBox: function () {
     this.setData({
       currentIdx: -1
+    })
+  },
+  getData: function () {
+    http.post('/teacher/listSubject', {
+      teachGrade: 2,
+      teachLevel: 2
+    }, function (res) {
+      console.log(res)
+    }, function (err) {
+      wx.showToast({
+        title: err.msg,
+        icon: 'none'
+      })
+    }, function () {
+      
     })
   }
 })

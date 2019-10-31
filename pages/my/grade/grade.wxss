@@ -151,3 +151,8 @@
   font-size: 24rpx;
   color: #646464;
 }
+.null-tip {
+  margin: 40rpx 0;
+  text-align: center;
+  color: #646464;
+}
