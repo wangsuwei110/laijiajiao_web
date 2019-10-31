@@ -48,21 +48,21 @@ Component({
       {
         "pagePath": "pages/Student/index/index",
         "text": "首页",
-        "iconPath": "../../images/students/home.png",
-        "selectedIconPath": "../../images/students/homeActive.png"
+        "iconPath": "../../images/Students/home.png",
+        "selectedIconPath": "../../images/Students/homeActive.png"
       },
       {
         "pagePath": "pages/Student/TeacherList/TeacherList",
         "text": "教员",
-        "iconPath": "../../images/students/teacher.png",
-        "selectedIconPath": "../../images/students/teacherActive.png"
+        "iconPath": "../../images/Students/teacher.png",
+        "selectedIconPath": "../../images/Students/teacherActive.png"
       },
 
       {
         "pagePath": "pages/Student/My/My",
         "text": "我的",
-        "iconPath": "../../images/students/my.png",
-        "selectedIconPath": "../../images/students/myActive.png"
+        "iconPath": "../../images/Students/my.png",
+        "selectedIconPath": "../../images/Students/myActive.png"
       }
     ]
   },

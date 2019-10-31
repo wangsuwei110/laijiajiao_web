@@ -85,7 +85,7 @@
         "text": "我的",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/my_active.png"
-      }
+      },
     ]
   },
   "sitemapLocation": "sitemap.json"

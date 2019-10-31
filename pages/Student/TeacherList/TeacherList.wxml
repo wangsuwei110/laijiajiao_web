@@ -13,7 +13,7 @@
                 <view class='nameWrap'>
                     <view class='nameInner'>
                         <text class='name'>{{item.teacherName}}</text>
-                        <image src='../../../images/students/Authentication.png' class='authentication' mode='widthFix'/>
+                        <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
                     </view>
                     <text class='price'>{{item.chargesStandard}}</text>
                 </view>

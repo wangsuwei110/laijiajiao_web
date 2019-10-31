@@ -1,24 +1,24 @@
 <!--pages/Student/My/My.wxml-->
 <PageLayout isStudent='true'>
     <view class='_container'>
-        <image src='../../../images/students/myBg.png' class='myBg' mode='widthFix'/>
+        <image src='../../../images/Students/myBg.png' class='myBg' mode='widthFix'/>
         
         <view class='itemWrap first'>
             <navigator class='item' url='/pages/Student/OrderList/OrderList'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_order.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_order.png' class='itemIocn'/>
                     <text>服务订单</text>
                 </view>
             </navigator>
             <navigator class='item' url='/pages/Student/MyCurriculum/MyCurriculum'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_subject.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_subject.png' class='itemIocn'/>
                     <text>我的课程</text>
                 </view>
             </navigator>
             <navigator class='item' url='/pages/Student/StudentList/StudentList'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_students.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_students.png' class='itemIocn'/>
                     <text>学员信息</text>
                 </view>
             </navigator>
@@ -26,19 +26,19 @@
         <view class='itemWrap'>
             <navigator class='item' url='/pages/Student/Collect/Collect'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_collect.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_collect.png' class='itemIocn'/>
                     <text>收藏教员</text>
                 </view>
             </navigator>
             <navigator class='item' url='/pages/Student/Setting/Setting'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_setting.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_setting.png' class='itemIocn'/>
                     <text>更多设置</text>
                 </view>
             </navigator>
             <navigator class='item' url='/pages/Student/Mailbox/Mailbox'>
                 <view class='itemInner'>
-                    <image src='../../../images/students/my_mailbox.png' class='itemIocn'/>
+                    <image src='../../../images/Students/my_mailbox.png' class='itemIocn'/>
                     <text>校长信箱</text>
                 </view>
             </navigator>

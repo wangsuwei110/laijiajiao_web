@@ -8,8 +8,8 @@
         <text class='nextWeek'>下一周</text>
     </view>
 
-    <image src='../../../images/students/lock.png' class='lockIcon leftLock' mode='widthFix'/>
-    <image src='../../../images/students/lock.png' class='lockIcon rightLock' mode='widthFix'/>
+    <image src='../../../images/Students/lock.png' class='lockIcon leftLock' mode='widthFix'/>
+    <image src='../../../images/Students/lock.png' class='lockIcon rightLock' mode='widthFix'/>
 </view>
 <view class='curriculumBox'>
     <view class='columnHeader'>
@@ -36,7 +36,7 @@
         <view class='contentCell'>
             <view class='stdName complete'>张军( 数学 ）</view>
             <view class='completeBox'>
-                <image src='../../../images/students/completeIcon.png' mode='widthFix' class='completeIcon'/>
+                <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
                 结课
             </view>
         </view>
