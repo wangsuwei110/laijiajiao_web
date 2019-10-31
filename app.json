@@ -56,7 +56,7 @@
   },
   "debug": true,
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "color": "#737373",
     "selectedColor": "#e50505",
     "backgroundColor": "#ffffff",
@@ -85,12 +85,6 @@
         "text": "我的",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/my_active.png"
-      },
-      {
-        "pagePath": "pages/Student/index/index",
-        "text": "首页",
-        "iconPath": "./images/students/home.png",
-        "selectedIconPath": "./images/students/homeActive.png"
       }
     ]
   },

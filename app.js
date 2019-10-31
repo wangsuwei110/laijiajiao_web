@@ -17,11 +17,16 @@ App({
         wx.reLaunch({
           url: userType === 1 ? '/pages/Student/LoginInfo/LoginInfo' : '/pages/editUserinfo/editUserinfo',
         })
-
       } else {
-        wx.switchTab({
-          url: userType === 1 ? '/pages/Student/index/index' : '/pages/home/index/index',
-        })
+        if (userType === 1) {
+          wx.reLaunch({
+            url: '/pages/Student/index/index',
+          })
+        } else {
+          wx.switchTab({
+            url: '/pages/home/index/index',
+          })
+        }
       }
     } else {
       wx.reLaunch({

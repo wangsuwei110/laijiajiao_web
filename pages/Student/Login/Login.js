@@ -114,7 +114,6 @@ Page({
       gender: gender, // 0：未知、1：男、2：女
       openId: openId
     }
-
     http.postPromise('/user/login', params).then(res => {
       wx.setStorageSync('user_id', res.data.studentId)
       wx.setStorageSync('user_name', res.data.studentName)
@@ -125,7 +124,7 @@ Page({
           url: '/pages/Student/LoginInfo/LoginInfo',
         })
       } else {
-        wx.switchTab({
+        wx.reLaunch({
           url: '/pages/Student/index/index',
         })
       }
