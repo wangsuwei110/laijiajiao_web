@@ -89,8 +89,8 @@
       {
         "pagePath": "pages/Student/index/index",
         "text": "首页",
-        "iconPath": "./images/students/home.png",
-        "selectedIconPath": "./images/students/homeActive.png"
+        "iconPath": "./images/Students/home.png",
+        "selectedIconPath": "./images/Students/homeActive.png"
       }
     ]
   },

@@ -12,7 +12,7 @@
             <text class='teacherName'>{{userinfo.name}}</text>
             <image wx:if='{{userinfo.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
             <image wx:elif='{{userinfo.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
-            <image src='../../../images/students/Authentication.png' class='authentication' mode='widthFix'/>
+            <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
 
             <view class='priceBox'>
                 <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
@@ -30,7 +30,7 @@
 
     <view class='collect' catchtap='onCollectTeacher'>
         <view class='collectInner'>
-            <image class='collectIcon' src='../../../images/students/collect.png' mode='widthFix'/>
+            <image class='collectIcon' src='../../../images/Students/collect.png' mode='widthFix'/>
             <text>已收藏</text>
         </view>
     </view>
