@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "学员登陆",
+  "navigationBarTitleText": "学员登录",
   "usingComponents": {
     "ClickContainer": "/components/ClickContainer/ClickContainer"
   }

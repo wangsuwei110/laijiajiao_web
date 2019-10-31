@@ -1,13 +1,46 @@
 <!--pages/Student/ReleaseDemand/ReleaseDemand.wxml-->
+
+<view class='container' wx:if='{{teacherInfo}}'>
+    <view class='title'>教员信息</view>
+    <view class='stdContent'>
+        <text class='stdName'>{{teacherInfo.name}}{{teacherInfo.sex?'（'+(teacherInfo.sex===1?'男':'女')+'）':' '}}{{teacherInfo.school}}</text>
+    </view>
+</view>
+
 <view class='container'>
     <view class='title'>学员信息</view>
 
+    <view class='item'>
+        <text class='label'>学员姓名</text>
+        <input class='inputBox' value='{{student.studentName}}' maxlength='10' bindinput='onNameChange'/>
+        <Switch options='{{grenderList}}' value='{{student.sex}}' bind:onChange='onGrederChange'/>
+    </view>
 
-    <ToggleTechType options='{{options}}'>
-        <text class='label' slot='label'>学员姓名</text>
-    </ToggleTechType>
+    <view class='item'>
+        <text class='label'>联系手机</text>
+        <text class='inputTxt'>{{student.parentPhoneNum}}</text>
+    </view>
+    <view class='item'>
+        <Picker class='selectBox' options='{{areaList}}' nameKey='name' valueKey='parameterId' label='上课区域' value='{{student.parameterId}}' bind:onChange='onAreaChange'/>
+    </view>
+    <view class='item'>
+        <text class='label'>上课地址</text>
+        <input class='inputBox' value='{{student.demandAddress}}' maxlength='100' bindinput='onAddressChange'/>
+    </view>
 
+    <view class='item'>
+        <Picker id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='选择年级' value='{{student.grade}}' bind:onChange='onGradeChange'/>
+        <Picker id='subject' class='selectBox' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' value='{{student.subjectId}}' bind:onChange='onSubjectChange'/>
+    </view>
+
+    <view class='item' bindtap='onGoSelectTime'>
+        <text class='label'>预计上课时段</text>
+        <text class='inputTxt'>{{student.timeRange && student.classNum?"已":"未"}}选择</text>
+    </view>
+
+    <textarea class='textArea' value='{{student.demandDesc}}' maxlength='200' placeholder-class='placeHolder' placeholder='为了更好的保证教育质量，请描述您的具体需求...' bindinput='onDescChange'/>
 </view>
+
 <ClickContainer class='saveBtnWrap'>
-    <view class='saveBtn'>发布需求</view>
+    <view class='saveBtn' bindtap='onSubmit'>发布需求</view>
 </ClickContainer>

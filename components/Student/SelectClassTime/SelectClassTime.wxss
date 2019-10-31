@@ -1,0 +1,58 @@
+/* components/Student/SelectClassTime/SelectClassTime.wxss */
+
+.header{
+    display: flex;
+    align-items: center;
+    height:60rpx;
+    background:rgba(242,239,246,1);
+}
+
+.labelCell{
+    text-align: center;
+    width: 204rpx;
+}
+
+.cell{
+    text-align: center;
+    flex: 1;
+    width: 1%;
+}
+
+.headerCell{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(155,155,155,1);
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    height: 106rpx;
+}
+
+.row + .row{
+    border-top: 2rpx solid #F2EFF6;
+}
+
+.tdCell{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(92,92,92,1);
+}
+
+.date{
+    font-size:24rpx;
+}
+
+.checkIcon{
+    width: 36rpx;
+    height: 36rpx;
+}

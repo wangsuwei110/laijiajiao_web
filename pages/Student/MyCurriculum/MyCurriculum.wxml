@@ -1,0 +1,59 @@
+<!--pages/Student/MyCurriculum/MyCurriculum.wxml-->
+
+<view class='topBox'>
+    <view class='title'>李圆圆的排课表</view>
+    <view class='weekWrap'>
+        <text class='prevWeek'>上一周</text>
+        2019.07.08—2019.07.14
+        <text class='nextWeek'>下一周</text>
+    </view>
+
+    <image src='../../../images/students/lock.png' class='lockIcon leftLock' mode='widthFix'/>
+    <image src='../../../images/students/lock.png' class='lockIcon rightLock' mode='widthFix'/>
+</view>
+<view class='curriculumBox'>
+    <view class='columnHeader'>
+        <text class='dateHead'>时间</text>
+        <view class='headCell'>
+            <view class='headTitle'>上午</view>
+            <text>08:00-12:00</text>
+        </view>
+        <view class='headCell'>
+            <view class='headTitle'>下午</view>
+            <text>12:00-18:00</text>
+        </view>
+        <view class='headCell'>
+            <view class='headTitle'>晚上</view>
+            <text>18:00-23:00</text>
+        </view>
+    </view>
+
+    <view class='tableRow'>
+        <text class='dateCell'>周一</text>
+        <view class='contentCell'>
+            <view class='stdName'>张军( 数学 ）</view>
+        </view>
+        <view class='contentCell'>
+            <view class='stdName complete'>张军( 数学 ）</view>
+            <view class='completeBox'>
+                <image src='../../../images/students/completeIcon.png' mode='widthFix' class='completeIcon'/>
+                结课
+            </view>
+        </view>
+        <view class='contentCell'>
+            <view class='stdName'>张军( 数学 ）</view>
+            <view class='stdName'>张军( 数学 ）</view>
+        </view>
+    </view>
+
+    <view class='tableRow'>
+        <text class='dateCell'>备注：</text>
+        <view class='contentCell pointBoxwrap'>
+            <view class='stdName complete pointBox'>已结课</view>
+            <view class='stdName pointBox'>未结课</view>
+        </view>
+    </view>
+</view>
+
+<view class='submitBtn'>立即续课</view>
+

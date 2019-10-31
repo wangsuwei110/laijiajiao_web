@@ -1,4 +1,5 @@
 // components/Student/SubjectFilterModal/SubjectFilterModal.js
+const http = require('../../../utils/api')
 Component({
   /**
    * 组件的属性列表
@@ -6,13 +7,24 @@ Component({
   properties: {
     show: {
       type: Boolean,
-      value: false
+      value: false,
+      observer(show, old) {
+        console.log(show, old)
+        if (show && !old && !this.loaded) {
+          this.loaded = true
+          http.postPromise('/teacher/listSubject', {}).then(data => {
+
+          })
+        }
+      }
     },
     subjects: {
       type: Array,
       value: []
     },
   },
+
+  loaded: false,
 
   /**
    * 组件的初始数据
@@ -26,5 +38,9 @@ Component({
    */
   methods: {
 
+  },
+
+  attached() {
+    
   }
 })

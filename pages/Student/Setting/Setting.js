@@ -47,7 +47,7 @@ Page({
    */
   onShow: function () {
     http.postPromise('/student/findStudent', { sid: wx.getStorageSync('user_id') }).then(data => {
-      this.setData({ student: data.data })
+      this.setData({ student: data.data[0] })
     })
   },
 

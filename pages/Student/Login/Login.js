@@ -99,6 +99,7 @@ Page({
 
   // 登录、注册账号
   onGotUserInfo: function (e) {
+    console.log(e)
     if (e.detail.userInfo) {
       //var gender = e.detail.userInfo.gender
       this.onLogin(e.detail.userInfo.gender)
@@ -117,7 +118,7 @@ Page({
     http.postPromise('/user/login', params).then(res => {
       wx.setStorageSync('user_id', res.data.studentId)
       wx.setStorageSync('user_name', res.data.studentName)
-      wx.setStorageSync('user_phone', res.data.telephone)
+      wx.setStorageSync('user_phone', this.data.phone)
       wx.setStorageSync('user_type', 1)
       if (!res.data.studentName) {
         wx.redirectTo({

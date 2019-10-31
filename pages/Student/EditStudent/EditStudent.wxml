@@ -1,7 +1,7 @@
 <!--pages/Student/EditStudent/EditStudent.wxml-->
 
 <view class='mainContainer' bindtap='onCloseClick'>
-
+    
     <view class='contenBox'>
         <view class='title'>学员信息</view>
         <view class='stdNameBox'>

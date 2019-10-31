@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    studentList: []
+    studentList: [],
+    height: 0,
+    loaded: false,
   },
 
   /**
@@ -22,7 +24,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    const query = this.createSelectorQuery()
+    query.select('#bottomBtn').boundingClientRect(res => {
+      //console.log(res.height, wx.getSystemInfoSync())
+      this.setData({
+        height: `${wx.getSystemInfoSync().windowHeight - res.height}px`
+      })
+    })
+    query.exec()
   },
 
   /**
@@ -30,10 +39,10 @@ Page({
    */
   onShow: function () {
     http.postPromise('/student/findStudent', { findType: 1, sid: wx.getStorageSync('user_id') }).then(data => {
-      this.setData({ studentList: data.data })
+      this.setData({ studentList: data.data, loaded: true })
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面隐藏
    */

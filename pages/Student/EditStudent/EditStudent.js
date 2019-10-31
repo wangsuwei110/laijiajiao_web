@@ -73,8 +73,19 @@ Page({
     } else {
 
       student.sex = ~~student.sex
-      delete student.deleteStatus
-      http.postPromise('/student/update', student).then(data => {
+      const { sex,
+        sid,
+        studentName,
+        subjectId,
+        grade } = student
+
+      http.postPromise('/student/update', {
+        sex,
+        sid,
+        studentName,
+        subjectId,
+        grade
+      }).then(data => {
         wx.navigateBack({
           delta: 1
         });
@@ -101,7 +112,7 @@ Page({
       })
 
       http.postPromise('/student/findStudent', { sid: options.id }).then(data => {
-        this.setData({ student: data.data })
+        this.setData({ student: data.data[0] })
       })
     }
 

@@ -2,6 +2,7 @@
 
 .container{
     position: absolute;
+    z-index: 1;
     left: 0;
     top: 85rpx;
     width: 100%;

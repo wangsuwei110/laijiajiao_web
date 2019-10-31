@@ -1,4 +1,7 @@
 App({
+  globalData: {
+    weekData: null
+  },
   onLaunch: function () {
     // 获取手机信息
     let sysModel = wx.getSystemInfoSync().model;

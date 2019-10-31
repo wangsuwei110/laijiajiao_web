@@ -1,0 +1,18 @@
+/* components/DropDown/DropDown.wxss */
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30rpx;
+}
+
+.img{
+    width: 66rpx;
+    height: 66rpx;
+}
+
+.txt{
+    font-size: 24rpx;
+    color: #999;
+}

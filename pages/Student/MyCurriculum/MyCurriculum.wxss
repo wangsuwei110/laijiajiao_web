@@ -1,0 +1,208 @@
+/* pages/Student/MyCurriculum/MyCurriculum.wxss */
+
+page{
+    box-sizing: border-box;
+    padding: 20rpx 25rpx;
+}
+
+.topBox{
+    position: relative;
+    height: 124rpx;
+    background-color: #088BDB;
+}
+
+.topBox::before{
+    content: '';
+    display: table;
+    width: 100%;
+}
+
+.title{
+    text-align: center;
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:bold;
+    color:rgba(255,243,58,1);
+    margin-top: 18rpx;
+}
+
+
+.weekWrap{
+    position: relative;
+    text-align: center;
+    margin: 0 80rpx;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #fff;
+    margin-top: 20rpx;
+}
+
+.prevWeek{
+    position: absolute;
+    left: 0;
+}
+
+.prevWeek::before{
+    content: '';
+    display: inline-block;
+    width: 13rpx;
+    height: 13rpx;
+    border:2rpx solid #fff;
+    border-width: 0 0 2rpx 2rpx;
+    transform: rotate(45deg);
+}
+
+.nextWeek{
+    position: absolute;
+    right: 0;
+}
+
+.nextWeek::after{
+    content: '';
+    display: inline-block;
+    width: 13rpx;
+    height: 13rpx;
+    border:2rpx solid #fff;
+    border-width: 2rpx 2rpx 0 0;
+    transform: rotate(45deg);
+}
+
+.lockIcon{
+    position: absolute;
+    bottom: -32rpx;
+    width: 30rpx;
+}
+
+.leftLock{
+    left: 20rpx;
+}
+
+.rightLock{
+    right: 20rpx;
+}
+
+
+.curriculumBox{
+    background-color: #fff;
+    padding: 45rpx 26rpx 0 26rpx;
+}
+
+.columnHeader{
+    display: flex;
+    align-items: center;
+    height: 78rpx;
+    font-size:22rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #7d7d7d;
+    background-color: #F7F6F8;
+}
+
+.dateHead{
+    padding: 0 16rpx;
+}
+
+.headCell{
+    flex: 1;
+    text-align: center;
+}
+
+.headTitle{
+    color: #646464;
+}
+
+.tableRow{
+    display: flex;
+    align-items: flex-start;
+}
+
+.tableRow + .tableRow{
+    border-top: 2rpx solid #EEE;
+}
+
+.dateCell{
+    width: 87rpx;
+    padding: 30rpx 0 28rpx 0;
+    font-size:22rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+}
+
+.contentCell{
+    flex: 1;
+    padding: 28rpx 0 26rpx 0;
+}
+
+.stdName{
+    display: flex;
+    align-items: center;
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #646464;
+}
+
+.stdName::before{
+    content: '';
+    display: inline-block;
+    width: 10rpx;
+    height: 10rpx;
+    background-color: #E50505;
+    border-radius: 100%;
+    margin-right: 10rpx;
+}
+
+.stdName.complete::before{
+    background-color: #14D101;
+}
+
+.completeBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 102rpx;
+    height: 32rpx;
+
+    background:rgba(255,253,253,1);
+    border:2rpx solid rgba(255,215,215,1);
+    border-radius:7rpx;
+
+    font-size:22rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color:rgba(229,5,5,1);
+    margin: 10rpx 0 0 22rpx;
+}
+
+.completeIcon{
+    width: 16rpx;
+    margin-right: 8rpx;
+}
+
+.pointBoxwrap{
+    display: flex;
+    align-items: center;
+}
+
+.pointBox{
+    margin-right: 40rpx;
+}
+
+
+.submitBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22rpx;
+    height: 76rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
+
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}

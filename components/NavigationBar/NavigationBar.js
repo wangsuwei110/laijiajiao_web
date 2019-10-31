@@ -44,7 +44,27 @@ Component({
         "selectedIconPath": "../../images/my_active.png"
       }
     ],
-    student: []
+    student: [
+      {
+        "pagePath": "pages/Student/index/index",
+        "text": "首页",
+        "iconPath": "../../images/students/home.png",
+        "selectedIconPath": "../../images/students/homeActive.png"
+      },
+      {
+        "pagePath": "pages/Student/TeacherList/TeacherList",
+        "text": "教员",
+        "iconPath": "../../images/students/teacher.png",
+        "selectedIconPath": "../../images/students/teacherActive.png"
+      },
+
+      {
+        "pagePath": "pages/Student/My/My",
+        "text": "我的",
+        "iconPath": "../../images/students/my.png",
+        "selectedIconPath": "../../images/students/myActive.png"
+      }
+    ]
   },
 
   /**

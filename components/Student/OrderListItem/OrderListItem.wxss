@@ -115,8 +115,12 @@
     margin-top: 38rpx;
 }
 
-.evaluate + .payBtn{
-    margin-top: 22rpx;
+.evaluate + .btnSpace{
+    padding-top: 22rpx;
+}
+
+.paramItem + .btnSpace{
+    padding-top: 36rpx;
 }
 
 .signUpCount{
@@ -134,4 +138,38 @@
 
 .emphasis{
     color: #1988CA;
+}
+
+.passBtn{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color:rgba(53,137,2,1);
+    border-right: 2rpx solid #F5F5F5;
+}
+
+.unPassBtn{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #E01212;
+    
+}
+
+.actionWrap{
+    display: flex;
+    align-items: center;
+}
+
+.evaluateBtn{
+    flex: 1;
+    background-color: #FF5500;
+}
+
+.shrink{
+    flex: 1;
 }

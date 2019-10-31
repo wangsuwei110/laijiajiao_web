@@ -1,0 +1,148 @@
+/* pages/Student/OrderPass/OrderPass.wxss */
+
+
+page{
+    box-sizing: border-box;
+    padding: 20rpx;
+}
+
+._container{
+    background-color: #fff;
+    padding: 0 20rpx 40rpx 20rpx;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    height: 78rpx;
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+    border-bottom: 2rpx solid #F2EFF6;
+}
+
+.title::before{
+    content: '';
+    display: inline-block;
+    border-radius: 100%;
+    width: 12rpx;
+    height: 12rpx;
+    background-color: #4DB6F5;
+    margin-right: 8rpx;
+}
+
+.timeTitle{
+    display: flex;
+    align-items: center;
+    height: 78rpx;
+}
+
+.timeTitleTxt{
+    flex: 1;
+    font-size: 28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+}
+
+.timeSubTitle{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(155,155,155,1);
+}
+
+.dateTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4DB6F5;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #fff;
+    height: 60rpx;
+}
+
+.bottomAction{
+    display: flex;
+    margin-top: 30rpx;
+}
+
+.leftBox{
+    flex: 1;
+    width: 1%;
+}
+
+.quantityBox{
+    display: flex;
+    align-items: center;
+}
+
+.amountBox{
+    font-size:28rpx;
+    font-family:Microsoft YaHei UI;
+    font-weight:300;
+    color:#5C5C5C;
+}
+
+.amountItem{
+    margin-top: 10rpx;
+}
+
+.redAmount{
+    color: #E50505;
+}
+
+.amountTxt{
+    font-size: 24rpx;
+    color: #C2C2C2;
+}
+
+.sumAmount{
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #E50505;
+}
+
+.discountLabel{
+    display: flex;
+    align-items: baseline;
+    margin-top: 20rpx;
+}
+
+.discountLabelItem + .discountLabelItem{
+    margin-top: 10rpx;
+}
+
+.label{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:#5C5C5C;
+}
+
+.amount{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:#5C5C5C;
+}
+
+.saveBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height:76rpx;
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+    border-radius:5rpx;
+
+    font-size:32rpx;
+    font-family:Microsoft YaHei;
+    font-weight:300;
+    color: #fff;
+    margin-top: 22rpx;
+}

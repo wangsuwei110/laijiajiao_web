@@ -10,14 +10,16 @@ Component({
       observer(show, old) {
         if (!show && old) {
           const { type, sex } = this.data
-          this.setData({ _type: type === null ? -1 : type, _sex: sex })
+          console.log(type, sex)
+          this.setData({ _type: type === null ? -1 : type, _sex: sex === null ? 0 : sex })
         }
       },
     },
     type: {
       type: Number,
-      value: null,
+      value: -1,
       observer(type) {
+        console.log(type)
         this.setData({ _type: type === null ? -1 : type })
       },
     },
@@ -25,7 +27,7 @@ Component({
       type: Number,
       value: 0,
       observer(sex) {
-        this.setData({ _sex: sex })
+        this.setData({ _sex: sex === null ? 0 : sex })
       },
     }
   },
@@ -80,7 +82,7 @@ Component({
 
     onSubmitClick() {
       const { _type: type, _sex: sex } = this.data
-      this.triggerEvent('onChange', { type: type >= 0 ? type : null, sex })
+      this.triggerEvent('onChange', { type: type >= 0 ? type : null, sex: sex > 0 ? sex : null })
     }
   }
 })

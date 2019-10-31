@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "上课时段",
+  "usingComponents": {
+    "SelectClassTime": "/components/Student/SelectClassTime/SelectClassTime",
+    "BottomInfo": "/components/Student/BottomInfo/BottomInfo",
+    "ClickContainer": "/components/ClickContainer/ClickContainer"
+  }
+}

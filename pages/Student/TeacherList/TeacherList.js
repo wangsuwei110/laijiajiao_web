@@ -56,30 +56,45 @@ private Integer sex;
 
   data: {
     searchData: {
-      subjectId: 0,
-      addressId: 0,
-      schoolId: 0,
+      subjectId: null,
+      addressId: null,
+      schoolId: null,
       type: null,
-      sex: 0,
+      sex: null,
     },
-    teacherList: []
+    teacherList: [],
+    pageIndex: 1,
+    pageSize: 20,
+    isEnd: false,
   },
 
+  running: false,
 
   onChange(e) {
     const { searchData } = this.data
     this.setData({ searchData: Object.assign({}, searchData, e.detail) }, () => this.fetchList())
   },
 
-  onCancel (){
+  onCancel() {
     this.selectComponent('teacherFilter').onCancel()
   },
 
   fetchList(pageIndex = 1) {
-    const { searchData } = this.data
-    http.postPromise('/teacher/list', Object.assign({}, searchData, { pageIndex })).then(data => {
-      
-    })
+
+    if (!this.running) {
+      this.running = true
+      const { searchData, teacherList, pageSize } = this.data
+      http.postPromise('/teacher/list', Object.assign({}, searchData, { pageIndex, pageSize })).then(data => {
+        this.setData({
+          teacherList: pageIndex === 1 ? data.data : data.data ? [...teacherList, ...data.data] : teacherList,
+          pageIndex,
+          isEnd: !data.data || data.data.length < pageSize,
+          //pageCount: data.data ? 1000 : pageIndex
+        })
+        this.running = false
+      })
+    }
+
   },
 
   /**
@@ -89,4 +104,11 @@ private Integer sex;
     this.fetchList()
   },
 
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onScrollToLower: function () {
+    this.fetchList(this.data.pageIndex + 1)
+  },
 })

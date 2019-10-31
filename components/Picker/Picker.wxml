@@ -1,0 +1,11 @@
+<!--components/Picker/Picker.wxml-->
+<picker range='{{dataList}}' value='{{activeIndex}}' bindchange='onChange'>
+    <view class='{{custom?"":"container"}}'>
+        <slot wx:if='{{custom}}'/>
+        <block wx:else>
+            <text class="label">{{label}}</text>
+            <text class="cont">{{names}}</text>
+            <view class="arrowIcon"/>
+        </block>
+    </view>
+</picker>

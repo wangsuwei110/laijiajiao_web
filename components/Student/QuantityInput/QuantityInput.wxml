@@ -1,0 +1,6 @@
+<!--components/Student/QuantityInput/QuantityInput.wxml-->
+<view class='container'>
+    <text class='btn'>-</text>
+    <input class='input' type='number' bindinput='onChange'/>
+    <text class='btn'>+</text>
+</view>

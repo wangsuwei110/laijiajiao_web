@@ -1,0 +1,61 @@
+/* pages/Student/NotPass/NotPass.wxss */
+
+
+page{
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    height: 78rpx;
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(67,67,67,1);
+    
+    border-bottom: 2rpx solid #F2EFF6;
+}
+
+.title::before{
+    content: '';
+    display: block;
+    width:12rpx;
+    height:12rpx;
+    background:rgba(77,182,245,1);
+    border-radius:50%;
+    margin-right: 8rpx;
+}
+
+.container{
+    background-color: #fff;
+    padding: 0 20rpx;
+}
+
+.textArea{
+    padding: 10rpx 20rpx;
+    font-size:24rpx;
+font-family:Noto Sans S Chinese;
+font-weight:300;
+}
+
+.placeHolder{
+    color:rgba(155,155,155,1);
+}
+
+.addBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
+
+    margin-top: 20rpx;
+
+    background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}

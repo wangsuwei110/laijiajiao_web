@@ -1,0 +1,30 @@
+<!--pages/Student/SelectClassTime/SelectClassTime.wxml-->
+
+<view class='container'>
+    <view class='contentBox'>
+        <view class='title'>
+            <text class='titleName'>上课时间</text>
+            <text class='subTitle'>根据孩子的空闲时间，勾选可能上课的时间段</text>
+        </view>
+        <SelectClassTime weekData='{{timeRange}}' bind:onChange='onWeekChange' class='table'/>
+    </view>
+
+    <view class='contentBox'>
+        <view class='title'>
+            <text class='titleName'>每周课数</text>
+            <text class='subTitle'>选择每周上课的次数</text>
+        </view>
+
+        <view class='frequencyList'>
+            <view class='itemWrap' wx:for='{{frequencyList}}' wx:key='{{item.id}}'>
+                <view class='item' data-id='{{item.id}}' bindtap='onWeekNumChange'>{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+
+    <ClickContainer class='saveBtnWrap'>
+        <view class='saveBtn' bindtap='onSubmit'>确定选择</view>
+    </ClickContainer>
+</view>
+
+<BottomInfo/>

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/Student/TeacherList/TeacherList",
     "pages/login/login",
     "pages/home/index/index",
     "pages/home/demandList/demandList",
@@ -29,16 +28,24 @@
     "pages/editUserinfo/editUserinfo",
     "pages/my/setting/setting",
     "pages/my/grade/grade",
-    "pages/Student/ReleaseDemand/ReleaseDemand",
     "pages/Student/Login/Login",
     "pages/Student/index/index",
     "pages/Student/LoginInfo/LoginInfo",
-    "pages/Student/OrderList/OrderList",
     "pages/Student/Mailbox/Mailbox",
     "pages/Student/EditStudent/EditStudent",
     "pages/Student/StudentList/StudentList",
     "pages/Student/Setting/Setting",
-    "pages/Student/Collect/Collect"
+    "pages/Student/Collect/Collect",
+    "pages/Student/MyCurriculum/MyCurriculum",
+    "pages/Student/TeacherList/TeacherList",
+    "pages/Student/TeacherDetail/TeacherDetail",
+    "pages/Student/My/My",
+    "pages/Student/OrderList/OrderList",
+    "pages/Student/ViewAppointment/ViewAppointment",
+    "pages/Student/SelectClassTime/SelectClassTime",
+    "pages/Student/ReleaseDemand/ReleaseDemand",
+    "pages/Student/NotPass/NotPass",
+    "pages/Student/OrderPass/OrderPass"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -49,6 +56,7 @@
   },
   "debug": true,
   "tabBar": {
+    "custom": true,
     "color": "#737373",
     "selectedColor": "#e50505",
     "backgroundColor": "#ffffff",
@@ -77,6 +85,12 @@
         "text": "我的",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/my_active.png"
+      },
+      {
+        "pagePath": "pages/Student/index/index",
+        "text": "首页",
+        "iconPath": "./images/students/home.png",
+        "selectedIconPath": "./images/students/homeActive.png"
       }
     ]
   },

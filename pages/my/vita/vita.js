@@ -134,10 +134,10 @@ Page({
   /**
    * 获取简历信息
    */
-  getUserinfo: function () {
+  getUserinfo: function (teacherId) {
     var that = this
     var params = {
-      teacherId: wx.getStorageSync('user_id')
+      teacherId
     }
     http.post('/userInfo/queryUserInfosDetail', params, function (res) {
       var data = res.data
@@ -242,7 +242,7 @@ Page({
     ctx2.setLineCap("butt")
     ctx2.stroke()
 
-    
+
     //圆环的绘制
     var num = (2 * Math.PI / 100 * start) - 0.5 * Math.PI
     ctx2.beginPath()
@@ -268,8 +268,15 @@ Page({
       that.canvasTap(id, color, start, end, time, w, h)
     }, time)
   },
-  onLoad: function () {
-    this.getUserinfo()
-    
+
+  onLoad: function (options) {
+    this.fromStudent = !!options.id
+    if (this.fromStudent) {
+      wx.setNavigationBarTitle({
+        title: '教员信息',
+      });
+    }
+    this.getUserinfo(options.id || wx.getStorageSync('user_id'))
+
   }
 })

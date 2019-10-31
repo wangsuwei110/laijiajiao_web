@@ -1,0 +1,4 @@
+<!--components/Empty/Empty.wxml-->
+<view class='container'>
+    <text class='txt'>暂无信息</text>
+</view>

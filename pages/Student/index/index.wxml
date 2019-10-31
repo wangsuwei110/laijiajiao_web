@@ -8,7 +8,7 @@
 
 
     <view class='subjectContainer'>
-        <navigator class='subjectItem' wx:for='{{subjectList}}'>
+        <navigator class='subjectItem' wx:for='{{subjectList}}' wx:key='this'>
             <image class='subjectIcon' mode='aspectFix' />
             <text class='subjectTxt'>{{item}}</text>
         </navigator>
