@@ -28,7 +28,7 @@ Component({
       this.triggerEvent('onScrollToLower')
     }
   },
-
+  
   ready() {
     const query = this.createSelectorQuery()
     query.select('#bottomNavigation').boundingClientRect(res => {

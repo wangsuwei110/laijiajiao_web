@@ -45,7 +45,8 @@
     "pages/Student/SelectClassTime/SelectClassTime",
     "pages/Student/ReleaseDemand/ReleaseDemand",
     "pages/Student/NotPass/NotPass",
-    "pages/Student/OrderPass/OrderPass"
+    "pages/Student/OrderPass/OrderPass",
+    "pages/Student/Evaluate/Evaluate"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -85,7 +86,7 @@
         "text": "我的",
         "iconPath": "./images/my.png",
         "selectedIconPath": "./images/my_active.png"
-      },
+      }
     ]
   },
   "sitemapLocation": "sitemap.json"
