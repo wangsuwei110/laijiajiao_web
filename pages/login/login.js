@@ -9,18 +9,18 @@ Page({
   },
   // 手机号码
   getPhone: function (e) {
-    this.setData({'phone': e.detail.value})
+    this.setData({ 'phone': e.detail.value })
   },
   // 验证码
   getCode: function (e) {
-    this.setData({'code': e.detail.value})
+    this.setData({ 'code': e.detail.value })
   },
   // 获取短信验证码
   getVerificationCode: function () {
     var that = this;
     var phoneReg = /^1[34578]\d{9}$/;
 
-    if (!this.data.isClick) {return;}
+    if (!this.data.isClick) { return; }
 
     if (!phoneReg.test(this.data.phone)) {
       wx.showToast({
@@ -31,7 +31,7 @@ Page({
       return;
     }
 
-    this.setData({'isClick': false})
+    this.setData({ 'isClick': false })
     var num = 60;
     var timer = setInterval(function () {
       num--;
@@ -42,7 +42,7 @@ Page({
           'isClick': true
         })
       } else {
-        that.setData({'codeText': '等待' + num + '秒'})
+        that.setData({ 'codeText': '等待' + num + '秒' })
       }
     }, 1000)
 

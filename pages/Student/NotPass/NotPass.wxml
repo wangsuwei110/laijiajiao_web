@@ -9,5 +9,5 @@
     <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写试讲不通过的原因，以便我们为您更好的服务'/>
 </view>
 
-
+<view class='addBtn'>确认提交</view>
 

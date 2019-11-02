@@ -86,8 +86,10 @@ page{
     font-family:Microsoft YaHei;
     font-weight:300;
     color:#737373;
+}
 
-    
+.item.active{
+    border-color: rgba(77,182,245,1);
 }
 
 

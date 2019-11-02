@@ -78,10 +78,25 @@ Page({
 
       student.sex = ~~student.sex
       delete student.deleteStatus
-      http.postPromise('/student/update', student).then(data => {
-          wx.reLaunch({
-            url: '/pages/Student/index/index',
-          });
+
+      const {
+        sex,
+        sid,
+        studentName,
+        subjectId,
+        grade
+      } = student
+
+      http.postPromise('/student/update', {
+        sex,
+        sid,
+        studentName,
+        subjectId,
+        grade
+      }).then(data => {
+        wx.reLaunch({
+          url: '/pages/Student/index/index',
+        });
       })
     }
   },
