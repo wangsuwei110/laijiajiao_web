@@ -63,15 +63,17 @@ page {
   border-radius: 100rpx;
   background-color: #e50505;
   color: #fff;
+  font-size: 34rpx;
 }
 .edit-userinfo-container button::after {
   border-radius: 100rpx;
   border: none;
 }
 .slogan {
-  margin-top: 20rpx;
+  margin-top: 32rpx;
   text-align: center;
   color: #e50505;
+  font-size:32rpx;
 }
 .item-content {
   position: absolute;
@@ -79,7 +81,7 @@ page {
   left: 0;
   width: 100%;
   background-color: #fff;
-  z-index: 10;
+  z-index: 2222220 !important;
 }
 .item-content .content-item::after {
   display: block;

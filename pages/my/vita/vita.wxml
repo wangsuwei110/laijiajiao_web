@@ -60,11 +60,11 @@
       <text class="title">基本信息</text>
     </view>
     <view class="panel-body identity">
-      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home}}</text></view>
-        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime}}</text></view>
-        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school}}</text></view>
-        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major}}</text></view>
-        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address}}</text></view>
+      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home ? userinfo.home : '--'}}</text></view>
+        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime ? userinfo.beginSchoolTime : "--"}}</text></view>
+        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school ? userinfo.school : '--'}}</text></view>
+        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major ? userinfo.major : '--'}}</text></view>
+        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address ? userinfo.address : '--'}}</text></view>
     </view>
   </view>
   <view class="spacing-10"></view>
@@ -106,7 +106,7 @@
       <view class="dot"></view>
       <text class="title">所获证书</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{certificateList.length > 0 && certificateList}}'>
       <view class="certificate">
         <view class="certificate-inner">
           <view wx:for="{{certificateList}}" wx:for-item="certificate" wx:key="{{index}}" class="certificate-item">
@@ -116,6 +116,9 @@
         </view>
       </view>
     </view>
+    <view class="panel-body" wx:else>
+      暂无数据 
+    </view>
   </view>
   <view class="spacing-10"></view>
   <view class="panel">
@@ -124,7 +127,7 @@
       <text class="title">可教科目</text>
     </view>
     <view class="panel-body">
-      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.teachBranchName}}</text>
     </view>
   </view>
 

@@ -1,3 +1,5 @@
+
+var http = require('../../utils/api.js')
 Page({
   data: {
     scrollHeight: "",
@@ -21,6 +23,25 @@ Page({
       }
     ]
   },
+  // 订单列表
+  getList () {
+    http.post('/teacher/queryDemandsByTeacher', {teacherId: wx.getStorageSync('user_id')}, function (res) {
+      console.log(res.data)
+      var data = res.data
+      if (res.code === '200') {
+        console.log(data, '111111')
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }, function (err) {
+      console.log(err)
+    }, function () {
+      wx.hideLoading()
+    })
+  },
   onLoad: function () {
     const that = this;
     let winHeight = wx.getSystemInfoSync().windowHeight;
@@ -30,6 +51,7 @@ Page({
         scrollHeight: winHeight - rect.height
       })
     }).exec();
+    this.getList()
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
