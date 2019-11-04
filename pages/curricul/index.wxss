@@ -13,6 +13,7 @@
   width:100%;
   border-top-left-radius: 5rpx;
   border-top-right-radius: 5rpx;
+  position: relative;
 }
 .change-time{
   display: flex;
@@ -54,14 +55,28 @@
   text-align: center;
 
 }
+.ivon1{
+  width:19rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: -30rpx;
+  left:40rpx;
+}
+.ivon2 {
+  width:19rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: -30rpx;
+  right:40rpx;
+}
 .tit-count{
   border-bottom-left-radius: 5rpx;
   border-bottom-right-radius: 5rpx;
 }
 .calander{
-  width: 15rpx;
-  height: 16rpx;
-  margin-right: 5rpx;
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 7rpx;
 }
 .tit-count{
   width: 650rpx;

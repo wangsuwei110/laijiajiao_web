@@ -75,9 +75,9 @@ Page({
       teachBranchValue: teachBranchValue
     })
     if (teachBranchValue.length > 2) {
-      slave = this.data.teachBranchValue.splice(0, 2).join(',') + '...'
+      slave = this.data.teachBranchValue[0] + ',' + this.data.teachBranchValue[1] + '...'
     } else {
-      slave = this.data.teachBranchValue.splice(0, 2).join(',')
+      slave = this.data.teachBranchValue.join(',')
     }
     this.setData({
       slave: slave,
@@ -140,7 +140,7 @@ Page({
       currentIdx: _id
     })
   },
-  // 查询辅导学段
+  // 查询辅导年级及科目
   getProject (grade, teachGrade) {
     let that = this
     http.post('/teacher/listSubject', {teachLevel: grade, teachGrade: teachGrade}, function (res) {
@@ -224,9 +224,9 @@ Page({
       allgradesCheckedValue: allgradesCheckedValue
     })
     if (this.data.allgradesCheckedValue.length > 2) {
-      showGradeValue = this.data.allgradesCheckedValue.splice(0, 2).join(',') + '...'
+      showGradeValue = this.data.allgradesCheckedValue[0] + ',' + this.data.allgradesCheckedValue[1] + '...'
     } else {
-      showGradeValue = this.data.allgradesCheckedValue.splice(0, 2).join(',')
+      showGradeValue = this.data.allgradesCheckedValue.join(',')
     }
     this.setData({
       showGradeValue: showGradeValue,
@@ -260,10 +260,11 @@ Page({
       gradesCheckedValue: gradesCheckedValue
     })
     showVal = this.data.gradesCheckedValue
+    console.log(showVal, '11111')
     if (showVal.length > 2) {
-      showValue = showVal.splice(0, 2).join(',') + '...'
+      showValue = showVal[0] + ',' + showVal[1] + '...'
     } else {
-      showValue = showVal.splice(0, 2).join(',')
+      showValue = showVal.join(',')
     }
     this.setData({
       showValue: showValue,

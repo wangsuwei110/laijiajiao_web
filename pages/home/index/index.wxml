@@ -44,8 +44,8 @@
         <text bindtap="demandList" class="head-link-btn">更多></text>
       </view>
       <view class="panel-body">
-        <view class="demand-wrapper">
-          <view bindtap="demandDetail" class="demand-item">
+        <view class="demand-wrapper" wx:if='{{details.fitTeacherOrderList}}'>
+          <view bindtap="demandDetail" wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
               <text class="name">三年级数学、语文</text>
@@ -84,6 +84,29 @@
               </view>
               <view class="demand-li">
                 <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="demand-wrapper" wx:else>
+          <view bindtap="demandDetail" wx:for='{{details.studentDemandList.dataList}}' class="demand-item">
+            <view class="item-title">
+              <text class="dot"></text>
+              <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+              <text class="date">{{item.createTime}}</text>
+            </view>
+            <view class="join">
+              <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+            </view>
+            <view class="demand-ul">
+              <view class="demand-li">
+                <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<em wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</em>）</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">详细需求:</text><text class="cont">{{item.demandDesc}}</text>
               </view>
             </view>
           </view>
