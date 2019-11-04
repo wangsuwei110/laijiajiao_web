@@ -16,6 +16,10 @@ page {
   padding: 28rpx 0;
   line-height: 1;
 }
+.label em{
+  font-style:normal;
+  color:red;
+}
 .panel .panel-top::after {
   display: block;
   content: "";

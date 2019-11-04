@@ -16,16 +16,16 @@
   <view class="panel">
     <view class="panel-top">
       <view class="dot"></view>
-      <text class="title">教员信息</text>
+      <text class="title"><em>*</em>教员信息</text>
     </view>
     <view class="panel-body">
       <view class="basic-panel">
         <view class="panel-item">
-          <text class="label">教员姓名</text>
+          <text class="label"><em>*</em>教员姓名</text>
           <input bindinput="getUserName" class="cont" type="text" value="{{userinfo.name}}" placeholder="请输入教员姓名 "placeholder-class="placeholder"></input>
         </view>
         <view class="panel-item">
-          <text class="label">大学名称</text>
+          <text class="label"><em>*</em>大学名称</text>
           <input bindinput="getUserSchool"  class="cont" type="text" value="{{userinfo.school}}" placeholder="请输入大学名称" placeholder-class="placeholder"></input>
           <view class="item-content {{currentIdx == 1 ? 'show' : 'hide'}}">
             <view class="item-content-inner">
@@ -47,12 +47,12 @@
           
         </view>
         <view class="panel-item">
-          <text class="label">详细住址</text>
+          <text class="label"><em>*</em>详细住址</text>
           <input bindinput="getUserAddress" class="cont" type="text" value="{{userinfo.address}}" placeholder="请输入详细住址" placeholder-class="placeholder"></input>
         </view>
         <view catchtap="toggleTechType" data-id="2" class="panel-item">
-          <text class="label">辅导学段</text>
-          <text class="cont">{{userinfo.teachLevel}}</text>
+          <text class="label"><em>*</em>辅导学段</text>
+          <text class="cont">{{showValue ? showValue : '请选择辅导学段'}}</text>
           <view class="arrow-icon arrow-bottom"></view>
           <view class="item-content {{currentIdx == 2 ? 'show' : 'hide'}}">
             <view class="item-content-inner">
@@ -68,13 +68,13 @@
         </view>
 
         <view catchtap="toggleLevel" data-id="5" class="panel-item">
-            <text class="label">辅导年级</text>
-            <text class="cont">{{userinfo.grade}}</text>
+            <text class="label"><em>*</em>辅导年级</text>
+            <text class="cont">{{showGradeValue ? showGradeValue : '请选择辅导年级'}}</text>
             <view class="arrow-icon arrow-bottom"></view>
             <view class="item-content {{currentIdx == 5 ? 'show' : 'hide'}}">
               <view class="item-content-inner">
                 <scroll-view scroll-y style="max-height: 400rpx;">
-                  <view catchtap="selectGrade" data-parentid="2" data-id="{{index}}" data-item="{{item.value}}" data-key="{{item.key}}" wx:for="{{subjects}}" wx:key="{{index}}" class="content-item">
+                  <view catchtap="selectGrade" data-parentid="2" data-id="{{index}}" data-item="{{item}}" data-key="{{item.key}}" wx:for="{{subjects}}" wx:key="{{index}}" class="content-item">
                     <view class="item-icon {{item.isHave === 1 ? 'selected': ''}}"></view>
                     <text class="{{item.isHave === 1 ? 'selected': ''}}">{{item.value}}</text>
                     <image hidden="{{item.isHave === 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
@@ -85,16 +85,16 @@
           </view>
 
           <view catchtap="toggleLevel" data-id="3" class="panel-item">
-              <text class="label">主授科目</text>
-              <text class="cont">{{userinfo.subject}}</text>
+              <text class="label"><em>*</em>主授科目</text>
+              <text class="cont">{{importantSub ? importantSub : '请选择主授科目'}}</text>
               <view class="arrow-icon arrow-bottom"></view>
               <view class="item-content {{currentIdx == 3 ? 'show' : 'hide'}}">
                 <view class="item-content-inner">
                   <scroll-view scroll-y style="max-height: 400rpx;">
-                    <view catchtap="selectGrade" data-parentid="2" data-id="{{index}}" data-item="{{item.value}}" data-key="{{item.key}}" wx:for="{{allsubjects}}" wx:key="{{index}}" class="content-item">
-                      <view class="item-icon {{item.isHave === 1 ? 'selected': ''}}"></view>
-                      <text class="{{item.isHave === 1 ? 'selected': ''}}">{{item.value}}</text>
-                      <image hidden="{{item.isHave === 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
+                    <view catchtap="selectSubject" data-parentid="2" data-id="{{index}}" data-item="{{item}}" data-key="{{item.key}}" wx:for="{{allsubjects}}" wx:key="{{index}}" class="content-item">
+                      <view class="item-icon {{isCurrentSubject === index ? 'selected': ''}}"></view>
+                      <text class="{{isCurrentSubject === index ? 'selected': ''}}">{{item.value}}</text>
+                      <image hidden="{{isCurrentSubject !== index}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>
                     </view>
                   </scroll-view>
                 </view>
@@ -102,13 +102,13 @@
             </view>
        
         <view catchtap="toggleTechType" data-id="4" class="panel-item">
-          <text class="label">辅授科目</text>
-          <text class="cont">{{userinfo.teachBranch}}</text>
+          <text class="label"><em>*</em>辅授科目</text>
+          <text class="cont">{{slave ? slave : '请选择辅授科目'}}</text>
           <view class="arrow-icon arrow-bottom"></view>
           <view class="item-content {{currentIdx == 4 ? 'show' : 'hide'}}">
               <view class="item-content-inner">
                 <scroll-view scroll-y style="max-height: 400rpx;">
-                  <view catchtap="selectTeachBranch" data-parentid="2" data-id="{{index}}" data-item="{{item.value}}" data-key="{{item.key}}" wx:for="{{allsubjects}}" wx:key="{{index}}" class="content-item">
+                  <view catchtap="selectTeachBranch" data-parentid="2" data-id="{{index}}" data-item="{{item}}" data-key="{{item.key}}" wx:for="{{teachBranchSlave}}" wx:key="{{index}}" class="content-item">
                     <view class="item-icon {{item.isHave === 1 ? 'selected': ''}}"></view>
                     <text class="{{item.isHave === 1 ? 'selected': ''}}">{{item.value}}</text>
                     <image hidden="{{item.isHave === 0}}" class="hook-icon" mode="scaleToFill" src="../../images/hook_icon.png"></image>

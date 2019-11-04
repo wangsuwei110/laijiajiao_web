@@ -2,7 +2,23 @@ var http = require('../../../utils/api.js')
 Page({
   data: {
     labels: [],
-    ids: []
+    ids: [],
+    showToast: false,
+    errorText: ''
+  },
+  // 显示错误提示
+  errFun (text) {
+    this.setData({
+      showToast: true,
+      errorText: text
+    })
+    var that = this
+    setTimeout(function () {
+      that.setData({
+        showToast: false,
+        errorText: text
+      })
+    }, 2000)
   },
   getLabes: function () {
     var that = this
@@ -40,11 +56,24 @@ Page({
     var index = dataset.index
     var id = dataset.id
     var ids = this.data.ids
+    let labels = []
+    if (tagStatus === false) {
+      for (var i = 0; i < this.data.labels.length; i++) {
+        if (this.data.labels[i].flag === true) {
+          labels.push(this.data.labels[i])
+        }
+      }
+      if (labels.length >= 5) {
+        this.errFun('标签最多选择5个')
+        return
+      }
+    }
     !tagStatus ? ids.push(id) : ids.splice(ids.indexOf(id), 1)
     this.setData({
       ['labels[' + index + '].flag']: !tagStatus,
       ids: ids
     })
+    
   },
   saveUserinfoTags: function () {
     console.log(this.data.ids)
