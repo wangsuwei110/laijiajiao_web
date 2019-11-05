@@ -232,7 +232,7 @@ Page({
       showGradeValue: showGradeValue,
       ["subjects[" + _id + "].isHave"]: _isHave
     })
-    this.getProject(this.data.teachLevel, _key)
+    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','))
   },
   // 选择学段
   selectTeach: function (e) {
@@ -268,9 +268,9 @@ Page({
     }
     this.setData({
       showValue: showValue,
-      teachLevel: _key
+      teachLevel: gradesCheckedID.join(',')
     })
-    this.getProject(_key)
+    this.getProject(gradesCheckedID.join(','))
   },
   editUserinfo: function () {
     var data = this.data

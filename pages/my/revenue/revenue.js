@@ -25,6 +25,12 @@ Page({
     //   wx.hideLoading()
     // })
   },
+  // 我要提现
+  cash () {
+    wx.navigateTo({
+      url: '../cash/cash',
+    })
+  },
   revenueDetail: function () {
     wx.navigateTo({
       url: '../revenueList/revenueList',

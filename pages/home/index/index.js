@@ -51,6 +51,14 @@ Page({
     http.post('/home/queryTeacherInfosByHome', {teacherId: wx.getStorageSync('user_id'),}, function (res) {
       console.log(res.data)
       var data = res.data
+
+      if (data.newTrialStudentDemandList) {
+        data.newTrialStudentDemandList = data.newTrialStudentDemandList.map(item => {
+          let obj = item
+          obj.createTime = timeFormat(obj.createTime)
+          return obj
+        })
+      }
       data.studentDemandList = data.studentDemandList.map((item, index) => {
         let obj = item
         obj.createTime = timeFormat(obj.createTime)

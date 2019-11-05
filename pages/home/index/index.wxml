@@ -15,9 +15,9 @@
       <text class="entrance-name">帮助中心</text>
     </view>
   </view>
-  <view class="main-content">
+  <view class="main-content" >
     <view class="spacing-10"></view>
-    <view class="remind-panel">
+    <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}'>
       <view class="remind-new">
         <image mode="scaleToFill" src="../../../images/jb_icon.png"></image>
         <text>新</text>
@@ -26,16 +26,15 @@
       <view class="remind-info">
         <view class="remind-info-item">
           <text class="remind-name">新的试讲订单</text>
-          <text class="remind-time">12:21</text>
+          <text class="remind-time">{{item.createTime}}</text>
         </view>
         <view class="remind-info-item">
-          <text class="remind-type">三年级 数学</text>
+          <text class="remind-type">{{item.teachGradeName}} {{item.teachBranchName}}</text>
           <image class="boll-icon" mode="scaleToFill" src="../../../images/boll_icon.png"></image>
           <text class="remind-text">请尽快确认试讲时间</text>
         </view>
       </view>
     </view>
-    <view class="spacing-10"></view>
     <!-- 家教需求 -->
     <view class="panel-wrapper-4">
       <view class="panel-head">

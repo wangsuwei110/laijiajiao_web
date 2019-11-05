@@ -477,8 +477,9 @@ Page({
     this.setData({
       ["teachAddress[" + _id + "].flag"]: flag
     })
+    console.log(addressCheckedID, _item.parameterId, '11111111')
     let showVal = []
-    if (flag === true) {
+    if (flag === true && addressCheckedID.indexOf(_item.parameterId) === -1) {
       addressCheckedID.push(_item.parameterId)
       addressCheckedValue.push(_item.name)
     } else {
@@ -526,7 +527,7 @@ Page({
         checkedTime: JSON.parse(res.data[0].teachTime)
       })
       for (let m = 0; m < _teachAddress.length; m++) {
-        if (_teachAddress[m].flag) {
+        if (_teachAddress[m].flag && addressCheckedID.indexOf(_teachAddress[m].parameterId) === -1) {
           addressCheckedID.push(_teachAddress[m].parameterId)
           addressCheckedValue.push(_teachAddress[m].name)
         }
@@ -534,9 +535,9 @@ Page({
       for (var i = 0; i < that.data.checkedTime.length; i++) {
         console.log(that.data.checkedTime[i].week, '111')
         that.data.checkedTime[i].week = that.data.checkedTime[i].week - 1
-        // that.setData({
-        //   ["weekTime[" + that.data.checkedTime[i].week + "][" + that.data.checkedTime[i].time + "].checked"]: true
-        // })
+        that.setData({
+          ["weekTime[" + that.data.checkedTime[i].week + "][" + that.data.checkedTime[i].time + "].checked"]: true
+        })
       }
       
       console.log(that.data.checkedTime)
@@ -605,7 +606,7 @@ Page({
       teachBrance: this.data.importantSubId,
       teachBranchSlave: teachBranchSlaveId.join(','),
       teachAddress: addressCheckedID.join(','),
-      teachTime: JSON.stringify(teachWeekTime1)
+      teachTime: teachWeekTime1
     }
     // console.log(params)
     http.post('/userInfo/updateUserInfoByParameter', params, function (res) {

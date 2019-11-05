@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/login/login",
     "pages/home/index/index",
     "pages/home/demandList/demandList",
@@ -46,7 +47,8 @@
     "pages/Student/ReleaseDemand/ReleaseDemand",
     "pages/Student/NotPass/NotPass",
     "pages/Student/OrderPass/OrderPass",
-    "pages/Student/Evaluate/Evaluate"
+    "pages/Student/Evaluate/Evaluate",
+    "pages/my/cash/cash"
   ],
   "window": {
     "backgroundTextStyle": "light",

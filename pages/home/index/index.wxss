@@ -96,6 +96,7 @@
   border-radius: 5rpx;
   overflow: hidden;
   background-color: #ffffff;
+  margin-bottom:26rpx;
 }
 .remind-panel .remind-new {
   position: absolute;

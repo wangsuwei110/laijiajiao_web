@@ -9,14 +9,16 @@
   </view>
   <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList">
     <view class="order-list">
-    <view bindtap="orderDetail" wx:for='{{list}}' data-order-type="0" class="list-item">
-        <view class="list-item-l">
-          <view class="item-meta meta-1"><text class="name">张小二 二年级 数学</text><text class="type">已报名</text></view>
-          <view class="item-meta"><text class="date">2018-12-30 12:39:32</text><text class="tip">2天后10:00试讲</text></view>
-        </view>
-        <view class="arrow-icon arrow-right"></view>
+    <view bindtap="orderDetail" wx:for='{{list}}' data-id='{{item.sid}}' data-order-type="0" class="list-item">
+      <view class="list-item-l">
+        <view class="item-meta meta-1"><text class="name">张小二 二年级 数学</text><text class="type">
+          {{item.status === 4 ? '已支付' : item.status === 3 ? '不通过' : item.status === 3 ? '通过' : ''}}
+        </text></view>
+        <view class="item-meta"><text class="date">{{item.createTime}}</text><text class="tip">2天后10:00试讲</text></view>
       </view>
-      <view bindtap="lectureOrderDetail" class="list-item">
+      <view class="arrow-icon arrow-right"></view>
+    </view>
+      <!-- <view bindtap="lectureOrderDetail" class="list-item">
         <view class="list-item-l">
           <view class="item-meta meta-1"><text class="name">张小二 二年级 数学</text><text class="type">试讲</text></view>
           <view class="item-meta"><text class="date">2018-12-30 12:39:32</text><text class="tip">尽快确定试讲时间</text></view>
@@ -29,7 +31,7 @@
           <view class="item-meta"><text class="date">2018-12-30 12:39:32</text><text class="tip">￥400.00</text></view>
         </view>
         <view class="arrow-icon arrow-right"></view>
-      </view>
+      </view> -->
       <view class="list-bottom-text">没有更多</view>
     </view>
   </scroll-view>
