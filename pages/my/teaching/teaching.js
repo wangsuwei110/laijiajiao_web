@@ -1,9 +1,9 @@
 var http = require('../../../utils/api.js')
 var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allgradesCheckedValue = [],
-teachBranchSlaveId = [], teachBranchValue = []
-let showValue = ''
+teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
 Page({
   data: {
+    showAddress: '',
     isIPX: getApp().isIPX,
     week: ['一', '二', '三', '四', '五', '六', '日'],
     weekTimePeriod: [
@@ -120,6 +120,7 @@ Page({
         }
       ]
     ],
+    importantSubId: null,
     currentIdx: -1,
     teachData: [],
     // teachLevel: [], // 授课学段
@@ -155,14 +156,28 @@ Page({
     slave: null,
     gradesCheckedValue: [],
     allgradesCheckedValue: [],
-    teachBranchValue: []
+    teachBranchValue: [],
+
+    // 选中字段
+    checkLevelId: '',
+    checkGradeId: '',
+    checkSubjectId: '',
+    checkSlaveId: '',
+    checkedTime: ''
   },
   onLoad: function () {
+    gradesCheckedID = []
+    gradesCheckedValue = []
+    allgradesCheckedID = []
+    allgradesCheckedValue = []
+    teachBranchSlaveId = []
+    teachBranchValue = []
+    addressCheckedID = []
+    addressCheckedValue = []
+    showAddress = ''
+    showValue = ''
     this.getGradesInfo()
     // this.getData()
-  },
-  onShow: function () {
-    this.getGradesAndSubject()
   },
   toggleLevel (e) {
     let _id = e.currentTarget.dataset.id
@@ -173,6 +188,8 @@ Page({
       currentIdx: _id
     })
   },
+
+  
   toggleTechType: function (e) {
     let _id = e.currentTarget.dataset.id
     if (this.data.currentIdx == _id) {
@@ -190,19 +207,19 @@ Page({
     let _key = e.currentTarget.dataset.key
     let _isHave = null
     let slave = null
-    _isHave = _item.isHave == 1 ? 0 : 1
-
+    _isHave = _item.isHave === 1 ? 0 : 1
     if (_isHave) {
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
       console.log("uuuu")
-      teachBranchSlaveId.splice(allgradesCheckedID.indexOf(_key), 1)
+      teachBranchSlaveId.splice(teachBranchSlaveId.indexOf(_key), 1)
       teachBranchValue.splice(teachBranchValue.indexOf(_item.value), 1)
     }
     this.setData({
       teachBranchValue: teachBranchValue
     })
+    console.log(teachBranchValue, 'teachBranchValueteachBranchValueteachBranchValue')
     if (teachBranchValue.length > 2) {
       slave = this.data.teachBranchValue[0] + ',' + this.data.teachBranchValue[1] + '...'
     } else {
@@ -224,8 +241,8 @@ Page({
     let _key = e.currentTarget.dataset.key
     this.setData({
       importantSub: value,
-      isCurrentSubject: _id,
-      'userinfo.teachBrance': _key
+      importantSubId: _key,
+      isCurrentSubject: _id
     })
     let teachBranchSlave = [], allsubjects = this.data.allsubjects
     // 生成辅授科目list
@@ -268,7 +285,7 @@ Page({
       showGradeValue: showGradeValue,
       ["subjects[" + _id + "].isHave"]: _isHave
     })
-    this.getProject(this.data.teachLevel, _key)
+    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','))
   },
   toggleLevel (e) {
     let _id = e.currentTarget.dataset.id
@@ -306,7 +323,6 @@ Page({
       gradesCheckedValue: gradesCheckedValue
     })
     showVal = this.data.gradesCheckedValue
-    console.log(showVal, gradesCheckedValue)
     if (showVal.length >= 2) {
       showValue = showVal[0] + ',' +  showVal[1] + '...'
     } else {
@@ -314,35 +330,133 @@ Page({
     }
     this.setData({
       showValue: showValue,
-      teachLevel: _key
+      teachLevel: gradesCheckedID.join(',')
     })
-    this.getProject(_key)
+    this.getProject(gradesCheckedID.join(','), null, function() {}, _item)
+  },
+
+  getArrDifference(arr1, arr2) {
+    console.log(arr1, arr2, 'arr2arr2')
+    return arr1.concat(arr2).filter(function(v, i, arr) {
+      return arr.indexOf(v) !== arr.lastIndexOf(v);
+    });
+  },
+  unique(arr) {
+    return arr.filter(function(item, index, arr) {
+      //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+      return arr.indexOf(item, 0) === index;
+    });
   },
   // 查询辅导学段
-  getProject (grade, teachGrade) {
+  getProject (grade, teachGrade, callBack, item) {
     let that = this
+    var checkGradeId = this.data.checkGradeId.split(','),
+    checkSubjectId = this.data.checkSubjectId, 
+    checkSlaveId = this.data.checkSlaveId.split(',')
     http.post('/teacher/listSubject', {teachLevel: grade, teachGrade: teachGrade}, function (res) {
       var data = res.data
-      let subjects = []
       if (res.code === '200') {
         if (data && data.length > 0) {
-          data.forEach(function (item) {
-            item.isHave = 0
-            subjects.push(item)
+          console.log(data, 'datadatadata')
             if (!teachGrade) {
+              let _grades = data
+              // 查询到辅导年级回显辅导年级
+              for (let j = 0; j < _grades.length; j++) {
+                for (let m = 0; m < checkGradeId.length; m++) {
+                  if (_grades[j].key === parseInt(checkGradeId[m]) && allgradesCheckedID.indexOf(_grades[j].key) === -1) {
+                    allgradesCheckedValue.push(_grades[j].value)
+                    allgradesCheckedID.push(_grades[j].key)
+                  }
+                  if (allgradesCheckedID.indexOf(_grades[j].key) !== -1) {
+                    _grades[j].isHave = 1
+                  }
+                }
+              }
+              let minGrades = _grades.map(item => {
+                return item.key
+              })
+
+              let minvalue = _grades.map(item => {
+                return item.value
+              })
+              // 检索当切换辅导学段时  辅导年级存在的某一年级无该辅导学段
+              allgradesCheckedID = that.unique(that.getArrDifference(allgradesCheckedID, minGrades))
+              allgradesCheckedValue = that.unique(that.getArrDifference(allgradesCheckedValue, minvalue))
+              // that.selectGrade(allgradesCheckedID)
+              if (item) {
+                if (item.isHave) {
+                  if (that.data.importantSubId) {
+                    that.setData({
+                      importantSub: null,
+                      importantSubId: null,
+                      allsubjects: [],
+                      isCurrentSubject: null,
+                      teachBranchSlave: [],
+                      slave: ''
+                    })
+                    teachBranchSlaveId = []
+                    teachBranchValue = []
+                  }
+                }
+              }
+              let showGradeValue = ''
+              if (allgradesCheckedValue.length > 2) {
+                showGradeValue = allgradesCheckedValue[0] + ',' + allgradesCheckedValue[1] + '...'
+              } else {
+                showGradeValue = allgradesCheckedValue.join(',')
+              }
               that.setData({
-                'subjects': subjects,
+                showGradeValue: showGradeValue,
+                subjects: _grades
               })
             } else {
-              console.log(1111)
               that.setData({
-                'allsubjects': subjects,
+                'allsubjects': data,
               })
-              console.log(that.data.allsubjects)
+              // 查询辅导科目并回显
+              let _grades2 = data
+              
+              for (let j = 0; j < _grades2.length; j++) {
+                if (_grades2[j].key === parseInt(checkSubjectId)) {
+                  that.setData({
+                    isCurrentSubject: j,
+                    importantSub: _grades2[j].value,
+                    importantSubId: _grades2[j].key
+                  })
+                }
+              }
+              
+
+              let teachBranchSlave = [], slave = ''
+              // 生成辅授科目list
+              for (var j = 0; j < _grades2.length; j++) {
+                if (j !== that.data.isCurrentSubject) {
+                  teachBranchSlave.push(_grades2[j])
+                }
+              }
+            
+              for (let j = 0; j < teachBranchSlave.length; j++) {
+                for (let m = 0; m < checkSlaveId.length; m++) {
+                  if (teachBranchSlave[j].key === parseInt(checkSlaveId[m])) {
+                    teachBranchSlave[j].isHave = 1
+                    teachBranchValue.push(teachBranchSlave[j].value)
+                    teachBranchSlaveId.push(teachBranchSlave[j].key)
+                  }
+                }
+              }
+              if (teachBranchValue.length > 2) {
+                slave = teachBranchValue[0] + ',' + teachBranchValue[1] + '...'
+              } else {
+                slave = teachBranchValue.join(',')
+              }
+              that.setData({
+                slave: slave,
+                teachBranchSlave: teachBranchSlave
+              })
             }
-          })
+            if (callBack) callBack(data)
+          // })
         }
-        
       } else {
         wx.showToast({
           title: res.msg,
@@ -352,10 +466,36 @@ Page({
     }, function (err) {
       console.log(err)
     }, function () {
-      wx.hideLoading()
     })
   },
-
+  // 选择授课区域
+  selectAddress (e) {
+    let _item = e.currentTarget.dataset.item
+    let _id = e.currentTarget.dataset.id
+    let flag = null
+    flag = _item.flag === true ? false : true
+    this.setData({
+      ["teachAddress[" + _id + "].flag"]: flag
+    })
+    let showVal = []
+    if (flag === true) {
+      addressCheckedID.push(_item.parameterId)
+      addressCheckedValue.push(_item.name)
+    } else {
+      addressCheckedID.splice(addressCheckedID.indexOf(_item.parameterId), 1)
+      addressCheckedValue.splice(addressCheckedValue.indexOf(_item.name), 1)
+    }
+    
+    console.log(addressCheckedValue, 'gradesCheckedValuegradesCheckedValue')
+    if (addressCheckedValue.length >= 2) {
+      showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
+    } else {
+      showAddress = addressCheckedValue.join(',')
+    }
+    this.setData({
+      showAddress: showAddress
+    })
+  },
   /**
    * 获取授课资料信息
    */
@@ -367,146 +507,43 @@ Page({
       parentId: '62,78'
     }
     wx.showLoading({})
-    var _teachData = []
-    var _teachLevel = {}  // 授课学段
-    var _teachClass = {}  // 学员年级
-    var _teachBrance = {} // 主授科目
-    var _teachBrance1 = {} // 辅授科目
     var _teachAddress = {}  // 授课区域
-    var _weekTime = []  // 授课时间
     http.post('/parameter/queryParameters', params, function (res) {
-      // var data = res.data[0]
-      // _teachLevel.name = '授课学段'
-      // _teachLevel.content = data.teachLevel
-      // _teachLevel.type = '31'
-      // _teachData.push(_teachLevel)
-      // console.log(data.teachLevel.length)
-
-      // if (data.teachLevel.length > 0) {
-      //   var __teachLevel = []
-      //   data.teachLevel.forEach(function (item) {
-      //     item.name = item.teachLevelName
-      //     item.parameterId = item.teachLevelId
-      //     if (item.flag) {
-      //       __teachLevel.push(item.parameterId)
-      //     }
-      //   })
-      //   that.setData({
-      //     'teachLevel': __teachLevel
-      //   })
-      // }
-
-      // _teachClass.name = '授课年级'
-      // _teachClass.content = data.teachGrade
-      // _teachClass.type = '38'
-      // _teachData.push(_teachClass)
-
-      // if (data.teachGrade.length > 0) {
-      //   var __teachGrade = []
-      //   data.teachGrade.forEach(function (item) {
-      //     item.name = item.teachGradeName
-      //     item.parameterId = item.teachGradeId
-      //     if (item.flag) {
-      //       __teachGrade.push(item.parameterId)
-      //     }
-      //   })
-      //   that.setData({
-      //     'teachGrade': __teachGrade
-      //   })
-      // }
-
-      // _teachBrance.name = '主授科目'
-      // _teachBrance.type = '95-1'
-      // _teachData.push(_teachBrance)
-      // var _content = data.teachBranchMaster
-      // if (_content.length > 0) {
-      //   var __teachBrance = []
-      //   _content.forEach(function (item) {
-      //     item.name = item.teachBranchName
-      //     item.parameterId = item.teachBranchId
-      //     if (item.flag && item.branchType == 'master') {
-      //       __teachBrance.push(item.parameterId)
-      //     } else {
-      //       item.flag = false
-      //     }
-      //   })
-      //   _teachBrance.content = _content
-      //   that.setData({
-      //     'teachBrance': __teachBrance
-      //   })
-      // }
-
-      // _teachBrance1.name = '辅授科目'
-      // _teachBrance1.type = '95-2'
-      // _teachData.push(_teachBrance1)
-      // var _content1 = data.teachBranchSlave
-      // if (_content1.length > 0) {
-      //   var __teachBranceSlave = []
-      //   _content1.forEach(function (item) {
-      //     item.name = item.teachBranchName
-      //     item.parameterId = item.teachBranchId
-      //     if (item.flag && item.branchType == 'slave') {
-      //       __teachBranceSlave.push(item.parameterId)
-      //     } else {
-      //       item.flag = false
-      //     }
-      //   })
-      //   _teachBrance1.content = _content1
-      //   that.setData({
-      //     'teachBranchSlave': __teachBranceSlave
-      //   })
-      // }
-
-      // _teachAddress.name = '授课区域'
-      // _teachAddress.content = data.teachAddress
-      // _teachAddress.type = '78'
-      // _teachData.push(_teachAddress)
-      // if (data.teachAddress && data.teachAddress.length > 0) {
-      //   var __teachAddress = []
-      //   data.teachAddress.forEach(function (item) {
-      //     if (item.flag) {
-      //       __teachAddress.push(item.parameterId)
-      //     }
-      //   })
-      //   that.setData({
-      //     'teachAddress': __teachAddress
-      //   })
-      // }
-      // if (data.teachTime) {
-      //   var __teachTime = JSON.parse(data.teachTime)
-      //   if (__teachTime.length <= 0) {
-      //     return
-      //   }
-      //   that.data.weekTime.forEach(function (item, index) {
-      //     var _time = []
-      //     item.forEach(function (_item) {
-      //       _item.checked = false
-      //       __teachTime.forEach(function (t) {
-      //         if ((index + 1) == t.week) {
-      //           t.time.split(',').forEach(function (__t) {
-      //             if (__t == _item.value) {
-      //               _item.checked = true
-      //             }
-      //           })
-      //         }
-      //       })
-      //       _time.push(_item)
-      //     })
-      //     _weekTime.push(_time)
-      //     that.setData({
-      //       'weekTime': _weekTime
-      //     })
-      //   }) 
-      // }
-      // that.setData({
-      //   'teachData': _teachData
-      // })
-      console.log(that.data.teachData)
-
+      _teachAddress = res.data[0].teachAddress
+      for (var i = 0; i < _teachAddress.length; i++) {
+        if (_teachAddress[i].flag) {
+          showAddress += _teachAddress[i].name + ','
+          addressCheckedID.push(_teachAddress[i].parameterId)
+        }
+      }
+      that.setData({
+        teachAddress: _teachAddress,
+        showAddress: showAddress,
+        checkLevelId: res.data[0].teachLevel,
+        checkGradeId: res.data[0].teachGrade,
+        checkSubjectId: res.data[0].teachBranchMaster,
+        checkSlaveId: res.data[0].teachBranchSlave,
+        checkedTime: JSON.parse(res.data[0].teachTime)
+      })
+      for (let m = 0; m < _teachAddress.length; m++) {
+        if (_teachAddress[m].flag) {
+          addressCheckedID.push(_teachAddress[m].parameterId)
+          addressCheckedValue.push(_teachAddress[m].name)
+        }
+      }
+      for (var i = 0; i < that.data.checkedTime.length; i++) {
+        console.log(that.data.checkedTime[i].week, '111')
+        that.data.checkedTime[i].week = that.data.checkedTime[i].week - 1
+        // that.setData({
+        //   ["weekTime[" + that.data.checkedTime[i].week + "][" + that.data.checkedTime[i].time + "].checked"]: true
+        // })
+      }
+      
+      console.log(that.data.checkedTime)
+      that.getGradesAndSubject()
     }, function (err) {
       console.log(err)
     }, function () {
-      wx.hideLoading()
     })
   },
     /**
@@ -514,6 +551,9 @@ Page({
    */
   saveTeaching: function () {
     // 授课时间
+//     var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allgradesCheckedValue = [], importantSubId
+// teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
+    console.log(gradesCheckedID, allgradesCheckedID, this.data.importantSubId, teachBranchSlaveId)
     var teachWeekTime = []
     if (this.data.weekTime.length > 0) {
       this.data.weekTime.forEach(function (item, index) {
@@ -525,24 +565,29 @@ Page({
           }
         })
         _time.week = (index + 1) + ''
-        _time.time = _timeP.join(',')
+        _time.time = _timeP
         if (_timeP.length > 0) {
           teachWeekTime.push(_time)
         }
       })
+      var teachWeekTime1 = []
+      for (var i = 0; i < teachWeekTime.length; i++) {
+        for (var m = 0; m < teachWeekTime[i].time.length; m++) {
+          teachWeekTime1.push({week: teachWeekTime[i].week, time: teachWeekTime[i].time[m]})
+        }
+      }
+      console.log(teachWeekTime1, 'teachWeekTimeteachWeekTime')
     }
     var tipText = ''
-    if (this.data.teachLevel.length <= 0) {
+    if (gradesCheckedID.length <= 0) {
       tipText = '请选择授课学段'
-    } else if (this.data.teachGrade.length <= 0) {
+    } else if (allgradesCheckedID.length <= 0) {
       tipText = '请选择授课年级'
-    } else if (this.data.teachBrance.length <= 0) {
+    } else if (!this.data.importantSubId || this.data.importantSubId === '') {
       tipText = '请选择主授科目'
-    } else if (this.data.teachBranchSlave.length <= 0) {
-      tipText = '请选择辅授科目'
-    } else if (this.data.teachAddress.length <= 0) {
+    } else if (addressCheckedID.length <= 0) {
       tipText = '请选择授课区域'
-    } else if (teachWeekTime.length <= 0) {
+    } else if (teachWeekTime1.length <= 0) {
       tipText = '请选择授课时间'
     }
     if (tipText != '') {
@@ -555,12 +600,12 @@ Page({
     wx.showLoading()
     var params = {
       teacherId: wx.getStorageSync('user_id'),
-      teachLevel: this.data.teachLevel.join(','),
-      teachGrade: this.data.teachGrade.join(','),
-      teachBrance: this.data.teachBrance.join(','),
-      teachBranchSlave: this.data.teachBranchSlave.join(','),
-      teachAddress: this.data.teachAddress.join(','),
-      teachTime: JSON.parse(JSON.stringify(teachWeekTime))
+      teachLevel: gradesCheckedID.join(','),
+      teachGrade: allgradesCheckedID.join(','),
+      teachBrance: this.data.importantSubId,
+      teachBranchSlave: teachBranchSlaveId.join(','),
+      teachAddress: addressCheckedID.join(','),
+      teachTime: JSON.stringify(teachWeekTime1)
     }
     // console.log(params)
     http.post('/userInfo/updateUserInfoByParameter', params, function (res) {
@@ -577,7 +622,6 @@ Page({
         icon: 'none'
       })
     }, function () {
-      wx.hideLoading()
     })
   },
   toggleTechType: function (e) {
@@ -590,7 +634,7 @@ Page({
     })
   },
   /**
-   * 获取授课资料信息
+   * 获取辅导学段
    */
   getGradesAndSubject: function () {
     var that = this;
@@ -599,10 +643,11 @@ Page({
       parentId: '38,95',
       teacherId: wx.getStorageSync('user_id')
     }
-    wx.showLoading({})
-    var _grades = []
-    var _subjects = []
-    var _subjects1 = []
+    wx.showLoading({
+      title: '加载中...'
+    })
+    console.log(this.data.checkLevelId, 'this.data.checkLevelIdthis.data.checkLevelId')
+    var _grades = [], checkLevelId = this.data.checkLevelId.split(',')
     http.post('/teacher/listSubject', {}, function (res) {
       console.log(res.data)
       var data = res.data
@@ -612,24 +657,37 @@ Page({
             item.isHave = 0
             _grades.push(item)
           })
+          for (let j = 0; j < _grades.length; j++) {
+            for (let m = 0; m < checkLevelId.length; m++) {
+              console.log(parseInt(checkLevelId[m]), _grades[j].key)
+              if (_grades[j].key === parseInt(checkLevelId[m])) {
+                _grades[j].isHave = 1
+                gradesCheckedValue.push(_grades[j].value)
+                gradesCheckedID.push(_grades[j].key)
+              }
+            }
+          }
         }
-        // if (data.teachBrance && data.teachBrance.length > 0) {
-        //   data.teachBrance.forEach(function (item) {
-        //     item.isHave = 0
-        //     _subjects.push(item)
-        //   })
-        // }
-        // if (data.teachBranceSlave && data.teachBranceSlave.length > 0) {
-        //   data.teachBranceSlave.forEach(function (item) {
-        //     item.isHave = 0
-        //     _subjects1.push(item)
-        //   })
-        // }
+        // 辅导学段的回显
+        let showValue = ''
+        if (gradesCheckedValue.length >= 2) {
+          showValue = gradesCheckedValue[0] + ',' +  gradesCheckedValue[1] + '...'
+        } else {
+          showValue = gradesCheckedValue.join(',')
+        }
         that.setData({
-          'grades': _grades
-          // 'subjects': _subjects,
-          // 'subjects1': _subjects1
+          'grades': _grades,
+          teachLevel: gradesCheckedID.join(','),
+          showValue: showValue
         })
+        // 查询年级
+        that.getProject(gradesCheckedID.join(','), null, function (res){
+           // 查询科目
+          that.getProject(that.data.teachLevel, allgradesCheckedID.join(','), function (res) {
+            wx.hideLoading()
+          })
+        })
+
       } else {
         wx.showToast({
           title: res.msg,
@@ -639,23 +697,8 @@ Page({
     }, function (err) {
       console.log(err)
     }, function () {
-      wx.hideLoading()
     })
   },
-  /**
-   * 切换授课类型
-   */
-  // toggleTechType: function (e) {
-  //   let _idx = e.currentTarget.dataset.idx;
-  //   let _type = e.currentTarget.dataset.type;
-  //   if (this.data.currentIdx == _idx) {
-  //     _idx = -1;
-  //   }
-  //   this.setData({
-  //     'currentIdx': _idx,
-  //     'currentType': _type
-  //   })
-  // },
   /**
   /**
    * 选择授课时间
@@ -663,82 +706,11 @@ Page({
   selectWeekDay: function (e) {
     var currentData = e.currentTarget.dataset
     var _checked = !currentData.checked
-    var selectedWeek = []
     this.setData({
       ["weekTime[" + currentData.id + "][" + currentData.sid + "].checked"]: _checked
     })
   },
-  /**
-   * 保存授课资料 
-   */
-  saveTeaching: function () {
-    // 授课时间
-    var teachWeekTime = []
-    if (this.data.weekTime.length > 0) {
-      this.data.weekTime.forEach(function (item, index) {
-        var _time = {}
-        var _timeP = []
-        item.forEach(function (_item) {
-          if (_item.checked) {
-            _timeP.push(_item.value)
-          }
-        })
-        _time.week = (index + 1) + ''
-        _time.time = _timeP.join(',')
-        if (_timeP.length > 0) {
-          teachWeekTime.push(_time)
-        }
-      })
-    }
-    var tipText = ''
-    if (this.data.teachLevel.length <= 0) {
-      tipText = '请选择授课学段'
-    } else if (this.data.teachGrade.length <= 0) {
-      tipText = '请选择授课年级'
-    } else if (this.data.teachBrance.length <= 0) {
-      tipText = '请选择主授科目'
-    } else if (this.data.teachBranchSlave.length <= 0) {
-      tipText = '请选择辅授科目'
-    } else if (this.data.teachAddress.length <= 0) {
-      tipText = '请选择授课区域'
-    } else if (teachWeekTime.length <= 0) {
-      tipText = '请选择授课时间'
-    }
-    if (tipText != '') {
-      wx.showToast({
-        title: tipText,
-        icon: 'none'
-      })
-      return
-    }
-    wx.showLoading()
-    var params = {
-      teacherId: wx.getStorageSync('user_id'),
-      teachLevel: this.data.teachLevel.join(','),
-      teachGrade: this.data.teachGrade.join(','),
-      teachBrance: this.data.teachBrance.join(','),
-      teachBranchSlave: this.data.teachBranchSlave.join(','),
-      teachAddress: this.data.teachAddress.join(','),
-      teachTime: JSON.parse(JSON.stringify(teachWeekTime))
-    }
-    // console.log(params)
-    http.post('/userInfo/updateUserInfoByParameter', params, function (res) {
-      wx.showToast({
-        title: '保存成功',
-        icon: 'none',
-        success: function () {
-          wx.navigateBack()
-        }
-      })
-    }, function (err) {
-      wx.showToast({
-        title: err.msg,
-        icon: 'none'
-      })
-    }, function () {
-      wx.hideLoading()
-    })
-  },
+
   hideTeachBox: function () {
     this.setData({
       currentIdx: -1

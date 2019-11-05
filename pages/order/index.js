@@ -4,6 +4,8 @@ Page({
   data: {
     scrollHeight: "",
     activeIdx: 0,
+    // 列表
+    list: [],
     tabs: [
       {
         name: "全部",
@@ -25,11 +27,12 @@ Page({
   },
   // 订单列表
   getList () {
-    http.post('/teacher/queryDemandsByTeacher', {teacherId: wx.getStorageSync('user_id')}, function (res) {
+    var that = this
+    http.post('/teacher/queryDemandsByTeacher', {teacherId: 6}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
-        console.log(data, '111111')
+        that.list = data
       } else {
         wx.showToast({
           title: res.msg,

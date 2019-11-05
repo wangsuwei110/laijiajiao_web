@@ -17,6 +17,11 @@ function timeWeek (index) {
   else if (index === 6) return '周六'
   else if (index === 7) return '周日'
 }
+function dayTimes (index) {
+  if (index === 1) return '上午'
+  else if (index === 2) return '下午'
+  else if (index === 3) return '晚上'
+}
 Page({
   data: {
     details: ''
@@ -45,29 +50,31 @@ Page({
     var that = this
     http.post('/home/queryTeacherInfosByHome', {teacherId: wx.getStorageSync('user_id'),}, function (res) {
       console.log(res.data)
-      var data = {
-        studentDemandList: {}
-      }
-      data.studentDemandList = res.data.studentDemandList.map(item => {
+      var data = res.data
+      data.studentDemandList = data.studentDemandList.map((item, index) => {
         let obj = item
         obj.createTime = timeFormat(obj.createTime)
-        if (obj.timeRange ) obj.timeRange = JSON.parse(obj.timeRange)
-        console.log(obj.timeRange, 'obj.timeRange')
-        obj.timeRange = obj.timeRange.map(item => {
-          let objA = itemA
-          
-        })
+        if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
+        console.log(obj.timeRange, 'obj.timeRange' + index , typeof obj.timeRange)
+        if (typeof obj.timeRange !== 'string') { obj.timeRange = obj.timeRange.map((itemA, indexA) => {
+            let objA = itemA
+            if ((indexA + 1) === obj.timeRange.length) objA = timeWeek(objA.week) + dayTimes(objA.time)
+            else objA = timeWeek(objA.week) + dayTimes(objA.time) + ','
+            return objA
+          })
+        }
         return obj
       })
       if (data.fitTeacherOrderList) {
-        data.fitTeacherOrderList = res.data.fitTeacherOrderList.map(item => {
+        data.fitTeacherOrderList = data.fitTeacherOrderList.map(item => {
           let obj = item
           obj.createTime = timeFormat(obj.createTime)
-          if (obj.timeRange ) obj.timeRange = JSON.parse(obj.timeRange)
+          if (obj.timeRange ) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
           console.log(obj.timeRange, 'obj.timeRange')
-          obj.timeRange = obj.timeRange.map(item => {
+          obj.timeRange = obj.timeRange.map(itemA => {
             let objA = itemA
-            
+            objA = timeWeek(objA.week) + dayTimes(objA.time)
+            return objA
           })
           return obj
         })

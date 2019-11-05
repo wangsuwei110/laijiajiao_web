@@ -1,9 +1,9 @@
 <view class="container">
   <view class="top-info">
     <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
-    <view class="top-info-item"><text class="numeral">100%</text><text>聘用率</text></view>
-    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">T3</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
-    <view class="top-info-item"><text class="numeral">90%</text><text>续课率</text></view>
+    <view class="top-info-item"><text class="numeral">{{details.employRate}}</text><text>聘用率</text></view>
+    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view class="top-info-item"><text class="numeral">90%</text><text>{{details.resumptionRate}}</text></view>
   </view>
   <view class="fast-entrance">
     <view class="entrance">
@@ -89,7 +89,7 @@
           </view>
         </view>
         <view class="demand-wrapper" wx:else>
-          <view bindtap="demandDetail" wx:for='{{details.studentDemandList.dataList}}' class="demand-item">
+          <view bindtap="demandDetail" wx:for='{{details.studentDemandList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
               <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
@@ -103,7 +103,7 @@
                 <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
               </view>
               <view class="demand-li">
-                <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<em wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</em>）</text>
+                <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<text wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</text>）</text>
               </view>
               <view class="demand-li">
                 <text class="label">详细需求:</text><text class="cont">{{item.demandDesc}}</text>
