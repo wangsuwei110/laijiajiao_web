@@ -32,7 +32,7 @@ Page({
           }
           http.post('/user/logout', params, function (res) {
             wx.removeStorageSync('token')
-            wx.switchTab({
+            wx.navigateTo({
               url: '/pages/login/login'
             })
           }, function (err) {

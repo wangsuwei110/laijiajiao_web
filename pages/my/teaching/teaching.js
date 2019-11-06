@@ -503,6 +503,8 @@ Page({
     }, function () {
     })
   },
+
+  
   // 选择授课区域
   selectAddress (e) {
     let _item = e.currentTarget.dataset.item
@@ -513,17 +515,16 @@ Page({
     this.setData({
       ["teachAddress[" + _id + "].flag"]: flag
     })
-    console.log(addressCheckedValue)
-    if (flag === true && addressCheckedID.indexOf(_item.parameterId) === -1) {
-      addressCheckedID.push(_item.parameterId)
+    if (flag === true) {
       addressCheckedValue.push(_item.name)
+      addressCheckedID.push(_item.parameterId)
+     
     } else {
+      addressCheckedValue.splice(addressCheckedID.indexOf(_item.parameterId), 1)
       addressCheckedID.splice(addressCheckedID.indexOf(_item.parameterId), 1)
-      addressCheckedValue.splice(addressCheckedValue.indexOf(_item.name), 1)
+      
     }
-    
-    console.log(addressCheckedValue, 'gradesCheckedValuegradesCheckedValue')
-    console.log(addressCheckedID, _item.parameterId, '11111111')
+    console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
     if (addressCheckedValue.length >= 2) {
       showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
     } else {
@@ -547,12 +548,19 @@ Page({
     var _teachAddress = {}  // 授课区域
     http.post('/parameter/queryParameters', params, function (res) {
       _teachAddress = res.data[0].teachAddress
-      for (var i = 0; i < _teachAddress.length; i++) {
-        if (_teachAddress[i].flag) {
-          showAddress += _teachAddress[i].name + ','
-          addressCheckedID.push(_teachAddress[i].parameterId)
+      
+      for (let m = 0; m < _teachAddress.length; m++) {
+        if (_teachAddress[m].flag) {
+          addressCheckedID.push(_teachAddress[m].parameterId)
+          addressCheckedValue.push(_teachAddress[m].name)
         }
       }
+      for (let i = 0; i < addressCheckedValue.length; i++) {
+        if (addressCheckedValue.length > 2) showAddress = addressCheckedValue[0] + ',' + addressCheckedValue[1] + '...'
+        else if (addressCheckedValue.length === 2) showAddress =  addressCheckedValue[0]+ ',' + addressCheckedValue[1]
+        else showAddress =  addressCheckedValue[0]
+      }
+
       that.setData({
         teachAddress: _teachAddress,
         showAddress: showAddress,
@@ -562,13 +570,7 @@ Page({
         checkSlaveId: res.data[0].teachBranchSlave,
         checkedTime: JSON.parse(res.data[0].teachTime)
       })
-      for (let m = 0; m < _teachAddress.length; m++) {
-        if (_teachAddress[m].flag) {
-          addressCheckedID.push(_teachAddress[m].parameterId)
-          addressCheckedValue.push(_teachAddress[m].name)
-        }
-      }
-      console.log(addressCheckedValue)
+      console.log(addressCheckedValue, '111')
       for (var i = 0; i < that.data.checkedTime.length; i++) {
         console.log(that.data.checkedTime[i].week, '111')
         that.data.checkedTime[i].week = that.data.checkedTime[i].week - 1
