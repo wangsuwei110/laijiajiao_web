@@ -29,5 +29,5 @@
     </view>
   </view>
 
-  <view class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+  <view bindtap='saveBtn' class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
 </view>

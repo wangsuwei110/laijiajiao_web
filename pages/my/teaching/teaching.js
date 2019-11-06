@@ -208,7 +208,7 @@ Page({
     let _isHave = null
     let slave = null
     _isHave = _item.isHave === 1 ? 0 : 1
-    if (_isHave) {
+    if (_isHave && teachBranchSlaveId.indexOf(_key) === -1) {
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
@@ -251,8 +251,11 @@ Page({
         teachBranchSlave.push(allsubjects[j])
       }
     }
+    teachBranchSlaveId = []
+    teachBranchValue = []
     this.setData({
-      teachBranchSlave: teachBranchSlave
+      teachBranchSlave: teachBranchSlave,
+      slave: ''
     })
   },
   // 选择年级
@@ -285,7 +288,7 @@ Page({
       showGradeValue: showGradeValue,
       ["subjects[" + _id + "].isHave"]: _isHave
     })
-    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','))
+    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','), function(){}, _item)
   },
   toggleLevel (e) {
     let _id = e.currentTarget.dataset.id
@@ -385,7 +388,7 @@ Page({
               // that.selectGrade(allgradesCheckedID)
               if (item) {
                 if (item.isHave) {
-                  if (that.data.importantSubId) {
+                  // if (that.data.importantSubId) {
                     that.setData({
                       importantSub: null,
                       importantSubId: null,
@@ -396,7 +399,15 @@ Page({
                     })
                     teachBranchSlaveId = []
                     teachBranchValue = []
-                  }
+                    allgradesCheckedID = []
+                    allgradesCheckedValue = []
+                    console.log(that.data.subjects, 'that.data.subjectssss')
+                    _grades = _grades.map(item => {
+                      let obj = item
+                      obj.isHave = 0
+                      return obj
+                    })
+                  // }
                 }
               }
               let showGradeValue = ''
@@ -425,16 +436,40 @@ Page({
                   })
                 }
               }
-              
+              let minGrades = _grades2.map(item => {
+                return item.key
+              })
 
+              let minvalue = _grades2.map(item => {
+                return item.value
+              })
+              // 检索当切换辅导年级时  辅导科目存在的某一科目无该辅导科目
+              console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
+              if (minGrades.indexOf(that.data.importantSubId) === -1 && item) {
+                console.log('检索', item)
+                if (item.isHave) {
+                  that.setData({
+                    isCurrentSubject: null,
+                    importantSub: null,
+                    teachBranchSlave: [],
+                    slave: '',
+                    importantSubId: null,
+                    // allsubjects: [],
+                    teachBranchSlave: [],
+                  })
+                  teachBranchSlaveId = []
+                  teachBranchValue = []
+                }
+              }
               let teachBranchSlave = [], slave = ''
               // 生成辅授科目list
-              for (var j = 0; j < _grades2.length; j++) {
-                if (j !== that.data.isCurrentSubject) {
+              for (let j = 0; j < _grades2.length; j++) {
+                console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
+                if (j !== that.data.isCurrentSubject && (that.data.isCurrentSubject || that.data.isCurrentSubject === 0)) {
                   teachBranchSlave.push(_grades2[j])
                 }
               }
-            
+              console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
               for (let j = 0; j < teachBranchSlave.length; j++) {
                 for (let m = 0; m < checkSlaveId.length; m++) {
                   if (teachBranchSlave[j].key === parseInt(checkSlaveId[m])) {
@@ -473,12 +508,12 @@ Page({
     let _item = e.currentTarget.dataset.item
     let _id = e.currentTarget.dataset.id
     let flag = null
+    let showAddress = ''
     flag = _item.flag === true ? false : true
     this.setData({
       ["teachAddress[" + _id + "].flag"]: flag
     })
-    console.log(addressCheckedID, _item.parameterId, '11111111')
-    let showVal = []
+    console.log(addressCheckedValue)
     if (flag === true && addressCheckedID.indexOf(_item.parameterId) === -1) {
       addressCheckedID.push(_item.parameterId)
       addressCheckedValue.push(_item.name)
@@ -488,6 +523,7 @@ Page({
     }
     
     console.log(addressCheckedValue, 'gradesCheckedValuegradesCheckedValue')
+    console.log(addressCheckedID, _item.parameterId, '11111111')
     if (addressCheckedValue.length >= 2) {
       showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
     } else {
@@ -527,11 +563,12 @@ Page({
         checkedTime: JSON.parse(res.data[0].teachTime)
       })
       for (let m = 0; m < _teachAddress.length; m++) {
-        if (_teachAddress[m].flag && addressCheckedID.indexOf(_teachAddress[m].parameterId) === -1) {
+        if (_teachAddress[m].flag) {
           addressCheckedID.push(_teachAddress[m].parameterId)
           addressCheckedValue.push(_teachAddress[m].name)
         }
       }
+      console.log(addressCheckedValue)
       for (var i = 0; i < that.data.checkedTime.length; i++) {
         console.log(that.data.checkedTime[i].week, '111')
         that.data.checkedTime[i].week = that.data.checkedTime[i].week - 1
@@ -539,13 +576,17 @@ Page({
           ["weekTime[" + that.data.checkedTime[i].week + "][" + that.data.checkedTime[i].time + "].checked"]: true
         })
       }
-      
-      console.log(that.data.checkedTime)
       that.getGradesAndSubject()
     }, function (err) {
       console.log(err)
     }, function () {
     })
+  },
+  unique (arr) {
+    return arr.filter(function(item, index, arr) {
+      //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+      return arr.indexOf(item, 0) === index;
+    });
   },
     /**
    * 保存授课资料 
@@ -579,6 +620,7 @@ Page({
       }
       console.log(teachWeekTime1, 'teachWeekTimeteachWeekTime')
     }
+    addressCheckedID = this.unique(addressCheckedID)
     var tipText = ''
     if (gradesCheckedID.length <= 0) {
       tipText = '请选择授课学段'

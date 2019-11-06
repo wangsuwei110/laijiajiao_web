@@ -1,0 +1,41 @@
+@import "../../../../css/common.wxss";
+.content{
+  background:#fff;
+}
+.content{
+  background:#fff;
+  padding:0 26rpx;
+  padding-bottom:120rpx;
+}
+.cashSuccess{
+   width:698rpx;
+   text-align:center;
+   padding:46rpx 0;
+   border-bottom:1rpx solid #F2EFF6;
+}
+.cashSuccess image{
+  width:98rpx;
+  height:98rpx;
+  margin-bottom:24rpx;
+}
+.applySuccess{
+  font-size:30rpx;
+  color:#25AD00;
+  font-weight:bold;
+  margin-bottom:22rpx;
+}
+.times{
+  font-size:24rpx;
+  color:#9E9E9E;
+}
+.way{
+  padding-top:14rpx;
+  color:#454545;
+  font-size:28rpx;
+}
+.way view{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding-bottom:14rpx;
+}
