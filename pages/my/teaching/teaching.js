@@ -361,7 +361,7 @@ Page({
       if (res.code === '200') {
         if (data && data.length > 0) {
           console.log(data, 'datadatadata')
-            if (!teachGrade) {
+            if (!teachGrade && teachGrade !== '') {
               let _grades = data
               // 查询到辅导年级回显辅导年级
               for (let j = 0; j < _grades.length; j++) {
@@ -493,7 +493,8 @@ Page({
             if (callBack) callBack(data)
           // })
         } else {
-          if (!teachGrade) {
+          if (!teachGrade && teachGrade !== '') {
+            console.log(teachGrade)
             that.setData({
               importantSub: null,
               importantSubId: null,
