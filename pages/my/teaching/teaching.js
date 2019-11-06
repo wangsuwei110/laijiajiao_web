@@ -445,6 +445,7 @@ Page({
               })
               // 检索当切换辅导年级时  辅导科目存在的某一科目无该辅导科目
               console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
+              console.log(item, 'itemitemitemitemitem')
               if (minGrades.indexOf(that.data.importantSubId) === -1 && item) {
                 console.log('检索', item)
                 if (item.isHave) {
@@ -491,6 +492,35 @@ Page({
             }
             if (callBack) callBack(data)
           // })
+        } else {
+          if (!teachGrade) {
+            that.setData({
+              importantSub: null,
+              importantSubId: null,
+              allsubjects: [],
+              isCurrentSubject: null,
+              teachBranchSlave: [],
+              slave: '',
+              subjects: [],
+              showGradeValue: ''
+            })
+            teachBranchSlaveId = []
+            teachBranchValue = []
+            allgradesCheckedID = []
+            allgradesCheckedValue = []
+          } else {
+            that.setData({
+              isCurrentSubject: null,
+              importantSub: null,
+              teachBranchSlave: [],
+              slave: '',
+              importantSubId: null,
+              // allsubjects: [],
+              teachBranchSlave: [],
+            })
+            teachBranchSlaveId = []
+            teachBranchValue = []
+          }
         }
       } else {
         wx.showToast({
