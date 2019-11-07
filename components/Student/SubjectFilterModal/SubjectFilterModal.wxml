@@ -2,10 +2,14 @@
 
 <view class='container' style='display:{{show?"":"none"}};'>
     <scroll-view class='leftBox' scroll-y='true'>
-
+        <view wx:for='{{list}}' wx:key='{{item.key}}' class='leftItem {{level=== item.key?"active":""}}' data-id='{{item.key}}' catchtap='fetchSubject'>{{item.value}}</view>
     </scroll-view>
-
+    
     <scroll-view class='rightBox' scroll-y='true'>
-        <view></view>
+        <view class='content' wx:if='{{subjects[level]}}'>
+            <view class='rightItemWrap' wx:for='{{subjects[level]}}' wx:key='{{item.key}}'>
+                <view class='rightItem {{item.key === subject?"active":""}}' data-id='{{item.key}}' catchtap='onChange'>{{item.value}}</view>
+            </view>
+        </view>
     </scroll-view>
 </view>
