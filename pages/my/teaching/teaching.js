@@ -518,6 +518,7 @@ Page({
               importantSubId: null,
               // allsubjects: [],
               teachBranchSlave: [],
+              allsubjects: []
             })
             teachBranchSlaveId = []
             teachBranchValue = []
