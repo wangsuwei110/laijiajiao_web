@@ -55,6 +55,7 @@ page {
 .section input {
   line-height: 1;
   padding: 28rpx 0;
+  font-size:28rpx;
 }
 .section .code {
   position: absolute;
@@ -74,11 +75,13 @@ page {
 }
 .btn-area {
   margin-top: 100rpx;
+  
 }
 .btn-area button {
   border-radius: 100rpx;
   background-color: #e50505;
   color: #fff;
+  font-size:30rpx;
 }
 .btn-area button::after {
   border-radius: 100rpx;
@@ -90,7 +93,7 @@ page {
   line-height: 92rpx;
   color: #333;
   text-align: center;
-  font-size: 18px;
+  font-size: 28rpx;
 }
 .hot-tel {
   position: absolute;

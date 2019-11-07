@@ -1,9 +1,9 @@
 <view class="container">
   <view class="top-info">
     <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
-    <view class="top-info-item"><text class="numeral">100%</text><text>聘用率</text></view>
-    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">T3</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
-    <view class="top-info-item"><text class="numeral">90%</text><text>续课率</text></view>
+    <view class="top-info-item"><text class="numeral">{{details.employRate}}</text><text>聘用率</text></view>
+    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view class="top-info-item"><text class="numeral">90%</text><text>{{details.resumptionRate}}</text></view>
   </view>
   <view class="fast-entrance">
     <view class="entrance">
@@ -15,9 +15,9 @@
       <text class="entrance-name">帮助中心</text>
     </view>
   </view>
-  <view class="main-content">
+  <view class="main-content" >
     <view class="spacing-10"></view>
-    <view class="remind-panel">
+    <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}'>
       <view class="remind-new">
         <image mode="scaleToFill" src="../../../images/jb_icon.png"></image>
         <text>新</text>
@@ -26,16 +26,15 @@
       <view class="remind-info">
         <view class="remind-info-item">
           <text class="remind-name">新的试讲订单</text>
-          <text class="remind-time">12:21</text>
+          <text class="remind-time">{{item.createTime}}</text>
         </view>
         <view class="remind-info-item">
-          <text class="remind-type">三年级 数学</text>
+          <text class="remind-type">{{item.teachGradeName}} {{item.teachBranchName}}</text>
           <image class="boll-icon" mode="scaleToFill" src="../../../images/boll_icon.png"></image>
           <text class="remind-text">请尽快确认试讲时间</text>
         </view>
       </view>
     </view>
-    <view class="spacing-10"></view>
     <!-- 家教需求 -->
     <view class="panel-wrapper-4">
       <view class="panel-head">
@@ -44,8 +43,8 @@
         <text bindtap="demandList" class="head-link-btn">更多></text>
       </view>
       <view class="panel-body">
-        <view class="demand-wrapper">
-          <view bindtap="demandDetail" class="demand-item">
+        <view class="demand-wrapper" wx:if='{{details.fitTeacherOrderList}}'>
+          <view bindtap="demandDetail" wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
               <text class="name">三年级数学、语文</text>
@@ -84,6 +83,29 @@
               </view>
               <view class="demand-li">
                 <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="demand-wrapper" wx:else>
+          <view bindtap="demandDetail" wx:for='{{details.studentDemandList}}' class="demand-item">
+            <view class="item-title">
+              <text class="dot"></text>
+              <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+              <text class="date">{{item.createTime}}</text>
+            </view>
+            <view class="join">
+              <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+            </view>
+            <view class="demand-ul">
+              <view class="demand-li">
+                <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<text wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</text>）</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">详细需求:</text><text class="cont">{{item.demandDesc}}</text>
               </view>
             </view>
           </view>

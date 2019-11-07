@@ -1,1 +1,192 @@
 /* pages/curricul/index.wxss */
+.container {
+  font-weight: 300;
+  width: 690rpx;
+  margin: 0 30rpx;
+  background: #fff;
+  border-radius: 5rpx;
+}
+.weeks{
+  margin-top:30rpx;
+  height: 124rpx;
+  background: #E50505;
+  width:100%;
+  border-top-left-radius: 5rpx;
+  border-top-right-radius: 5rpx;
+  position: relative;
+}
+.change-time{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.change-time em{
+  font-style: normal;
+  margin:0 40rpx;
+}
+.weeks .weeks-tit{
+  width:100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #FFF33A;
+  font-weight: bold;
+  line-height: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  border-top-left-radius: 5rpx;
+  border-top-right-radius: 5rpx;
+}
+.tit{
+  width:650rpx;
+  height: 120rpx;
+  margin:44rpx 20rpx 0 20rpx;
+  background: #F7F6F8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 28rpx;
+  
+  color: #646464;
+}
+.tit view{
+  text-align: center;
+
+}
+.ivon1{
+  width:19rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: -30rpx;
+  left:40rpx;
+}
+.ivon2 {
+  width:19rpx;
+  height: 60rpx;
+  position: absolute;
+  bottom: -30rpx;
+  right:40rpx;
+}
+.tit-count{
+  border-bottom-left-radius: 5rpx;
+  border-bottom-right-radius: 5rpx;
+}
+.calander{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 7rpx;
+}
+.tit-count{
+  width: 650rpx;
+  padding:0 20rpx;
+  background: #fff;
+}
+.arrow_icon{
+  width:8rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
+}
+.arrow_icon-right{
+  width:8rpx;
+  height: 16rpx;
+  margin-left: 10rpx;
+}
+.tit-list{
+  width: 650rpx;
+  padding: 29rpx 0 25rpx 0;
+  border-bottom: 1rpx solid#EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tit-list-time{
+  width: 100rpx;
+  color: #646464;
+  font-size: 29rpx;
+  text-align: center;
+  
+}
+.tit-list-style{
+  width: 560rpx;
+  display: flex;
+  align-items: center;
+}
+.tit-list-style-name{
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  font-size: 28rpx;
+  width: 206rpx;
+
+}
+.tit-list-style-name-top{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.tit-list-style-name-bot{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12rpx;
+}
+.active-ka{
+  width: 102rpx;
+  height: 32rpx;
+  border:1rpx solid #0384DF;
+  text-align: center;
+  line-height: 32rpx;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7rpx;
+}
+.tit-beizhu{
+  width: 100%;
+  padding: 22rpx 0;
+  display: flex;
+  align-items: center;
+}
+.tit-beizhu-title{
+  width: 100rpx;
+  color: #959595;
+  font-size: 29rpx;
+  text-align: center;
+
+}
+.tit-beizhu-text{
+  display: flex;
+  align-items: center;
+  color: #989898;
+  font-size: 28rpx;
+  margin-left: 26rpx;
+}
+.icon-green{
+  width: 10rpx;
+  height: 10rpx;
+  background:#14D101;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.icon-red{
+  width: 10rpx;
+  height: 10rpx;
+  background:#E50505;
+  border-radius: 50%;
+  margin-right: 10rpx;
+
+}
+.icon-blue{
+  width: 10rpx;
+  height: 10rpx;
+  background:#0384DF;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.icon-one,.icon-two{
+  margin-right: 40rpx;
+}

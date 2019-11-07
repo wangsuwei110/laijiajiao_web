@@ -1,0 +1,63 @@
+@import "../../../css/common.wxss";
+.revenue-list-container {
+  font-size: 30rpx;
+  font-weight: 300;
+  background: #fff;
+}
+
+.tit{
+  width:698rpx;
+  padding:0 26rpx;
+  height: 114rpx;
+  background: #fff;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #454545;
+}
+.tit view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red{
+  color: #888;
+  font-size: 28rpx;
+}
+.arrow_icon{
+  width:36rpx;
+  height: 22rpx;
+  transform: rotate(-90deg);
+  margin-left:20rpx;
+}
+.cash{
+  border-top:1rpx solid #F2EFF6;
+  border-bottom:1rpx solid #F2EFF6;
+  margin:0 26rpx;
+  height: 185rpx;
+  width:698rpx;
+  background: #fff;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top:23rpx;
+}
+.inputCash{
+  padding-top:35rpx;
+  font-size: 60rpx;
+  color: #E50505;
+  font-weight: bold;
+}
+.inputCash text{
+  float: left;
+}
+.inputCash input{
+  height: 85rpx;
+  line-height: 23rpx;
+  padding-left: 20rpx;
+  margin-top: 0rpx;
+
+}
