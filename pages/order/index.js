@@ -35,13 +35,13 @@ Page({
   // 订单列表
   getList () {
     var that = this
-    http.post('/teacher/queryDemandsByTeacher', {teacherId: 6}, function (res) {
+    http.post('/teacher/queryDemandsByTeacher', {teacherId: 6, status: this.data.status}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         data = data.map(item => {
           let obj = item
-          obj.createTime = that.timeFormat(obj.createTime)
+          if (obj.createTime) obj.createTime = that.timeFormat(obj.createTime)
           return obj
         })
         console.log(data, 'datadata')
@@ -73,12 +73,18 @@ Page({
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
+    //  
+    this.setData({
+      status: _idx === 1 ? 0 : _idx === 0 ? null : _idx === 3 ? 4 : _idx === 2 ? 2 : '',
+      list: []
+    })
     if (this.data.activeIdx == _idx) {
       return;
     }
     this.setData({
       activeIdx: _idx
     })
+    this.getList()
     // 请求数据
     console.log(e.currentTarget.dataset)
   },
@@ -90,7 +96,7 @@ Page({
    */
   orderDetail: function (e) {
     console.log(e)
-    var orderType = e.currentTarget.dataset.orderType;
+    var orderType = e.currentTarget.dataset.type;
     
     wx.navigateTo({
       url: './orderDetail/orderDetail?orderType=' + orderType + '&id=' + e.currentTarget.dataset.id,
