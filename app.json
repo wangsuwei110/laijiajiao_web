@@ -48,7 +48,8 @@
     "pages/Student/OrderPass/OrderPass",
     "pages/Student/Evaluate/Evaluate",
     "pages/my/cash/cash",
-    "pages/my/cash/cashSuccess/cashSuccess"
+    "pages/my/cash/cashSuccess/cashSuccess",
+    "pages/discount/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
