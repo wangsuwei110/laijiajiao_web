@@ -1,7 +1,11 @@
+
+var http = require('../../utils/api.js')
 Page({
   data: {
     scrollHeight: "",
     activeIdx: 0,
+    // 列表
+    list: [],
     tabs: [
       {
         name: "全部",
@@ -21,6 +25,41 @@ Page({
       }
     ]
   },
+  timeFormat (timeStr) {
+    var dataOne = timeStr.split('T')[0];
+    var dataTwo = timeStr.split('T')[1];
+    var dataThree = dataTwo.split('+')[0].split('.')[0];
+    var newTimeStr = dataOne + ' ' + dataThree
+    return newTimeStr;
+  },
+  // 订单列表
+  getList () {
+    var that = this
+    http.post('/teacher/queryDemandsByTeacher', {teacherId: 6}, function (res) {
+      console.log(res.data)
+      var data = res.data
+      if (res.code === '200') {
+        data = data.map(item => {
+          let obj = item
+          obj.createTime = that.timeFormat(obj.createTime)
+          return obj
+        })
+        console.log(data, 'datadata')
+        that.setData({
+          list: data
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }, function (err) {
+      console.log(err)
+    }, function () {
+      wx.hideLoading()
+    })
+  },
   onLoad: function () {
     const that = this;
     let winHeight = wx.getSystemInfoSync().windowHeight;
@@ -30,6 +69,7 @@ Page({
         scrollHeight: winHeight - rect.height
       })
     }).exec();
+    this.getList()
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
@@ -51,8 +91,9 @@ Page({
   orderDetail: function (e) {
     console.log(e)
     var orderType = e.currentTarget.dataset.orderType;
+    
     wx.navigateTo({
-      url: './orderDetail/orderDetail?orderType=' + orderType,
+      url: './orderDetail/orderDetail?orderType=' + orderType + '&id=' + e.currentTarget.dataset.id,
     })
   },
   /**

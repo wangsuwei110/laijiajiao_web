@@ -5,4 +5,6 @@
   </view>
   <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
   <view bindtap="saveUserinfoTags" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+
+  <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 </view>

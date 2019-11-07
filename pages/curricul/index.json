@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#e50505",
+  "navigationBarTitleText": "微信接口功能演示",
+  "backgroundColor": "#f2eff6",
+  "backgroundTextStyle": "light"
 }

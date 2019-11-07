@@ -1,0 +1,33 @@
+<view class="revenue-list-container">
+  <view class='tit'>
+    <text>提现方式</text>
+    <view>
+      <text class='red'>+150</text>
+      <image src='../../../images/arrow_icon.png' class='arrow_icon'/>
+    </view>
+  </view>
+
+  <view class='cash'>
+     <view class='top'>
+        <text>提现金额</text>
+        <text>5%手续费</text>
+     </view>
+
+     <view class='inputCash'>
+       <text>￥</text>
+       <input type="tel" />
+     </view>
+  </view>
+  
+
+  <view class='tit'>
+    <view>
+        可提现余额 <text>￥1000</text>
+    </view>
+    <view>
+      <text>全部提现</text>
+    </view>
+  </view>
+
+  <view bindtap='saveBtn' class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+</view>

@@ -2,3 +2,36 @@
   font-size: 30rpx;
   font-weight: 300;
 }
+
+.tit{
+  width:698rpx;
+  padding:0 26rpx;
+  height: 114rpx;
+  background: #fff;
+  box-shadow: 0 0 10px #e3e3e3;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #454545;
+}
+.red{
+  color: #497C00;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.list{
+  margin-top:22rpx;
+  padding:0 26rpx;
+  background: #fff;
+}
+.list .items{
+  height: 88rpx;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #454545;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #F2EFF6;
+}

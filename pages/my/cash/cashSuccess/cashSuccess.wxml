@@ -1,0 +1,20 @@
+<view class="revenue-list-container">
+ <view class='content'>
+  <view class='cashSuccess'>
+    <image src='' />
+    <view class='applySuccess'>提现申请成功，敬请等待处理</view>
+    <view class='times'>预计2小时内到账</view>
+  </view>
+  <view class='way'>
+    <view>
+      <text>提现金额</text>
+      <text>¥1000</text>
+    </view>
+    <view>
+      <text>提现方式</text>
+      <text>微信红包</text>
+    </view>
+  </view>
+  </view>
+  <view class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">下一步</view>
+</view>

@@ -33,6 +33,9 @@ App({
         url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/login',
       })
     }
+      // wx.reLaunch({
+      //   url: '/pages/editUserinfo/editUserinfo'
+      // })
   },
   isIPX: false
 })
