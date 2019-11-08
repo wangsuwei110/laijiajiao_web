@@ -1,18 +1,27 @@
 // pages/Student/ViewAppointment/ViewAppointment.js
+const http = require('../../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    selectId: 0,
+    teacherList: []
+  },
 
+
+  onSelectChange(e) {
+    this.setData({ selectId: Number(e.currentTarget.dataset.id) })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    http.postPromise('/StudentDemand/listTeacher', { demandId: options.id }).then(data => {
+      this.setData({ teacherList: data.data, selectId: data.data.length ? data.data[0].teacherId : 0 })
+    })
   },
 
   /**

@@ -132,3 +132,15 @@ margin-top: 20rpx;
 
     background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
 }
+
+.checkBoxWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.checkBox{
+    width: 26rpx;
+    height: 26rpx;
+}

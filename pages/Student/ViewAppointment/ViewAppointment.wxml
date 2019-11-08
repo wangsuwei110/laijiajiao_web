@@ -3,27 +3,33 @@
 <view class='container'>
     <view class='title'>张小二 | 二年级数学</view>
 
-    <view class='item'>
+    <navigator url class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
+
+        <view class='checkBoxWrap' catchtap='onSelectChange' data-id='{{item.teacherId}}'>
+            <image wx:if='{{selectId === item.teacherId}}'  class='checkBox' src='../../../images/Students/radio_checked.png' mode='widthFix'/>
+            <image wx:else class='checkBox' src='../../../images/Students/radio_uncheck.png' mode='widthFix'/>
+        </view>
+
         <view class='logo'>
             <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
-            <text class='level'>T3</text>
+            <text class='level'>{{item.teacherLevel}}</text>
         </view>
 
         <view class='rightBox'>
             <view class='infoWrap'>
                 <view class='nameWrap'>
-                    <text class='name'>李教员</text>
+                    <text class='name'>{{item.name}}</text>
 
                     <image wx:if='{{item.sex === 2}}' class='genderIcon' src='../../../images/gender0.png' mode='widthFix'/>
                     <image wx:elif='{{item.sex === 1}}' class='genderIcon' src='../../../images/gender1.png' mode='widthFix'/>
                 </view>
-
-                <text class='price'>¥100/时起</text>
+                
+                <text class='price'>{{item.chargesStandard}}</text>
             </view>
 
-            <view class='desc'>聘用率91% 续课率79%</view>
+            <view class='desc'>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</view>
         </view>
-    </view>
+    </navigator>
 
 </view>
 

@@ -8,7 +8,7 @@
         <text class='cell headerCell'>四</text>
         <text class='cell headerCell'>五</text>
         <text class='cell headerCell'>六</text>
-        <text class='cell headerCell'>七</text>
+        <text class='cell headerCell'>日</text>
     </view>
 
     <view class='row' wx:for='{{dataList}}' wx:key='{{item.id}}'>

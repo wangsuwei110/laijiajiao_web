@@ -53,19 +53,6 @@ page{
     color:rgba(155,155,155,1);
 }
 
-.dateTitle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4DB6F5;
-
-    font-size:24rpx;
-    font-family:Noto Sans S Chinese;
-    font-weight:300;
-    color: #fff;
-    height: 60rpx;
-}
-
 .bottomAction{
     display: flex;
     margin-top: 30rpx;
@@ -122,6 +109,14 @@ page{
     font-family:Noto Sans S Chinese;
     font-weight:300;
     color:#5C5C5C;
+}
+
+.unit{
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:#5C5C5C;
+    margin-left: 10rpx;
 }
 
 .amount{

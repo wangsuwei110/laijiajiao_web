@@ -5,7 +5,8 @@
         <text class='timeTitleTxt'>上课时间选择</text>
         <text class='timeSubTitle'>请确保上课时间经过教员确认</text>
     </view>
-    <view class='dateTitle'>上一周 2019.07.08—2019.07.14 下一周</view>
+
+
     <SelectClassTime/>
 
     <view class='bottomAction'>
@@ -13,6 +14,7 @@
             <view class='quantityBox'>
                 <text class='label'>购买：</text>
                 <QuantityInput/>
+                <text class='unit'>周</text>
             </view>
             
             <view class='discountLabel label'>

@@ -1,6 +1,6 @@
 <!--components/Student/QuantityInput/QuantityInput.wxml-->
 <view class='container'>
-    <text class='btn'>-</text>
-    <input class='input' type='number' bindinput='onChange'/>
-    <text class='btn'>+</text>
+    <text class='btn' catchtap='onSubClick'>-</text>
+    <input value='{{_value}}' class='input' type='number' bindinput='onChange'/>
+    <text class='btn' catchtap='onAddClick'>+</text>
 </view>
