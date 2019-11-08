@@ -70,6 +70,8 @@ page {
   font-size: 28rpx;
   font-weight: normal;
   color: #646464;
+  height: 0;
+  line-height: 0;
 }
 .list-item .item-meta .date {
   flex: 1;
@@ -77,6 +79,8 @@ page {
 }
 .list-item .item-meta .tip {
   color: #999999;
+  height: 0;
+  line-height: 0;
 }
 .list-bottom-text {
   line-height: 2;

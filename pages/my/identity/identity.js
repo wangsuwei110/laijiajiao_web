@@ -16,6 +16,14 @@ Page({
   },
   uploadImg: function () {
     var that = this;
+    var _userinfo = this.data.userinfo
+    if (_userinfo.IDcardPic.length >= 2) {
+      wx.showToast({
+        title: '身份证照片为正反两张，不能超过2张',
+        icon: 'none'
+      })
+      return
+    }
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
@@ -122,15 +130,15 @@ Page({
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
       var pics = res.data.pictures[0].pictureUrl
-      var _pics = []
-      if (pics.length > 0) {
-        pics.forEach(function (p) {
-          p = that.data.RESOURCE_PERFIX + p
-          _pics.push(p)
-        })
-      }
+      // var _pics = []
+      // if (pics.length > 0) {
+      //   pics.forEach(function (p) {
+      //     p = that.data.RESOURCE_PERFIX + p
+      //     _pics.push(p)
+      //   })
+      // }
       that.setData({
-        'userinfo.IDcardPic': _pics,
+        'userinfo.IDcardPic': pics,
         'userinfo.logonStatus': res.data.userInfos.logonStatus,
         'userinfo.IDcardNumber': res.data.userInfos.idCard
       })

@@ -5,8 +5,8 @@
       <text class="label">我的大学</text>
       <input bindinput="getSchool" type="text" placeholder="请输入所读大学"  value="{{userinfo.school}}"></input>
       <view class="gender">
-        <text bindtap="updateGraduation" data-graduation="0" class="{{userinfo.isGraduate == 0 ? 'active': ''}}">在读</text>
-        <text bindtap="updateGraduation" data-graduation="1" class="{{userinfo.isGraduate == 1 ? 'active': ''}}">毕业</text>
+        <text bindtap="updateGraduation" data-isGraduate="0" class="{{userinfo.isGraduate == 0 ? 'active': ''}}">在读</text>
+        <text bindtap="updateGraduation" data-isGraduate="1" class="{{userinfo.isGraduate == 1 ? 'active': ''}}">毕业</text>
       </view>
     </view>
     <view class="panel-item">

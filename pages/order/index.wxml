@@ -11,9 +11,12 @@
     <view class="order-list">
     <view bindtap="orderDetail" wx:for='{{list}}' data-type='{{item.demandSignStatus}}' data-id='{{item.sid}}' data-order-type="0" class="list-item">
       <view class="list-item-l">
-        <view class="item-meta meta-1"><text class="name">{{item.studentName}} {{item.teachGradeName}} {{item.teachBranchName}}</text><text class="type">
-          {{item.demandSignStatus === 1 ? '试讲' : item.demandSignStatus === 4 ? '已支付' : item.demandSignStatus === 0 ? '已报名' : item.demandSignStatus === 2 ? '试讲' : item.demandSignStatus === 3 ? '试讲':item.demandSignStatus === 5 ? '已报名':''}}
-        </text></view>
+        <view class="item-meta meta-1">
+          <view class="name">{{item.studentName}} {{item.teachGradeName}} {{item.teachBranchName}}</view>
+          <text class="type">
+            {{item.demandSignStatus === 1 ? '试讲' : item.demandSignStatus === 4 ? '已支付' : item.demandSignStatus === 0 ? '已报名' : item.demandSignStatus === 2 ? '试讲' : item.demandSignStatus === 3 ? '试讲':item.demandSignStatus === 5 ? '已报名':''}}
+          </text>
+        </view>
         <view class="item-meta"><text class="date">{{item.createTime}}</text><text class="tip">
            {{item.demandSignStatus === 1 ? '尽快确定试讲时间' : item.demandSignStatus === 4 ? '￥' + item.orderMoney : item.demandSignStatus === 0 ? '耐心等待报名结果' : item.demandSignStatus === 2 ? '求参数' : item.demandSignStatus === 3 ? '不通过' : item.demandSignStatus === 5 ? '结束' : ''}}
         </text></view>
