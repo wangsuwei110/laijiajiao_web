@@ -1,0 +1,49 @@
+<view class="page">
+  <view class="info">
+    <image class="top-bg" src="../../images/top_bg.png"></image>
+    <view class="my-info">
+      <view class="avatar">
+        <image bindtap="tabFun" ></image>
+        <view class="level" bindtap="tabFun" >点击登录</view>
+      </view>
+       <text bindtap="openVita" class="link-btn">点击登录</text>
+    </view>
+  </view>
+  <view class="meta-container">
+    <view class="meta-list">
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_1.png"></image>
+        <text class="meta-name">简历信息</text>
+      </view>
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_2.png"></image>
+        <text class="meta-name">授课资料</text>
+      </view>
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_3.png"></image>
+        <text class="meta-name">收入管理</text>
+      </view>
+    </view>
+    <view class="meta-list">
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_4.png"></image>
+        <text class="meta-name">反馈投诉</text>
+      </view>
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_5.png"></image>
+        <text class="meta-name">更多设置</text>
+      </view>
+      <view bindtap="tabFun" class="meta">
+        <image mode="widthFix" class="meta-icon" src="../../images/my_meta_6.png"></image>
+        <text class="meta-name">帮助中心</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='tabBar' bindtap='tabFun'>
+    <view wx:for='{{tabBar}}'>
+      <image src='{{item.img}}' />
+      <view style="{{item.text === '我的' ? 'color:#e50505' : ''}}">{{item.text}}</view>
+    </view>
+  </view>
+</view>

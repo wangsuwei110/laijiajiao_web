@@ -28,17 +28,17 @@ Page({
     }
     wx.showLoading()
     var _ids = []
-    http.post('/parameter/queryParameters', params, function (res) {
-      var data = res.data[0]
-      if (data.teacherTag.length > 0) {
-        data.teacherTag.forEach(function (item) {
+    http.post('//userInfo/queryUserInfosDetail', params, function (res) {
+      var data = res.data.chooseTags
+      if (data.length > 0) {
+        data.forEach(function (item) {
           if (item.flag) {
             _ids.push(item.parameterId)
           }
         })
       }
       that.setData({
-        'labels': data.teacherTag,
+        'labels': data,
         'ids': _ids
       })
     }, function (err) {

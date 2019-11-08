@@ -38,7 +38,7 @@
   display: none;
 }
 .cont-item .label {
-  width: 140rpx;
+  width: 190rpx;
   color: #646464;
 }
 .cont-item .text {
@@ -89,19 +89,43 @@
 }
 .table-title .time-name {
   width: 160rpx;
-  color: #646464;
 }
 .table-title .week-name {
   flex: 1;
-  color: #646464;
+}
+.table-body {
+  display: flex;
 }
 .table-body .table-item {
   display: flex;
+  flex: 1;
   align-items: center;
+  flex-direction: column;
   position: relative;
-  height: 106rpx;
 }
-.table-body .table-item::after {
+.table-item .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 160rpx;
+  height: 86rpx;
+}
+.table-item .time .time-period {
+  white-space: nowrap;
+  font-size: 22rpx;
+}
+.table-item .week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 86rpx;
+}
+.table-body .table-item .time::after,
+.table-body .table-item .week::after {
   display: block;
   content: "";
   position: absolute;
@@ -113,23 +137,8 @@
   -webkit-transform: scale(1, 0.5);
   transform: scale(1, 0.5);
 }
-.table-item .time {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 160rpx;
-  color: #5c5c5c;
-}
-.table-item .time .time-period {
-  white-space: nowrap;
-  font-size: 22rpx;
-}
-.table-item .week {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.table-body .table-item:last-child::after {
+  display: none;
 }
 .explanation {
   display: flex;
@@ -157,4 +166,8 @@
   line-height: 1;
   font-size: 32rpx;
   color: #646464;
+}
+.explanation1{
+  display:flex;
+  justify-content: space-between;
 }

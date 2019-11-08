@@ -30,11 +30,11 @@ App({
       }
     } else {
       wx.reLaunch({
-        url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/login',
+        url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/index',
       })
     }
       // wx.reLaunch({
-      //   url: '/pages/editUserinfo/editUserinfo'
+      //   url: '/pages/discount/index'
       // })
   },
   isIPX: false

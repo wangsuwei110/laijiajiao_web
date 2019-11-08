@@ -26,9 +26,21 @@ Page({
   data: {
     details: ''
   },
+  // 下拉刷新
+ onPullDownRefresh () {
+  // 显示顶部刷新图标
+  wx.showNavigationBarLoading();
+  this.getHome()
+  // 隐藏导航栏加载框
+  wx.hideNavigationBarLoading();
+  // 停止下拉动作
+  wx.stopPullDownRefresh();
+},
   onLoad: function () {
     this.getHome()
   },
+  
+ 
   /**
    * 家教需求列表 
    */
@@ -84,6 +96,13 @@ Page({
             objA = timeWeek(objA.week) + dayTimes(objA.time)
             return objA
           })
+          return obj
+        })
+      }
+      if (data.StudentLogVoList) {
+        data.StudentLogVoList = data.StudentLogVoList.map(item => {
+          let obj = item
+          obj.createTime = timeFormat(obj.createTime)
           return obj
         })
       }

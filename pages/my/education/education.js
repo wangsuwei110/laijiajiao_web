@@ -38,7 +38,7 @@ Page({
   },
   updateGraduation: function (e) {
     this.setData({
-      ["userinfo.isGraduate"]: e.target.dataset.isGraduate
+      'userinfo.isGraduate': e.target.dataset.isgraduate
     })
   },
   uploadImg: function () {
@@ -164,17 +164,18 @@ Page({
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
       var pics = res.data.pictures[0].pictureUrl
-      var _pics = []
-      if (pics.length > 0) {
-        pics.forEach(function (p) {
-          p = that.data.RESOURCE_PERFIX + p
-          _pics.push(p)
-        })
-      }
+      // var _pics = []
+      // if (pics.length > 0) {
+      //   pics.forEach(function (p) {
+      //     p = that.data.RESOURCE_PERFIX + p
+      //     _pics.push(p)
+      //   })
+      // }
       var _userinfo = res.data.userInfos
+      console.log(_userinfo, '111')
       that.setData({
         'userinfo': _userinfo,
-        'userinfo.eduPic': _pics
+        'userinfo.eduPic': pics
       })
     }, function (err) {
       wx.showToast({

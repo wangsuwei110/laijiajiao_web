@@ -121,20 +121,12 @@
       </view>
       <view class="panel-body">
         <view class="dynamic-wrapper">
-          <view class="dynamic-item">
+          <view class="dynamic-item" wx:for='{{details.StudentLogVoList}}'>
             <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
             <view class="user-desc">
-              <text class="name">朱学员</text>
-              <text class="date">2019.07.07</text>
-              <view class="cont"><text>最近登录了系统</text></view>
-            </view>
-          </view>
-          <view class="dynamic-item">
-            <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
-            <view class="user-desc">
-              <text class="name">朱学员</text>
-              <text class="date">2019.07.07</text>
-              <view class="cont"><text>最近登录了系统</text></view>
+              <text class="name">{{item.studentName}}</text>
+              <text class="date">{{item.createTime}}</text>
+              <view class="cont"><text>{{item.logContent}}</text></view>
             </view>
           </view>
         </view>

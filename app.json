@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/noLogin/index",
     "pages/login/login",
     "pages/home/index/index",
     "pages/home/demandList/demandList",
@@ -48,7 +49,8 @@
     "pages/Student/OrderPass/OrderPass",
     "pages/Student/Evaluate/Evaluate",
     "pages/my/cash/cash",
-    "pages/my/cash/cashSuccess/cashSuccess"
+    "pages/my/cash/cashSuccess/cashSuccess",
+    "pages/discount/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

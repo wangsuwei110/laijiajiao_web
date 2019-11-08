@@ -1,87 +1,90 @@
 <view class="order-detail-container">
   <view class="order-panel">
-    <view class="paenel-title">二年级数学</view>
+    <view class="paenel-title">{{details.teachGradeName}} {{details.teachBranchName}}</view>
     <view class="panel-cont">
-      <view class="cont-item">
+      <view class="cont-item"  wx:if='{{orderType === 0 || orderType === 5}}'>
         <text class="label">发布时间</text>
-        <text class="text">2018-12-23 12:32:32</text>
+        <text class="text">{{details.createTime}}</text>
       </view>
-      <view class="cont-item">
-        <text class="label">投递时间</text>
-        <text class="text">2018-12-23 12:32:32</text>
+      <view class="cont-item" wx:if='{{orderType === 0 || orderType === 5}}'>
+        <text class="label">报名时间</text>
+        <text class="text">{{details.signTime}}</text>
       </view>
+      
+      <view class="cont-item" wx:if='{{orderType === 4}}'>
+        <text class="label">支付时间</text>
+        <text class="text">{{details.orderTeachTime}}</text>
+      </view>
+
+
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2}}'>
+        <text class="label">订单创建</text>
+        <text class="text">{{details.signTime}}</text>
+      </view>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 4 || orderType === 2}}'>
+        <text class="label">联系手机</text>
+        <text class="text">{{details.parentPhoneNum}}</text>
+      </view>
+
       <view class="cont-item">
         <text class="label">上课地址</text>
-        <text class="text">上海市浦东新区张江镇碧波路xx号</text>
+        <text class="text">{{details.demandAddress}}</text>
       </view>
+
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2}}'>
+        <text class="label">每周上课次数</text>
+        <text class="text">一周{{details.timeRange.length}}次</text>
+      </view>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2}}'>
+        <text class="label">具体需求</text>
+        <text class="text">{{details.demandDesc}}</text>
+      </view>
+
+      <view class="cont-item"  wx:if='{{orderType === 2}}'>
+        <text class="label">已确定试讲时间</text>
+        <view class="text">{{details.orderTeachTime}}</view>
+      </view>
+
+
     </view>
   </view>
   <view class="spacing-10"></view>
-  <view class="tutor-panel">
+  <view class="tutor-panel" wx:if='{{orderType === 4 || orderType == 0}}'>
     <view class="panel-top">
       <view class="dot-icon"></view>
       <text wx:if="{{orderType == 0}}" class="title">预计上课时段</text>
-      <text wx:if="{{orderType == 1}}" class="title">上课时段</text>
+      <text wx:if="{{orderType == 4}}" class="title">上课时段</text>
     </view>
     <view class="panel-body">
       <view class="school-timetable">
         <view class="timetable">
-          <view class="table-title">
-            <text class="time-name">时间</text>
-            <text class="week-name">一</text>
-            <text class="week-name">二</text>
-            <text class="week-name">三</text>
-            <text class="week-name">四</text>
-            <text class="week-name">五</text>
-            <text class="week-name">六</text>
-            <text class="week-name">日</text>
+        <view class="table-title">
+          <text class="time-name">时间</text>
+          <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
+        </view>
+        <view class="table-body">
+          <view class="table-item">
+            <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
+              <text>{{item.name}}</text>
+              <text class="time-period">（{{item.period}}）</text>
+            </view>
           </view>
-          <view class="table-body">
-            <view class="table-item">
-              <view class="time">
-                <text>上午</text>
-                <text class="time-period">（8:00-12:00）</text>
-              </view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-            </view>
-            <view class="table-item">
-              <view class="time">
-                <text>下午</text>
-                <text class="time-period">（12:00-18:00）</text>
-              </view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-            </view>
-            <view class="table-item">
-              <view class="time">
-                <text>晚上</text>
-                <text class="time-period">（18:00-23:00）</text>
-              </view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-              <view class="week"><view class="checkbox checked"></view></view>
-            </view>
+          <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
+            <view bindtap="selectWeekDay" data-id="{{idx}}" data-sid="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
           </view>
         </view>
-        <view class="explanation">
+      </view>
+        <view class="explanation" wx:if='{{orderType === 0}}'>
           <image mode="scaleFill" src="../../../images/expl_icon.png"></image>
-          <text>每周上课次数:</text><text class="num">一周两次</text>
+          <text>每周上课次数:</text><text class="num">一周{{details.timeRange.length}}次</text>
         </view>
+        <view class="explanation" wx:if='{{orderType === 0}}'>
+          <text style='margin-left:0;'>具体需求:</text><text>{{details.demandDesc}}</text>
+        </view>
+        <view class="explanation explanation1" wx:if='{{orderType === 4}}'>
+          <text style='margin-left:0;'>首次支付:</text><text class="num">￥{{details.orderMoney}}</text>
+        </view>
+
       </view>
     </view>
   </view>
