@@ -99,6 +99,13 @@ Page({
           return obj
         })
       }
+      if (data.StudentLogVoList) {
+        data.StudentLogVoList = data.StudentLogVoList.map(item => {
+          let obj = item
+          obj.createTime = timeFormat(obj.createTime)
+          return obj
+        })
+      }
       console.log(data, '11111')
       that.setData({
         details: data
