@@ -18,7 +18,7 @@
           </text>
         </view>
         <view class="item-meta"><text class="date">{{item.createTime}}</text><text class="tip">
-           {{item.demandSignStatus === 1 ? '尽快确定试讲时间' : item.demandSignStatus === 4 ? '￥' + item.orderMoney : item.demandSignStatus === 0 ? '耐心等待报名结果' : item.demandSignStatus === 2 ? '求参数' : item.demandSignStatus === 3 ? '不通过' : item.demandSignStatus === 5 ? '结束' : ''}}
+           {{item.demandSignStatus === 1 ? '尽快确定试讲时间' : item.demandSignStatus === 4 ? '￥' + item.orderMoney : item.demandSignStatus === 0 ? '耐心等待报名结果' : item.demandSignStatus === 2 ? item.timeCha : item.demandSignStatus === 3 ? '不通过' : item.demandSignStatus === 5 ? '结束' : ''}}
         </text></view>
       </view>
       <view class="arrow-icon arrow-right"></view>

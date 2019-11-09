@@ -132,7 +132,8 @@ Page({
     ],
     orderType: null,
     id: null,
-    details: null
+    details: null,
+    status: null
   },
   onLoad: function (options) {
     var that = this;
@@ -158,7 +159,7 @@ Page({
   },
   getOrderDetails () {
     var that = this
-    http.post('/teacher/queryStudemtDemandDetail', {teacherId: 6, demandId: this.data.id}, function (res) {
+    http.post('/teacher/queryStudemtDemandDetail', {demandId: this.data.id, status: this.data.orderType}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
@@ -175,7 +176,6 @@ Page({
             return timeWeek(obj.week) + dayTimes(obj.time)
           })
         }
-     
         that.setData({
           details: data
         })
