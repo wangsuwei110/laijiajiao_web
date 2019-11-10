@@ -4,6 +4,7 @@ var http = require('../../../utils/api')
 Page({
   data: {
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
+    formOrder: false,
     serviceTabIndex: 1,
     userinfo: {},
     labels: [], // 教员标签
@@ -288,6 +289,11 @@ Page({
 
   onLoad: function (options) {
     this.teacherId = options.id
+    if (Number(options.form) === 1) {
+      this.setData({
+        formOrder: true,
+      })
+    }
     this.getUserinfo(options.id)
   }
 })

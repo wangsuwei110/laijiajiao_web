@@ -17,7 +17,7 @@
 
         <view class='frequencyList'>
             <view class='itemWrap' wx:for='{{frequencyList}}' wx:key='{{item.id}}'>
-                <view class='item {{item.id===classNum}}' data-id='{{item.id}}' bindtap='onWeekNumChange'>{{item.name}}</view>
+                <view class='item {{item.id===classNum?"active":""}}' data-id='{{item.id}}' bindtap='onWeekNumChange'>{{item.name}}</view>
             </view>
         </view>
     </view>

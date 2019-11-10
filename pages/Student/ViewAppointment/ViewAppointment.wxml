@@ -1,36 +1,41 @@
 <!--pages/Student/ViewAppointment/ViewAppointment.wxml-->
+<scroll-view class='pageWrap'>
+    <view class='_container'>
+        <view class='title'>{{item.studentName}} | {{item.grageSubject}}</view>
 
-<view class='container'>
-    <view class='title'>张小二 | 二年级数学</view>
+        <navigator url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}&form=1' class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
 
-    <navigator url class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
-
-        <view class='checkBoxWrap' catchtap='onSelectChange' data-id='{{item.teacherId}}'>
-            <image wx:if='{{selectId === item.teacherId}}'  class='checkBox' src='../../../images/Students/radio_checked.png' mode='widthFix'/>
-            <image wx:else class='checkBox' src='../../../images/Students/radio_uncheck.png' mode='widthFix'/>
-        </view>
-
-        <view class='logo'>
-            <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
-            <text class='level'>{{item.teacherLevel}}</text>
-        </view>
-
-        <view class='rightBox'>
-            <view class='infoWrap'>
-                <view class='nameWrap'>
-                    <text class='name'>{{item.name}}</text>
-
-                    <image wx:if='{{item.sex === 2}}' class='genderIcon' src='../../../images/gender0.png' mode='widthFix'/>
-                    <image wx:elif='{{item.sex === 1}}' class='genderIcon' src='../../../images/gender1.png' mode='widthFix'/>
-                </view>
-                
-                <text class='price'>{{item.chargesStandard}}</text>
+            <view class='checkBoxWrap' catchtap='onSelectChange' data-id='{{item.teacherId}}'>
+                <image wx:if='{{selectId === item.teacherId}}'  class='checkBox' src='../../../images/Students/radio_checked.png' mode='widthFix'/>
+                <image wx:else class='checkBox' src='../../../images/Students/radio_uncheck.png' mode='widthFix'/>
             </view>
 
-            <view class='desc'>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</view>
-        </view>
-    </navigator>
+            <view class='logo'>
+                <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
+                <text class='level'>{{item.teacherLevel}}</text>
+            </view>
 
-</view>
+            <view class='rightBox'>
+                <view class='infoWrap'>
+                    <view class='nameWrap'>
+                        <text class='name'>{{item.name}}</text>
 
-<view class='addBtn'>预约试讲</view>
+                        <image wx:if='{{item.sex === 2}}' class='genderIcon' src='../../../images/gender0.png' mode='widthFix'/>
+                        <image wx:elif='{{item.sex === 1}}' class='genderIcon' src='../../../images/gender1.png' mode='widthFix'/>
+                    </view>
+                    
+                    <text class='price'>{{item.chargesStandard}}</text>
+                </view>
+
+                <view class='desc'>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</view>
+            </view>
+
+            <view class='arrowIcon'/>
+        </navigator>
+        
+    </view>
+</scroll-view>
+
+<picker mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
+    <view class='addBtn'>预约试讲</view>
+</picker>

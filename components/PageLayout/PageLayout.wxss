@@ -1,1 +1,8 @@
 /* components/PageLayout/PageLayout.wxss */
+
+.absolute{
+    position: absolute;
+    left: 0;
+    bottom: 108rpx;
+    width: 100%;
+}

@@ -39,3 +39,9 @@
     margin-top: 10rpx
 }
 /* 科目END */
+
+
+.addDemand{
+    width: 166rpx;
+    height: 55rpx;
+}

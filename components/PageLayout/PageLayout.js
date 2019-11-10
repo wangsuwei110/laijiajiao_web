@@ -10,6 +10,10 @@ Component({
     isStudent: {
       type: Boolean,
       value: false
+    },
+    absolute: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -17,7 +21,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    height: '0px'
+    height: '0px',
+    bottom: '0px',
   },
 
   /**
@@ -28,12 +33,13 @@ Component({
       this.triggerEvent('onScrollToLower')
     }
   },
-  
+
   ready() {
     const query = this.createSelectorQuery()
     query.select('#bottomNavigation').boundingClientRect(res => {
       //console.log(res.height, wx.getSystemInfoSync())
       this.setData({
+        bottom: `${res.height}px`,
         height: `${wx.getSystemInfoSync().windowHeight - res.height}px`
       })
     })

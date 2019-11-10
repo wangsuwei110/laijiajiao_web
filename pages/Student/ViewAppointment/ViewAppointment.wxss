@@ -2,10 +2,17 @@
 
 page{
     box-sizing: border-box;
+    height: 100%;
+    padding-bottom: 76rpx;
+}
+
+.pageWrap{
+    box-sizing: border-box;
+    height: 100%;
     padding: 20rpx;
 }
 
-.container{
+._container{
     background-color: #fff;
     padding: 0 20rpx;
 }
@@ -118,17 +125,19 @@ margin-top: 20rpx;
 }
 
 .addBtn{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
     height: 76rpx;
-    border-radius: 6rpx;
     font-size: 30rpx;
     font-family:Noto Sans S Chinese;
     font-weight:400;
     color: #fff;
-
-    margin-top: 20rpx;
 
     background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
 }
@@ -143,4 +152,14 @@ margin-top: 20rpx;
 .checkBox{
     width: 26rpx;
     height: 26rpx;
+}
+
+.arrowIcon {
+    display: inline-block;
+    width: 15rpx;
+    height: 15rpx;
+    border-color: #b4b4b6;
+    border-style: solid;
+    border-width: 2rpx 2rpx 0 0;
+    transform: rotate(45deg);
 }

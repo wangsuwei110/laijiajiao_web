@@ -1,5 +1,5 @@
 <!--pages/Student/index/index.wxml-->
-<PageLayout isStudent='true'>
+<PageLayout isStudent='true' absolute='true'>
     <swiper class='swiper'>
         <swiper-item>
             <image class='swiper' mode='widthFix' src=''/>
@@ -28,4 +28,9 @@
         </view>
     </HomeContentBox>
 
+    <view slot='absolute'>
+        <navigator url='/pages/Student/ReleaseDemand/ReleaseDemand'>
+            <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
+        </navigator>
+    </view>
 </PageLayout>

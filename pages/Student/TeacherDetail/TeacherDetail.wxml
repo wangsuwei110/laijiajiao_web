@@ -150,5 +150,5 @@
     </view>
   </view>
   
-  <navigator class='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</navigator>
+  <navigator wx:if='{{!formOrder}}' class='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</navigator>
 </view>
