@@ -2,6 +2,9 @@
 <scroll-view scroll-y='true' style='height:{{height}};' bindscrolltolower='onScrollToLower'>
     <slot/>
 </scroll-view>
+<view wx:if='{{absolute}}' class='absolute' style='bottom:{{bottom}};'>
+    <slot name='absolute'/>
+</view>
 <NavigationBar isStudent='{{isStudent}}' id='bottomNavigation'>
     <slot name='bottom'/>
 </NavigationBar>
