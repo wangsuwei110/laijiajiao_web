@@ -1,11 +1,14 @@
 // pages/Student/NotPass/NotPass.js
 const http = require('../../../utils/api')
+var appInst = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    item: {},
     appraise: ''
   },
 
@@ -26,7 +29,7 @@ Page({
 
     wx.showLoading();
 
-    http.getPromise('/StudentDemand/updateAdoptStatus', { demandId: this.demandId, appraise, status: 3 }).then(data => {
+    http.postPromise('/StudentDemand/updateAdoptStatus', { demandId: this.demandId, appraise, status: 3 }).then(data => {
       const isSigle = data.msg === '感谢您的配合，是否开放本需求让更多教员来报名？'
       wx.showModal({
         title: '提示',
@@ -63,6 +66,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({ item: appInst.globalData.orderItem })
+    appInst.globalData.orderItem = null
+
+    /* http.getPromise('/StudentDemand/queryStudentDemandDetail', { demandId: options.id }).then(data => {
+      
+    }) */
+
     this.demandId = options.id
   },
 

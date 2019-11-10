@@ -1,7 +1,7 @@
 <!--pages/Student/ViewAppointment/ViewAppointment.wxml-->
 
 <view class='container'>
-    <view class='title'>张小二 | 二年级数学</view>
+    <view class='title'>{{item.studentName}} | {{item.grageSubject}}</view>
 
     <navigator url class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
 

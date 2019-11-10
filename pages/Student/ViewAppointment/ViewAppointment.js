@@ -16,6 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    item: {},
     selectId: 0,
     teacherList: [],
     orderTime: [],
@@ -56,8 +57,8 @@ Page({
             delta: 1
           });
         },
-        fail: ()=>{},
-        complete: ()=>{}
+        fail: () => { },
+        complete: () => { }
       });
     })
   },
@@ -83,6 +84,13 @@ Page({
    */
   onLoad: function (options) {
     this.demandId = options.id
+    this.setData({ item: appInst.globalData.orderItem })
+    appInst.globalData.orderItem = null
+
+    /* http.getPromise('/StudentDemand/queryStudentDemandDetail', { demandId: options.id }).then(data => {
+
+    }) */
+
     http.postPromise('/StudentDemand/listTeacher', { demandId: options.id }).then(data => {
       const weekList = [...new Set(data.data.orderTime.map(item => {
         item.cn = timeCNList[item.time - 1]
