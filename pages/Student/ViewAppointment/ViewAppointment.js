@@ -10,6 +10,9 @@ const hours = [
 
 const hoursCNList = hours.map(list => list.map(item => `${item}:00`))
 
+var appInst =  getApp();
+
+
 Page({
 
   /**

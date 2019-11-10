@@ -1,6 +1,6 @@
 <!--pages/Student/OrderPass/OrderPass.wxml-->
 <view class='_container'>
-    <view class='title'>李教员 | 张小二 | 一年级数学</view>
+    <view class='title'>{{item.teachName}} | {{item.studentName}} | {{item.grageSubject}}</view>
     <view class='timeTitle'>
         <text class='timeTitleTxt'>上课时间选择</text>
         <text class='timeSubTitle'>请确保上课时间经过教员确认</text>
