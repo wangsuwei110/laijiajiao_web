@@ -58,6 +58,32 @@ Page({
       url: '../demandDetail/demandDetail?id=41241',
     })
   },
+  timeStr (timeStr) {
+    var dataOne = timeStr.split('T')[0];
+    var dataTwo = timeStr.split('T')[1];
+    var dataThree = dataTwo.split('+')[0].split('.')[0];
+    var newTimeStr = dataOne + ' ' + dataThree
+    return dataThree;
+  },
+  // 计算两个时间差 dateBegin 开始时间
+  timeFn(dateEnd) {
+    //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+    var dateStart = new Date();//获取当前时间
+    var dateDiff = dateEnd -  dateStart.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+    var leave1=dateDiff%(24*3600*1000)  //计算天数后剩余的毫秒数
+    var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+    //计算相差分钟数
+    var leave2=leave1%(3600*1000)  //计算小时数后剩余的毫秒数
+    var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+    //计算相差秒数
+    var leave3=leave2%(60*1000)   //计算分钟数后剩余的毫秒数
+    var seconds=Math.round(leave3/1000)
+    var leave4=leave3%(60*1000)   //计算分钟数后剩余的毫秒数
+    var minseconds=Math.round(leave4/1000)
+    var timeFn = dayDiff+"天后";
+    return timeFn;
+  },
   getHome () {
     var that = this
     http.post('/home/queryTeacherInfosByHome', {teacherId: wx.getStorageSync('user_id'),}, function (res) {
@@ -68,6 +94,10 @@ Page({
         data.newTrialStudentDemandList = data.newTrialStudentDemandList.map(item => {
           let obj = item
           obj.createTime = timeFormat(obj.createTime)
+          if (obj.orderTeachTime) {
+            console.log(new Date(obj.orderTeachTime).getTime(), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
+            obj.timeCha = that.timeFn(new Date(obj.orderTeachTime).getTime()) + that.timeStr(obj.orderTeachTime) + '试讲'
+          }
           return obj
         })
       }

@@ -45,6 +45,16 @@
         <view class="text">{{details.orderTeachTime}}</view>
       </view>
 
+      <view class="cont-item"  wx:if='{{orderType === 4}}'>
+        <text class="label">上课开始日期</text>
+        <view class="text">{{details.orderStartDate}}</view>
+      </view>
+
+      <view class="cont-item"  wx:if='{{orderType === 4}}'>
+        <text class="label">上课结束日期</text>
+        <view class="text">{{details.orderEndDate}}</view>
+      </view>
+
 
     </view>
   </view>
