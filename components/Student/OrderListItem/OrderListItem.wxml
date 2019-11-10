@@ -30,13 +30,13 @@
         
         <view class='btnSpace'/>
 
-        <navigator url='/pages/Student/ViewAppointment/ViewAppointment?id={{item.sid}}' class='signUpCount' wx:if='{{!item.status}}' >
-            已有<text class='emphasis'>{{item.orderTeachCount}}</text>教员报名
+        <navigator url='/pages/Student/ViewAppointment/ViewAppointment?id={{item.sid}}' class='signUpCount' wx:if='{{!item.status && !item.subscribeStatus}}' >
+            已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </navigator>
-        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 1}}'>
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 1 && item.orderTeachTime}}'>
             预计试讲时间：{{item.orderTeachTime}}
         </view>
-
+        
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 2}}'>
             <view class='passBtn'>试讲通过</view>
             <view class='unPassBtn'>试讲不通过</view>
