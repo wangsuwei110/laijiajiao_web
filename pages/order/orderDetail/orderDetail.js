@@ -15,6 +15,9 @@ function dayTimes (index) {
 }
 Page({
   data: {
+    time: null,
+    showToast: null,
+    errorText: null,
     week: ['一', '二', '三', '四', '五', '六', '日'],
     weekTimePeriod: [
       {
@@ -133,7 +136,13 @@ Page({
     orderType: null,
     id: null,
     details: null,
-    status: null
+    status: null,
+    start: null,
+    formData: {
+    },
+    index: 0,
+    checkIndex: null,
+    dates: null
   },
   onLoad: function (options) {
     var that = this;
@@ -150,12 +159,91 @@ Page({
 
     that.getOrderDetails()
   },
+  // 显示错误提示
+  errFun (text) {
+    this.setData({
+      showToast: true,
+      errorText: text
+    })
+    var that = this
+    setTimeout(function () {
+      that.setData({
+        showToast: false,
+        errorText: text
+      })
+    }, 2000)
+  },
+  second (n) {
+    if (n < 10) return '0' + n
+    else return n
+  },
+  bindDateChange (e) {
+    console.log(e.detail.value)
+    this.setData({
+      ["details.weekDayTime["+ this.data.checkIndex +"].index"]: e.detail.value,
+      time: this.data.details.weekDayTime[this.data.checkIndex].array[e.detail.value]
+    })
+    console.log(this.data.details)
+  },
+  checkboxFun (e) {
+    this.setData({
+      checkIndex: e.currentTarget.dataset.index,
+      dates: e.currentTarget.dataset.date,
+      formData: {
+        demandId: this.data.id
+      }
+    })
+    this.setData({
+      time: this.data.details.weekDayTime[this.data.checkIndex].time === '1' ? '08:00' : this.data.details.weekDayTime[this.data.checkIndex].time === '2' ? '12:00' : '20:00'
+    })
+    console.log(this.data.time, '111111111')
+  },
+  addAbility () {
+    if (this.data.checkIndex === null) {
+      this.errFun('请选择试讲时间')
+      return
+    }
+    this.setData({
+      'formData.orderTeachTime': this.data.dates + ' ' +  this.data.time + ':00',
+      'formData.teacherId': wx.getStorageSync('user_id')
+    })
+    var that = this
+    http.post('/teacher/updateNewTrialDemand', this.data.formData, function (res) {
+      that.errFun('试讲时间确定成功')
+      setTimeout(function() {
+        that.setData({
+          orderType: 2
+        })
+        that.getOrderDetails()
+      }, 2000)
+    })
+  },
+  timeDate (date, index) {
+    console.log(date, 'datedatedatedate')
+    const  current_date = date.getDate();
+    const  current_month = this.second(date.getMonth() + 1);
+    const  current_year = this.second(date.getFullYear());
+    if (index) return current_year + '-' + current_month + '-' + current_date
+    return current_year + '.' + current_month + '.' + current_date
+  },
   timeFormat (timeStr) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
     var newTimeStr = dataOne + ' ' + dataThree
     return newTimeStr;
+  },
+  arrayFun (index) {
+    if (index === 1) {
+      return ['08:00', '09:00', '10:00', '11:00']
+    } else if (index === 2) {
+      return ['12:00', '13:00', '14:00', '15:00']
+    }  else if (index === 3) {
+      return ['20:00', '21:00', '22:00', '23:00']
+    } 
+  },
+  bindPickerChange (e) {
+    console.log(e)
   },
   getOrderDetails () {
     var that = this
@@ -168,10 +256,23 @@ Page({
         // 获取每周上课次数
         if (data.timeRange) {
           data.timeRange = JSON.parse(data.timeRange)
+          data.weekDayTime = data.timeRange.map(item => {
+            let obj = item
+            console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)
+            return {
+              weekDayTimes: that.timeDate(new Date(obj.weekDayTime)),
+              timeWeek: timeWeek(parseInt(obj.week)),
+              dayTimes: dayTimes(parseInt(obj.time)),
+              time: obj.time,
+              array: that.arrayFun(parseInt(obj.time)),
+              weekDay: that.timeDate(new Date(obj.weekDayTime), 1)
+            }
+          })
           data.timeRanges = data.timeRange.map(item => {
             let obj = item
             that.setData({
-              ["weekTime[" + (item.week - 1) + "][" + item.time + "].checked"]: true
+              ["weekTime[" + (item.week - 1) + "][" + item.time + "].checked"]: true,
+              // weekDayTime: 
             })
             return timeWeek(obj.week) + dayTimes(obj.time)
           })
@@ -190,5 +291,12 @@ Page({
     }, function () {
       wx.hideLoading()
     })
-  } 
+  },
+
+  // 查看课表
+  look () {
+    wx.switchTab({
+      url: '/pages/curricul/index'
+    })
+  },
 })

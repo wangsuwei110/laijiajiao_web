@@ -7,7 +7,7 @@
   <view class="select-wrapper">
     <view></view>
   </view>
-  <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList">
+  <scroll-view style="height: {{scrollHeight}}px;" wx:if='{{list.length>0}}' scroll-y bindscrolltolower="revenueList">
     <view class="order-list">
     <view bindtap="orderDetail" wx:for='{{list}}' data-type='{{item.demandSignStatus}}' data-id='{{item.sid}}' data-order-type="0" class="list-item">
       <view class="list-item-l">
@@ -26,4 +26,6 @@
       <view class="list-bottom-text">没有更多</view>
     </view>
   </scroll-view>
+
+  <view class='empty' wx:else>暂无订单</view>
 </view>

@@ -17,7 +17,7 @@
   </view>
   <view class="main-content" >
     <view class="spacing-10"></view>
-    <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}'>
+    <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}' data-status="{{item.demandSignStatus}}"  data-id='{{item.sid}}' bindtap='order'>
       <view class="remind-new">
         <image mode="scaleToFill" src="../../../images/jb_icon.png"></image>
         <text>新</text>
@@ -31,7 +31,7 @@
         <view class="remind-info-item">
           <text class="remind-type">{{item.teachGradeName}} {{item.teachBranchName}}</text>
           <image class="boll-icon" mode="scaleToFill" src="../../../images/boll_icon.png"></image>
-          <text class="remind-text">请尽快确认试讲时间</text>
+          <text class="remind-text">{{item.demandSignStatus === 1 ? '请尽快确认试讲时间' : item.timeCha}}</text>
         </view>
       </view>
     </view>

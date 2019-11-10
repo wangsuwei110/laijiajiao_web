@@ -84,14 +84,17 @@
   background: #fff;
 }
 .arrow_icon{
-  width:8rpx;
-  height: 16rpx;
-  margin-right: 10rpx;
+  width: 24rpx;
+  height: 20rpx;
+  margin-right: 19rpx;
+  transform: rotate(90deg);
+
 }
 .arrow_icon-right{
-  width:8rpx;
-  height: 16rpx;
-  margin-left: 10rpx;
+  width: 24rpx;
+  height: 20rpx;
+  margin-left: 19rpx;
+  transform: rotate(-90deg);
 }
 .tit-list{
   width: 650rpx;

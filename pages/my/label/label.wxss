@@ -29,7 +29,6 @@
   align-items:center;
   justify-content: center;
   width:100%;
-
 }
 .toast view{
   padding:20rpx 30rpx;
