@@ -30,7 +30,9 @@
             <view class='desc'>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</view>
         </view>
     </navigator>
-
+    
 </view>
 
-<view class='addBtn'>预约试讲</view>
+<picker mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
+    <view class='addBtn'>预约试讲</view>
+</picker>
