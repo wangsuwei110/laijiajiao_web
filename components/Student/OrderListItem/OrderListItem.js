@@ -40,5 +40,13 @@ Component({
         url: `/pages/Student/NotPass/NotPass?id=${item.sid}`,
       });
     },
+
+    onPassClick() {
+      const { item } = this.data
+      this.setCacheItem()
+      wx.navigateTo({
+        url: `/pages/Student/OrderPass/OrderPass?id=${item.sid}`,
+      });
+    },
   }
 })
