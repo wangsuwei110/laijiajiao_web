@@ -88,3 +88,11 @@ page {
   font-size: 28rpx;
   color: #999999;
 }
+.empty{
+  position: fixed;
+  top:40%;
+  width:100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+}

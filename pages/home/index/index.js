@@ -84,6 +84,11 @@ Page({
     var timeFn = dayDiff+"天后";
     return timeFn;
   },
+  order (e) {
+    wx.navigateTo({
+      url: '../../order/orderDetail/orderDetail?orderType=' + e.currentTarget.dataset.status + '&id=' + e.currentTarget.dataset.id
+    })
+  },
   getHome () {
     var that = this
     http.post('/home/queryTeacherInfosByHome', {teacherId: wx.getStorageSync('user_id'),}, function (res) {

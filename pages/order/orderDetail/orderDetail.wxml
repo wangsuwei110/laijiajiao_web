@@ -59,6 +59,29 @@
     </view>
   </view>
   <view class="spacing-10"></view>
+  
+  <view class="tutor-panel" wx:if='{{orderType === 1}}'>
+    <view class="panel-top">
+      <view class="dot-icon"></view>
+      <text wx:if="{{orderType == 1}}" class="title">确定试讲时间</text>
+      <text bindtap='look'>查看课表</text>
+    </view>
+
+    <view class='date-top'>
+      <view class='date-item' wx:for-index="idx" data-index='{{idx}}' data-date='{{item.weekDay}}' data-times='{{item.time}}' bindtap='checkboxFun' wx:for='{{details.weekDayTime}}'>
+        <view class="checkbox {{checkIndex === idx ? 'checked' : ''}}"></view>
+        <text>{{item.timeWeek}}({{item.weekDayTimes}}){{item.dayTimes}}</text>
+
+        <picker class='date' bindchange="bindDateChange" value="{{item.index}}" range="{{item.array}}" wx:for-item="itemName">
+          <view class="picker">
+            {{item.index ? item.array[item.index] : item.array[0]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+  </view>
+
   <view class="tutor-panel" wx:if='{{orderType === 4 || orderType == 0}}'>
     <view class="panel-top">
       <view class="dot-icon"></view>
@@ -99,12 +122,16 @@
     </view>
   </view>
   <view class="spacing-10"></view>
-  <view wx:if="{{orderType == 1}}" class="pay-panel">
+  <!-- <view wx:if="{{orderType == 1}}" class="pay-panel">
     <view class="panel-top">
       <view class="dot-icon"></view>
       <text class="title">支付金额</text>
       <text class="cost">￥400.00</text>
       <text class="meta">（包含试讲费）</text>
     </view>
-  </view>
+  </view> -->
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
+  <view bindtap="addAbility" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确定</view>
+
+  <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 </view>

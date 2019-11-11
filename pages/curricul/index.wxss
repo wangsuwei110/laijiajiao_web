@@ -84,14 +84,17 @@
   background: #fff;
 }
 .arrow_icon{
-  width:8rpx;
-  height: 16rpx;
-  margin-right: 10rpx;
+  width: 24rpx;
+  height: 20rpx;
+  margin-right: 19rpx;
+  transform: rotate(90deg);
+
 }
 .arrow_icon-right{
-  width:8rpx;
-  height: 16rpx;
-  margin-left: 10rpx;
+  width: 24rpx;
+  height: 20rpx;
+  margin-left: 19rpx;
+  transform: rotate(-90deg);
 }
 .tit-list{
   width: 650rpx;
@@ -190,4 +193,19 @@
 }
 .icon-one,.icon-two{
   margin-right: 40rpx;
+}
+.toast{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  width:100%;
+  position: fixed;
+  top:40%;
+}
+.toast view{
+  padding:20rpx 30rpx;
+  font-size:28rpx;
+  background:rgba(0, 0, 0, 0.6);
+  color:#fff;
+  border-radius:10rpx;
 }

@@ -47,7 +47,7 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
       onFail(err)
     },
     complete: function () {
-      onComplete()
+      // onComplete()
     }
   })
 }

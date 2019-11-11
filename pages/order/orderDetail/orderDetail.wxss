@@ -171,3 +171,49 @@
   display:flex;
   justify-content: space-between;
 }
+.date{
+  width: 180rpx;
+  height: 70rpx;
+  border: 1rpx solid #eee;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+  padding: 0 3%;
+  margin-left:30rpx;
+  
+}
+.date-item text{
+  width: 334rpx;
+}
+.date-top>view{
+  margin-left:13rpx;
+  line-height: 70rpx;
+}
+.date-top{
+  font-size: 30rpx;
+  padding-left:13rpx;
+  margin-bottom:30rpx;
+  margin-top:20rpx;
+}
+.date-item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.date-item view{
+  margin-right:20rpx;
+}
+.toast{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  width:100%;
+  position: fixed;
+  top:40%;
+}
+.toast view{
+  padding:20rpx 30rpx;
+  font-size:28rpx;
+  background:rgba(0, 0, 0, 0.6);
+  color:#fff;
+  border-radius:10rpx;
+}

@@ -28,8 +28,8 @@ Page({
     }
     wx.showLoading()
     var _ids = []
-    http.post('/parameter/queryParametersByType', params, function (res) {
-      var data = res.data
+    http.post('/parameter/queryParameters', params, function (res) {
+      var data = res.data[0].teacherTag
       if (data.length > 0) {
         data.forEach(function (item) {
           if (item.flag) {

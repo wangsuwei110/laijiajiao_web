@@ -61,7 +61,7 @@ Page({
   // 订单列表
   getList () {
     var that = this
-    http.post('/teacher/queryDemandsByTeacher', {teacherId: 6, demandSignStatus: this.data.status}, function (res) {
+    http.post('/teacher/queryDemandsByTeacher', {teacherId: wx.getStorageSync('user_id'), demandSignStatus: this.data.status}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
