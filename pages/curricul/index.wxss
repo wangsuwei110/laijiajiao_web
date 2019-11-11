@@ -194,3 +194,18 @@
 .icon-one,.icon-two{
   margin-right: 40rpx;
 }
+.toast{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  width:100%;
+  position: fixed;
+  top:40%;
+}
+.toast view{
+  padding:20rpx 30rpx;
+  font-size:28rpx;
+  background:rgba(0, 0, 0, 0.6);
+  color:#fff;
+  border-radius:10rpx;
+}

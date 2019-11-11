@@ -80,70 +80,30 @@ Page({
   },
   getList (orderTeachTime) {
     var that = this
-    let str = {
-      appraise: null,
-      classNum: null,
-      createTime: null,
-      createUser: null,
-      currentWeekDay: null,
-      demandAddress: null,
-      demandDesc: null,
-      demandGrade: null,
-      demandSignStatus: 4,
-      demandSignUpNum: null,
-      demandType: null,
-      gradeSubject: null,
-      orderEndDate: null,
-      orderMoney: null,
-      orderStart: "2019-10-23T07:46:10.000+0000",
-      orderStartDate: null,
-      orderTeachCount: null,
-      orderTeachTime: null,
-      orderType: null,
-      parameterId: null,
-      parentPhoneNum: null,
-      sid: 20,
-      signTime: null,
-      status: 1,
-      studentId: null,
-      studentName: "caohuan",
-      subjectId: null,
-      subscribeStatus: null,
-      teachBranchName: "初二英语",
-      teachGradeName: null,
-      teachName: "王素伟",
-      timeRange: '{"week":"1","time":"3"}',
-      updateTime: null,
-      updateUser: null,
-      weekNum: 2
-    }
-    http.post('/Timetable/queryTimeTableByTeacherId', {teacherId: 6, orderTeachTime: orderTeachTime}, function (res) {
-      res.data.push(str)
+    http.post('/Timetable/queryTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), orderTeachTime: orderTeachTime}, function (res) {
       res.data = res.data.map(item => {
         let obj = item
-        obj.timeRange = JSON.parse(obj.timeRange)
-        obj.week = timeWeek(JSON.parse(obj.timeRange.week))
+        obj.week = timeWeek(JSON.parse(obj.weekNum))
         return obj
       })
       var ary1 = [], ary2 = [], ary3 = [], ary4 = [], ary5 = [], ary6 = [], ary7 = []
       for (var j = 0; j < res.data.length; j++) {
-        if (res.data[j].timeRange.week === '1') {
+        if (res.data[j].weekNum === 1) {
           ary1.push(res.data[j])
-        } else if (res.data[j].timeRange.week === '2') {
+        } else if (res.data[j].weekNum === 2) {
           ary2.push(res.data[j])
-        }  else if (res.data[j].timeRange.week === '3') {
+        }  else if (res.data[j].weekNum === 3) {
           ary3.push(res.data[j])
-        }  else if (res.data[j].timeRange.week === '4') {
+        }  else if (res.data[j].weekNum === 4) {
           ary4.push(res.data[j])
-        }  else if (res.data[j].timeRange.week === '5') {
+        }  else if (res.data[j].weekNum === 5) {
           ary5.push(res.data[j])
-        }  else if (res.data[j].timeRange.week === '6') {
+        }  else if (res.data[j].weekNum === 6) {
           ary6.push(res.data[j])
-        }  else if (res.data[j].timeRange.week === '7') {
+        }  else if (res.data[j].weekNum === 7) {
           ary7.push(res.data[j])
         } 
       }
-
       var sumData = [];
       sumData= [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
       that.setData({
@@ -152,6 +112,37 @@ Page({
       console.log(sumData)
     })
     
+  },
+  // 显示错误提示
+  errFun (text) {
+    this.setData({
+      showToast: true,
+      errorText: text
+    })
+    var that = this
+    setTimeout(function () {
+      that.setData({
+        showToast: false,
+        errorText: text
+      })
+    }, 2000)
+  },
+  timetableFun (e) {
+    let str = this.data.startDate.split('.')
+    let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
+    var that = this
+    wx.showModal({
+      content: '是否确认打卡?',
+      success: function(res) {
+        if (res.confirm) { //点击确定
+          http.post('/Timetable/updateTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), classId: e.currentTarget.dataset.classid}, function (res) {
+            that.errFun('打卡成功')
+            that.getList(orderTeachTime)
+          })
+        } else { //点击否
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面显示
