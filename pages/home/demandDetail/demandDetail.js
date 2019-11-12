@@ -15,6 +15,8 @@ function dayTimes(index) {
 }
 Page({
   data: {
+    showToast: null,
+    errorText: null,
     isIPX: getApp().isIPX,
     id: null,
     details: null,
@@ -134,14 +136,28 @@ Page({
       }
     ],
   },
-  onLoad: function (options) {
-    console.log('家教需求详情ID=>' + options.id)
+  // 显示错误提示
+  errFun(text) {
+    this.setData({
+      showToast: true,
+      errorText: text
+    })
+    var that = this
+    setTimeout(function () {
+      that.setData({
+        showToast: false,
+        errorText: text
+      })
+    }, 2000)
   },
   /**
    * 报名成为教员 
    */
   applyTutor: function () {
-    
+    var that = this
+    http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: this.data.id }, function (res) {
+      console.log(res)
+    })
   },
   timeStr(timeStr, index) {
     var dataOne = timeStr.split('T')[0];
