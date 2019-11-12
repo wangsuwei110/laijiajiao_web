@@ -30,7 +30,7 @@ App({
       }
     } else {
       wx.reLaunch({
-        url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/index',
+        url: userType === 1 ? '/pages/Student/Login/Login' : '/pages/login/login',
       })
     }
       // wx.reLaunch({

@@ -34,7 +34,7 @@ Page({
       endDate: this.data.startDate,
       startDate: this.fun_date(-7, new Date(this.data.startDate))
     })
-    let str = this.data.startDate.split('.')
+    let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
     this.getList(orderTeachTime)
   },
@@ -44,7 +44,7 @@ Page({
       startDate: this.data.endDate,
       endDate: this.fun_date(7, new Date(this.data.endDate))
     })
-    let str = this.data.startDate.split('.')
+    let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
     this.getList(orderTeachTime)
   },
@@ -64,7 +64,7 @@ Page({
     time1=date1.getFullYear()+"-"+(date1.getMonth()+1)+"-"+date1.getDate();//time1表示当前时间
     var date2 = new Date(date1);
     date2.setDate(date1.getDate()+index);
-    var time2 = date2.getFullYear()+"."+this.second(date2.getMonth()+1)+"."+this.second(date2.getDate());
+    var time2 = date2.getFullYear()+"/"+this.second(date2.getMonth()+1)+"/"+this.second(date2.getDate());
     return time2;
   },
   timeDate (date, index) {
@@ -75,8 +75,8 @@ Page({
     const  minutes = this.second(date.getMinutes());
     const  seconds = this.second(date.getSeconds());
     let endDate = null
-    if (index) return current_year + '.' + current_month + '.' + current_date
-    return current_year + '-' + current_month + '-' + current_date + ' ' + hours + ':' + minutes + ':' + seconds
+    if (index) return current_year + '/' + current_month + '/' + current_date
+    return current_year + '/' + current_month + '/' + current_date + ' ' + hours + ':' + minutes + ':' + seconds
   },
   getList (orderTeachTime) {
     var that = this
@@ -128,7 +128,7 @@ Page({
     }, 2000)
   },
   timetableFun (e) {
-    let str = this.data.startDate.split('.')
+    let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
     var that = this
     wx.showModal({
