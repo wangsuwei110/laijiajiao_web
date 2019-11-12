@@ -255,7 +255,7 @@ Page({
         if (data.orderTeachTime) data.orderTeachTime = that.timeFormat(data.orderTeachTime)
         // 获取每周上课次数
         if (data.timeRange) {
-          data.timeRange = JSON.parse(data.timeRange)
+          data.timeRange = JSON.parse(data.timeRange.replace(/\'/g, '"'))
           data.weekDayTime = data.timeRange.map(item => {
             let obj = item
             console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)

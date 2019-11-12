@@ -193,3 +193,104 @@
   font-size: 28rpx;
   color: #737373;
 }
+.table-body {
+  display: flex;
+}
+.table-body .table-item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  height: 250rpx;
+}
+.table-item .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 160rpx;
+  height: 86rpx;
+}
+.table-item .time .time-period {
+  white-space: nowrap;
+  font-size: 22rpx;
+}
+.table-item .week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 86rpx;
+}
+.table-body .table-item .time::after,
+.table-body .table-item .week::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  -webkit-transform: scale(1, 0.5);
+  transform: scale(1, 0.5);
+}
+.table-body .table-item:last-child::after {
+  display: none;
+}
+.explanation {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+.explanation image {
+  width: 28rpx;
+  height: 28rpx;
+}
+.explanation text {
+  margin-left: 16rpx;
+  color: #5c5c5c;
+}
+.explanation .num {
+  color: #e50505;
+}
+.pay-panel .panel-top .cost {
+  line-height: 1;
+  font-size: 32rpx;
+  color: #e50505;
+}
+.pay-panel .panel-top .meta {
+  line-height: 1;
+  font-size: 32rpx;
+  color: #646464;
+}
+.explanation1{
+  display:flex;
+  justify-content: space-between;
+}
+
+.date-item text{
+  width: 334rpx;
+}
+.date-top>view{
+  margin-left:13rpx;
+  line-height: 70rpx;
+}
+.date-top{
+  font-size: 30rpx;
+  padding-left:13rpx;
+  margin-bottom:30rpx;
+  margin-top:20rpx;
+}
+.date-item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.date-item view{
+  margin-right:20rpx;
+}

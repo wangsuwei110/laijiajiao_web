@@ -32,11 +32,12 @@ Page({
     var newTimeStr = dataOne + ' ' + dataThree
     return newTimeStr;
   },
-  timeStr (timeStr) {
+  timeStr (timeStr, index) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
     var newTimeStr = dataOne + ' ' + dataThree
+    if (index) return dataOne
     return dataThree;
   },
   // 计算两个时间差 dateBegin 开始时间
@@ -58,6 +59,10 @@ Page({
     var timeFn = dayDiff+"天后";
     return timeFn;
   },
+  second(n) {
+    if (n < 10) return '0' + n
+    else return n
+  },
   // 订单列表
   getList () {
     var that = this
@@ -69,8 +74,10 @@ Page({
           let obj = item
           if (obj.createTime) obj.createTime = that.timeFormat(obj.createTime)
           if (obj.orderTeachTime) {
-            console.log(new Date(obj.orderTeachTime).getTime(), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
-            obj.timeCha = that.timeFn(new Date(obj.orderTeachTime).getTime()) + that.timeStr(obj.orderTeachTime) + '试讲'
+            let M = that.timeStr(obj.orderTeachTime, 1).split('-')
+            console.log(M)
+            console.log(M[0] + '/' + that.second(M[1]) + '/' + that.second(M[2]), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
+            obj.timeCha = that.timeFn(new Date(M[0] + '/' + that.second(M[1]) + '/' + that.second(M[2])).getTime()) + that.timeStr(obj.orderTeachTime) + '试讲'
           }
           console.log(obj.timeCha, '111')
           return obj
@@ -90,6 +97,16 @@ Page({
     }, function () {
       wx.hideLoading()
     })
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    this.getList()
+    // 隐藏导航栏加载框
+    wx.hideNavigationBarLoading();
+    // 停止下拉动作
+    wx.stopPullDownRefresh();
   },
   onLoad: function () {
     const that = this;

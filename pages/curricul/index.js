@@ -148,12 +148,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let orderTeachTime = this.timeDate(new Date())
+    let orderTeachTime = this.timeDate(new Date(), 1).split('/')
     this.setData({
       startDate: this.timeDate(new Date(), 1),
       endDate: this.fun_date(7, new Date())
     })
-    this.getList(orderTeachTime)
+    this.getList(orderTeachTime[0] + '-' + orderTeachTime[1] + '-' + orderTeachTime[2])
   },
 
   /**

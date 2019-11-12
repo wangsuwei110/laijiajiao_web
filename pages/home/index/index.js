@@ -53,9 +53,10 @@ Page({
   /**
    * 家教需求详情
    */
-  demandDetail: function () {
+  demandDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../demandDetail/demandDetail?id=41241',
+      url: '../demandDetail/demandDetail?id=' + id,
     })
   },
   timeStr (timeStr) {
