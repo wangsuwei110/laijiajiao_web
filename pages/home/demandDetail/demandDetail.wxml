@@ -1,4 +1,4 @@
-<view class="tutor-detail-container">
+ <view class="tutor-detail-container">
   <view class="spacing-10"></view>
   <view class="tutor-panel">
     <view class="panel-top">
@@ -76,9 +76,14 @@
       </view>
     </view>
   </view>
+
+  <view class='tips' wx:if='{{details.singUpStatus === true}}'>
+    已指定试教员,其他教员暂时无法报名
+  </view>
+
   <view class="spacing-10"></view>
   <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
-  <view bindtap="applyTutor" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">立即报名</view>
+  <view bindtap="applyTutor" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}" style="{{details.singUpStatus === true ? 'background:#ccc' : ''}}">立即报名</view>
 
   <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 </view>

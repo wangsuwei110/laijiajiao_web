@@ -154,10 +154,22 @@ Page({
    * 报名成为教员 
    */
   applyTutor: function () {
+    if (this.data.details.singUpStatus) return
     var that = this
-    http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: this.data.id }, function (res) {
-      console.log(res)
+    wx.showModal({
+      content: '是否确认报名?',
+      success: function(res) {
+        if (res.confirm) { //点击确定
+          http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
+            that.errFun('报名成功，请耐心等待报名结果')
+            console.log(res)
+            that.getDetails()
+          })
+        } else { //点击否
+        }
+      }
     })
+    
   },
   timeStr(timeStr, index) {
     var dataOne = timeStr.split('T')[0];

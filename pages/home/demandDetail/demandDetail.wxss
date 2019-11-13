@@ -315,3 +315,11 @@
 .date-item view{
   margin-right:20rpx;
 }
+.tips{
+  margin-top:30rpx;
+  width:100%;
+  text-align: center;
+  margin-bottom: 100rpx;
+  font-size: 30rpx;
+  color: #666;
+}
