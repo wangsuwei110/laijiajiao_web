@@ -1,18 +1,46 @@
 // pages/Student/MyCurriculum/MyCurriculum.js
+
+const http = require('../../../utils/api')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    studentList: [],
+    student: {},
+    loaded: false,
   },
+
+  onStudentChange(e) {
+    this.setData({ student: e.detail.data })
+  },
+
+
+  fetchCurriculum(studentId) {
+    http.postPromise('/StudentDemand/listMyCourse', { studentId }).then(data => {
+
+    })
+  },
+
+  onOverClick() {
+    http.postPromise('/StudentDemand/conclusion').then(data => {
+
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    http.postPromise('/student/findStudent', { findType: 1, sid: wx.getStorageSync('user_id') }).then(data => {
+      const student = data.data[0]
+      this.setData({ studentList: data.data, loaded: true, student })
 
+      this.fetchCurriculum(student.sid)
+    })
   },
 
   /**

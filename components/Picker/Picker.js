@@ -69,7 +69,7 @@ Component({
       const index = Number(e.detail.value)
       const { options, valueKey, nameKey } = this.data
       this.setData({ activeIndex: index, names: options[index][nameKey] })
-      this.triggerEvent('onChange', { value: options[index][valueKey] })
+      this.triggerEvent('onChange', { value: options[index][valueKey], data: options[index] })
     },
   }
 })

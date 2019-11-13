@@ -18,6 +18,9 @@ page{
 }
 
 .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size:28rpx;
     font-family:Noto Sans S Chinese;
@@ -205,4 +208,14 @@ page{
     color: #fff;
 
     background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}
+
+.arrowIcon {
+    display: inline-block;
+    width: 15rpx;
+    height: 15rpx;
+    border-color: rgba(255,243,58,1);
+    border-style: solid;
+    border-width: 2rpx 2rpx 0 0;
+    transform: rotate(135deg);
 }

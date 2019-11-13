@@ -30,7 +30,7 @@
         
         <view class='btnSpace'/>
 
-        <view class='signUpCount' wx:if='{{!item.status && !item.subscribeStatus}}' catchtap='onSeeTeachClick'>
+        <view class='signUpCount' wx:if='{{item.status < 2 && !item.subscribeStatus}}' catchtap='onSeeTeachClick'>
             已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </view>
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 0 && item.orderTeachTime}}'>
