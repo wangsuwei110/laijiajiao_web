@@ -27,10 +27,9 @@
         <text class='label'>上课地址</text>
         <input class='inputBox' value='{{student.demandAddress}}' maxlength='100' bindinput='onAddressChange'/>
     </view>
-
+    
     <view class='item'>
-        <Picker id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='选择年级' value='{{student.grade}}' bind:onChange='onGradeChange'/>
-        <Picker id='subject' class='selectBox' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' value='{{student.subjectId}}' bind:onChange='onSubjectChange'/>
+        <SubjectPicker id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='年级科目' value='{{student.grade}}' bind:onChange='onGradeChange'/>
     </view>
 
     <view class='item' bindtap='onGoSelectTime'>

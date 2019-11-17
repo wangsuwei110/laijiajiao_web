@@ -72,7 +72,7 @@ private String teachName;
 @ApiModelProperty(value = "预约教员通过的评价")
 private String appraise;
 
-@ApiModelProperty(value = "试讲状态:0:未试讲，1:试讲中;2:试讲通过;3:试讲未通过")
+@ApiModelProperty(value = 0：（已报名）已报名未被确认为试讲人且订单已支付，1:（试讲）已确认试讲人，教员未确认试讲时间，2：（试讲）学员已确认试讲时间，教员未试讲，3：（试讲）试讲未通过，4：（已支付）试讲通过已支付，5：（已报名）已报名未被确认为试讲人且订单已支付',)
 private Integer subscribeStatus; */
 
 Page({

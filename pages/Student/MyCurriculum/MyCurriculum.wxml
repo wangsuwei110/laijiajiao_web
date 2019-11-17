@@ -30,31 +30,36 @@
         </view>
     </view>
 
-    <view class='tableRow'>
-        <text class='dateCell'>周一</text>
-        <view class='contentCell'>
-            <view class='stdName'>张军( 数学 ）</view>
-        </view>
-        <view class='contentCell'>
-            <view class='stdName complete'>张军( 数学 ）</view>
-            <view class='completeBox'>
-                <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
-                结课
+    <Empty wx:if='{{loaded && !curriculum.length}}' txt='暂无课程数据'/>
+
+    <block wx:else>
+        <view class='tableRow'>
+            <text class='dateCell'>周一</text>
+            <view class='contentCell'>
+                <view class='stdName'>张军( 数学 ）</view>
+            </view>
+            <view class='contentCell'>
+                <view class='stdName complete'>张军( 数学 ）</view>
+                <view class='completeBox'>
+                    <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
+                    结课
+                </view>
+            </view>
+            <view class='contentCell'>
+                <view class='stdName'>张军( 数学 ）</view>
+                <view class='stdName'>张军( 数学 ）</view>
             </view>
         </view>
-        <view class='contentCell'>
-            <view class='stdName'>张军( 数学 ）</view>
-            <view class='stdName'>张军( 数学 ）</view>
-        </view>
-    </view>
 
-    <view class='tableRow'>
-        <text class='dateCell'>备注：</text>
-        <view class='contentCell pointBoxwrap'>
-            <view class='stdName complete pointBox'>已结课</view>
-            <view class='stdName pointBox'>未结课</view>
+        <view class='tableRow'>
+            <text class='dateCell'>备注：</text>
+            <view class='contentCell pointBoxwrap'>
+                <view class='stdName complete pointBox'>已结课</view>
+                <view class='stdName pointBox'>未结课</view>
+            </view>
         </view>
-    </view>
+    </block>
+    
 </view>
 
 <view class='submitBtn'>立即续课</view>

@@ -7,8 +7,8 @@
             <view wx:if='{{item.subscribeStatus === 5}}' class='topAction'>支付记录</view>
         </view>
 
-        <view class='title'>{{item.status?item.teachName:""}}{{item.status?" | ":""}}{{item.studentName}} | {{item.grageSubject}}
-            <text class='price'>¥100/时</text>
+        <view class='title'>{{item.status?item.teachName:""}}{{item.status?" | ":""}}{{item.studentName}} | {{item.gradeSubject}}
+            <text class='price' wx:if='{{item.chargesStandard}}'>{{item.chargesStandard}}</text>
         </view>
         <view class='paramItem'>
             <text class='label'>预计上课时段</text>
@@ -22,7 +22,7 @@
             <text class='label'>具体辅导需求：</text>
             {{item.demandDesc}}
         </view>
-        
+
         <view class='evaluate' wx:if='{{item.appraise}}'>
             <text>2019-07-15 12:20 （好评）</text>
             <view class='evaluateTxt'>{{item.appraise}}</view>
@@ -30,14 +30,14 @@
         
         <view class='btnSpace'/>
 
-        <view class='signUpCount' wx:if='{{item.status < 2 && !item.subscribeStatus}}' catchtap='onSeeTeachClick'>
+        <view class='signUpCount' wx:if='{{!item.subscribeStatus}}' catchtap='onSeeTeachClick'>
             已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </view>
-        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 0 && item.orderTeachTime}}'>
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus <=2 && item.orderTeachTime}}'>
             预计试讲时间：{{item.orderTeachTime}}
         </view>
         
-        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 1}}'>
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 6}}'>
             <view class='passBtn' catchtap='onPassClick'>试讲通过</view>
             <view class='unPassBtn' catchtap='onNoPassClick'>试讲不通过</view>
         </view>
@@ -46,11 +46,11 @@
             <view class='unPassBtn' catchtap='onNoPassClick'>{{item.orderTeachTime}} 试讲不通过</view>
         </view>
 
-        <view class='payBtn' wx:elif='{{item.subscribeStatus === 2}}'>
+        <view class='payBtn' wx:elif='{{item.subscribeStatus === 4}}'>
             去支付
         </view>
         
-        <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
+        <view class='actionWrap' wx:elif='{{item.subscribeStatus === 5}}'>
             <view class='payBtn shrink'>
                 续课
             </view>

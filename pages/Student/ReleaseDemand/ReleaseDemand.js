@@ -56,16 +56,19 @@ Page({
 
   onGradeChange(e) {
     const { student } = this.data
-    student.grade = e.detail.value
+    console.log(e.detail)
+    student.grade = e.detail.value[1]
+    student.subjectId = e.detail.value[2]
+    
     this.setData({ student })
   },
 
-  onSubjectChange(e) {
-    const { student } = this.data
-    student.subjectId = e.detail.value
-    console.log(student, e)
-    this.setData({ student })
-  },
+  /*  onSubjectChange(e) {
+     const { student } = this.data
+     student.subjectId = e.detail.value
+     console.log(student, e)
+     this.setData({ student })
+   }, */
 
   onGrederChange(event) {
     const { student } = this.data

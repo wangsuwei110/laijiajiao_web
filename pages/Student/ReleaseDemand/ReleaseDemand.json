@@ -2,7 +2,9 @@
   "navigationBarTitleText": "发布需求",
   "usingComponents": {
     "ClickContainer": "/components/ClickContainer/ClickContainer",
+    "SubjectPicker": "/components/SubjectPicker/SubjectPicker",
     "Picker": "/components/Picker/Picker",
+    "SubjectPicker": "/components/SubjectPicker/SubjectPicker",
     "Switch": "/components/Student/Switch/Switch"
   }
 }

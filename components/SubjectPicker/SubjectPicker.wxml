@@ -1,0 +1,11 @@
+<!--components/SubjectPicker/SubjectPicker.wxml-->
+<picker mode='multiSelector' value='{{selected}}' range='{{[firstNameList,secondNameList,thridNameList]}}' bindcolumnchange='onColumnChange' bindchange='onCurriulumChang'>
+    <view class='{{custom?"":"container"}}'>
+        <slot wx:if='{{custom}}'/>
+        <block wx:else>
+            <text class="label">{{label}}</text>
+            <text class="cont">{{names}}</text>
+            <view class="arrowIcon"/>
+        </block>
+    </view>
+</picker>

@@ -11,6 +11,7 @@ Page({
     studentList: [],
     student: {},
     loaded: false,
+    curriculum: [],
   },
 
   onStudentChange(e) {
@@ -19,8 +20,8 @@ Page({
 
 
   fetchCurriculum(studentId) {
-    http.postPromise('/StudentDemand/listMyCourse', { studentId }).then(data => {
-
+    http.postPromise('/StudentDemand/listMyCourse', { studentId, orderTeachTime: new Date() }).then(data => {
+      this.setData({ curriculum: data.data, loaded: true })
     })
   },
 
