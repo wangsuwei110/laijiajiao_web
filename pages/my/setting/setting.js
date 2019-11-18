@@ -32,7 +32,7 @@ Page({
           }
           http.post('/user/logout', params, function (res) {
             wx.removeStorageSync('token')
-            wx.navigateTo({
+            wx.reLaunch({
               url: '/pages/login/login'
             })
           }, function (err) {
