@@ -130,8 +130,8 @@
       <text class="meta">（包含试讲费）</text>
     </view>
   </view> -->
-  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
-  <view bindtap="addAbility" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确定</view>
+  <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}" wx:if="{{orderType === 1}}"></view>
+  <view bindtap="addAbility" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}" wx:if="{{orderType === 1}}">确定</view>
 
   <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 </view>
