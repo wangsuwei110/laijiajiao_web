@@ -92,6 +92,10 @@ Page({
             })
           }
 
+        } else {
+          wx.showToast({
+            title: res.errMsg,
+          });
         }
       }
     })

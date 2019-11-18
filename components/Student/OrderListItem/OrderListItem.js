@@ -1,4 +1,5 @@
 // components/Student/OrderListItem/OrderListItem.js
+const http = require('../../../utils/api')
 var appInst = getApp();
 
 Component({
@@ -41,12 +42,36 @@ Component({
       });
     },
 
-    onPassClick() {
+    onGoPay() {
       const { item } = this.data
       this.setCacheItem()
+
       wx.navigateTo({
         url: `/pages/Student/OrderPass/OrderPass?id=${item.sid}`,
       });
+    },
+
+    onPassClick() {
+      this.onGoPay()
+      /* const { item } = this.data
+      wx.showModal({
+        title: '提示',
+        content: '是否确定通过试讲',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if (result.confirm) {
+            wx.showLoading();
+            http.postPromise('/StudentDemand/updateAdoptStatus', { demandId: item.sid, status: 4 }).then(data => {
+              wx.hideLoading();
+              this.onGoPay()
+            }).catch(e => wx.hideLoading())
+          }
+        },
+      }); */
     },
   }
 })

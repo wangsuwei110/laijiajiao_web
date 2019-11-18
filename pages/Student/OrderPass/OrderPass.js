@@ -1,5 +1,7 @@
 // pages/Student/OrderPass/OrderPass.js
 const http = require('../../../utils/api')
+var appInst = getApp();
+
 Page({
 
   /**
@@ -7,21 +9,44 @@ Page({
    */
   data: {
     item: {},
+    timeRange: [],
+    weekNum: 1,
   },
 
+  onWeekChange(e) {
+    this.setData({ timeRange: e.detail })
+  },
 
-  onCointinue() {
-    wx.showLoading();
-    http.postPromise('/StudentDemand/payDemand', { demandId: this.data.demandId }).then(data => {
-      this.triggerEvent('onSubmit')
-      wx.hideLoading();
-    }).catch(e => {
-      wx.hideLoading();
-    })
+  onWeekNumChange(e) {
+    this.setData({ weekNum: e.detail })
   },
 
   onPay() {
-    this.onCointinue()
+    const { item, timeRange, weekNum } = this.data
+
+    wx.login({
+      success: (result) => {
+        if (result.code) {
+          wx.showLoading();
+          http.postPromise('/weixin/prepay', { code: result.code, demandId: item.sid, timeRange: JSON.stringify(timeRange), weekNum }).then(data => {
+            //this.triggerEvent('onSubmit')
+            wx.requestPayment(data.data)
+
+            wx.hideLoading();
+          }).catch(e => {
+            //console.log(e, 'error')
+            wx.hideLoading();
+          })
+        } else {
+          wx.showToast({
+            title: result.errMsg,
+          });
+        }
+      },
+      fail: () => {
+
+      },
+    });
   },
 
   /**

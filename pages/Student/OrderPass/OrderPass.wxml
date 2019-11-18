@@ -7,13 +7,13 @@
     </view>
 
 
-    <SelectClassTime/>
+    <SelectClassTime weekData='{{timeRange}}' bind:onChange='onWeekChange'/>
 
     <view class='bottomAction'>
         <view class='leftBox'>
             <view class='quantityBox'>
                 <text class='label'>购买：</text>
-                <QuantityInput/>
+                <QuantityInput value='{{weekNum}}' bind:onChange=''/>
                 <text class='unit'>周</text>
             </view>
             
@@ -35,4 +35,4 @@
     </view>
 </view>
 
-<view class='saveBtn'>支付课时费</view>
+<view class='saveBtn' bindtap='onPay'>支付课时费</view>

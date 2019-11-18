@@ -10,7 +10,7 @@ const chackNum = function (value, min, max) {
 }
 
 const checkInputValue = function (value, _value) {
-  return value === 0 && _value === '' ? _value : value
+  return `${value === 0 && _value === '' ? _value : value}`
 }
 
 Component({
@@ -35,7 +35,7 @@ Component({
         this.setData({ _value: checkInputValue(chackNum(value, min, max), _value) })
       }
     },
-
+    
     value: {
       type: Number,
       value: 1,
@@ -50,7 +50,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    _value: ''
+    _value: '1'
   },
 
   /**

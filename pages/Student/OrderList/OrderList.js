@@ -88,12 +88,13 @@ Page({
   },
 
   pageIndex: 1,
-
+  isEnd: false,
   fetchOrderList(pageIndex = 1) {
-    const { orderList, isEnd, pageSize } = this.data
+    const { orderList, pageSize } = this.data
 
-    isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
+    this.isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
       this.pageIndex = pageIndex
+      this.isEnd = !data.data || data.data.length < pageSize
       this.setData({ loaded: true, isEnd: !data.data || data.data.length < pageSize, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
     })
   },
@@ -116,6 +117,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.isEnd = false
     this.fetchOrderList()
   },
 

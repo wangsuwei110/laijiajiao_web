@@ -46,12 +46,12 @@
             <view class='unPassBtn' catchtap='onNoPassClick'>{{item.orderTeachTime}} 试讲不通过</view>
         </view>
 
-        <view class='payBtn' wx:elif='{{item.subscribeStatus === 4}}'>
+        <view class='payBtn' catchtap='onGoPay' wx:elif='{{item.subscribeStatus === 4}}'>
             去支付
         </view>
         
         <view class='actionWrap' wx:elif='{{item.subscribeStatus === 5}}'>
-            <view class='payBtn shrink'>
+            <view class='payBtn shrink' catchtap='onGoPay'>
                 续课
             </view>
             <view class='evaluateBtn' wx:if='{{!item.appraise}}'>
