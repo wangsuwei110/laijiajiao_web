@@ -136,6 +136,11 @@ Page({
       }
     ],
   },
+  message () {
+    wx.navigateTo({
+      url: '/pages/my/feedback/feedback'
+    })
+  },
   // 显示错误提示
   errFun(text) {
     this.setData({

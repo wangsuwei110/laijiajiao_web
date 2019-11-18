@@ -6,6 +6,8 @@ Page({
     activeIdx: 0,
     // 列表
     list: [],
+    form: {
+    },
     tabs: [
       {
         name: "全部",
@@ -66,7 +68,7 @@ Page({
   // 订单列表
   getList () {
     var that = this
-    http.post('/teacher/queryDemandsByTeacher', {teacherId: wx.getStorageSync('user_id'), demandSignStatus: this.data.status}, function (res) {
+    http.post('/teacher/queryDemandsByTeacher', this.data.form, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
@@ -118,6 +120,14 @@ Page({
         status: null
       })
     }).exec();
+    this.setData({
+      form: {
+        teacherId: wx.getStorageSync('user_id'), 
+        demandSignStatus: this.data.status,
+        pageIndex: 1,
+        pageSize: 20
+      }
+    })
     this.getList()
   },
   switchTab: function (e) {
@@ -131,7 +141,13 @@ Page({
       return;
     }
     this.setData({
-      activeIdx: _idx
+      activeIdx: _idx,
+      form: {
+        teacherId: wx.getStorageSync('user_id'), 
+        demandSignStatus: this.data.status,
+        pageIndex: 1,
+        pageSize: 20
+      }
     })
     this.getList()
     // 请求数据

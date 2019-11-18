@@ -323,3 +323,10 @@
   font-size: 30rpx;
   color: #666;
 }
+.message{
+  position: fixed;
+  bottom:200rpx;
+  right:30rpx;
+  width:50rpx;
+  height: 50rpx;
+}
