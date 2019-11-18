@@ -30,8 +30,9 @@ Page({
           wx.showLoading();
           http.postPromise('/weixin/prepay', { code: result.code, demandId: item.sid, timeRange: JSON.stringify(timeRange), weekNum }).then(data => {
             //this.triggerEvent('onSubmit')
-            wx.requestPayment(data.data)
-
+            //console.log(data.data.data)
+            wx.requestPayment(data.data.data)
+            
             wx.hideLoading();
           }).catch(e => {
             //console.log(e, 'error')

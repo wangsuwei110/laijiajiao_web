@@ -52,8 +52,8 @@ Component({
     },
 
     onPassClick() {
-      this.onGoPay()
-      /* const { item } = this.data
+      //this.onGoPay()
+      const { item } = this.data
       wx.showModal({
         title: '提示',
         content: '是否确定通过试讲',
@@ -65,13 +65,13 @@ Component({
         success: (result) => {
           if (result.confirm) {
             wx.showLoading();
-            http.postPromise('/StudentDemand/updateAdoptStatus', { demandId: item.sid, status: 4 }).then(data => {
+            http.postPromise('/StudentDemand/updateAdoptStatus', { demandId: item.sid, status: 4, teacherId: item.teacherId }).then(data => {
               wx.hideLoading();
               this.onGoPay()
             }).catch(e => wx.hideLoading())
           }
         },
-      }); */
+      });
     },
   }
 })

@@ -1,5 +1,6 @@
 <!--components/Student/HomeNav/HomeNav.wxml-->
 <view class='container'>
-    <image class='image' src='../../../images/Students/homeService.png' mode='widthFix'/>
-    <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
+    <navigator url='/pages/Student/Mailbox/Mailbox'>
+        <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
+    </navigator>
 </view>

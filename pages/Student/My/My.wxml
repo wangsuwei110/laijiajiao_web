@@ -44,6 +44,4 @@
             </navigator>
         </view>
     </view>
-
-    <navigator url='/pages/Student/OrderPass/OrderPass'>试讲通过</navigator>
 </PageLayout>

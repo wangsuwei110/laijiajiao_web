@@ -1,0 +1,52 @@
+/* pages/index/index.wxss */
+
+page{
+    height: 100%;
+}
+
+._container{
+    display: flex;
+    flex-flow: column;
+    background: #fff;
+    height: 100%;
+}
+
+.topBox{
+    flex: 1;
+}
+
+.teacherBtn, .studentBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:576rpx;
+    height:96rpx;
+    background:linear-gradient(90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+    border:2rpx solid rgba(131,181,255,1);
+    border-radius:48rpx;
+    margin: auto;
+
+
+    font-size:38rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
+}
+
+.studentBtn{
+    border-color: rgba(228,54,50,1);
+    background:rgba(228,54,50,1);
+    margin-top: 34rpx;
+}
+
+.bottom{
+    text-align: center;
+    font-size:24rpx;
+    line-height: 40rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+
+    margin-top: 200rpx;
+    padding-bottom: 52rpx;
+}
