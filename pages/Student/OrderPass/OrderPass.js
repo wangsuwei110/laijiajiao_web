@@ -23,6 +23,19 @@ Page({
 
   onPay() {
     const { item, timeRange, weekNum } = this.data
+    let res = ''
+    if (!timeRange.length) {
+      res = '请选择上课时间'
+    } else if (!weekNum) {
+      res = '请输入购买周数'
+    }
+
+    if (res) {
+      return wx.showToast({
+        title: res,
+        icon: 'none',
+      });
+    }
 
     wx.login({
       success: (result) => {
@@ -31,8 +44,8 @@ Page({
           http.postPromise('/weixin/prepay', { code: result.code, demandId: item.sid, timeRange: JSON.stringify(timeRange), weekNum }).then(data => {
             //this.triggerEvent('onSubmit')
             //console.log(data.data.data)
-            wx.requestPayment(data.data.data)
-            
+            wx.requestPayment(Object.assign({ signType: 'MD5' }, data.data.data))
+
             wx.hideLoading();
           }).catch(e => {
             //console.log(e, 'error')
