@@ -1,7 +1,7 @@
 // pages/Student/MyCurriculum/MyCurriculum.js
 
 const http = require('../../../utils/api')
-
+const ONE_DAY = 864e5
 Page({
 
   /**
@@ -12,6 +12,8 @@ Page({
     student: {},
     loaded: false,
     curriculum: [],
+    time: new Date(),
+    timeStr: '',
   },
 
   onStudentChange(e) {
@@ -19,9 +21,28 @@ Page({
   },
 
 
-  fetchCurriculum(studentId) {
-    http.postPromise('/StudentDemand/listMyCourse', { studentId, orderTeachTime: new Date() }).then(data => {
-      this.setData({ curriculum: data.data, loaded: true })
+  onNext() {
+    const { time, student } = this.data
+    this.fetchCurriculum(student.sid, new Date(time.getTime() + ONE_DAY * 7))
+  },
+  
+  onPrev() {
+    const { time, student } = this.data
+    this.fetchCurriculum(student.sid, new Date(time.getTime() - ONE_DAY * 7))
+  },
+
+  fetchCurriculum(studentId, orderTeachTime = this.data.time) {
+    //console.log(this.data.time)
+    http.postPromise('/StudentDemand/listMyCourse', { studentId, orderTeachTime }).then(data => {
+      const wDay = orderTeachTime.getDay()
+      const time = orderTeachTime.getTime()
+
+      const prev = wDay === 0 ? 6 : (wDay - 1)
+      const next = wDay === 0 ? 0 : (7 - wDay)
+
+      const timeStr = `${this.generateDateStr(new Date(time - prev * ONE_DAY))}-${this.generateDateStr(new Date(time + next * ONE_DAY))}`
+      
+      this.setData({ curriculum: data.data, loaded: true, time: orderTeachTime, timeStr })
     })
   },
 
@@ -29,6 +50,15 @@ Page({
     http.postPromise('/StudentDemand/conclusion').then(data => {
 
     })
+  },
+
+
+  generateDateStr(date) {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+
+    return `${year}.${month < 10 ? 0 : ''}${month}.${day < 10 ? 0 : ''}${day}`
   },
 
 
@@ -40,7 +70,7 @@ Page({
       const student = data.data[0]
       this.setData({ studentList: data.data, loaded: true, student })
 
-      this.fetchCurriculum(student.sid)
+      this.fetchCurriculum(student.sid, new Date())
     })
   },
 

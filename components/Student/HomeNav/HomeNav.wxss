@@ -1,0 +1,18 @@
+/* components/Student/HomeNav/HomeNav.wxss */
+
+.container{
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    right: 4rpx;
+    bottom: 0rpx;
+}
+
+.image{
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.image + .image{
+    margin-top: 6rpx;
+}

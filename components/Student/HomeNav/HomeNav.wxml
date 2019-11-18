@@ -1,0 +1,5 @@
+<!--components/Student/HomeNav/HomeNav.wxml-->
+<view class='container'>
+    <image class='image' src='../../../images/Students/homeService.png' mode='widthFix'/>
+    <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
+</view>

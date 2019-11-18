@@ -1,4 +1,5 @@
 // pages/Student/OrderPass/OrderPass.js
+const http = require('../../../utils/api')
 Page({
 
   /**
@@ -8,13 +9,28 @@ Page({
     item: {},
   },
 
+
+  onCointinue() {
+    wx.showLoading();
+    http.postPromise('/StudentDemand/payDemand', { demandId: this.data.demandId }).then(data => {
+      this.triggerEvent('onSubmit')
+      wx.hideLoading();
+    }).catch(e => {
+      wx.hideLoading();
+    })
+  },
+
+  onPay() {
+    this.onCointinue()
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({ item: appInst.globalData.orderItem })
     appInst.globalData.orderItem = null
-    
+
 
     this.demandId = options.id
   },

@@ -32,5 +32,7 @@
         <navigator url='/pages/Student/ReleaseDemand/ReleaseDemand'>
             <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
         </navigator>
+        
+        <HomeNav/>
     </view>
 </PageLayout>
