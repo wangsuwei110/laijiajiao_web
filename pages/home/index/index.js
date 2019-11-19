@@ -107,20 +107,23 @@ Page({
           return obj
         })
       }
-      data.studentDemandList = data.studentDemandList.map((item, index) => {
-        let obj = item
-        obj.createTime = timeFormat(obj.createTime)
-        if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
-        console.log(obj.timeRange, 'obj.timeRange' + index , typeof obj.timeRange)
-        if (typeof obj.timeRange !== 'string') { obj.timeRange = obj.timeRange.map((itemA, indexA) => {
-            let objA = itemA
-            if ((indexA + 1) === obj.timeRange.length) objA = timeWeek(objA.week) + dayTimes(objA.time)
-            else objA = timeWeek(objA.week) + dayTimes(objA.time) + ','
-            return objA
-          })
-        }
-        return obj
-      })
+      if (data.studentDemandList) {
+        data.studentDemandList = data.studentDemandList.map((item, index) => {
+          let obj = item
+          obj.createTime = timeFormat(obj.createTime)
+          if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
+          console.log(obj.timeRange, 'obj.timeRange' + index , typeof obj.timeRange)
+          if (typeof obj.timeRange !== 'string') { obj.timeRange = obj.timeRange.map((itemA, indexA) => {
+              let objA = itemA
+              if ((indexA + 1) === obj.timeRange.length) objA = timeWeek(objA.week) + dayTimes(objA.time)
+              else objA = timeWeek(objA.week) + dayTimes(objA.time) + ','
+              return objA
+            })
+          }
+          return obj
+        })
+      }
+      
       if (data.fitTeacherOrderList) {
         data.fitTeacherOrderList = data.fitTeacherOrderList.map(item => {
           let obj = item
