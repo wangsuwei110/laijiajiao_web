@@ -1,11 +1,13 @@
 <!--pages/index/index.wxml-->
 
 <view class='_container'>
-    <view class='topBox'></view>
+    <view class='topBox'>
+        <image src='../../../images/indexLogo.png' class='logo' mode='widthFix'/>
+    </view>
 
     <view class='teacherBtn' bindtap='onStudentClick'>我是学员</view>
     <view class='studentBtn' bindtap='onTeacherClick'>我是教员</view>
-
+    
     <view class='bottom'>
         来家教，提升成绩步步高 加急
         <view>家教热线：021-66028082</view>
