@@ -3,7 +3,7 @@
     <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
     <view class="top-info-item"><text class="numeral">{{details.employRate}}</text><text>聘用率</text></view>
     <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
-    <view class="top-info-item"><text class="numeral">90%</text><text>{{details.resumptionRate}}</text></view>
+    <view class="top-info-item"><text class="numeral">{{details.resumptionRate}}</text><text>续课率</text></view>
   </view>
   <view class="fast-entrance">
     <view class="entrance">
@@ -44,7 +44,7 @@
       </view>
       <view class="panel-body">
         <view class="demand-wrapper" wx:if='{{details.fitTeacherOrderList}}'>
-          <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{details.studentDemandList}}' class="demand-item">
+          <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
               <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>

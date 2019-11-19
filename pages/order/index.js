@@ -125,7 +125,7 @@ Page({
         teacherId: wx.getStorageSync('user_id'), 
         demandSignStatus: this.data.status,
         pageIndex: 1,
-        pageSize: 20
+        pageSize: 10000
       }
     })
     this.getList()
@@ -146,7 +146,7 @@ Page({
         teacherId: wx.getStorageSync('user_id'), 
         demandSignStatus: this.data.status,
         pageIndex: 1,
-        pageSize: 20
+        pageSize: 10000
       }
     })
     this.getList()
