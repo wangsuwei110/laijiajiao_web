@@ -10,7 +10,7 @@
   <view class='cash'>
      <view class='top'>
         <text>提现金额</text>
-        <text>5%手续费</text>
+        <view><image src='../../../images/icon5.png' />5%手续费</view>
      </view>
 
      <view class='inputCash'>

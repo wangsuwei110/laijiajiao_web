@@ -45,6 +45,16 @@
   align-items: center;
   padding-top:23rpx;
 }
+.top view{
+  display:flex;
+  align-items:center;
+  font-size:28rpx;
+}
+.top view image{
+  width:40rpx;
+  height:40rpx;
+  margin-right:5rpx;
+}
 .inputCash{
   padding-top:35rpx;
   font-size: 60rpx;

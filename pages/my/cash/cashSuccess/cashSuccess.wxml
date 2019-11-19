@@ -1,7 +1,7 @@
 <view class="revenue-list-container">
  <view class='content'>
   <view class='cashSuccess'>
-    <image src='' />
+    <image src='../../../../images/tixian.png' />
     <view class='applySuccess'>提现申请成功，敬请等待处理</view>
     <view class='times'>预计2小时内到账</view>
   </view>
