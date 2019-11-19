@@ -44,7 +44,46 @@ Page({
           http.postPromise('/weixin/prepay', { code: result.code, demandId: item.sid, timeRange: JSON.stringify(timeRange), weekNum }).then(data => {
             //this.triggerEvent('onSubmit')
             //console.log(data.data.data)
-            wx.requestPayment(Object.assign({ signType: 'MD5' }, data.data.data))
+            wx.requestPayment(Object.assign({
+              signType: 'MD5', 'success': res => {
+                wx.showModal({
+                  title: '提示',
+                  content: '支付成功',
+                  showCancel: false,
+                  cancelText: '取消',
+                  cancelColor: '#000000',
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: (result) => {
+                    if (result.confirm) {
+                      wx.navigateBack({
+                        delta: 1
+                      });
+                    }
+                  },
+                  fail: () => { },
+                  complete: () => { }
+                });
+              },
+              'fail': res => {
+                wx.showModal({
+                  title: '提示',
+                  content: '支付失败',
+                  showCancel: true,
+                  cancelText: '取消',
+                  cancelColor: '#000000',
+                  confirmText: '重新支付',
+                  confirmColor: '#3CC51F',
+                  success: (result) => {
+                    if (result.confirm) {
+                      this.onPay()
+                    }
+                  },
+                  fail: () => { },
+                  complete: () => { }
+                });
+              },
+            }, data.data.data))
 
             wx.hideLoading();
           }).catch(e => {

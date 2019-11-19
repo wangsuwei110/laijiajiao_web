@@ -22,7 +22,7 @@
             <text class='label'>具体辅导需求：</text>
             {{item.demandDesc}}
         </view>
-
+        
         <view class='evaluate' wx:if='{{item.appraise}}'>
             <text>2019-07-15 12:20 （好评）</text>
             <view class='evaluateTxt'>{{item.appraise}}</view>
