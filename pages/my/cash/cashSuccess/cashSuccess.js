@@ -4,5 +4,10 @@ Page({
   },
   onLoad: function (options) {
 
-  }
+  },
+  navTo () {
+    wx.navigateTo({
+      url: '../../revenue/revenue',
+    })
+  },
 })

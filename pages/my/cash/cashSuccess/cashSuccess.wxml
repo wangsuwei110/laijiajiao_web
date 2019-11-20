@@ -16,5 +16,5 @@
     </view>
   </view>
   </view>
-  <view class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">下一步</view>
+  <view class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}" bindtap='navTo'>完成</view>
 </view>

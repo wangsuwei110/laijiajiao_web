@@ -49,11 +49,10 @@
         <text class="label">试讲时间</text>
         <view class="text">{{details.orderTeachTime}}</view>
       </view>
-<!-- 
-      <view class="cont-item"  wx:if='{{orderType === 3}}'>
+      <view class="cont-item"  wx:if='{{orderType === 3 && details.appraise}}'>
         <text class="label">不通过原因</text>
-        <view class="text">{{details.orderTeachTime}}</view>
-      </view> -->
+        <view class="text">{{details.appraise}}</view>
+      </view> 
 
       <view class="cont-item"  wx:if='{{orderType === 4}}'>
         <text class="label">上课开始日期</text>

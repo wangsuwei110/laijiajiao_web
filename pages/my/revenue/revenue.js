@@ -8,22 +8,22 @@ Page({
   },
   //查询用户收入
   getAccount () {
-    // http.get('/userInfo/queryTeacherAccountByID?userId=' + wx.getStorageSync('user_id'), function (res) {
-    //   console.log(res.data)
-    //   var data = res.data
-    //   if (res.code === '200') {
-    //     console.log(data, '111111')
-    //   } else {
-    //     wx.showToast({
-    //       title: res.msg,
-    //       icon: 'none'
-    //     })
-    //   }
-    // }, function (err) {
-    //   console.log(err)
-    // }, function () {
-    //   wx.hideLoading()
-    // })
+    http.post('/userAccount/queryUserAccount', {teacherId: wx.getStorageSync('user_id')}, function (res) {
+      console.log(res.data)
+      var data = res.data
+      if (res.code === '200') {
+        console.log(data, '111111')
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }, function (err) {
+      console.log(err)
+    }, function () {
+      wx.hideLoading()
+    })
   },
   // 我要提现
   cash () {

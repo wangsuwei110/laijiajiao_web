@@ -95,6 +95,10 @@ Page({
             wx.showLoading({
               title: '登录中...',
             })
+            wx.setStorage({
+              key:"code",
+              data: res.code
+            })
             http.post('/user/getOpenId', params, function (res) {
               var openId = res.data.openid
               that.login(openId, gender)

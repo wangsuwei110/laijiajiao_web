@@ -1,3 +1,4 @@
+var http = require('../../../utils/api.js')
 Page({
   data: {
     scrollHeight: "",
@@ -39,6 +40,7 @@ Page({
   },
   onLoad: function (options) {
     const that = this;
+    this.revenueList()
     let winHeight = wx.getSystemInfoSync().windowHeight;
     let query = wx.createSelectorQuery();
     query.select("#tabsView").boundingClientRect(function (rect) {
@@ -56,10 +58,25 @@ Page({
       activeIdx: _idx
     })
     // 请求数据
-    console.log(e.currentTarget.dataset)
+    this.revenueList()
   },
   revenueList: function (e) {
-    console.log(e)
+    http.post('/userAccountLog/queryUserAccountLogList', {teacherId: wx.getStorageSync('user_id'), paymentType: this.data.activeIdx === 0 ? null : (this.data.activeIdx - 1)}, function (res) {
+      console.log(res.data)
+      var data = res.data
+      if (res.code === '200') {
+        console.log(data, '111111')
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }, function (err) {
+      console.log(err)
+    }, function () {
+      wx.hideLoading()
+    })
   },
   revenueDetail: function (e) {
     wx.navigateTo({

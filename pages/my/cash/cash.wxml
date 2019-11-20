@@ -5,7 +5,7 @@
       <text class='red'>+150</text>
       <image src='../../../images/arrow_icon.png' class='arrow_icon'/>
     </view>
-  </view>
+  </view> 
 
   <view class='cash'>
      <view class='top'>
@@ -15,7 +15,7 @@
 
      <view class='inputCash'>
        <text>￥</text>
-       <input type="tel" />
+       <input type="digit" bindinput="getMoney"/>
      </view>
   </view>
   
@@ -29,5 +29,5 @@
     </view>
   </view>
 
-  <view bindtap='saveBtn' class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">保存</view>
+  <view bindtap='saveBtn' class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提现</view>
 </view>
