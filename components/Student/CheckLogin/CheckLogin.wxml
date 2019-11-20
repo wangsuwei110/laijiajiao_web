@@ -1,0 +1,4 @@
+<!--components/Student/CheckLogin/CheckLogin.wxml-->
+<view class='className'>
+    <slot/>
+</view>

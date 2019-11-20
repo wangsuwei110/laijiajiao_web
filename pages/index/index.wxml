@@ -2,7 +2,7 @@
 
 <view class='_container'>
     <view class='topBox'>
-        <image src='../../../images/indexLogo.png' class='logo' mode='widthFix'/>
+        <image src='../../images/indexLogo.png' class='logo' mode='widthFix'/>
     </view>
 
     <view class='teacherBtn' bindtap='onStudentClick'>我是学员</view>

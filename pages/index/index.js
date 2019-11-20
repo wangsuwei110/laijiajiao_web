@@ -10,7 +10,7 @@ Page({
 
   onTeacherClick() {
     wx.navigateTo({
-      url: '/pages/login/login',
+      url: 'pages/noLogin/index',
       success: (result)=>{
         
       },
