@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的",
   "usingComponents": {
-    "PageLayout": "/components/PageLayout/PageLayout"
+    "PageLayout": "/components/PageLayout/PageLayout",
+    "CheckLogin": "/components/Student/CheckLogin/CheckLogin"
   }
 }

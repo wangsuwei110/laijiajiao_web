@@ -10,23 +10,23 @@ Page({
 
   onTeacherClick() {
     wx.navigateTo({
-      url: '/pages/login/login',
-      success: (result)=>{
-        
+      url: 'pages/noLogin/index',
+      success: (result) => {
+
       },
-      fail: ()=>{},
-      complete: ()=>{}
+      fail: () => { },
+      complete: () => { }
     });
   },
 
-  onStudentClick(){
+  onStudentClick() {
     wx.navigateTo({
-      url: '/pages/Student/Login/Login',
-      success: (result)=>{
-        
+      url: '/pages/Student/index/index',
+      success: (result) => {
+
       },
-      fail: ()=>{},
-      complete: ()=>{}
+      fail: () => { },
+      complete: () => { }
     });
   },
 

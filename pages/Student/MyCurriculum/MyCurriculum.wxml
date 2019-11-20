@@ -33,22 +33,19 @@
     <Empty wx:if='{{loaded && !curriculum.length}}' txt='暂无课程数据'/>
 
     <block wx:else>
-        <view class='tableRow'>
-            <text class='dateCell'>周一</text>
-            <view class='contentCell'>
-                <view class='stdName'>张军( 数学 ）</view>
-            </view>
-            <view class='contentCell'>
-                <view class='stdName complete'>张军( 数学 ）</view>
-                <view class='completeBox'>
+        <view class='tableRow' wx:for='{{dateList}}' wx:for-item='week' wx:for-index="weekIndex" wx:key='{{weekIndex}}' wx:if='{{week}}'>
+            <text class='dateCell'>周{{dateStrList[weekIndex]}}</text>
+
+
+            <view class='contentCell' wx:for='{{hoursList}}' wx:for-item='hours' wx:key='this'>
+                <view class='stdName {{completeObj[weekIndex +"_"+hours]===2?"complete":""}}' wx:if='{{week[hours]}}' wx:for='{{week[hours]}}'>{{item.teacherName}}( 数学 ）</view>
+
+                <view class='completeBox' wx:if='{{completeObj[weekIndex +"_"+hours]===1}}' data-week='{{weekIndex}}' data-hours='{{hours}}' bindtap='onOverClick'>
                     <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
                     结课
                 </view>
             </view>
-            <view class='contentCell'>
-                <view class='stdName'>张军( 数学 ）</view>
-                <view class='stdName'>张军( 数学 ）</view>
-            </view>
+        
         </view>
 
         <view class='tableRow'>

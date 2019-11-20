@@ -14,6 +14,11 @@ Page({
     curriculum: [],
     time: new Date(),
     timeStr: '',
+    dateList: [],
+
+    dateStrList: ['一', '二', '三', '四', '五', '六', '日'],
+    hoursList: [0, 1, 2],
+    completeObj: {}
   },
 
   onStudentChange(e) {
@@ -25,7 +30,7 @@ Page({
     const { time, student } = this.data
     this.fetchCurriculum(student.sid, new Date(time.getTime() + ONE_DAY * 7))
   },
-  
+
   onPrev() {
     const { time, student } = this.data
     this.fetchCurriculum(student.sid, new Date(time.getTime() - ONE_DAY * 7))
@@ -41,15 +46,59 @@ Page({
       const next = wDay === 0 ? 0 : (7 - wDay)
 
       const timeStr = `${this.generateDateStr(new Date(time - prev * ONE_DAY))}-${this.generateDateStr(new Date(time + next * ONE_DAY))}`
-      
-      this.setData({ curriculum: data.data, loaded: true, time: orderTeachTime, timeStr })
+
+      const list = Array.from({ length: 7 })
+      const completeObj = {}
+      data.data.map(item => {
+        //const dateObj = new Date(item.orderTeachTime)
+        //const week = dateObj.getDay()
+        //const hours = dateObj.getHours()
+        const weekIndex = item.weekNum - 1
+        const index = item.timeNum - 1
+        
+        const weekList = list[weekIndex] || [[], [], []]
+        const hoursList = weekList[index] || []
+        hoursList.push(item)
+
+        completeObj[`${weekIndex}_${index}`] = item.status
+
+        weekList[index] = hoursList
+        list[weekIndex] = weekList
+      })
+
+      console.log(list)
+
+      this.setData({ curriculum: data.data, loaded: true, time: orderTeachTime, timeStr, dateList: list, completeObj })
     })
   },
 
-  onOverClick() {
-    http.postPromise('/StudentDemand/conclusion').then(data => {
+  onOverClick(e) {
+    const week = Number(e.currentTarget.dataset.week)
+    const hours = Number(e.currentTarget.dataset.hours)
+    const { dateList } = this.data
 
-    })
+    dateList[week][hours]
+
+    wx.showModal({
+      title: '结课',
+      content: '结课成功后，将由平台支付本次课时费',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          http.postPromise('/StudentDemand/conclusion').then(data => {
+
+          })
+        }
+      },
+      fail: () => { },
+      complete: () => { }
+    });
+
+
   },
 
 

@@ -1,0 +1,4 @@
+<!--components/Student/CheckLogin/CheckLogin.wxml-->
+<view class='class-name' catchtap='onClick'>
+    <slot/>
+</view>

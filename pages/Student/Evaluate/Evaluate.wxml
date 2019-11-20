@@ -5,9 +5,14 @@
     </view>
     <view class='evaluateContainer'>
         <text class='evaluateTitle'>评价等级</text>
-        <image src='../../../images/Students/evaluate_1.png' class='evaluateIcon'/>
-        <image src='../../../images/Students/evaluate_2.png' class='evaluateIcon'/>
-        <image src='../../../images/Students/evaluate_3.png' class='evaluateIcon'/>
+        <image wx:if='{{evaluate === 1}}' src='../../../images/Students/evaluate_1.png' class='evaluateIcon'/>
+        <image wx:else src='../../../images/Students/def_evaluate_1.png' class='evaluateIcon'/>
+        
+        <image wx:if='{{evaluate === 2}}' src='../../../images/Students/evaluate_3.png' class='evaluateIcon'/>
+        <image wx:else src='../../../images/Students/def_evaluate_3.png' class='evaluateIcon'/>
+
+        <image wx:if='{{evaluate === 3}}' src='../../../images/Students/evaluate_2.png' class='evaluateIcon'/>
+        <image wx:else src='../../../images/Students/def_evaluate_2.png' class='evaluateIcon'/>
     </view>
     <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写评价'/>
 </view>
