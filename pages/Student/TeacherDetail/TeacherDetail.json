@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "教员信息",
   "usingComponents": {
-    
+    "CheckLogin": "/components/Student/CheckLogin/CheckLogin"
   }
 }

@@ -2,6 +2,13 @@
 <PageLayout isStudent='true'>
     <view class='_container'>
         <image src='../../../images/Students/myBg.png' class='myBg' mode='widthFix'/>
+
+        <view class="myInfo">
+            <view class="avatar">
+                <image src='../../../images/Students/myIcon.jpg' class='avatarIcon' bindtap="tabFun" mode='aspectFill'/>
+            </view>
+            <text bindtap="openVita" class="linkBtn">点击登录</text>
+        </view>
         
         <view class='itemWrap first'>
             <CheckLogin isStudent='true' class='item' class-name='itemInner' url='/pages/Student/OrderList/OrderList'>

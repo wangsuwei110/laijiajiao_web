@@ -9,7 +9,7 @@
     <view class='studentBtn' bindtap='onTeacherClick'>我是教员</view>
     
     <view class='bottom'>
-        来家教，提升成绩步步高 加急
+        来家教，提升成绩步步高
         <view>家教热线：021-66028082</view>
     </view>
 </view>

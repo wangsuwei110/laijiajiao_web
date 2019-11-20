@@ -28,12 +28,12 @@
     </view>
 
 
-    <view class='collect' catchtap='onCollectTeacher'>
+    <CheckLogin class-name='collect' bind:onClick='onCollectTeacher'>
         <view class='collectInner'>
             <image class='collectIcon' src='../../../images/Students/collect.png' mode='widthFix'/>
             <text>已收藏</text>
         </view>
-    </view>
+    </CheckLogin>
     
   </view>
   <view class="spacing-10"></view>
@@ -150,5 +150,5 @@
     </view>
   </view>
   
-  <navigator wx:if='{{!formOrder}}' class='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</navigator>
+  <CheckLogin wx:if='{{!formOrder}}' class-name='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</CheckLogin>
 </view>
