@@ -29,10 +29,10 @@
     </HomeContentBox>
 
     <view slot='absolute'>
-        <navigator url='/pages/Student/ReleaseDemand/ReleaseDemand'>
+        <CheckLogin isStudent='true' class-name='addDemand' url='/pages/Student/ReleaseDemand/ReleaseDemand'>
             <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
-        </navigator>
-        
+        </CheckLogin>
+
         <HomeNav/>
     </view>
 </PageLayout>

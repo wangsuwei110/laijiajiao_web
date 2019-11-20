@@ -4,11 +4,15 @@ Component({
    * 组件的属性列表
    */
 
-  externalClasses: ['className'],
+  externalClasses: ['class-name'],
   properties: {
     isStudent: {
       type: Boolean,
       value: false
+    },
+    url: {
+      type: String,
+      value: ''
     }
   },
 
@@ -24,8 +28,13 @@ Component({
    */
   methods: {
     onClick() {
-      const { isStudent } = this.data
+      const { isStudent, url } = this.data
       if (wx.getStorageSync('user_id')) {
+        if (url) {
+          wx.navigateTo({
+            url
+          })
+        }
         this.triggleEvent('onClick')
       } else {
         wx.showModal({

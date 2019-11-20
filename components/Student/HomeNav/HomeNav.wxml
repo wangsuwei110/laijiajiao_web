@@ -1,6 +1,6 @@
 <!--components/Student/HomeNav/HomeNav.wxml-->
 <view class='container'>
-    <navigator url='/pages/Student/Mailbox/Mailbox'>
+    <CheckLogin isStudent='true' class-name='image' url='/pages/Student/Mailbox/Mailbox'>
         <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
-    </navigator>
+    </CheckLogin>
 </view>
