@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 18rpx;
+  height: 124rpx;
   color: #fff;
   font-size: 24rpx;
 }
@@ -54,6 +54,10 @@
 .tit view{
   text-align: center;
 
+}
+.tit-time{
+  width:100rpx;
+  text-align: center;
 }
 .ivon1{
   width:19rpx;
@@ -113,21 +117,24 @@
 }
 .tit-list-style{
   width: 560rpx;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 .tit-list-style-name{
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-content: space-around;
+  align-content: space-around; */
   font-size: 28rpx;
-  width: 206rpx;
+  width: 180rpx;
+  min-height: 1px;
+  float: left;
 
 }
 .tit-list-style-name-top{
-  display: flex;
+  /* display: flex;
   justify-content:center;
-  align-items: center;
+  align-items: center; */
+  text-align:center;
 }
 
 .tit-list-style-name-bot{
@@ -202,10 +209,19 @@
   position: fixed;
   top:40%;
 }
+.div{
+  width:226rpx;
+}
 .toast view{
   padding:20rpx 30rpx;
   font-size:28rpx;
   background:rgba(0, 0, 0, 0.6);
   color:#fff;
   border-radius:10rpx;
+}
+.name{
+  display: flex;
+align-items: center;
+justify-content: center;
+
 }

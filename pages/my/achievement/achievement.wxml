@@ -6,8 +6,8 @@
       <view class="arrow-icon arrow-right"></view>
     </view>
   </view>
-  <view class="btn-bar">
-    <view bindtap="addAchievement" class="add-btn">
+  <view class="btn-bar" bindtap="addAchievement">
+    <view class="add-btn">
       <image class="add-btn-icon" mode="scaleToFill" src="../../../images/add_icon_1.png"></image><text class="add-btn-name">新增案例</text>
     </view>
   </view>

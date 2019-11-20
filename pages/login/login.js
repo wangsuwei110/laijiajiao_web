@@ -119,6 +119,11 @@ Page({
       })
     }
   },
+  goTo () {
+    wx.reLaunch({
+      url: '/pages/noLogin/index'
+    })
+  },
   login: function (openId, gender) {
     var params = {
       loginPhone: this.data.phone,

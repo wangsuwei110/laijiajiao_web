@@ -1,11 +1,11 @@
 <view class="revenue-list-container">
-  <view class='tit'>
+  <!-- <view class='tit'>
     <text>提现方式</text>
     <view>
       <text class='red'>+150</text>
       <image src='../../../images/arrow_icon.png' class='arrow_icon'/>
     </view>
-  </view> 
+  </view>  -->
 
   <view class='cash'>
      <view class='top'>
@@ -22,12 +22,11 @@
 
   <view class='tit'>
     <view>
-        可提现余额 <text>￥1000</text>
+        可提现余额 <text>￥{{money}}</text>
     </view>
     <view>
       <text>全部提现</text>
     </view>
   </view>
-
-  <view bindtap='saveBtn' class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提现</view>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="saveBtn" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提现</button>
 </view>

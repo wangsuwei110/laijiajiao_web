@@ -7,52 +7,39 @@
   <view class="select-wrapper">
     <view></view>
   </view>
-  <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList">
+  <Empty wx:if='{{loaded && !orderList.length}}'/>
+  <block wx:else>
+  <!-- <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList"> -->
     <view class="demand-wrapper">
       <view class="demand-list">
-        <view bindtap="demandDetail" class="demand-item">
+        <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{orderList}}' class="demand-item">
           <view class="item-title">
             <text class="dot"></text>
-            <text class="name">三年级数学、语文</text>
-            <text class="date">2019.07.22</text>
+            <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+            <text class="date">{{item.createTime}}</text>
           </view>
-          <view class="join">
-            <text class="join-num">1</text><text>人报名</text>
+          <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
+            <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+          </view>
+          <view class="join" wx:else>
+            <text>暂无报名</text>
           </view>
           <view class="demand-ul">
             <view class="demand-li">
-              <text class="label">授课地址:</text><text class="cont">上海市浦东新区碧波路</text>
+              <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
             </view>
             <view class="demand-li">
-              <text class="label">授课时间:</text><text class="cont">每周2次（可选周一上午、周二下午、周三上午、周三晚上、周四上午）</text>
+              <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<text wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</text>）</text>
             </view>
             <view class="demand-li">
-              <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
+              <text class="label">详细需求:</text><text class="cont">{{item.demandDesc}}</text>
             </view>
           </view>
         </view>
-        <view class="demand-item">
-          <view class="item-title">
-            <text class="dot"></text>
-            <text class="name">三年级数学、语文</text>
-            <text class="date">2019.07.22</text>
-          </view>
-          <view class="join">
-            <text class="join-num">1</text><text>人报名</text>
-          </view>
-          <view class="demand-ul">
-            <view class="demand-li">
-              <text class="label">授课地址:</text><text class="cont">上海市浦东新区碧波路</text>
-            </view>
-            <view class="demand-li">
-              <text class="label">授课时间:</text><text class="cont">每周2次（可选周一上午、周二下午、周三上午、周三晚上、周四上午）</text>
-            </view>
-            <view class="demand-li">
-              <text class="label">详细需求:</text><text class="cont">适合我的需求适合我的需求适合我的需求适合我的需求适合我的需求</text>
-            </view>
-          </view>
-        </view>
+      
       </view>
     </view>
-  </scroll-view>
+  <!-- </scroll-view> -->
+  <DropDown wx:if='{{loaded}}' isEnd='{{isEnd}}'/>
+</block>
 </view>

@@ -11,7 +11,7 @@
     </view>
     <view class="panel-item">
       <text class="label">专业</text>
-      <input bindinput="getMajor" type="text" placeholder="请输入所读专业" value="{{userinfo.major}}"></input>
+      <input bindblur="getMajor" type="text" placeholder="请输入所读专业" value="{{userinfo.major}}"></input>
     </view>
     <picker class="pick-item" bindchange="bindDegreeChange" value="{{index}}" range="{{degree}}">
       <view class="picker">

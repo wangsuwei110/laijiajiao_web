@@ -1,6 +1,6 @@
 <view class="container">
   <view class='weeks'>
-      <view class='weeks-tit'>李圆圆的课程表</view>
+      <!-- <view class='weeks-tit'>李圆圆的课程表</view> -->
       <view class='change-time'>
         <view bindtap='prev'>
           <image src='../../images/arrow_icon.png' class='arrow_icon' />
@@ -19,18 +19,18 @@
       <view class="tit-time">
           时间
        </view>
-      <view class="tit-morning">
-        <view cl>上午</view>
+      <view class="tit-morning div">
+        <view>上午</view>
         <view>08:00-12:00</view>
 
       </view>
-      <view class="tit-afternon">
+      <view class="tit-afternon div">
          <view>下午</view>
          <view>12:00-18:00</view>
 
 
       </view>
-      <view class="tit-night">
+      <view class="tit-night div">
          <view>晚上</view>
          <view>18:00-23:00</view>
        </view>
@@ -44,8 +44,8 @@
         <view class="tit-list-style">
           <view class="tit-list-style-name" wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 1}}">
               <view class="tit-list-style-name-top">
-                <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>
-                <view class="name">{{itemName.teachName}}</view>
+              
+                <view class="name">  <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
                 <view class="style">({{itemName.teachBranchName}})</view>
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
@@ -71,8 +71,8 @@
         
           <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 2}}">
               <view class="tit-list-style-name-top"  >
-                <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>
-                <view class="name">{{itemName.teachName}}</view>
+               
+                <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
                 <view class="style">({{itemName.teachBranchName}})</view>
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
@@ -94,8 +94,8 @@
 
           <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 3}}">
               <view class="tit-list-style-name-top"  >
-                <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>
-                <view class="name">{{itemName.teachName}}3</view>
+               
+                <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}3</view>
                 <view class="style">({{itemName.teachBranchName}})</view>
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}" >

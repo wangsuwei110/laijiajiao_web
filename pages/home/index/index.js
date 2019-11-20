@@ -37,6 +37,9 @@ Page({
   wx.stopPullDownRefresh();
 },
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title:  '来家教'
+    })
     this.getHome()
   },
   /**

@@ -40,9 +40,9 @@
     </view>
   </view>
 
-  <view class='tabBar' bindtap='tabFun'>
-    <view wx:for='{{tabBar}}'>
-      <image src='{{item.img}}' />
+  <view class='tabBar'>
+    <view wx:for='{{tabBar}}'  bindtap='tabFun'  wx:for-index="idx" data-index='{{idx}}'>
+      <image src='{{item.img}}' /> 
       <view style="{{item.text === '我的' ? 'color:#e50505' : ''}}">{{item.text}}</view>
     </view>
   </view>

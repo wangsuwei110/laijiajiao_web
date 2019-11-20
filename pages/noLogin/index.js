@@ -54,10 +54,34 @@ Page({
   onUnload: function () {
 
   },
-  tabFun () {
-    wx.reLaunch({
-      url: '/pages/login/login',
-    })
+  tabFun (e) {
+    console.log(e)
+    if (e.currentTarget.dataset.index === 0) {
+      wx.reLaunch({
+        url: '/pages/login/login',
+      })
+    } else {
+      wx.showModal({
+        content: '需要先验证手机号，是否立即验证？',
+        showCancel: true,//是否显示取消按钮
+        cancelText:"否",//默认是“取消”
+        confirmText:"是",//默认是“确定”
+        success: function (res) {
+           if (res.cancel) {
+              //点击取消,默认隐藏弹框
+           } else {
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+           }
+        },
+        fail: function (res) { },//接口调用失败的回调函数
+        complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+     })
+    }
+    // wx.reLaunch({
+    //   url: '/pages/login/login',
+    // })
   },
 
   /**

@@ -1,8 +1,8 @@
 <view class="container">
-  <view class="logo">
+  <!-- <view class="logo">
     <image src=""></image>
-  </view>
-  <view class="form">
+  </view> -->
+  <view class="form" style="padding-top:250rpx;">
     <form>
       <view class="section">
         <view class="section-title code-title">
@@ -23,7 +23,8 @@
       </view>
       <view class="btn-area">
         <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
-        <view bindtap="openStudent" class="btn-text">我是学员</view>
+        <!-- <view bindtap="openStudent" style="float:left" class="btn-text">我是学员</view> -->
+        <view bindtap="goTo" class="btn-text">暂不登录，再看看</view>
       </view>
     </form>
   </view>

@@ -2,7 +2,7 @@
   <view class="revenur-top">
     <view class="revenue-num">
       <image class="revenue-bg" mode="scaleToFill" src="../../../images/revenue_bg.png"></image>
-      <text class="num">888811</text>
+      <text class="num">{{details.surplusMoney}}</text>
       <text>账户余额</text>
     </view>
   </view>
@@ -10,9 +10,9 @@
     <view class="panel-item">
       <view class="name">
         <text class="total-name">总收入</text>
-        <text class="total-num">12,050</text>
+        <text class="total-num">￥{{details.accountMoney}}</text>
       </view>
-      <text class="usage-time">6个月12天</text>
+      <text class="usage-time">{{details.stayTime}}</text>
     </view>
   </view>
   <view class="spacing-10"></view>

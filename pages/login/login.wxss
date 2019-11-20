@@ -81,7 +81,9 @@ page {
   border-radius: 100rpx;
   background-color: #e50505;
   color: #fff;
-  font-size:30rpx;
+  font-size:34rpx;
+  line-height: 90rpx;
+  height: 90rpx;
 }
 .btn-area button::after {
   border-radius: 100rpx;

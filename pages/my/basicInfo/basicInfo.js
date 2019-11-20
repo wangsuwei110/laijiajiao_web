@@ -33,7 +33,7 @@ Page({
   updateAvatar: function () {
     var that = this;
     wx.chooseImage({
-      count: 3,
+      count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
@@ -92,19 +92,20 @@ Page({
     console.log(typeof _userinfo.teacherName)
     console.log(typeof _userinfo.weiChar)
     var tipText = ''
-    if (_userinfo.headPicture.trim() == '') {
+    if (_userinfo.headPicture.trim() == '' || !_userinfo.headPicture) {
       tipText = '请上传头像'
-    } else if (_userinfo.teacherName.trim() == '') {
+    } else if (_userinfo.teacherName.trim() == '' || !_userinfo.teacherName) {
       tipText = '请输入姓名'
-    } else if (_userinfo.home.trim() == '') {
+    } else if (_userinfo.home.trim() == '' || !_userinfo.home) {
       tipText = '请选择籍贯'
-    } else if (_userinfo.address.trim() == '') {
+    } else if (_userinfo.address.trim() == '' || !_userinfo.address) {
       tipText = '请输入详细住址'
-    } else if (_userinfo.weiChar.trim() == '') {
-      tipText = '请输入微信号'
-    } else if (_userinfo.QQ.trim() == '') {
-      tipText = '请输入QQ号'
     }
+    //  else if (_userinfo.weiChar.trim() == '') {
+    //   tipText = '请输入微信号'
+    // } else if (_userinfo.QQ.trim() == '') {
+    //   tipText = '请输入QQ号'
+    // }
     if (tipText != '') {
       wx.showToast({
         title: tipText,

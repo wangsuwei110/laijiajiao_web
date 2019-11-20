@@ -2,9 +2,20 @@ var http = require('../../../utils/api.js')
 Page({
   data: {
     isIPX: getApp().isIPX,
-    cashOut: null
+    cashOut: null,
+    openId: null
   },
   onLoad: function (options) {
+    this.setData({
+      money: options.money
+    })
+    // var that = this
+    // http.post('/user/getOpenId', {code: wx.getStorageSync('code')}, function (res) {
+    //   var openId = res.data.openid
+    //   that.setData({
+    //     openId: openid
+    //   })
+    // })
   },
   getMoney (e) {
     this.setData({
@@ -12,25 +23,33 @@ Page({
     })
   },
   saveBtn () {
-    // 确认提现
-    http.post('/wxRedPack/sendRedPack', {teacherId: wx.getStorageSync('user_id'), code: wx.getStorageSync('code'), cashOut: this.data.cashOut}, function (res) {
-      console.log(res.data)
-      var data = res.data
-      if (res.code === '200') {
-        console.log(data, '111111')
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
+    var that = this
+    wx.login({
+      success(res1) {
+        if (res1.code) {
+          http.post('/wxRedPack/sendRedPack', {teacherId: wx.getStorageSync('user_id'), code:  res1.code, cashOut: that.data.cashOut}, function (res) {
+            console.log(res.data)
+            var data = res.data
+            if (res.code === '200') {
+              console.log(data, '111111')
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            }
+          }, function (err) {
+            console.log(err)
+          }, function () {
+            wx.hideLoading()
+          })
+          wx.navigateTo({
+            url: './cashSuccess/cashSuccess'
+          })
+        }
       }
-    }, function (err) {
-      console.log(err)
-    }, function () {
-      wx.hideLoading()
     })
-    wx.navigateTo({
-      url: './cashSuccess/cashSuccess'
-    })
+    // 确认提现
+   
   }
 })

@@ -25,7 +25,7 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: 'WENPENG的排课表'
+      title:  wx.getStorageSync('user_name') + '的排课表'
     })
   },
   // 上一周

@@ -31,10 +31,10 @@
       <text>教员\n等级</text>
     </view>
     <view class="level-num">
-      <text>{{userinfo.teacherLevel}}</text>
+      <text>{{userinfo.teacherLevel === 'T0' ? '实习' : userinfo.teacherLevel}}</text>
     </view>
     <view class="info">
-      <text class="sub-title">学帮帮智能教务系统评定</text>
+      <text class="sub-title">来家教智能教务系统评定</text>
       <view class="type">
         <view class="type-item">
           <canvas canvas-id="employRate" id="employRate" class='ring-wrapper'></canvas>
@@ -74,7 +74,7 @@
       <view class="dot"></view>
       <text class="title">个人标签</text>
     </view>
-    <view class="panel-body" wx:if='{{labels.length !== 0}}'>
+    <view class="panel-body" wx:if='{{labels.length !== 0 && labels}}'>
       <text class="tag" wx:for="{{labels}}" wx:key="index">{{item.name}}</text>
     </view>
     <view class="panel-body" wx:else>
@@ -88,7 +88,7 @@
       <view class="dot"></view>
       <text class="title">家教经验</text>
     </view>
-    <view class="panel-body" wx:if='{{experienceList.length !== 0}}'>
+    <view class="panel-body" wx:if='{{experienceList.length !== 0 && experienceList}}'>
       <view wx:for="{{experienceList}}"  wx:for-item="experience" wx:key="{{index}}" class="experience">
         <view class="experience-text">
           <!-- <text>{{item.pictureTitle}}</text> -->
@@ -115,7 +115,7 @@
       <view class="dot"></view>
       <text class="title">所获证书</text>
     </view>
-    <view class="panel-body" wx:if='{{certificateList.length !== 0}}'>
+    <view class="panel-body" wx:if='{{certificateList.length !== 0 && certificateList}}'>
       <view class="certificate">
         <view class="certificate-inner">
           <view wx:for="{{certificateList}}" wx:for-item="certificate" wx:key="{{index}}" class="certificate-item">
@@ -135,7 +135,7 @@
       <view class="dot"></view>
       <text class="title">可教科目</text>
     </view>
-    <view class="panel-body" wx:if='{{teachBranchs.length !== 0}}'>
+    <view class="panel-body" wx:if='{{teachBranchs.length !== 0 && teachBranchs}}'>
       <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.teachBranchName}}</text>
     </view>
 

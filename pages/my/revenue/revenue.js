@@ -1,18 +1,22 @@
 var http = require('../../../utils/api.js')
 Page({
   data: {
-
+    details: null
   },
   onLoad: function (options) {
     this.getAccount()
   },
   //查询用户收入
   getAccount () {
+    var that = this
     http.post('/userAccount/queryUserAccount', {teacherId: wx.getStorageSync('user_id')}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         console.log(data, '111111')
+        that.setData({
+          details: res.data
+        })
       } else {
         wx.showToast({
           title: res.msg,
@@ -28,7 +32,7 @@ Page({
   // 我要提现
   cash () {
     wx.navigateTo({
-      url: '../cash/cash',
+      url: '../cash/cash?money=' + this.data.details.surplusMoney,
     })
   },
   revenueDetail: function () {

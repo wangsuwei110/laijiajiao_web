@@ -12,8 +12,8 @@
       </view>
     </view>
   </view>
-  <view class="btn-bar">
-    <view bindtap="openAddPage" class="add-btn">
+  <view class="btn-bar" bindtap="openAddPage">
+    <view  class="add-btn">
       <image class="add-btn-icon" mode="scaleToFill" src="../../../images/add_icon_1.png"></image><text class="add-btn-name">新增认证</text>
     </view>
   </view>
