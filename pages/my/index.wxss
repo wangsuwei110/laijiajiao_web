@@ -24,12 +24,12 @@
   position: relative;
 }
 .my-info .avatar .level {
-  width: 30rpx;
-  height: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
   position: absolute;
   right: 15rpx;
   bottom: 15rpx;
-  line-height: 30rpx;
+  line-height: 40rpx;
   border-radius: 100%;
   background-color: #e50505;
   overflow: hidden;

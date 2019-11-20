@@ -57,7 +57,7 @@
     "backgroundTextStyle": "light",
     "backgroundColor": "#f2eff6",
     "navigationBarBackgroundColor": "#e50505",
-    "navigationBarTitleText": "学帮帮",
+    "navigationBarTitleText": "来家教",
     "navigationBarTextStyle": "white"
   },
   "debug": true,

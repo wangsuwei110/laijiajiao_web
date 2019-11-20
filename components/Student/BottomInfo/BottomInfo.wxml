@@ -1,5 +1,5 @@
 <!--components/Student/BottomInfo/BottomInfo.wxml-->
 <view class='bottomContainer'>
-    <text class='bottomTxt'>学帮帮，专注上门家教一对一</text>
+    <text class='bottomTxt'>来家教，专注上门家教一对一</text>
     <text class='bottomTxt'>家教热线：021-66019906</text>
 </view>

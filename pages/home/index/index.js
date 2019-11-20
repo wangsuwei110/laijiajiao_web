@@ -39,8 +39,6 @@ Page({
   onLoad: function () {
     this.getHome()
   },
-  
- 
   /**
    * 家教需求列表 
    */

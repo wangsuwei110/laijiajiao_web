@@ -121,5 +121,5 @@
     </view>
   </view>
   <button bindtap="editUserinfo">提交信息</button>
-  <view class="slogan">学帮帮，专注上门家教一对一</view>
+  <view class="slogan">来家教，专注上门家教一对一</view>
 </view>

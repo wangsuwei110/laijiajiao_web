@@ -24,11 +24,11 @@
     </view>
     <view bindtap="attestAbility" class="panel-item">
       <view class="panel-item-l"><text class="label">能力认证</text></view>
-      <view class="panel-item-r"><text>{{certificateStr}}</text><view class="arrow-icon arrow-right"></view></view>
+      <view class="panel-item-r"><text>{{certificateStr !== '已填写' ? certificateStr : '' }}</text><view class="arrow-icon arrow-right"></view></view>
     </view>
     <view bindtap="achievement" class="panel-item">
       <view class="panel-item-l"><text class="label">成功案例</text></view>
-      <view class="panel-item-r"><text>{{experienceStr}}</text><view class="arrow-icon arrow-right"></view></view>
+      <view class="panel-item-r"><text>{{experienceStr !== '已填写' ? experienceStr : '' }}</text><view class="arrow-icon arrow-right"></view></view>
     </view>
     <view bindtap="userLabel" class="panel-item">
       <view class="panel-item-l"><text class="label">我的标签</text><text class="required">*</text></view>

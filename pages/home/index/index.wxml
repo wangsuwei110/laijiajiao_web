@@ -2,13 +2,13 @@
   <view class="top-info">
     <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
     <view class="top-info-item"><text class="numeral">{{details.employRate}}</text><text>聘用率</text></view>
-    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel === 'T0' ? '实习' : details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
     <view class="top-info-item"><text class="numeral">{{details.resumptionRate}}</text><text>续课率</text></view>
   </view>
   <view class="fast-entrance">
-    <view class="entrance">
+    <view class="entrance" bindtap='demandList'>
       <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_1.png"></image>
-      <text class="entrance-name">家教中心</text>
+      <text class="entrance-name">家教需求</text>
     </view>
     <view bindtap="openHelp" class="entrance">
       <image class="entrance-icon" mode="widthFix" src="../../../images/entrance_icon_2.png"></image>
@@ -19,7 +19,7 @@
     <view class="spacing-10"></view>
     <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}' data-status="{{item.demandSignStatus}}"  data-id='{{item.sid}}' bindtap='order'>
       <view class="remind-new">
-        <image mode="scaleToFill" src="../../../images/jb_icon.png"></image>
+        <image mode="scaleToFill" src="../../../images/try.png"></image>
         <text>新</text>
       </view>
       <image class="remind-icon" mode="scaleToFill" src="../../../images/jb_icon.png"></image>
@@ -50,8 +50,11 @@
               <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
-            <view class="join">
-              <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+            <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
+              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+            </view>
+            <view class="join" wx:else>
+              <text>暂无报名</text>
             </view>
             <view class="demand-ul">
               <view class="demand-li">
@@ -73,8 +76,11 @@
               <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
-            <view class="join">
-              <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+            <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
+              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+            </view>
+            <view class="join" wx:else>
+              <text>暂无报名</text>
             </view>
             <view class="demand-ul">
               <view class="demand-li">
@@ -100,7 +106,7 @@
       </view>
       <view class="panel-body">
         <view class="dynamic-wrapper">
-          <view class="dynamic-item" wx:for='{{details.StudentLogVoList}}'>
+          <view class="dynamic-item" wx:for='{{details.StudentLogVoList}}' wx:for-index="idx" wx:if='{{idx < 5}}'>
             <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
             <view class="user-desc">
               <text class="name">{{item.studentName}}</text>

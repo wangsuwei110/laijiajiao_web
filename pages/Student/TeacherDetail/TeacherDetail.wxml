@@ -45,7 +45,7 @@
       <text>{{userinfo.teacherLevel}}</text>
     </view>
     <view class="info">
-      <text class="sub-title">学帮帮智能教务系统评定</text>
+      <text class="sub-title">来家教智能教务系统评定</text>
       <view class="type">
         <view class="type-item">
           <canvas canvas-id="employRate" id="employRate" class='ring-wrapper'></canvas>
