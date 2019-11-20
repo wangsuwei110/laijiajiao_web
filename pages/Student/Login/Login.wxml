@@ -21,5 +21,5 @@
         </view>
     </ClickContainer>
 
-    <navigator open-type='reLaunch' url='/pages/login/login' class='isOther'>我是教员</navigator>
+    <navigator open-type='reLaunch' url='/pages/Student/index/index' class='isOther'>暂不登录，再看看</navigator>
 </view>

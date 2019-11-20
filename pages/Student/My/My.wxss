@@ -15,6 +15,7 @@
 }
 
 .itemWrap.first{
+    margin-top: 234rpx;
     border-top: 2rpx solid #f5f5f5;
 }
 
@@ -52,3 +53,52 @@
     height: 60rpx;
     margin-bottom: 26rpx;
 }
+
+.myInfo {
+    width: 100%;
+    position: absolute;
+    top: 82rpx;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+.avatar {
+    width: 168rpx;
+    height: 168rpx;
+    position: relative;
+  }
+  
+.level {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    right: 15rpx;
+    bottom: 15rpx;
+    line-height: 30rpx;
+    border-radius: 100%;
+    background-color: #e50505;
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 20rpx;
+    text-align: center;
+    font-weight: 300;
+  }
+  .avatarIcon {
+    width: 168rpx;
+    height: 168rpx;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 0 0 12rpx rgba(255, 255, 255, 0.35);
+    overflow: hidden;
+  }
+
+  .linkBtn {
+    margin-top: 36rpx;
+    color: #333234;
+    font-size:38rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+  }

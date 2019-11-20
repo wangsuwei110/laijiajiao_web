@@ -8,6 +8,13 @@ Page({
 
   },
 
+
+  openVita() {
+    wx.navigateTo({
+      url: '/pages/Student/Login/Login',
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
