@@ -1,8 +1,13 @@
 <view class="demand-list-container">
   <view id="tabsView" class="tabs-wrapper">
-    <view bindtap="switchTab" wx:for="{{tabs}}" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
+    <view bindtap="switchTab" wx:for="{{tabs}}" style="position: relative;" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
       <text>{{item.name}}</text>
+
+      <vew class='itemsList' style="position: absolute;">
+         <view></view>
+      </vew>
     </view>
+
   </view>
   <view class="select-wrapper">
     <view></view>
