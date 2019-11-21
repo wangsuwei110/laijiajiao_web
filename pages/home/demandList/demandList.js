@@ -94,7 +94,7 @@ Page({
     })
   },
   getList (pageIndex = 1) {
-    if (this.pageIndex === 1) {
+    if (pageIndex === 1) {
       wx.showLoading({
         title: '加载中...'
       })
