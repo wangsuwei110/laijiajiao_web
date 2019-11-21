@@ -2,11 +2,12 @@
   <view id="tabsView" class="tabs-wrapper">
     <view bindtap="switchTab" wx:for="{{tabs}}" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
       <text>{{item.name}}</text>
+       <view class="select-wrapper" wx:if='{{activeIdx == index}}'>
+        <view bindtap='shaiFun'  data-id="{{activeIdx === 0 ? item.teachGradeId : activeIdx === 1 ? item.teachBranchId : activeIdx === 2 ? item.parameterId : ''}}" wx:for='{{shai}}'>{{activeIdx === 0 ? item.teachGradeName : activeIdx === 1 ? item.teachBranchName : activeIdx === 2 ? item.name : ''}}</view>
+      </view>
     </view>
   </view>
-  <view class="select-wrapper">
-    <view></view>
-  </view>
+ 
   <Empty wx:if='{{loaded && !orderList.length}}'/>
   <block wx:else>
   <!-- <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList"> -->
@@ -19,7 +20,7 @@
             <text class="date">{{item.createTime}}</text>
           </view>
           <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-            <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+            <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
           </view>
           <view class="join" wx:else>
             <text>暂无报名</text>

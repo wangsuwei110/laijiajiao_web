@@ -26,10 +26,11 @@ Page({
   data: {
     orderList: [],
     scrollHeight: "",
-    activeIdx: 0,
+    activeIdx: null,
     isEnd: false,
     loaded: false,
     pageSize: 20,
+    shai: [],
     tabs: [
       {
         name: "年级",
@@ -50,6 +51,9 @@ Page({
     ]
   },
   pageIndex: 1,
+  area: [],
+  grade: [],
+  subject: [],
   isEnd: false,
   onLoad: function (options) {
     const that = this;
@@ -61,7 +65,33 @@ Page({
       })
     }).exec();
     this.getList()
-    
+    this.getArea()
+    this.getGrad()
+    this.getSubject()
+  },
+  // 所有教学区域
+  getArea () {
+    var that = this
+    http.post('/parameter/queryParametersByType', {parentId: 78}, function (res) {
+      console.log(res)
+      that.area = res.data
+    })
+  },
+  // 所有教学年级
+  getGrad () {
+    var that = this
+    http.post('/grade/queryAllGradelist', {}, function (res) {
+      console.log(res)
+      that.grade = res.data
+    })
+  },
+  // 所有教学科目
+  getSubject () {
+    var that = this
+    http.post('/grade/queryAllBranchlist', {}, function (res) {
+      console.log(res)
+      that.subject = res.data
+    })
   },
   getList (pageIndex = 1) {
     if (this.pageIndex === 1) {
@@ -75,7 +105,7 @@ Page({
       this.pageIndex = pageIndex
       this.isEnd = this.data.orderList.length >=  data.data.studentDemandList.total
       data.data.studentDemandList.dataList = data.data.studentDemandList.dataList.map(item => {
-        wx.hideLoading()
+        
         let obj = item
           if (obj.createTime) obj.createTime = timeFormat(obj.createTime)
           if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
@@ -89,6 +119,7 @@ Page({
           return obj
       })
       this.setData({ loaded: true, isEnd: this.data.orderList.length >=  data.data.studentDemandList.total, orderList: pageIndex === 1 ? data.data.studentDemandList.dataList : [...orderList, ...data.data.studentDemandList.dataList] })
+      wx.hideLoading()
     })
     
   },
@@ -107,7 +138,20 @@ Page({
       activeIdx: _idx
     })
     // 请求数据
-    console.log(e.currentTarget.dataset)
+    if (_idx === 0) {
+      this.setData({
+        shai: this.grade
+      })
+    } else if (_idx === 1) {
+      this.setData({
+        shai: this.subject
+      })
+    } else if (_idx === 2) {
+      this.setData({
+        shai: this.area
+      })
+    }
+    
   },
   revenueList: function () {
     

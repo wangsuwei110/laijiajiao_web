@@ -140,3 +140,23 @@ page {
 .demand-ul .demand-li .cont {
   flex: 1;
 }
+.select-wrapper{
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  background:#fff;
+  box-shadow: 0 9rpx 8rpx #ccc;
+  max-height:300rpx;
+  overflow:auto;
+
+}
+.select-wrapper view{
+  padding:20rpx 0;
+  width:100%;
+  display: inline-block;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

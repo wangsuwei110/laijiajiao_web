@@ -40,7 +40,7 @@
       <view class="panel-head">
         <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_1.png"></image>
         <text class="head-title">适合我的家教需求</text>
-        <!-- <text bindtap="demandList" class="head-link-btn">更多></text> -->
+        <text  bindtap='demandList' class="head-link-btn">更多></text> 
       </view>
       <view class="panel-body">
         <view class="demand-wrapper" wx:if='{{details.fitTeacherOrderList}}'>
@@ -51,7 +51,7 @@
               <text class="date">{{item.createTime}}</text>
             </view>
             <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
             <view class="join" wx:else>
               <text>暂无报名</text>
