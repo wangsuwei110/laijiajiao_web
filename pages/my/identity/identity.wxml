@@ -16,7 +16,7 @@
         <text>2. 身份证信息清晰无遮挡</text>
       </view>
       <view class="identity-pic">
-        <image hidden="{{userinfo.IDcardPic.length > 0}}" mode="scaleToFill" src="../../../images/IDcard.jpg"></image>
+        <image hidden="{{userinfo.IDcardPic.length > 0 || isLoading === true}}" mode="scaleToFill" src="../../../images/IDcard.jpg"></image>
         <view class="pic-item" wx:for="{{userinfo.IDcardPic}}" wx:key="{{index}}">
           <view hidden="{{userinfo.logonStatus == '1'}}" bindtap="removePic" data-index="{{index}}" class="close-icon">×</view>
           <image bindtap="previewImg" data-url="{{item}}" data-urls="{{userinfo.IDcardPic}}" mode="aspectFill" src="{{item}}"></image>

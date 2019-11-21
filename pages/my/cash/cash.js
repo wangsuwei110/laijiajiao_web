@@ -57,25 +57,25 @@ Page({
           
           return false
 
-          http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'), code: res1.code, cashOut: that.data.cashOut }, function (res) {
-            console.log(res.data)
-            var data = res.data
-            if (res.code === '200') {
-              console.log(data, '111111')
-            } else {
-              wx.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
-            }
-          }, function (err) {
-            console.log(err)
-          }, function () {
-            wx.hideLoading()
-          })
-          wx.navigateTo({
-            url: './cashSuccess/cashSuccess'
-          })
+          // http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'), code: res1.code, cashOut: that.data.cashOut }, function (res) {
+          //   console.log(res.data)
+          //   var data = res.data
+          //   if (res.code === '200') {
+          //     console.log(data, '111111')
+          //   } else {
+          //     wx.showToast({
+          //       title: res.msg,
+          //       icon: 'none'
+          //     })
+          //   }
+          // }, function (err) {
+          //   console.log(err)
+          // }, function () {
+          //   wx.hideLoading()
+          // })
+          // wx.navigateTo({
+          //   url: './cashSuccess/cashSuccess'
+          // })
         }
       }
     })

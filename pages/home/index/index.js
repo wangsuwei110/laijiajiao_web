@@ -133,7 +133,7 @@ Page({
           console.log(obj.timeRange, 'obj.timeRange')
           obj.timeRange = obj.timeRange.map(itemA => {
             let objA = itemA
-            objA = timeWeek(objA.week) + dayTimes(objA.time)
+            objA = timeWeek(objA.week) + dayTimes(objA.time) + '，'
             return objA
           })
           return obj

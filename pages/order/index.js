@@ -68,6 +68,9 @@ Page({
   // 订单列表
   getList () {
     var that = this
+    wx.showLoading({
+      title: '加载中...'
+    })
     http.post('/teacher/queryDemandsByTeacher', this.data.form, function (res) {
       console.log(res.data)
       var data = res.data
@@ -88,6 +91,7 @@ Page({
         that.setData({
           list: data
         })
+        wx.hideLoading()
       } else {
         wx.showToast({
           title: res.msg,
@@ -132,14 +136,14 @@ Page({
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
-    //  
+    if (this.data.activeIdx == _idx) {
+      return;
+    }
     this.setData({
       status: _idx === 1 ? '0,5' : _idx === 0 ? null : _idx === 3 ? '4' : _idx === 2 ? '1,2,3' : '',
       list: []
     })
-    if (this.data.activeIdx == _idx) {
-      return;
-    }
+    
     this.setData({
       activeIdx: _idx,
       form: {

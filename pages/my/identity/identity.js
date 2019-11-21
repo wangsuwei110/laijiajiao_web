@@ -7,7 +7,8 @@ Page({
       IDcardNumber: "",
       IDcardPic: [],
       logonStatus: 1
-    }
+    },
+    isLoading: true
   },
   getIDcardNumber: function (e) {
     this.setData({
@@ -130,6 +131,7 @@ Page({
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
       var pics = res.data.pictures[0].pictureUrl
+
       // var _pics = []
       // if (pics.length > 0) {
       //   pics.forEach(function (p) {
@@ -140,7 +142,8 @@ Page({
       that.setData({
         'userinfo.IDcardPic': pics,
         'userinfo.logonStatus': res.data.userInfos.logonStatus,
-        'userinfo.IDcardNumber': res.data.userInfos.idCard
+        'userinfo.IDcardNumber': res.data.userInfos.idCard,
+        isLoading: false
       })
     }, function (err) {
       wx.showToast({

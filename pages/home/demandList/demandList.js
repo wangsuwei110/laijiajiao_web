@@ -69,6 +69,15 @@ Page({
     this.getGrad()
     this.getSubject()
   },
+  /**
+   * 家教需求详情
+   */
+  demandDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../demandDetail/demandDetail?id=' + id,
+    })
+  },
   // 所有教学区域
   getArea () {
     var that = this

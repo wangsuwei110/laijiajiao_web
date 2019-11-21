@@ -111,6 +111,10 @@ Page({
 
             })
           } else {
+            that.setData({
+              'codeText': '获取验证码',
+              'isClick': true
+            })
             wx.showToast({
               title: res.errMsg,
             });
