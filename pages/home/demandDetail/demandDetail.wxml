@@ -65,11 +65,11 @@
             <view>
               <text class="name">{{item.name}}</text>
               <image class="gender" wx:if='{{item.sex === 2}}' mode="scaleToFill" src="../../../images/gender0.png"></image>
-              <image class="gender" wx:if='{{item.sex === 2}}' mode="scaleToFill" src="../../../images/gender0.png"></image>
-              <text class="date">{{item.teacherLevel}}</text>
+              <image class="gender" wx:if='{{item.sex === 1}}' mode="scaleToFill" src="../../../images/gender1.png"></image>
+              <text class="date">{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
             </view>
             <view class="cont">
-              <text>聘用率{{item.employRate}} 续课率{{item.resumptionRate}}</text>
+              <text>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</text>
             </view>
           </view>
         </view>

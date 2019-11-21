@@ -1,25 +1,25 @@
 <view class="revenue-list-container">
   <view class='tit'>
     <text>交易金额</text>
-    <text class='red'>+150</text>
+    <text class='red'>{{details.paymentType === 1 ? '+' : '-'}}{{details.paymentAccount}}</text>
   </view>
 
   <view class='list'>
     <view class='items'>
       <text>交易类型</text>
-      <text>收入</text>
+      <text>{{details.paymentDesc}}</text>
     </view>
     <view class='items'>
       <text>交易时间</text>
-      <text>收入</text>
+      <text>{{details.createTime}}</text>
     </view>
     <view class='items'>
       <text>流水单号</text>
-      <text>收入</text>
+      <text>{{details.paymentStreamId}}</text>
     </view>
     <view class='items'>
       <text>备注</text>
-      <text>收入</text>
+      <text>{{details.paymentDesc}}</text>
     </view>
   </view>
 </view>

@@ -3,8 +3,8 @@
     <image mode="aspectFill" src="../../../images/img/school_pic.png"></image>
   </view>
   <view class="userinfo">
-    <view class="avatar">
-      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : '../../../images/avatar.png'}}"></image>
+    <view class="avatar" wx:if='{{userinfo.picture}}'>
+      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : ''}}"></image>
     </view>
     <view class="info">
       <view class="info-meta">

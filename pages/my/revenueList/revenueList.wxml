@@ -4,16 +4,20 @@
       <text>{{item.name}}</text>
     </view>
   </view>
-  <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList">
+  <Empty wx:if='{{loaded && !revenueLists.length}}'/>
+  <block wx:else>
+  <!-- <scroll-view style="height: {{scrollHeight}}px;" scroll-y bindscrolltolower="revenueList"> -->
     <view class="list-content">
-      <view bindtap="revenueDetail" wx:for="{{revenueLists}}" wx:key="{{index}}" class="list-item">
+      <view bindtap="revenueDetail" wx:for="{{revenueLists}}" wx:key="{{index}}" class="list-item" data-paymentId="{{item.paymentId}}">
         <view class="top">
-          <text class="name">{{item.name}}</text>
-          <text class="sign {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.type == 1 ? "-" : "+"}}</text><text class="number {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.money}}</text>
+          <text class="name">{{item.paymentDesc}}</text>
+          <text class="sign {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.paymentType == 1 ? "-" : "+"}}</text><text class="number {{item.type == 1 ? 'color-1' : 'color-2'}}">{{item.paymentAccount}}</text>
           <view class="arrow-icon arrow-right"></view>
         </view>
-        <text class="date">{{item.date}}</text>
+        <text class="date">{{item.createTime}}</text>
       </view>
     </view>
-  </scroll-view>
+  <!-- </scroll-view> -->
+  </block>
+
 </view>

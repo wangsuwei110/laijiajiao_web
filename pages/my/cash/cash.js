@@ -17,39 +17,93 @@ Page({
     //   })
     // })
   },
-  getMoney (e) {
+  getMoney(e) {
     this.setData({
       cashOut: e.detail.value
     })
   },
-  saveBtn () {
+  saveBtn() {
     var that = this
+    if (this.data.cashOut === '' || !this.data.cashOut) {
+      wx.showToast({
+        title: '请输入提现金额',
+        icon: 'none'
+      })
+      return
+    }
     wx.login({
       success(res1) {
         if (res1.code) {
-          http.post('/wxRedPack/sendRedPack', {teacherId: wx.getStorageSync('user_id'), code:  res1.code, cashOut: that.data.cashOut}, function (res) {
-            console.log(res.data)
-            var data = res.data
-            if (res.code === '200') {
-              console.log(data, '111111')
-            } else {
-              wx.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
-            }
-          }, function (err) {
-            console.log(err)
-          }, function () {
-            wx.hideLoading()
+
+          http.postPromise('/user/getOpenId', { code: res1.code }).then(data => {
+            //this.login(data.data.openid, gender)
+            
+            http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
+              console.log(res, 'resresres')
+              wx.sendBizRedPacket ({
+                timeStamp: res.data.timeStamp, // 支付签名时间戳，
+                nonceStr: res.data.package, // 支付签名随机串，不长于 32 位
+                package: res.data.package, //扩展字段，由商户传入
+                signType: res.data.signType, // 签名方式，
+                paySign: res.data.paySign, // 支付签名
+                success:function(res){
+                  console.log(res)
+                  if (res.success === true) {
+                    wx.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                  } else {
+                    wx.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                  }
+                },
+                fail:function(res){},
+                complete:function(res){}
+            })
+              console.log(res.data)
+              var data = res.data
+              
+            }, function (err) {
+              console.log(err)
+            }, function () {
+              wx.hideLoading()
+            })
+
+          }).catch(err => {
+            err && wx.showToast({
+              title: err.msg,
+              icon: 'none'
+            })
           })
-          wx.navigateTo({
-            url: './cashSuccess/cashSuccess'
-          })
+          
+          return false
+
+          // http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'), code: res1.code, cashOut: that.data.cashOut }, function (res) {
+          //   console.log(res.data)
+          //   var data = res.data
+          //   if (res.code === '200') {
+          //     console.log(data, '111111')
+          //   } else {
+          //     wx.showToast({
+          //       title: res.msg,
+          //       icon: 'none'
+          //     })
+          //   }
+          // }, function (err) {
+          //   console.log(err)
+          // }, function () {
+          //   wx.hideLoading()
+          // })
+          // wx.navigateTo({
+          //   url: './cashSuccess/cashSuccess'
+          // })
         }
       }
     })
     // 确认提现
-   
+
   }
 })

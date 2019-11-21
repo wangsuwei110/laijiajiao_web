@@ -71,3 +71,6 @@
   margin-top: 0rpx;
 
 }
+.save-btn{
+  border-radius: 0;
+}

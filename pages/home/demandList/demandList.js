@@ -24,12 +24,18 @@ function dayTimes (index) {
 }
 Page({
   data: {
+    show: false,
+    teachGradeId: null,
+    teachBranchId: null,
+    parameterId: null,
+    current: null,
     orderList: [],
     scrollHeight: "",
-    activeIdx: 0,
+    activeIdx: null,
     isEnd: false,
     loaded: false,
     pageSize: 20,
+    shai: [],
     tabs: [
       {
         name: "年级",
@@ -50,6 +56,9 @@ Page({
     ]
   },
   pageIndex: 1,
+  area: [],
+  grade: [],
+  subject: [],
   isEnd: false,
   onLoad: function (options) {
     const that = this;
@@ -61,21 +70,88 @@ Page({
       })
     }).exec();
     this.getList()
-    
+    this.getArea()
+    this.getGrad()
+    this.getSubject()
+  }, 
+  shaiFun (e) {
+    this.setData({
+      show: false,
+      current: e.currentTarget.dataset.idxs,
+    })
+    console.log(e.currentTarget.dataset.id)
+    if (this.data.activeIdx === 0) {
+      this.setData({
+        teachGradeId: e.currentTarget.dataset.id,
+        teachBranchId: null,
+        parameterId: null
+      })
+    } else if (this.data.activeIdx === 1) {
+      this.setData({
+        teachBranchId: e.currentTarget.dataset.id,
+        teachGradeId: null,
+        parameterId: null
+      })
+    } else if (this.data.activeIdx === 2) {
+      this.setData({
+        parameterId: e.currentTarget.dataset.id,
+        teachBranchId: null,
+        teachGradeId: null
+      })
+    }
+    this.getList()
+  },
+  /**
+   * 家教需求详情
+   */
+  demandDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../demandDetail/demandDetail?id=' + id,
+    })
+  },
+  // 所有教学区域
+  getArea () {
+    var that = this
+    http.post('/parameter/queryParametersByType', {parentId: 78}, function (res) {
+      console.log(res)
+      that.area = res.data
+    })
+  },
+  // 所有教学年级
+  getGrad () {
+    var that = this
+    http.post('/grade/queryAllGradelist', {}, function (res) {
+      console.log(res)
+      that.grade = res.data
+    })
+  },
+  // 所有教学科目
+  getSubject () {
+    var that = this
+    http.post('/grade/queryAllBranchlist', {}, function (res) {
+      console.log(res)
+      that.subject = res.data
+    })
   },
   getList (pageIndex = 1) {
-    if (this.pageIndex === 1) {
+    if (pageIndex === 1) {
       wx.showLoading({
         title: '加载中...'
       })
     }
     const { orderList, pageSize } = this.data
-    this.isEnd || http.postPromise('/home/queryAllStudentDemandList', { pageIndex, pageSize, teacherId: wx.getStorageSync('user_id') }).then(data => {
+    this.isEnd || http.postPromise('/home/queryAllStudentDemandList', { 
+      pageIndex, pageSize, teacherId: wx.getStorageSync('user_id'),
+      parameterId: this.data.parameterId,
+      teachBranchId: this.data.teachBranchId,
+      teachGradeId: this.data.teachGradeId
+    }).then(data => {
       console.log(data, 'datadata')
       this.pageIndex = pageIndex
-      this.isEnd = this.data.orderList.length >=  data.data.studentDemandList.total
+      this.isEnd = !data.data.studentDemandList || data.data.studentDemandList.dataList.length < pageSize
       data.data.studentDemandList.dataList = data.data.studentDemandList.dataList.map(item => {
-        wx.hideLoading()
+        
         let obj = item
           if (obj.createTime) obj.createTime = timeFormat(obj.createTime)
           if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
@@ -88,7 +164,8 @@ Page({
           }
           return obj
       })
-      this.setData({ loaded: true, isEnd: this.data.orderList.length >=  data.data.studentDemandList.total, orderList: pageIndex === 1 ? data.data.studentDemandList.dataList : [...orderList, ...data.data.studentDemandList.dataList] })
+      this.setData({ loaded: true, isEnd: !data.data.studentDemandList || data.data.studentDemandList.dataList.length < pageSize, orderList: pageIndex === 1 ? data.data.studentDemandList.dataList : [...orderList, ...data.data.studentDemandList.dataList] })
+      wx.hideLoading()
     })
     
   },
@@ -100,14 +177,36 @@ Page({
   },
   switchTab: function (e) {
     let _idx = e.currentTarget.dataset.idx;
+   
+    this.setData({
+      show: _idx !== this.data.activeIdx ? true : this.data.show ? false : true
+    })
     if (this.data.activeIdx == _idx) {
       return;
     }
     this.setData({
-      activeIdx: _idx
+      activeIdx: _idx,
+      current: null
     })
     // 请求数据
-    console.log(e.currentTarget.dataset)
+    if (_idx === 0) {
+      this.setData({
+        shai: this.grade
+      })
+    } else if (_idx === 1) {
+      this.setData({
+        shai: this.subject
+      })
+    } else if (_idx === 2) {
+      this.setData({
+        shai: this.area
+      })
+    } else if (_idx === 3) {
+      this.setData({
+        shai: ['发布时间']
+      })
+    }
+    
   },
   revenueList: function () {
     

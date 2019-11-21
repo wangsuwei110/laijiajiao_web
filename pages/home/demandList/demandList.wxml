@@ -1,16 +1,12 @@
 <view class="demand-list-container">
   <view id="tabsView" class="tabs-wrapper">
-    <view bindtap="switchTab" wx:for="{{tabs}}" style="position: relative;" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
+    <view catchtap="switchTab" wx:for="{{tabs}}" style="position: relative;" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
       <text>{{item.name}}</text>
-
-      <vew class='itemsList' style="position: absolute;">
-         <view></view>
-      </vew>
+       <view class="select-wrapper" wx:if='{{activeIdx == index && show}}'>
+        <view catchtap='shaiFun'  wx:for='{{shai}}'  wx:for-index="idxA" data-idxs="{{idxA}}"  class="{{activeIdx === index && current === idxA ? 'active' : ''}}"   data-id="{{activeIdx === 0 ? item.teachGradeId : activeIdx === 1 ? item.teachBranchId : activeIdx === 2 ? item.parameterId : ''}}">{{activeIdx === 0 ? item.teachGradeName : activeIdx === 1 ? item.teachBranchName : activeIdx === 2 ? item.name : item}}</view>
+      </view>
     </view>
 
-  </view>
-  <view class="select-wrapper">
-    <view></view>
   </view>
   <Empty wx:if='{{loaded && !orderList.length}}'/>
   <block wx:else>
@@ -24,7 +20,7 @@
             <text class="date">{{item.createTime}}</text>
           </view>
           <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-            <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+            <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
           </view>
           <view class="join" wx:else>
             <text>暂无报名</text>

@@ -185,14 +185,14 @@
   position: absolute;
   bottom: -10rpx;
   left: -50rpx;
-  font-size: 20rpx;
+  font-size: 18rpx;
   background: #E50505;
   color: #fff;
   border-radius: 50%;
-  width: 29rpx;
-  height: 29rpx;
+  width: 35rpx;
+  height: 35rpx;
   text-align: center;
-  line-height: 29rpx;
+  line-height: 35rpx;
 }
 .applicant-desc .cont {
   margin-top: 16rpx;

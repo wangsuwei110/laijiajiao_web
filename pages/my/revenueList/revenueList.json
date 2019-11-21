@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "账户明细"
+  "navigationBarTitleText": "账户明细",
+  "usingComponents": {
+    "Empty": "/components/Empty/Empty",
+    "DropDown": "/components/DropDown/DropDown",
+    "OrderListItem": "/components/Student/OrderListItem/OrderListItem"
+  }
 }

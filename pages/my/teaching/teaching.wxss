@@ -269,7 +269,7 @@ page,
   top: 86rpx;
   left: 0;
   background-color: #ffffff;
-  box-shadow: 0 5rpx 18rpx 0 rgba(219,219,219,0.75);
+  box-shadow: 0 9rpx 8rpx #ccc;
   z-index: 2;
 }
 .item-content .item-content-inner {
