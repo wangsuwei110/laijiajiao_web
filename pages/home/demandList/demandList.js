@@ -143,9 +143,9 @@ Page({
     const { orderList, pageSize } = this.data
     this.isEnd || http.postPromise('/home/queryAllStudentDemandList', { 
       pageIndex, pageSize, teacherId: wx.getStorageSync('user_id'),
-      parameterId: this.data.parameterId,
-      teachBranchId: this.data.teachBranchId,
-      teachGradeId: this.data.teachGradeId
+      parameter_id: this.data.parameterId,
+      teach_branch_id: this.data.teachBranchId,
+      teach_grade_id: this.data.teachGradeId
     }).then(data => {
       console.log(data, 'datadata')
       this.pageIndex = pageIndex
