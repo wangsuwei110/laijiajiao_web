@@ -1,6 +1,10 @@
 var http = require('../../../utils/api.js')
 Page({
   data: {
+    serviceHours: null,
+    servicePersonNum: null,
+    teacherForStudentServiceList: null,
+    StudentAppraiseForTeacherList: null,
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     serviceTabIndex: 1,
     userinfo: {},
@@ -131,6 +135,13 @@ Page({
       serviceTabIndex: event.target.dataset.id
     })
   },
+  timeFormat (timeStr) {
+    var dataOne = timeStr.split('T')[0];
+    var dataTwo = timeStr.split('T')[1];
+    var dataThree = dataTwo.split('+')[0].split('.')[0];
+    var newTimeStr = dataOne
+    return newTimeStr;
+  },
   /**
    * 获取简历信息
    */
@@ -193,14 +204,27 @@ Page({
           })
         })
       }
-
+      data.teacherForStudentServiceList = data.teacherForStudentServiceList.map(item => {
+        let obj = item
+        if (obj.orderStart) obj.orderStart = that.timeFormat(obj.orderStart)
+        return obj
+      })
+      data.StudentAppraiseForTeacherList = data.StudentAppraiseForTeacherList.map(item => {
+        let obj = item
+        if (obj.orderTeachTime) obj.orderTeachTime = that.timeFormat(obj.orderTeachTime)
+        return obj
+      })
       that.setData({
         'userinfo': data.baseInfo,
         'labels': data.chooseTags,
         'experienceList': data.expirencePictureList,
         'certificateList': data.certificatePictureList,
         'teachBranchs': data.teachBranchs,
-        'teachAddress': data.teachAddress
+        'teachAddress': data.teachAddress,
+        StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
+        teacherForStudentServiceList : data.teacherForStudentServiceList,
+        serviceHours: data.serviceHours,
+        servicePersonNum: data.servicePersonNum
       })
       that.canvasTap('employRate', '#32BE78', 0, data.baseInfo.employRate, 10, 20, 20)
       that.canvasTap('resumptionRate', '#4DB6F5', 0, data.baseInfo.resumptionRate, 10, 20, 20)

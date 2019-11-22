@@ -125,7 +125,7 @@ Page({
   },
   goTo () {
     wx.reLaunch({
-      url: '/pages/noLogin/index'
+      url: '/pages/noHome/index'
     })
   },
   login: function (openId, gender) {

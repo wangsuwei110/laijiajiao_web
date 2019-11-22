@@ -51,7 +51,8 @@
     "pages/Student/Evaluate/Evaluate",
     "pages/my/cash/cash",
     "pages/my/cash/cashSuccess/cashSuccess",
-    "pages/discount/index"
+    "pages/discount/index",
+    "pages/noHome/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
