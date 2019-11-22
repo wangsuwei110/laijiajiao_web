@@ -5,7 +5,7 @@
   </view>
   <view class="userinfo">
     <view class="avatar">
-      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : '../../../images/avatar.png'}}"></image>
+      <image mode="aspectFill" src="{{userinfo.picture ? RESOURCE_PERFIX + userinfo.picture : '../../../images/Students/myIcon.jpg'}}"></image>
     </view>
     <view class="teacherinfo">
         <view class='teacherNameWrap'>
@@ -31,7 +31,7 @@
     <CheckLogin class-name='collect' bind:onClick='onCollectTeacher'>
         <view class='collectInner'>
             <image class='collectIcon' src='../../../images/Students/collect.png' mode='widthFix'/>
-            <text>已收藏</text>
+            <text>{{collectFlag?'已':""}}收藏</text>
         </view>
     </CheckLogin>
     
@@ -42,7 +42,7 @@
       <text>教员\n等级</text>
     </view>
     <view class="level-num">
-      <text>{{userinfo.teacherLevel}}</text>
+      <text>{{userinfo.teacherLevel === 'T0' ? '实习' : userinfo.teacherLevel}}</text>
     </view>
     <view class="info">
       <text class="sub-title">来家教智能教务系统评定</text>
@@ -135,7 +135,7 @@
       <text class="title">可教科目</text>
     </view>
     <view class="panel-body">
-      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+      <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.teachBranchName}}</text>
     </view>
   </view>
 
@@ -152,3 +152,5 @@
   
   <CheckLogin wx:if='{{!formOrder}}' class-name='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</CheckLogin>
 </view>
+
+<HomeNav independent='true'/>

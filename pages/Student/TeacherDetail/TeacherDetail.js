@@ -3,6 +3,7 @@
 var http = require('../../../utils/api')
 Page({
   data: {
+    collectFlag: false,
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     formOrder: false,
     serviceTabIndex: 1,
@@ -141,6 +142,7 @@ Page({
 
   onCollectTeacher() {
     http.postPromise('/teacher/connect', { teacherId: this.teacherId, studentId: wx.getStorageSync('user_id') }).then(data => {
+      this.setData({ collectFlag: true })
       wx.showToast({
         title: data.msg,
         icon: 'none',
@@ -213,6 +215,7 @@ Page({
       }
 
       that.setData({
+        collectFlag: data.collectFlag,
         'userinfo': data.baseInfo,
         'labels': data.chooseTags,
         'experienceList': data.expirencePictureList,

@@ -52,13 +52,13 @@
 
 .level{
     position: absolute;
-    right: 0;
+    right: -10rpx;
     bottom: 5rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28rpx;
-    height: 28rpx;
+    width: 40rpx;
+    height: 40rpx;
     border-radius:50%;
     background-color: #FA0C0C;
     font-size:20rpx;
@@ -114,4 +114,9 @@
     font-family:Microsoft YaHei;
     font-weight:300;
     color:rgba(115,115,115,1);
+}
+
+.addDemand{
+    width: 166rpx;
+    height: 55rpx;
 }

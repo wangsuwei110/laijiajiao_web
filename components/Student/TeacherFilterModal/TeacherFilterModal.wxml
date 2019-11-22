@@ -16,5 +16,5 @@
         </view>
     </view>
 
-    <view class='submitBtn' catchtap='onSubmitClick'>筛选学员</view>
+    <view class='submitBtn' catchtap='onSubmitClick'>筛选教员</view>
 </view>

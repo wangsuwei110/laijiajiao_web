@@ -36,3 +36,5 @@
 </view>
 
 <view class='saveBtn' bindtap='onPay'>支付课时费</view>
+
+<HomeNav independent='true'/>

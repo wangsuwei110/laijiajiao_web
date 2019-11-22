@@ -53,8 +53,8 @@
       position: absolute;
       left: -25%;
       top: -25%;
-      width: 300%;
-      height: 300%;
+      width: 164rpx;
+      height: 164rpx;
       transform: rotate(45deg);
       background-color: #B9B9B9;
   }

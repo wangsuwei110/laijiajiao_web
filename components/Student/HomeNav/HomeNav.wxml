@@ -1,5 +1,5 @@
 <!--components/Student/HomeNav/HomeNav.wxml-->
-<view class='container'>
+<view class='container {{independent?"independent":""}} {{isIPhoneX?"ipx":""}}'>
     <CheckLogin isStudent='true' class-name='image' url='/pages/Student/Mailbox/Mailbox'>
         <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
     </CheckLogin>

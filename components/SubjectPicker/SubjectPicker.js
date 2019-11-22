@@ -34,7 +34,7 @@ Component({
     firstNameList: [],
     secondNameList: [],
     thridNameList: [],
-    selected: [0, 0, 0],
+    selected: [1, 0, 0],
     names: '',
     nameList: [],
   },
