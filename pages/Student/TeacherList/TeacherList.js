@@ -77,7 +77,8 @@ private Integer sex;
   },
 
   onCancel() {
-    this.selectComponent('teacherFilter').onCancel()
+    //console.log(this.selectComponent('#teacherFilter'))
+    this.selectComponent('#teacherFilter').onCancel()
   },
 
   fetchList(pageIndex = 1) {

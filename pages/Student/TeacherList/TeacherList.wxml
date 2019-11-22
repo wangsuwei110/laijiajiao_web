@@ -1,12 +1,12 @@
 <!--pages/Student/TeacherList/TeacherList.wxml-->
-<PageLayout isStudent='true' bind:onScrollToLower='onScrollToLower'>
+<PageLayout isStudent='true' bind:onScrollToLower='onScrollToLower' absolute='true'>
 <TeacherFilter searchParams='{{searchData}}' bind:onChange='onChange' id='teacherFilter'/>
 <view bindtap='onCancel'>
     <navigator class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
         <view class='itemTop'>
             <view class='logo'>
-                <image class='logoIcon' mode='aspectFill' src='{{RESOURCE_PERFIX}}{{item.picture}}'/>
-                <text class='level'>T3</text>
+                <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
+                <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
             </view>
 
             <view class='content'>
@@ -29,5 +29,14 @@
     </navigator>
 
     <DropDown isEnd='{{isEnd}}'/>
+</view>
+
+
+<view slot='absolute'>
+    <CheckLogin isStudent='true' class-name='addDemand' url='/pages/Student/ReleaseDemand/ReleaseDemand'>
+        <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
+    </CheckLogin>
+
+    <HomeNav/>
 </view>
 </PageLayout>

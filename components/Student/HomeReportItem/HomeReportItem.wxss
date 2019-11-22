@@ -11,10 +11,10 @@
 }
 
 .icon{
-    width: 22rpx;
+    width: 28rpx;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 48rpx;
 }
 
 

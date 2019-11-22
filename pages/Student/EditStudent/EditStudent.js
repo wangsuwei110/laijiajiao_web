@@ -95,8 +95,8 @@ Page({
 
 
   onCloseClick() {
-    const grade = this.selectComponent('grade')
-    const subject = this.selectComponent('subject')
+    const grade = this.selectComponent('#grade')
+    const subject = this.selectComponent('#subject')
     grade && grade.onCancel()
     subject && subject.onCancel()
   },

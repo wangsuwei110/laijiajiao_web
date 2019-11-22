@@ -1,17 +1,22 @@
 // components/Student/HomeNav/HomeNav.js
+var appInst =  getApp();
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    independent: {
+      type: Boolean,
+      value: false,
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    isIPhoneX: appInst.isIPX,
   },
 
   /**

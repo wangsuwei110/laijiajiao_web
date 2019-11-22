@@ -12,7 +12,7 @@
 
             <view class='logo'>
                 <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
-                <text class='level'>{{item.teacherLevel}}</text>
+                <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
             </view>
 
             <view class='rightBox'>
@@ -39,3 +39,5 @@
 <picker mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
     <view class='addBtn'>预约试讲</view>
 </picker>
+
+<HomeNav independent='true'/>

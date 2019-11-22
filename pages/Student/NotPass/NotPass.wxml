@@ -11,3 +11,5 @@
 
 <view class='addBtn' bindtap='onSubmit'>确认提交</view>
 
+<HomeNav independent='true'/>
+

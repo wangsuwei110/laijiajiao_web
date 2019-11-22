@@ -20,3 +20,5 @@
         取消收藏
     </view>
 </view>
+
+<HomeNav independent='true'/>

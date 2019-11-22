@@ -2,10 +2,20 @@
 
 .container{
     position: absolute;
+    z-index: 10;
     display: flex;
     flex-flow: column;
     right: 4rpx;
     bottom: 0rpx;
+}
+
+.independent{
+    position: fixed;
+    bottom:40rpx;
+}
+
+.independent.ipx{
+    bottom:100rpx;
 }
 
 .image{

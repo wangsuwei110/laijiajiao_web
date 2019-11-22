@@ -29,7 +29,7 @@
 .title{
     font-size:26rpx;
     font-family:Microsoft YaHei;
-    font-weight:400;
+    font-weight:bold;
     color:#000;
     padding-top: 30rpx;
 }

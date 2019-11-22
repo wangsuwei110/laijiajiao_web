@@ -2,6 +2,7 @@
   "navigationBarTitleText": "试讲通过",
   "usingComponents": {
     "SelectClassTime": "/components/Student/SelectClassTime/SelectClassTime",
-    "QuantityInput": "/components/Student/QuantityInput/QuantityInput"
+    "QuantityInput": "/components/Student/QuantityInput/QuantityInput",
+    "HomeNav": "/components/Student/HomeNav/HomeNav"
   }
 }

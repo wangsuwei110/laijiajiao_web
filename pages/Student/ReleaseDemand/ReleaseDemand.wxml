@@ -41,5 +41,5 @@
 </view>
 
 <ClickContainer class='saveBtnWrap'>
-    <view class='saveBtn' bindtap='onSubmit'>发布需求</view>
+    <view class='saveBtn' bindtap='onSubmit'>{{teacherInfo?'确认预约':"发布需求"}}</view>
 </ClickContainer>

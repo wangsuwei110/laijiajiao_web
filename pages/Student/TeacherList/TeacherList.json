@@ -3,6 +3,8 @@
   "usingComponents": {
     "DropDown": "/components/DropDown/DropDown",
     "PageLayout": "/components/PageLayout/PageLayout",
-    "TeacherFilter": "/components/Student/TeacherFilter/TeacherFilter"
+    "TeacherFilter": "/components/Student/TeacherFilter/TeacherFilter",
+    "HomeNav": "/components/Student/HomeNav/HomeNav",
+    "CheckLogin": "/components/Student/CheckLogin/CheckLogin"
   }
 }
