@@ -5,7 +5,7 @@
     <navigator class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
         <view class='itemTop'>
             <view class='logo'>
-                <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
+                <image class='logoIcon' mode='aspectFill' src='{{RESOURCE_PERFIX}}{{item.picture}}'/>
                 <text class='level'>T3</text>
             </view>
 

@@ -62,6 +62,7 @@ private Integer sex;
       type: null,
       sex: null,
     },
+    RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     teacherList: [],
     pageIndex: 1,
     pageSize: 20,
