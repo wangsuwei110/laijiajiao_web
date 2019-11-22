@@ -1,6 +1,7 @@
 var http = require('../../../utils/api.js')
 Page({
   data: {
+    loaded: false,
     isEnd: false,
     scrollHeight: "",
     activeIdx: 0,
