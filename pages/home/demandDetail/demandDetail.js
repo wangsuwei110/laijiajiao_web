@@ -15,6 +15,7 @@ function dayTimes(index) {
 }
 Page({
   data: {
+    type: null,
     showToast: null,
     errorText: null,
     isIPX: getApp().isIPX,
@@ -137,6 +138,26 @@ Page({
     ],
   },
   message () {
+    if (this.data.type === '1') {
+      wx.showModal({
+        content: '需要先验证手机号，是否立即验证？',
+        showCancel: true,//是否显示取消按钮
+        cancelText:"否",//默认是“取消”
+        confirmText:"是",//默认是“确定”
+        success: function (res) {
+           if (res.cancel) {
+              //点击取消,默认隐藏弹框
+           } else {
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+           }
+        },
+        fail: function (res) { },//接口调用失败的回调函数
+        complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+     })
+     return
+    }
     wx.navigateTo({
       url: '/pages/my/feedback/feedback'
     })
@@ -160,6 +181,26 @@ Page({
    */
   applyTutor: function () {
     if (this.data.details.singUpStatus) return
+    if (this.data.type === '1') {
+      wx.showModal({
+        content: '需要先验证手机号，是否立即验证？',
+        showCancel: true,//是否显示取消按钮
+        cancelText:"否",//默认是“取消”
+        confirmText:"是",//默认是“确定”
+        success: function (res) {
+           if (res.cancel) {
+              //点击取消,默认隐藏弹框
+           } else {
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+           }
+        },
+        fail: function (res) { },//接口调用失败的回调函数
+        complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+     })
+     return
+    }
     var that = this
     wx.showModal({
       content: '是否确认报名?',
@@ -221,7 +262,8 @@ Page({
   },
   onLoad (options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      type: options.type
     })
     this.getDetails()
   }

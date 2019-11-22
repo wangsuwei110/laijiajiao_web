@@ -1,4 +1,4 @@
-var http = require('../../../utils/api.js')
+var http = require('../../utils/api.js')
 // 时间格式化
 function timeFormat (timeStr) {
   var dataOne = timeStr.split('T')[0];
@@ -24,7 +24,20 @@ function dayTimes (index) {
 }
 Page({
   data: {
-    details: ''
+    details: '',
+    tabBar: [{
+      text: '首页',
+      img: '../../images/index_active.png'
+    }, {
+      text: '课表',
+      img: '../../images/curricul.png'
+    }, {
+      text: '订单',
+      img: '../../images/order.png'
+    }, {
+      text: '我的',
+      img: '../../images/my.png'
+    }]
   },
   // 下拉刷新
  onPullDownRefresh () {
@@ -50,14 +63,42 @@ Page({
       url: '../demandList/demandList',
     })
   },
-
+  tabFun (e) {
+    console.log(e)
+    if (e.currentTarget.dataset.index === 3) {
+      wx.reLaunch({
+        url: '/pages/noLogin/index',
+      })
+    } else {
+      wx.showModal({
+        content: '需要先验证手机号，是否立即验证？',
+        showCancel: true,//是否显示取消按钮
+        cancelText:"否",//默认是“取消”
+        confirmText:"是",//默认是“确定”
+        success: function (res) {
+           if (res.cancel) {
+              //点击取消,默认隐藏弹框
+           } else {
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+           }
+        },
+        fail: function (res) { },//接口调用失败的回调函数
+        complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+     })
+    }
+    // wx.reLaunch({
+    //   url: '/pages/login/login',
+    // })
+  },
   /**
    * 家教需求详情
    */
   demandDetail: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../demandDetail/demandDetail?id=' + id,
+      url: '../home/demandDetail/demandDetail?id=' + id + '&type=' + 1,
     })
   },
   timeStr (timeStr) {
@@ -93,7 +134,7 @@ Page({
   },
   getHome () {
     var that = this
-    http.post('/home/queryTeacherInfosByHome', {teacherId: wx.getStorageSync('user_id') && wx.getStorageSync('user_id') !== '' ? wx.getStorageSync('user_id') : null}, function (res) {
+    http.post('/home/queryTeacherInfosByHome', {}, function (res) {
       console.log(res.data)
       var data = res.data
 

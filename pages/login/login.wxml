@@ -2,7 +2,7 @@
   <view class="logo">
     <image src="../../images/loginLogo.png"></image>
   </view> 
-  <view class="form"
+  <view class="form">
     <form>
       <view class="section">
         <view class="section-title code-title">

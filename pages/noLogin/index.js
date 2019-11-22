@@ -58,7 +58,7 @@ Page({
     console.log(e)
     if (e.currentTarget.dataset.index === 0) {
       wx.reLaunch({
-        url: '/pages/home/index/index',
+        url: '/pages/noHome/index',
       })
     } else {
       wx.showModal({

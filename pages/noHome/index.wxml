@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="main-content" >
+    <!-- 家教需求 -->
+    <view class="panel-wrapper-4">
+        <view class="panel-head">
+            <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_1.png"></image>
+            <text class="head-title">家教需求</text>
+            <text  bindtap='demandList' class="head-link-btn">更多></text> 
+          </view>
+      <view class="panel-body">
+        
+        <view class="demand-wrapper">
+          <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{details.studentDemandList}}' class="demand-item">
+            <view class="item-title">
+              <text class="dot"></text>
+              <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+              <text class="date">{{item.createTime}}</text>
+            </view>
+            <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
+              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+            </view>
+            <view class="join" wx:else>
+              <text>暂无报名</text>
+            </view>
+            <view class="demand-ul">
+              <view class="demand-li">
+                <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">授课时间:</text><text class="cont">每周{{item.classNum}}次（可选<text wx:for='{{item.timeRange}}'  wx:for-item="itemName">{{itemName}}</text>）</text>
+              </view>
+              <view class="demand-li">
+                <text class="label">详细需求:</text><text class="cont">{{item.demandDesc}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="spacing-10"></view>
+    <!-- 最新动态 -->
+    <view class="panel-wrapper-4">
+      <view class="panel-head">
+        <image class="head-icon" mode="scaleToFill" src="../../images/main_icon_2.png"></image>
+        <text class="head-title">最新动态</text>
+      </view>
+      <view class="panel-body">
+        <view class="dynamic-wrapper">
+          <view class="dynamic-item" wx:for='{{details.StudentLogVoList}}' wx:for-index="idx" wx:if='{{idx < 5}}'>
+            <image class="user-avatar" mode="scaleToFill" src="../../images/default_avatar.jpg"></image>
+            <view class="user-desc">
+              <text class="name">{{item.studentName}}</text>
+              <text class="date">{{item.createTime}}</text>
+              <view class="cont"><text>{{item.logContent}}</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='tabBar'>
+    <view wx:for='{{tabBar}}'  bindtap='tabFun'  wx:for-index="idx" data-index='{{idx}}'>
+      <image src='{{item.img}}' /> 
+      <view style="{{item.text === '首页' ? 'color:#e50505' : ''}}">{{item.text}}</view>
+    </view>
+  </view>
+</view>

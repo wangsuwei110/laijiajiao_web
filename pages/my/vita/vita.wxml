@@ -1,6 +1,6 @@
 <view class="vita-container">
   <view class="school-img">
-    <image mode="aspectFill" src="../../../images/img/uniBackground.png"></image>
+    <image mode="aspectFill" src="../../../images/uniBackground.jpg"></image>
   </view>
   <view class="userinfo">
     <view class="avatar" wx:if='{{userinfo.picture}}'>
@@ -20,8 +20,8 @@
         <text>证件认证</text>
       </view>
       <view class="info-meta">
-        <text class="label">服务学员：<text class="ftc-E50505">5</text></text>
-        <text class="label">已授课时：<text class="ftc-E50505">120</text></text>
+        <text class="label">服务学员：<text class="ftc-E50505">{{servicePersonNum}}</text></text>
+        <text class="label">已授课时：<text class="ftc-E50505">{{serviceHours}}</text></text>
       </view>
     </view>
   </view>
@@ -192,51 +192,40 @@
     <view class="servie-content">
       <!-- 服务记录 -->
       <block wx:if="{{serviceTabIndex == 1}}">
-        <view class="service-log">
-          <!-- <view class="log-table">
+        <view class="service-log" >
+          <view class="log-table" wx:if='{{teacherForStudentServiceList && teacherForStudentServiceList.length !== 0}}'>
             <view class="table-thead">
               <text class="t-1">订单号</text>
               <text class="t-2">年级科目</text>
               <text class="t-2">接单时间</text>
             </view>
-            <view class="table-body">
+            <view class="table-body" wx:for='{{teacherForStudentServiceList}}'>
               <view class="body-item">
-                <text class="t-1">190190190190190190190190</text>
-                <text class="t-2">小学数学</text>
-                <text class="t-2">2019-09-16</text>
-              </view>
-              <view class="body-item">
-                <text class="t-1">190190</text>
-                <text class="t-2">小学数学</text>
-                <text class="t-2">2019-09-16</text>
+                <text class="t-1">{{item.sid}}</text>
+                <text class="t-2">{{item.teachBranchName}}</text>
+                <text class="t-2">{{item.orderStart}}</text>
               </view>
             </view>
-          </view> -->
-          <view class="null-tip"><text>暂无数据</text></view>
+          </view>
+          <view class="null-tip" wx:else><text>暂无数据</text></view>
         </view>
       </block> 
       <!-- 服务评价 -->
       <block wx:else="{{serviceTabIndex == 2}}">
-        <view class="service-talk">
-          <!-- <view class="talk">
-            <image class="talk-icon" mode="widthFix" src=""></image>
+        <view class="service-talk" >
+          <block wx:if='{{StudentAppraiseForTeacherList && StudentAppraiseForTeacherList.length !== 0}}'>
+          <view class="talk" wx:for='{{StudentAppraiseForTeacherList}}'>
+            <image class="talk-icon" mode="widthFix" src="../../../images/mess.png"></image>
             <view class="talk-user">
-              <text class="name">朱学员</text><text class="date">2019-09-08</text>
+              <text class="name">{{item.teacherName}}</text><text class="date">{{item.orderTeachTime}}</text>
               <view class="content">
-                <text>老师教学方法很好，上课生动活泼，很容易理解老师教学方法很好上课生动活泼，很容易理解老师教学方法很好，上课生动活泼，很容易理解</text>
+                <text>{{item.appraise}}</text>
               </view>
             </view>
           </view>
-          <view class="talk">
-            <image class="talk-icon" mode="widthFix" src=""></image>
-            <view class="talk-user">
-              <text class="name">朱学员</text><text class="date">2019-09-08</text>
-              <view class="content">
-                <text>老师教学方法很好，上课生动活泼，很容易理解老师教学方法很好上课生动活泼，很容易理解老师教学方法很好，上课生动活泼，很容易理解</text>
-              </view>
-            </view>
-          </view> -->
-          <view class="null-tip"><text>暂无数据</text></view>
+          </block>
+
+          <view class="null-tip" wx:else><text>暂无数据</text></view>
         </view>
       </block>
     </view>
