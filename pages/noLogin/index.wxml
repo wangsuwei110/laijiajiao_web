@@ -3,8 +3,7 @@
     <image class="top-bg" src="../../images/top_bg.png"></image>
     <view class="my-info">
       <view class="avatar">
-        <image bindtap="tabFun" ></image>
-        <view class="level" bindtap="tabFun" >点击登录</view>
+        <image bindtap="tabFun" src='../../images/default_avatar.jpg'></image>
       </view>
        <text bindtap="openVita" class="link-btn">点击登录</text>
     </view>

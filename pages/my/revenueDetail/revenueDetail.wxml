@@ -1,7 +1,7 @@
 <view class="revenue-list-container">
   <view class='tit'>
     <text>交易金额</text>
-    <text class='red'>{{details.paymentType === 1 ? '+' : '-'}}{{details.paymentAccount}}</text>
+    <text class='red'>{{details.paymentType === 1 ? '-' : '+'}}{{details.paymentAccount}}</text>
   </view>
 
   <view class='list'>
