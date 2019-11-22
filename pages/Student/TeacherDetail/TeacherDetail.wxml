@@ -20,9 +20,9 @@
         </view>
 
         <view class="infoMeta">
-            <text class="item">服务学员：<text class="value">5</text></text>
+            <text class="item">服务学员：<text class="value">{{servicePersonNum}}</text></text>
             <text class='sapce'/>
-            <text class="item">已授课时：<text class="value">120</text></text>
+            <text class="item">已授课时：<text class="value">{{serviceHours}}</text></text>
         </view>
         
     </view>

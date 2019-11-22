@@ -3,6 +3,10 @@
 var http = require('../../../utils/api')
 Page({
   data: {
+    serviceHours: null,
+    servicePersonNum: null,
+    teacherForStudentServiceList: null,
+    StudentAppraiseForTeacherList: null,
     collectFlag: false,
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     formOrder: false,
@@ -221,7 +225,11 @@ Page({
         'experienceList': data.expirencePictureList,
         'certificateList': data.certificatePictureList,
         'teachBranchs': data.teachBranchs,
-        'teachAddress': data.teachAddress
+        'teachAddress': data.teachAddress,
+        StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
+        teacherForStudentServiceList: data.teacherForStudentServiceList,
+        serviceHours: data.serviceHours,
+        servicePersonNum: data.servicePersonNum
       })
       that.canvasTap('employRate', '#32BE78', 0, data.baseInfo.employRate, 10, 20, 20)
       that.canvasTap('resumptionRate', '#4DB6F5', 0, data.baseInfo.resumptionRate, 10, 20, 20)
