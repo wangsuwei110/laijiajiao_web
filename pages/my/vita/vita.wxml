@@ -1,6 +1,6 @@
 <view class="vita-container">
   <view class="school-img">
-    <image mode="aspectFill" src="../../../images/img/school_pic.png"></image>
+    <image mode="aspectFill" src="../../../images/img/uniBackground.png"></image>
   </view>
   <view class="userinfo">
     <view class="avatar" wx:if='{{userinfo.picture}}'>
