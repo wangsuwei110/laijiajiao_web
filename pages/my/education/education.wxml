@@ -13,7 +13,7 @@
       <text class="label">专业</text>
       <input bindblur="getMajor" type="text" placeholder="请输入所读专业" value="{{userinfo.major}}"></input>
     </view>
-    <picker class="pick-item" bindchange="bindDegreeChange" value="{{index}}" range="{{degree}}">
+    <picker class="pick-item" bindchange="bindDegreeChange" value="1" range="{{degree}}">
       <view class="picker">
         <text class="label">学位</text>{{userinfo.degree}}
       </view>
