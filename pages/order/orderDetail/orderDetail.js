@@ -247,7 +247,7 @@ Page({
   },
   getOrderDetails () {
     var that = this
-    http.post('/teacher/queryStudemtDemandDetail', {demandId: this.data.id, status: this.data.orderType}, function (res) {
+    http.post('/teacher/queryStudemtDemandDetail', {demandId: this.data.id, status: this.data.orderType, teacherId: wx.getStorageSync('user_id')}, function (res) {
       console.log(res.data)
       var data = res.data
       if (res.code === '200') {

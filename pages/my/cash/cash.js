@@ -47,7 +47,7 @@ Page({
                 })
                 return
               }
-              console.log(res.data.data, 'res.datares.data')
+              console.log(res.data.data.timeStamp, 'res.datares.data')
               wx.sendBizRedPacket ({
                 timeStamp: res.data.data.timeStamp, // 支付签名时间戳，
                 nonceStr: res.data.data.nonceStr, // 支付签名随机串，不长于 32 位

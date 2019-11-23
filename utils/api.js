@@ -16,7 +16,6 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
     },
     method: method,
     success: function (res) {
-      console.log(res, '1111')
       if (res.header.Authorization) {
         wx.setStorageSync('token', res.header.Authorization)
       }
@@ -32,11 +31,6 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
               url: '/pages/login/login'
             })
           }
-        })
-      } else if (res.success == false) {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
         })
       } else {
         wx.showToast({

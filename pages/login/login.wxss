@@ -8,12 +8,10 @@ page {
   overflow: hidden;
 }
 .logo {
-  width: 120rpx;
-  height: 120rpx;
-  margin: 100rpx auto;
-  background-color: #e50505;
+  width: 420rpx;
+  height: 260rpx;
+  margin: 60rpx auto;
   border-radius: 20%;
-  box-shadow: 0 0 4px #e50505;
 }
 .logo image {
   width: 100%;

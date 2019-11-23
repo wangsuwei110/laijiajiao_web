@@ -600,7 +600,7 @@ Page({
         checkGradeId: res.data[0].teachGrade,
         checkSubjectId: res.data[0].teachBranchMaster,
         checkSlaveId: res.data[0].teachBranchSlave,
-        checkedTime: JSON.parse(res.data[0].teachTime)
+        checkedTime: res.data[0].teachTime ? JSON.parse(res.data[0].teachTime) : []
       })
       console.log(addressCheckedValue, '111')
       for (var i = 0; i < that.data.checkedTime.length; i++) {

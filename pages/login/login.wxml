@@ -1,6 +1,6 @@
 <view class="container">
   <view class="logo">
-    <image src="../../images/loginLogo.png"></image>
+    <image src="../../images/loginLogo.jpg"></image>
   </view> 
   <view class="form">
     <form>
