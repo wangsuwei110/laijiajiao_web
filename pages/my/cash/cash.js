@@ -39,7 +39,13 @@ Page({
             //this.login(data.data.openid, gender)
             
             http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
-              console.log(res, '111111')
+              if (res.data.success === false) {
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'none'
+                })
+                return
+              }
               wx.sendBizRedPacket ({
                 timeStamp: res.data.timeStamp, // 支付签名时间戳，
                 nonceStr: res.data.nonceStr, // 支付签名随机串，不长于 32 位
@@ -48,26 +54,23 @@ Page({
                 paySign: res.data.paySign, // 支付签名
                 success:function(res){
                   console.log(res)
-                  if (res.success === true) {
-                    wx.showToast({
-                      title: res.msg,
-                      icon: 'none'
-                    })
-                  } else {
-                    wx.showToast({
-                      title: res.msg,
-                      icon: 'none'
-                    })
-                  }
+                  // if (res.success === true) {
+                  //   wx.showToast({
+                  //     title: res.msg,
+                  //     icon: 'none'
+                  //   })
+                  // } else {
+                  //   wx.showToast({
+                  //     title: res.msg,
+                  //     icon: 'none'
+                  //   })
+                  // }
                 },
                 fail:function(res){
                   console.log(res)
                 },
                 complete:function(res){}
             })
-              console.log(res.data)
-              var data = res.data
-              
             }, function (err) {
               console.log(err)
             }, function () {
