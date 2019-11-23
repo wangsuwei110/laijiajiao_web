@@ -11,6 +11,8 @@
 }
 
 .saveBtn{
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,4 +115,13 @@
     font-family:Noto Sans S Chinese;
     font-weight:300;
     color:rgba(30,154,231,1);
+}
+
+.wxBtn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }
