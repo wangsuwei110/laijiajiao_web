@@ -94,6 +94,7 @@ Page({
         subjectId,
         grade
       }).then(data => {
+        wx.setStorageSync('user_name', studentName)
         wx.reLaunch({
           url: '/pages/Student/index/index',
         });
