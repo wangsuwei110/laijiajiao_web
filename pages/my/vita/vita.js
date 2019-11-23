@@ -211,7 +211,7 @@ Page({
       })
       data.StudentAppraiseForTeacherList = data.StudentAppraiseForTeacherList.map(item => {
         let obj = item
-        if (obj.orderTeachTime) obj.orderTeachTime = that.timeFormat(obj.orderTeachTime)
+        if (obj.appraiseTime) obj.appraiseTime = that.timeFormat(obj.appraiseTime)
         return obj
       })
       that.setData({

@@ -48,10 +48,6 @@ Page({
       {
         name: "区域",
         code: 2
-      },
-      {
-        name: "排序",
-        code: 3
       }
     ]
   },
@@ -75,8 +71,10 @@ Page({
     this.getSubject()
   }, 
   shaiFun (e) {
+    this.isEnd = false
     this.setData({
       show: false,
+      isEnd: false,
       current: e.currentTarget.dataset.idxs,
     })
     console.log(e.currentTarget.dataset.id)
@@ -143,9 +141,9 @@ Page({
     const { orderList, pageSize } = this.data
     this.isEnd || http.postPromise('/home/queryAllStudentDemandList', { 
       pageIndex, pageSize, teacherId: wx.getStorageSync('user_id'),
-      parameter_id: this.data.parameterId,
-      teach_branch_id: this.data.teachBranchId,
-      teach_grade_id: this.data.teachGradeId
+      parameterId: this.data.parameterId,
+      subjectId: this.data.teachBranchId,
+      demandGrade: this.data.teachGradeId
     }).then(data => {
       console.log(data, 'datadata')
       this.pageIndex = pageIndex
@@ -203,7 +201,8 @@ Page({
       })
     } else if (_idx === 3) {
       this.setData({
-        shai: ['发布时间']
+        shai: ['发布时间', '上门距离']
+        
       })
     }
     
