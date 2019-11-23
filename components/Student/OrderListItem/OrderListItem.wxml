@@ -7,7 +7,7 @@
             <view wx:if='{{item.subscribeStatus === 5}}' class='topAction'>支付记录</view>
         </view>
 
-        <view class='title'>{{item.status?item.teachName:""}}{{item.status?" | ":""}}{{item.studentName}} | {{item.gradeSubject}}
+        <view class='title'>{{item.subscribeStatus?item.teachName:""}}{{item.subscribeStatus?" | ":""}}{{item.studentName}} | {{item.gradeSubject}}
             <text class='price' wx:if='{{item.chargesStandard}}'>{{item.chargesStandard}}</text>
         </view>
         <view class='paramItem'>

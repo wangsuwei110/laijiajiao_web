@@ -102,3 +102,34 @@
     font-family:Noto Sans S Chinese;
     font-weight:500;
   }
+
+
+  .stdNameWrap{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 32rpx;
+
+
+      font-size:38rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:500;
+    color:rgba(51,50,52,1);
+  }
+
+
+  .girlIcon{
+    width: 25rpx;
+    height: 25rpx;
+    margin-left: 12rpx;
+}
+
+
+.phone{
+    font-size:28rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(115,115,115,1);
+    margin-top: 22rpx;
+}
