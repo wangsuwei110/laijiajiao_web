@@ -277,6 +277,8 @@ Page({
     var tipText = ''
     if (data.userinfo.name.trim() == '') {
       tipText = '请输入教员姓名'
+    } else if (data.userinfo.school.trim() == '') {
+      tipText = '请输入详细住址'
     } else if (data.userinfo.address.trim() == '') {
       tipText = '请输入详细住址'
     } else if (gradesCheckedID.length <= 0) {

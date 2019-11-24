@@ -7,7 +7,7 @@
   <view class='list'>
     <view class='items'>
       <text>交易类型</text>
-      <text>{{details.paymentDesc}}</text>
+      <text>{{details.paymentType === 1 ? '提现' : '收入'}}</text>
     </view>
     <view class='items'>
       <text>交易时间</text>
