@@ -35,7 +35,7 @@ Component({
             url
           })
         }
-        this.triggleEvent('onClick')
+        this.triggerEvent('onClick')
       } else {
         wx.showModal({
           title: '提示',

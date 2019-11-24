@@ -8,6 +8,16 @@
                 <image src='{{student.picture?RESOURCE_PERFIX+student.picture:"../../../images/Students/myIcon.jpg"}}' class='avatarIcon' bindtap="tabFun" mode='aspectFill'/>
             </view>
             <text wx:if='{{!student.sid}}' bindtap="openVita" class="linkBtn">点击登录</text>
+            
+            <block wx:else>
+                <view class='stdNameWrap'>
+                    <text>{{student.studentName}}</text>
+                    <image wx:if='{{student.sex === 2}}' class='girlIcon' src='../../../images/gender0.png' mode='widthFix'/>
+                    <image wx:elif='{{student.sex === 1}}' class='girlIcon' src='../../../images/gender1.png' mode='widthFix'/>
+                </view>
+
+                <view class='phone'>{{phone}}</view>
+            </block>
         </view>
         
         <view class='itemWrap first'>
