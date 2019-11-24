@@ -4,6 +4,7 @@
 .container{
     margin: 20rpx;
     background-color: #fff;
+    position: relative;
 }
 
 .inner{
@@ -172,4 +173,62 @@
 
 .shrink{
     flex: 1;
+}
+
+
+.popoverWrap{
+    position: absolute;
+    left: 0;
+    top: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+
+.popover{
+    border-radius: 6rpx;
+    box-shadow:0 0 10rpx 6rpx rgba(179, 179, 179, 0.35);
+}
+
+.popoverInner{
+    position: relative;
+    background-color: #fff;
+    padding: 20rpx;
+}
+
+.popoverWrap::before{
+    content: '';
+    position: absolute;
+    top: -7rpx;
+    right: 82rpx;
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 2rpx;
+    background-color: #fff;
+    transform: rotate(45deg);
+    box-shadow:0 0 10rpx 6rpx rgba(179, 179, 179, 0.35);
+}
+
+.payItem{
+    display: flex;
+    align-items: center;
+}
+
+.payItem + .payItem{
+    margin-top: 10rpx;
+}
+
+.payLabel{
+    flex: 1;
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:rgba(185,185,185,1);
+}
+
+.payAmount{
+    font-size:26rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
 }

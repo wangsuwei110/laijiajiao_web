@@ -4,7 +4,18 @@
         <view class='topBox'>
             <text class='date'>{{item.createTime}}</text>
 
-            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction'>支付记录</view>
+            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
+
+            <view class='popoverWrap' wx:if='{{payLogId=== item.sid}}'>
+                <view class='popover'>
+                    <view class='popoverInner'>
+                        <view class='payItem'>
+                            <text class='payLabel'>2019-07-02 22:00 | 购买1周3课时</text>
+                            <text class='payAmount'>¥40.00</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
         </view>
 
         <view class='title'>{{item.subscribeStatus?item.teachName:""}}{{item.subscribeStatus?" | ":""}}{{item.studentName}} | {{item.gradeSubject}}

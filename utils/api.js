@@ -1,5 +1,6 @@
 // const BASE_URL = 'http://106.15.235.233:8081'
 // const BASE_URL = 'https://haojiajiao.cheguangjia.com'
+
 const BASE_URL = 'https://www.laijiajiaosh.com'
 
 // 资源路径

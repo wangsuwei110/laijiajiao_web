@@ -85,17 +85,27 @@ Page({
     isEnd: false,
     loaded: false,
     pageSize: 20,
+    payLogId: 0
   },
 
   pageIndex: 1,
   isEnd: false,
+
+  onPayLogClick(e) {
+    this.setData({ payLogId: e.detail === this.data.payLogId ? 0 : e.detail })
+  },
+
+  onStop() {
+    this.setData({ payLogId: 0 })
+  },
+
   fetchOrderList(pageIndex = 1) {
     const { orderList, pageSize } = this.data
 
     this.isEnd || http.postPromise('/StudentDemand/demandList', { pageIndex, pageSize, parentPhoneNum: wx.getStorageSync('user_phone') }).then(data => {
       this.pageIndex = pageIndex
       this.isEnd = !data.data || data.data.length < pageSize
-      this.setData({ loaded: true, isEnd: !data.data || data.data.length < pageSize, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data] })
+      this.setData({ loaded: true, isEnd: !data.data || data.data.length < pageSize, orderList: pageIndex === 1 ? data.data : [...orderList, ...data.data], payLogId: 0 })
     })
   },
 
