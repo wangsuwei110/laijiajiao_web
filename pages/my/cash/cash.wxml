@@ -15,7 +15,7 @@
 
      <view class='inputCash'>
        <text>￥</text>
-       <input type="digit" bindinput="getMoney"/>
+       <input type="digit" value='{{cashOut}}' bindinput="getMoney"/>
      </view>
   </view>
   

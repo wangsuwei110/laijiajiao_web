@@ -3,7 +3,8 @@ Page({
   data: {
     isIPX: getApp().isIPX,
     cashOut: null,
-    openId: null
+    openId: null,
+    disable: false
   },
   onLoad: function (options) {
     this.setData({
@@ -16,6 +17,13 @@ Page({
     //     openId: openid
     //   })
     // })
+  },
+  onShow () {
+    this.setData({
+      cashOut: null,
+      openId: null,
+      disable: false
+    })
   },
   getMoney(e) {
     this.setData({
@@ -31,6 +39,13 @@ Page({
       })
       return
     }
+    if (this.data.disable === true) return
+    this.setData({
+      disable: true
+    })
+    wx.showLoading({
+      title: '提现中...'
+    })
     wx.login({
       success(res1) {
         if (res1.code) {
@@ -39,7 +54,9 @@ Page({
             //this.login(data.data.openid, gender)
             
             http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
-              
+              that.setData({
+                disable: false
+              })
               if (res.data.success === false) {
                 wx.showToast({
                   title: res.data.msg,
@@ -48,25 +65,17 @@ Page({
                 return
               }
               console.log(res.data.data.timeStamp, 'res.datares.data')
+              wx.hideLoading()
               wx.sendBizRedPacket ({
                 timeStamp: res.data.data.timeStamp, // 支付签名时间戳，
                 nonceStr: res.data.data.nonceStr, // 支付签名随机串，不长于 32 位
                 package: res.data.data.package, //扩展字段，由商户传入
                 signType: res.data.data.signType, // 签名方式，
                 paySign: res.data.data.paySign, // 支付签名
-                success:function(res){
-                  console.log(res)
-                  // if (res.success === true) {
-                  //   wx.showToast({
-                  //     title: res.msg,
-                  //     icon: 'none'
-                  //   })
-                  // } else {
-                  //   wx.showToast({
-                  //     title: res.msg,
-                  //     icon: 'none'
-                  //   })
-                  // }
+                success:function(res1){
+                  wx.navigateTo({
+                    url: './cashSuccess/cashSuccess?id=' + res.data.data.mchBillno
+                  })
                 },
                 fail:function(res){
                   console.log(res)
