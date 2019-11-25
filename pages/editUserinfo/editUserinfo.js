@@ -104,7 +104,8 @@ Page({
     let key =  e.currentTarget.dataset.item
     this.setData({
       currentIdx: -1,
-      'userinfo.school': key
+      'userinfo.school': key,
+      'userinfo.id': e.currentTarget.dataset.id,
     })
   },
   // 根据输入关键字选学校
@@ -451,12 +452,12 @@ Page({
     } else if (data.userinfo.address.trim() == '') {
       tipText = '请输入详细住址'
     } else if (gradesCheckedID.length <= 0) {
-      tipText = '请选择辅导学段'
+      tipText = '请选择授课学段'
     } else if (allgradesCheckedID.length <= 0) {
-      tipText = '请选择辅导年级'
-    } else if (!this.data.userinfo.teachBrance) {
+      tipText = '请选择授课年级'
+    } else if (!this.data.importantSubId || this.data.importantSubId === '') {
       tipText = '请选择主授科目'
-    }
+    } 
     if (tipText != '') {
       wx.showToast({
         title: tipText,
@@ -470,16 +471,17 @@ Page({
     var params = {
       teacherId: wx.getStorageSync('user_id'),
       name: data.userinfo.name,
-      id: 1989,
+      id: this.data.userinfo.id,
       address: data.userinfo.address,
       // 选择年级
       teachGrade: teachGrade,
       // 主授科目
-      teachBrance: this.data.userinfo.teachBrance,
+      teachBrance: this.data.importantSubId,
       // 辅授科目
       teachBranchSlave: teachBranchSlave,
       // 选择学段
-      teachLevel: teachLevel
+      teachLevel: teachLevel,
+      school: this.data.userinfo.school
     }
     wx.showLoading()
     http.post('/userInfo/updateUserInfo', params, function (res) {
