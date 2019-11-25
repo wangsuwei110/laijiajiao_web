@@ -5,7 +5,12 @@ page{
 }
 
 ._container{
-    margin: 204rpx 70rpx 0 70rpx;
+    margin: 0rpx 70rpx;
+}
+
+.loginIcon{
+    width: 100%;
+    height: 260rpx;
 }
 
 

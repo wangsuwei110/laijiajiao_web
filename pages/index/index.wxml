@@ -5,8 +5,8 @@
         <image src='../../images/indexLogo.png' class='logo' mode='widthFix'/>
     </view>
 
-    <view class='teacherBtn' bindtap='onStudentClick'>我是学员</view>
-    <view class='studentBtn' bindtap='onTeacherClick'>我是教员</view>
+    <view class='teacherBtn' bindtap='onStudentClick'><image class='btnIcon' src='../../images/img.png'/>我是学员</view>
+    <view class='studentBtn' bindtap='onTeacherClick'><image class='btnIcon' src='../../images/img.png'/>我是教员</view>
     
     <view class='bottom'>
         来家教，提升成绩步步高

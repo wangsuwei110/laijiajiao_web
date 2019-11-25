@@ -55,3 +55,9 @@ page{
     margin-top: 200rpx;
     padding-bottom: 52rpx;
 }
+
+.btnIcon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 35rpx;
+}
