@@ -23,6 +23,7 @@ Component({
   data: {
     height: '0px',
     bottom: '0px',
+    scrollTop: 0,
   },
 
   /**
@@ -31,6 +32,30 @@ Component({
   methods: {
     onScrollToLower() {
       this.triggerEvent('onScrollToLower')
+    },
+
+    onScroll(event) {
+      const { scrollTop } = event.detail
+      const top = this.top || 0
+      let showTop = null
+      if (scrollTop > 0 && top <= 0) {
+        showTop = true
+      } else if (top > 0 && scrollTop <= 0) {
+        showTop = false
+      }
+      //console.log(showTop, scrollTop, top)
+
+      showTop === null || this.triggerEvent('onShowTop', showTop)
+
+      this.top = scrollTop
+
+      //this.data.scrollTop === '' || this.setData({ scrollTop: '' })
+    },
+
+    onToTop() {
+      this.top = 0
+      //console.log('oooo')
+      this.setData({ scrollTop: 0 })
     }
   },
 
