@@ -7,6 +7,7 @@
     <view class="panel-body">
       <view class="baseinfo">
         <view class="baseinfo-item"><text class="label">发布时间：</text><text class="cont">{{details.studentDemandDetail.createTime}}</text></view>
+        <view class="baseinfo-item"><text class="label">上课区域：</text><text class="cont">{{details.studentDemandDetail.demandAddress}}</text></view>
         <view class="baseinfo-item"><text class="label">上课地址：</text><text class="cont">{{details.studentDemandDetail.demandAddress}}</text></view>
         <view class="baseinfo-item"><text class="label">年级科目：</text><text class="cont">{{details.studentDemandDetail.teachGradeName}}{{details.studentDemandDetail.teachBranchName}}</text></view>
       </view>
@@ -20,22 +21,22 @@
     <view class="panel-body">
       <view class="school-timetable">
         <view class="timetable">
-        <view class="table-title">
-          <text class="time-name">时间</text>
-          <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
-        </view>
-        <view class="table-body">
-          <view class="table-item">
-            <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
-              <text>{{item.name}}</text>
-              <text class="time-period">（{{item.period}}）</text>
+          <view class="table-title">
+            <text class="time-name">时间</text>
+            <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
+          </view>
+          <view class="table-body">
+            <view class="table-item">
+              <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
+                <text>{{item.name}}</text>
+                <text class="time-period">（{{item.period}}）</text>
+              </view>
+            </view>
+            <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
+              <view bindtap="selectWeekDay" data-id="{{idx}}" data-sid="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
             </view>
           </view>
-          <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
-            <view bindtap="selectWeekDay" data-id="{{idx}}" data-sid="{{index}}" data-value="{{item.value}}" data-checked="{{item.checked}}" wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
-          </view>
         </view>
-      </view>
       </view>
     </view>
   </view>

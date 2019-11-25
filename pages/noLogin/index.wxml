@@ -3,9 +3,9 @@
     <image class="top-bg" src="../../images/top_bg.png"></image>
     <view class="my-info">
       <view class="avatar">
-        <image bindtap="tabFun" src='../../images/default_avatar.jpg'></image>
+        <image bindtap="tabFun" data-index='5' src='../../images/default_avatar.jpg'></image>
       </view>
-       <text bindtap="openVita" class="link-btn">点击登录</text>
+       <text bindtap="tabFun" data-index='5' class="link-btn">点击登录</text>
     </view>
   </view>
   <view class="meta-container">

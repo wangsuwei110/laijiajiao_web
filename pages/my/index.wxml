@@ -2,8 +2,8 @@
   <view class="info">
     <image class="top-bg" src="../../images/top_bg.png"></image>
     <view class="my-info">
-      <view class="avatar" wx:if='{{userinfo.headPicture}}'>
-        <image bindtap="previewImg" data-url="{{RESOURCE_PERFIX + userinfo.headPicture}}" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../images/avatar.png'}}"></image>
+      <view class="avatar">
+        <image bindtap="previewImg" data-url="{{RESOURCE_PERFIX + userinfo.headPicture}}" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../images/default_avatar.jpg'}}"></image>
         <view class="level">{{userinfo.teacherLevel === 'T0' ? '实习' : userinfo.teacherLevel}}</view>
       </view>
       <view class="name">

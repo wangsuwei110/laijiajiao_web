@@ -79,6 +79,7 @@
 .entrance .entrance-icon {
   width: 60rpx;
   margin-right: 24rpx;
+  height:60rpx;
 }
 .entrance .entrance-name {
   font-size: 30rpx;
