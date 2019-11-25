@@ -93,7 +93,7 @@ Page({
               that.setData({
                 disable: false
               })
-              wx.hideLoading()
+              // wx.hideLoading()
             })
 
           }).catch(err => {
