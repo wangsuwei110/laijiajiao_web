@@ -60,7 +60,7 @@ Page({
    */
   demandList: function () {
     wx.navigateTo({
-      url: '../demandList/demandList',
+      url: '../home/demandList/demandList',
     })
   },
   tabFun (e) {
