@@ -23,7 +23,7 @@ Page({
     wx.navigateTo({
       url: '/pages/Student/index/index',
       success: (result) => {
-
+        
       },
       fail: () => { },
       complete: () => { }
