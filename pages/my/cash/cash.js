@@ -89,6 +89,9 @@ Page({
             })
 
           }).catch(err => {
+            that.setData({
+              disable: false
+            })
             err && wx.showToast({
               title: err.msg,
               icon: 'none'

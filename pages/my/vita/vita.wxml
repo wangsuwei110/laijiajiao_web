@@ -13,7 +13,7 @@
           <image mode="widthFix" wx:if="{{userinfo.sex === 2}}" class="gender" src="../../../images/gender0.png"></image>
           <image mode="widthFix" wx:if="{{userinfo.sex === 1}}" class="gender" src="../../../images/gender1.png"></image>
         </view>
-        <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
+        <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>
       </view>
       <view wx:if="{{userinfo.logonStatus === 1}}" class="info-meta attest">
         <image mode="widthFix" src="../../../images/attest_icon.png"></image>

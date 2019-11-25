@@ -37,7 +37,12 @@
         </view>
       </view>
       </view>
+      <view class="explanation">
+        <image mode="scaleFill" src="../../../images/expl_icon.png"></image>
+        <text>每周上课次数:</text><text class="num">一周{{details.studentDemandDetail.classNum}}次</text>
+      </view>
     </view>
+    
   </view>
   <view class="spacing-10"></view>
   <view class="tutor-panel">
