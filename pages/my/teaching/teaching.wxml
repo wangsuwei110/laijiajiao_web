@@ -22,7 +22,7 @@
     <view catchtap="toggleTechType" data-id="2" class="panel-item">
       <text class="label"><em>*</em>辅导学段</text>
       <text class="cont">{{showValue ? showValue : '请选择辅导学段'}}</text>
-      <view class="arrow-icon arrow-bottom"></view>
+      <view class="arrow-icon arrow-bottom" style="{{currentIdx == 2 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
       <view class="item-content {{currentIdx == 2 ? 'show' : 'hide'}}">
         <view class="item-content-inner">
           <scroll-view scroll-y style="max-height: 400rpx;">
@@ -39,7 +39,7 @@
     <view catchtap="toggleLevel" data-id="5" class="panel-item">
       <text class="label"><em>*</em>辅导年级</text>
       <text class="cont">{{showGradeValue ? showGradeValue : '请选择辅导年级'}}</text>
-      <view class="arrow-icon arrow-bottom"></view>
+      <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 5 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
       <view class="item-content {{currentIdx == 5 ? 'show' : 'hide'}}">
         <view class="item-content-inner">
           <scroll-view scroll-y style="max-height: 400rpx;">
@@ -56,7 +56,7 @@
     <view catchtap="toggleLevel" data-id="3" class="panel-item">
       <text class="label"><em>*</em>主授科目</text>
       <text class="cont">{{importantSub ? importantSub : '请选择主授科目'}}</text>
-      <view class="arrow-icon arrow-bottom"></view>
+      <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 3 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
       <view class="item-content {{currentIdx == 3 ? 'show' : 'hide'}}">
         <view class="item-content-inner">
           <scroll-view scroll-y style="max-height: 400rpx;">
@@ -73,7 +73,7 @@
     <view catchtap="toggleTechType" data-id="4" class="panel-item">
       <text class="label"><em>*</em>辅授科目</text>
       <text class="cont">{{slave ? slave : '请选择辅授科目'}}</text>
-      <view class="arrow-icon arrow-bottom"></view>
+      <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 4 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
       <view class="item-content {{currentIdx == 4 ? 'show' : 'hide'}}">
           <view class="item-content-inner">
             <scroll-view scroll-y style="max-height: 400rpx;">
@@ -91,7 +91,7 @@
     <view catchtap="toggleTechType" data-id="6" class="panel-item">
       <text class="label"><em>*</em>授课区域</text>
       <text class="cont">{{showAddress ? showAddress : '请选择授课区域'}}</text>
-      <view class="arrow-icon arrow-bottom"></view>
+      <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 6 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
       <view class="item-content {{currentIdx == 6 ? 'show' : 'hide'}}">
           <view class="item-content-inner">
             <scroll-view scroll-y style="max-height: 400rpx;">

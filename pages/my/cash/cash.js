@@ -56,7 +56,7 @@ Page({
           http.postPromise('/user/getOpenId', { code: res1.code }).then(data => {
             //this.login(data.data.openid, gender)
             
-            http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
+            http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  formId: e.detail.formId, cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
               that.setData({
                 disable: false
               })

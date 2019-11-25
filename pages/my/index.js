@@ -41,12 +41,15 @@ Page({
     })
   },
   getUserInfo: function () {
+    wx.showLoading({
+      title: '加载中'
+    })
     var that = this
     var params = {
       teacherId: wx.getStorageSync('user_id')
     }
     http.post('/userInfo/queryTeacherInfo', params, function (res) {
-      wx.showLoading()
+     
       if (res.code === '200') {
         that.setData({
           userinfo: res.data
@@ -58,6 +61,7 @@ Page({
           icon: 'none'
         })
       }
+      wx.hideLoading()
     }, function (err) {
       wx.showToast({
         title: '请求出错',
