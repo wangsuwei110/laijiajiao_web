@@ -1,9 +1,13 @@
 <!--pages/Student/Collect/Collect.wxml-->
 
+<Empty wx:if='{{loaded && !collectList.length}}' txt='暂无收藏教员，'>
+    <navigator class='collectLink' open-type='reLaunch' url='/pages/Student/TeacherList/TeacherList'>立即收藏</navigator>
+</Empty>
+<block wx:elif='{{loaded}}'>
 <view class='item' wx:for='{{collectList}}' wx:key='{{item.teacherId}}'>
     <view class='logo'>
-        <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
-        <text class='level'>{{item.teacherLevel}}</text>
+        <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
+        <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
     </view>
 
     <view class='content'>
@@ -22,3 +26,5 @@
 </view>
 
 <HomeNav independent='true'/>
+</block>
+

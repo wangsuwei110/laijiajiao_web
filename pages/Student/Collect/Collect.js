@@ -6,17 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    collectList: []
+    collectList: [],
+    loaded: false,
+    RESOURCE_PERFIX: http.RESOURCE_PERFIX,
   },
 
   fetchList() {
     http.postPromise('/teacher/connectList', { studentId: this.studentId }).then(data => {
       this.setData({
-        collectList: data.data
+        loaded: true,
+        collectList: data.data || []
       })
     })
   },
-  
+
   onCancelCollect(e) {
     const teacherId = Number(e.currentTarget.dataset.id)
     wx.showModal({
@@ -34,7 +37,7 @@ Page({
               title: '取消关注成功',
               icon: 'none',
             });
-            
+
             this.fetchList()
           })
         }

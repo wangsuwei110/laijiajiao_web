@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "收藏教员",
   "usingComponents": {
-    "HomeNav": "/components/Student/HomeNav/HomeNav"
+    "HomeNav": "/components/Student/HomeNav/HomeNav",
+    "Empty": "/components/Empty/Empty"
   }
 }

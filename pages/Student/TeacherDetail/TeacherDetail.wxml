@@ -1,7 +1,7 @@
 <!--pages/Student/TeacherDetail/TeacherDetail.wxml-->
 <view class="vita-container">
   <view class="school-img">
-    <image mode="aspectFill" src="../../../images/img/school_pic.png"></image>
+    <image mode="aspectFill" src="../../../images/uniBackground.jpg"></image>
   </view>
   <view class="userinfo">
     <view class="avatar">
@@ -15,14 +15,14 @@
             <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
 
             <view class='priceBox'>
-                <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
+                <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>
             </view>
         </view>
 
         <view class="infoMeta">
-            <text class="item">服务学员：<text class="value">{{servicePersonNum}}</text></text>
+            <text class="item">服务学员：<text class="value">{{servicePersonNum === 0 ? '--' : servicePersonNum}}</text></text>
             <text class='sapce'/>
-            <text class="item">已授课时：<text class="value">{{serviceHours}}</text></text>
+            <text class="item">已授课时：<text class="value">{{serviceHours === 0 ? '--' : serviceHours}}</text></text>
         </view>
         
     </view>
@@ -147,6 +147,82 @@
     </view>
     <view class="panel-body">
       <text wx:for="{{teachAddress}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
+    </view>
+  </view>
+
+
+  <view class="spacing-10"></view>
+
+  <view class="panel">
+    <view class="panel-top">
+      <view class="dot"></view>
+      <text class="title">预计上课时段</text>
+    </view>
+    <view class="timetable">
+      <view class="table-title">
+        <text class="time-name">时间</text>
+        <text wx:for="{{week}}" wx:key="{{index}}" class="week-name">{{item}}</text>
+      </view>
+      <view class="table-body">
+        <view class="table-item">
+          <view wx:for="{{weekTimePeriod}}" wx:key="{{index}}" class="time">
+            <text>{{item.name}}</text>
+            <text class="time-period">（{{item.period}}）</text>
+          </view>
+        </view>
+        <view wx:for="{{weekTime}}" wx:for-index="idx" wx:key="{{index}}" class="table-item">
+          <view wx:for="{{item}}" wx:key="{{index}}" class="week"><view class="checkbox {{item.checked ? 'checked' : ''}}"></view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacing-10"></view>
+
+
+  <view class="service">
+    <view class="service-tab">
+      <view bindtap="toggleService" data-id="1" class="tab {{serviceTabIndex == 1 ? 'active' : ''}}">服务记录</view>
+      <view bindtap="toggleService" data-id="2" class="tab {{serviceTabIndex == 2 ? 'active' : ''}}">服务评价</view>
+    </view>
+    <view class="servie-content">
+      <!-- 服务记录 -->
+      <block wx:if="{{serviceTabIndex == 1}}">
+        <view class="service-log" >
+          <view class="log-table" wx:if='{{teacherForStudentServiceList && teacherForStudentServiceList.length !== 0}}'>
+            <view class="table-thead">
+              <text class="t-1">订单号</text>
+              <text class="t-2">年级科目</text>
+              <text class="t-2">接单时间</text>
+            </view>
+            <view class="table-body" wx:for='{{teacherForStudentServiceList}}'>
+              <view class="body-item">
+                <text class="t-1">{{item.sid}}</text>
+                <text class="t-2">{{item.teachBranchName}}</text>
+                <text class="t-2">{{item.orderStart}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="null-tip" wx:else><text>暂无数据</text></view>
+        </view>
+      </block> 
+      <!-- 服务评价 -->
+      <block wx:else="{{serviceTabIndex == 2}}">
+        <view class="service-talk" >
+          <block wx:if='{{StudentAppraiseForTeacherList && StudentAppraiseForTeacherList.length !== 0}}'>
+          <view class="talk" wx:for='{{StudentAppraiseForTeacherList}}'>
+            <image class="talk-icon" mode="widthFix" src="../../../images/mess.png"></image>
+            <view class="talk-user">
+              <text class="name">{{item.teacherName}}</text><text class="date">{{item.appraiseTime}}</text>
+              <view class="content">
+                <text>{{item.appraise}}</text>
+              </view>
+            </view>
+          </view>
+          </block>
+
+          <view class="null-tip" wx:else><text>暂无数据</text></view>
+        </view>
+      </block>
     </view>
   </view>
   
