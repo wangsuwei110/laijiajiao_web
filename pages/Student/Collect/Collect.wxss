@@ -89,3 +89,7 @@ page{
     height: 25rpx;
     margin-right: 12rpx;
 }
+
+.collectLink{
+    color: rgba(40,158,230,1);
+}

@@ -1,4 +1,7 @@
 <!--components/Empty/Empty.wxml-->
 <view class='container'>
-    <text class='txt'>{{txt}}</text>
+    <view class='txt'>
+        <text>{{txt}}</text>
+        <slot/>
+    </view>
 </view>
