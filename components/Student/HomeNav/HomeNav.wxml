@@ -1,6 +1,8 @@
 <!--components/Student/HomeNav/HomeNav.wxml-->
 <view class='container {{independent?"independent":""}} {{isIPhoneX?"ipx":""}}'>
-    <CheckLogin isStudent='true' class-name='image' url='/pages/Student/Mailbox/Mailbox'>
+    <image wx:if='{{showTop}}' catchtap='onToTop' class='image' src='../../../images/Students/top.png' mode='widthFix'/>
+
+    <CheckLogin class='image' isStudent='true' class-name='image' url='/pages/Student/Mailbox/Mailbox'>
         <image class='image' src='../../../images/Students/homeNotice.png' mode='widthFix'/>
     </CheckLogin>
 </view>

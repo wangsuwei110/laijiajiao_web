@@ -1,5 +1,5 @@
 <!--pages/Student/TeacherList/TeacherList.wxml-->
-<PageLayout isStudent='true' bind:onScrollToLower='onScrollToLower' absolute='true'>
+<PageLayout isStudent='true' bind:onScrollToLower='onScrollToLower' absolute='true' id='pageLayout' bind:onShowTop='onShowTop'>
 <TeacherFilter searchParams='{{searchData}}' bind:onChange='onChange' id='teacherFilter'/>
 <view bindtap='onCancel'>
     <navigator class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
@@ -37,6 +37,6 @@
         <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
     </CheckLogin>
 
-    <HomeNav/>
+    <HomeNav bind:onToTop='onToTop' showTop='{{showTop}}'/>
 </view>
 </PageLayout>

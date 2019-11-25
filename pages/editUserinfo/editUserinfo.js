@@ -1,8 +1,7 @@
 var http = require('../../utils/api.js')
 console.log(222)
 var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allgradesCheckedValue = [],
-teachBranchSlaveId = [], teachBranchValue = []
-let showValue = ''
+teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
 Page({
   data: {
     userinfo: {
@@ -39,7 +38,13 @@ Page({
     slave: null,
     gradesCheckedValue: [],
     allgradesCheckedValue: [],
-    teachBranchValue: []
+    teachBranchValue: [],
+    // 选中字段
+    checkLevelId: '',
+    checkGradeId: '',
+    checkSubjectId: '',
+    checkSlaveId: '',
+    checkedTime: ''
   },
   getUserName: function (e) {
     this.setData({ 'userinfo.name': e.detail.value })
@@ -140,31 +145,180 @@ Page({
       currentIdx: _id
     })
   },
-  // 查询辅导年级及科目
-  getProject (grade, teachGrade) {
+  // 查询辅导学段
+  getProject (grade, teachGrade, callBack, item) {
     let that = this
+    var checkGradeId = this.data.checkGradeId.split(','),
+    checkSubjectId = this.data.checkSubjectId, 
+    checkSlaveId = this.data.checkSlaveId.split(',')
     http.post('/teacher/listSubject', {teachLevel: grade, teachGrade: teachGrade}, function (res) {
       var data = res.data
-      let subjects = []
       if (res.code === '200') {
         if (data && data.length > 0) {
-          data.forEach(function (item) {
-            item.isHave = 0
-            subjects.push(item)
-            if (!teachGrade) {
+          console.log(data, 'datadatadata')
+            if (!teachGrade && teachGrade !== '') {
+              let _grades = data
+              // 查询到辅导年级回显辅导年级
+              for (let j = 0; j < _grades.length; j++) {
+                for (let m = 0; m < checkGradeId.length; m++) {
+                  if (_grades[j].key === parseInt(checkGradeId[m]) && allgradesCheckedID.indexOf(_grades[j].key) === -1) {
+                    allgradesCheckedValue.push(_grades[j].value)
+                    allgradesCheckedID.push(_grades[j].key)
+                  }
+                  if (allgradesCheckedID.indexOf(_grades[j].key) !== -1) {
+                    _grades[j].isHave = 1
+                  }
+                }
+              }
+              let minGrades = _grades.map(item => {
+                return item.key
+              })
+
+              let minvalue = _grades.map(item => {
+                return item.value
+              })
+              // 检索当切换辅导学段时  辅导年级存在的某一年级无该辅导学段
+              allgradesCheckedID = that.unique(that.getArrDifference(allgradesCheckedID, minGrades))
+              allgradesCheckedValue = that.unique(that.getArrDifference(allgradesCheckedValue, minvalue))
+              // that.selectGrade(allgradesCheckedID)
+              if (item) {
+                if (item.isHave) {
+                  // if (that.data.importantSubId) {
+                    that.setData({
+                      importantSub: null,
+                      importantSubId: null,
+                      allsubjects: [],
+                      isCurrentSubject: null,
+                      teachBranchSlave: [],
+                      slave: ''
+                    })
+                    teachBranchSlaveId = []
+                    teachBranchValue = []
+                    allgradesCheckedID = []
+                    allgradesCheckedValue = []
+                    console.log(that.data.subjects, 'that.data.subjectssss')
+                    _grades = _grades.map(item => {
+                      let obj = item
+                      obj.isHave = 0
+                      return obj
+                    })
+                  // }
+                }
+              }
+              let showGradeValue = ''
+              if (allgradesCheckedValue.length > 2) {
+                showGradeValue = allgradesCheckedValue[0] + ',' + allgradesCheckedValue[1] + '...'
+              } else {
+                showGradeValue = allgradesCheckedValue.join(',')
+              }
               that.setData({
-                'subjects': subjects,
+                showGradeValue: showGradeValue,
+                subjects: _grades
               })
             } else {
-              console.log(1111)
               that.setData({
-                'allsubjects': subjects,
+                'allsubjects': data,
               })
-              console.log(that.data.allsubjects)
+              // 查询辅导科目并回显
+              let _grades2 = data
+              
+              for (let j = 0; j < _grades2.length; j++) {
+                if (_grades2[j].key === parseInt(checkSubjectId)) {
+                  that.setData({
+                    isCurrentSubject: j,
+                    importantSub: _grades2[j].value,
+                    importantSubId: _grades2[j].key
+                  })
+                }
+              }
+              let minGrades = _grades2.map(item => {
+                return item.key
+              })
+
+              let minvalue = _grades2.map(item => {
+                return item.value
+              })
+              // 检索当切换辅导年级时  辅导科目存在的某一科目无该辅导科目
+              console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
+              console.log(item, 'itemitemitemitemitem')
+              if (minGrades.indexOf(that.data.importantSubId) === -1 && item) {
+                console.log('检索', item)
+                if (item.isHave) {
+                  that.setData({
+                    isCurrentSubject: null,
+                    importantSub: null,
+                    teachBranchSlave: [],
+                    slave: '',
+                    importantSubId: null,
+                    // allsubjects: [],
+                    teachBranchSlave: [],
+                  })
+                  teachBranchSlaveId = []
+                  teachBranchValue = []
+                }
+              }
+              let teachBranchSlave = [], slave = ''
+              // 生成辅授科目list
+              for (let j = 0; j < _grades2.length; j++) {
+                console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
+                if (j !== that.data.isCurrentSubject && (that.data.isCurrentSubject || that.data.isCurrentSubject === 0)) {
+                  teachBranchSlave.push(_grades2[j])
+                }
+              }
+              console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
+              for (let j = 0; j < teachBranchSlave.length; j++) {
+                for (let m = 0; m < checkSlaveId.length; m++) {
+                  if (teachBranchSlave[j].key === parseInt(checkSlaveId[m])) {
+                    teachBranchSlave[j].isHave = 1
+                    teachBranchValue.push(teachBranchSlave[j].value)
+                    teachBranchSlaveId.push(teachBranchSlave[j].key)
+                  }
+                }
+              }
+              if (teachBranchValue.length > 2) {
+                slave = teachBranchValue[0] + ',' + teachBranchValue[1] + '...'
+              } else {
+                slave = teachBranchValue.join(',')
+              }
+              that.setData({
+                slave: slave,
+                teachBranchSlave: teachBranchSlave
+              })
             }
-          })
+            if (callBack) callBack(data)
+          // })
+        } else {
+          if (!teachGrade && teachGrade !== '') {
+            console.log(teachGrade)
+            that.setData({
+              importantSub: null,
+              importantSubId: null,
+              allsubjects: [],
+              isCurrentSubject: null,
+              teachBranchSlave: [],
+              slave: '',
+              subjects: [],
+              showGradeValue: ''
+            })
+            teachBranchSlaveId = []
+            teachBranchValue = []
+            allgradesCheckedID = []
+            allgradesCheckedValue = []
+          } else {
+            that.setData({
+              isCurrentSubject: null,
+              importantSub: null,
+              teachBranchSlave: [],
+              slave: '',
+              importantSubId: null,
+              // allsubjects: [],
+              teachBranchSlave: [],
+              allsubjects: []
+            })
+            teachBranchSlaveId = []
+            teachBranchValue = []
+          }
         }
-        
       } else {
         wx.showToast({
           title: res.msg,
@@ -174,7 +328,6 @@ Page({
     }, function (err) {
       console.log(err)
     }, function () {
-      wx.hideLoading()
     })
   },
   // 选择主授科目 只能选一个
@@ -188,8 +341,8 @@ Page({
     let _key = e.currentTarget.dataset.key
     this.setData({
       importantSub: value,
-      isCurrentSubject: _id,
-      'userinfo.teachBrance': _key
+      importantSubId: _key,
+      isCurrentSubject: _id
     })
     let teachBranchSlave = [], allsubjects = this.data.allsubjects
     // 生成辅授科目list
@@ -198,8 +351,11 @@ Page({
         teachBranchSlave.push(allsubjects[j])
       }
     }
+    teachBranchSlaveId = []
+    teachBranchValue = []
     this.setData({
-      teachBranchSlave: teachBranchSlave
+      teachBranchSlave: teachBranchSlave,
+      slave: ''
     })
   },
   // 选择年级
@@ -230,9 +386,10 @@ Page({
     }
     this.setData({
       showGradeValue: showGradeValue,
-      ["subjects[" + _id + "].isHave"]: _isHave
+      ["subjects[" + _id + "].isHave"]: _isHave,
+      slave: ''
     })
-    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','))
+    this.getProject(this.data.teachLevel, allgradesCheckedID.join(','), function(){}, _item)
   },
   // 选择学段
   selectTeach: function (e) {
@@ -256,13 +413,13 @@ Page({
       gradesCheckedID.splice(gradesCheckedID.indexOf(_key), 1)
       gradesCheckedValue.splice(gradesCheckedValue.indexOf(_item.value), 1)
     }
+    console.log(gradesCheckedValue, 'gradesCheckedValuegradesCheckedValue')
     this.setData({
       gradesCheckedValue: gradesCheckedValue
     })
     showVal = this.data.gradesCheckedValue
-    console.log(showVal, '11111')
-    if (showVal.length > 2) {
-      showValue = showVal[0] + ',' + showVal[1] + '...'
+    if (showVal.length >= 2) {
+      showValue = showVal[0] + ',' +  showVal[1] + '...'
     } else {
       showValue = showVal.join(',')
     }
@@ -270,7 +427,19 @@ Page({
       showValue: showValue,
       teachLevel: gradesCheckedID.join(',')
     })
-    this.getProject(gradesCheckedID.join(','))
+    this.getProject(gradesCheckedID.join(','), null, function() {}, _item)
+  },
+  getArrDifference(arr1, arr2) {
+    console.log(arr1, arr2, 'arr2arr2')
+    return arr1.concat(arr2).filter(function(v, i, arr) {
+      return arr.indexOf(v) !== arr.lastIndexOf(v);
+    });
+  },
+  unique(arr) {
+    return arr.filter(function(item, index, arr) {
+      //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+      return arr.indexOf(item, 0) === index;
+    });
   },
   editUserinfo: function () {
     var data = this.data
@@ -389,6 +558,16 @@ Page({
     })
   },
   onLoad: function (options) {
+    gradesCheckedID = []
+    gradesCheckedValue = []
+    allgradesCheckedID = []
+    allgradesCheckedValue = []
+    teachBranchSlaveId = []
+    teachBranchValue = []
+    addressCheckedID = []
+    addressCheckedValue = []
+    showAddress = ''
+    showValue = ''
     this.setData({
         'userinfo.phone': wx.getStorageSync('user_phone')
       })

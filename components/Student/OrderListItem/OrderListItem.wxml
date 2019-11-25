@@ -4,7 +4,18 @@
         <view class='topBox'>
             <text class='date'>{{item.createTime}}</text>
 
-            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction'>支付记录</view>
+            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
+
+            <view class='popoverWrap' wx:if='{{payLogId=== item.sid}}'>
+                <view class='popover'>
+                    <view class='popoverInner'>
+                        <view class='payItem'>
+                            <text class='payLabel'>2019-07-02 22:00 | 购买1周3课时</text>
+                            <text class='payAmount'>¥40.00</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
         </view>
 
         <view class='title'>{{item.subscribeStatus?item.teachName:""}}{{item.subscribeStatus?" | ":""}}{{item.studentName}} | {{item.gradeSubject}}
@@ -30,27 +41,21 @@
         
         <view class='btnSpace'/>
 
-        <view class='signUpCount' wx:if='{{!item.subscribeStatus}}' catchtap='onSeeTeachClick'>
-            已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
+
+        <view class='signUpCount' wx:if='{{item.subscribeStatus ===1 && item.subscribeStatus ===2 && item.orderTeachTime}}'>
+            预计试讲时间：{{item.subscribeStatus ===2?'等待教员确认时间':item.orderTeachTime}}
         </view>
-        <view class='signUpCount' wx:elif='{{item.subscribeStatus <=2 && item.orderTeachTime}}'>
-            预计试讲时间：{{item.orderTeachTime}}
-        </view>
-        
+
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 6}}'>
             <view class='passBtn' catchtap='onPassClick'>试讲通过</view>
             <view class='unPassBtn' catchtap='onNoPassClick'>试讲不通过</view>
         </view>
 
-        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 3}}'>
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus === 3 && item.demandType===1}}'>
             <view class='unPassBtn' catchtap='onNoPassClick'>{{item.orderTeachTime}} 试讲不通过</view>
         </view>
 
-        <view class='payBtn' catchtap='onGoPay' wx:elif='{{item.subscribeStatus === 4}}'>
-            去支付
-        </view>
-        
-        <view class='actionWrap' wx:elif='{{item.subscribeStatus === 5}}'>
+        <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
             <view class='payBtn shrink' catchtap='onGoPay'>
                 续课
             </view>
@@ -59,6 +64,13 @@
             </view>
         </view>
 
+        <view class='payBtn' catchtap='onGoPay' wx:elif='{{item.subscribeStatus === 7}}'>
+            去支付
+        </view>
+
+        <view class='signUpCount' wx:elif='{{item.orderTeachCount}}' catchtap='onSeeTeachClick'>
+            已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
+        </view>
+
     </view>
-    
 </view>

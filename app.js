@@ -1,3 +1,5 @@
+const mtjwxsdk = require("./utils/mtj-wx-sdk.js");
+
 App({
   globalData: {
     weekData: null

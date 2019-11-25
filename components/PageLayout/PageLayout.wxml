@@ -1,5 +1,5 @@
 <!--components/PageLayout/PageLayout.wxml-->
-<scroll-view scroll-y='true' style='height:{{height}};' bindscrolltolower='onScrollToLower'>
+<scroll-view scroll-y='true' style='height:{{height}};' scroll-top='{{scrollTop}}' bindscrolltolower='onScrollToLower' bindscroll='onScroll'>
     <slot/>
 </scroll-view>
 <view wx:if='{{absolute}}' class='absolute' style='bottom:{{bottom}};'>

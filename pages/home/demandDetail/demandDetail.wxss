@@ -330,3 +330,20 @@
   width:50rpx;
   height: 50rpx;
 }
+.explanation {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+.explanation image {
+  width: 28rpx;
+  height: 28rpx;
+}
+.explanation text {
+  margin-left: 16rpx;
+  color: #5c5c5c;
+}
+.explanation .num {
+  color: #e50505;
+}

@@ -1,5 +1,5 @@
 <!--pages/Student/index/index.wxml-->
-<PageLayout isStudent='true' absolute='true'>
+<PageLayout isStudent='true' absolute='true' id='pageLayout' bind:onShowTop='onShowTop'>
     <swiper class='swiper'>
         <swiper-item>
             <image class='swiper' mode='widthFix' src=''/>
@@ -33,6 +33,6 @@
             <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
         </CheckLogin>
 
-        <HomeNav/>
+        <HomeNav bind:onToTop='onToTop' showTop='{{showTop}}'/>
     </view>
 </PageLayout>

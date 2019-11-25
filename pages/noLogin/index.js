@@ -60,6 +60,10 @@ Page({
       wx.reLaunch({
         url: '/pages/noHome/index',
       })
+    }  else if (e.currentTarget.dataset.index === '5') {
+      wx.reLaunch({
+        url: '/pages/login/login',
+      })
     } else {
       wx.showModal({
         content: '需要先验证手机号，是否立即验证？',

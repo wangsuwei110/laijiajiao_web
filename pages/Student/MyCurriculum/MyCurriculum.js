@@ -55,7 +55,7 @@ Page({
         //const hours = dateObj.getHours()
         const weekIndex = item.weekNum - 1
         const index = item.timeNum - 1
-        
+
         const weekList = list[weekIndex] || [[], [], []]
         const hoursList = weekList[index] || []
         hoursList.push(item)
@@ -75,12 +75,12 @@ Page({
   onOverClick(e) {
     const week = Number(e.currentTarget.dataset.week)
     const hours = Number(e.currentTarget.dataset.hours)
-    const { dateList } = this.data
+    const { dateList, student } = this.data
 
-    dateList[week][hours]
+    const { sid, teacherId, demandId } = dateList[week][hours][0]
 
     wx.showModal({
-      title: '结课',
+      title: '提示',
       content: '结课成功后，将由平台支付本次课时费',
       showCancel: true,
       cancelText: '取消',
@@ -89,16 +89,17 @@ Page({
       confirmColor: '#3CC51F',
       success: (result) => {
         if (result.confirm) {
-          http.postPromise('/StudentDemand/conclusion').then(data => {
-
+          http.postPromise('/StudentDemand/conclusion', { sid, teacherId, demandId }).then(data => {
+            wx.showToast({
+              title: '结课成功',
+            });
+            this.fetchCurriculum(student.sid)
           })
         }
       },
       fail: () => { },
       complete: () => { }
     });
-
-
   },
 
 

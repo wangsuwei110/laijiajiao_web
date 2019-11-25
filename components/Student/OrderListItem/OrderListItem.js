@@ -8,6 +8,7 @@ Component({
    */
   properties: {
     item: Object,
+    payLogId: Number
   },
 
 
@@ -24,6 +25,10 @@ Component({
   methods: {
     setCacheItem() {
       appInst.globalData.orderItem = this.data.item
+    },
+
+    onPayLogClick() {
+      this.triggerEvent(onPayLogClick, this.data.item.sid)
     },
 
     onSeeTeachClick() {

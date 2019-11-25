@@ -1,5 +1,6 @@
 <!--pages/Student/Login/Login.wxml-->
 
+<image class='loginIcon' src='../../../images/Students/loginLogo.jpg' mode='widthFix'/>
 <view class='_container'>
     <view class='section'>
         <image mode="aspectFix" src="../../../images/phone-icon.png" class='iconBox'/>

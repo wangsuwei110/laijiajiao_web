@@ -1,7 +1,7 @@
 <!--pages/Student/OrderList/OrderList.wxml-->
 
 <Empty wx:if='{{loaded && !orderList.length}}'/>
-<block wx:else>
-    <OrderListItem wx:for='{{orderList}}' item='{{item}}' wx:key='{{item.sid}}'/>
+<view wx:else bindtap='onStop'>
+    <OrderListItem wx:for='{{orderList}}' item='{{item}}' wx:key='{{item.sid}}' payLogId='{{payLogId}}' bind:onPayLogClick='onPayLogClick'/>
     <DropDown wx:if='{{loaded}}' isEnd='{{isEnd}}'/>
-</block>
+</view>

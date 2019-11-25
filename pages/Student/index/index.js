@@ -5,8 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    subjectList: ['语文', '语文', '语文', '语文', '语文', '语文', '语文', '语文']
+    subjectList: ['语文', '语文', '语文', '语文', '语文', '语文', '语文', '语文'],
+    showTop: false
   },
+
+
+  onToTop() {
+    this.selectComponent('#pageLayout').onToTop()
+    this.setData({ showTop: false })
+  },
+
+  onShowTop(e) {
+    this.setData({ showTop: e.detail })
+  },
+
+
+  
 
   /**
    * 生命周期函数--监听页面加载

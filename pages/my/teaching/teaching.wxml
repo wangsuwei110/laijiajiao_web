@@ -89,8 +89,8 @@
 
 
     <view catchtap="toggleTechType" data-id="6" class="panel-item">
-      <text class="label"><em>*</em>辅授区域</text>
-      <text class="cont">{{showAddress ? showAddress : '请选择辅授区域'}}</text>
+      <text class="label"><em>*</em>授课区域</text>
+      <text class="cont">{{showAddress ? showAddress : '请选择授课区域'}}</text>
       <view class="arrow-icon arrow-bottom"></view>
       <view class="item-content {{currentIdx == 6 ? 'show' : 'hide'}}">
           <view class="item-content-inner">

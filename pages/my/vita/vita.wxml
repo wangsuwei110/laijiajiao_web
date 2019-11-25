@@ -20,8 +20,8 @@
         <text>证件认证</text>
       </view>
       <view class="info-meta">
-        <text class="label">服务学员：<text class="ftc-E50505">{{servicePersonNum}}</text></text>
-        <text class="label">已授课时：<text class="ftc-E50505">{{serviceHours}}</text></text>
+        <text class="label">服务学员：<text class="ftc-E50505">{{servicePersonNum === 0 ? '--' : servicePersonNum}}</text></text>
+        <text class="label">已授课时：<text class="ftc-E50505">{{serviceHours === 0 ? '--' : serviceHours}}</text></text>
       </view>
     </view>
   </view>

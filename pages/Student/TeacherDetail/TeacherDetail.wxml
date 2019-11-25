@@ -153,4 +153,4 @@
   <CheckLogin wx:if='{{!formOrder}}' class-name='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</CheckLogin>
 </view>
 
-<HomeNav independent='true'/>
+<HomeNav independent='true' bind:onToTop='onToTop' showTop='{{showTop}}'/>
