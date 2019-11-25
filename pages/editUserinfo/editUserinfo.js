@@ -19,7 +19,7 @@ Page({
     teachBrance: [],
     teachBranchSlave: [],
     // 根据大学名称输入框检索大学列表
-    school: [],
+    school: '',
     // 选中的辅导年纪
     currentTeach: null,
     teachLevel: null,
@@ -50,9 +50,12 @@ Page({
     this.setData({ 'userinfo.name': e.detail.value })
   },
   getUserSchool: function (e) {
-    this.getSchool(e.detail.value)
+    // this.getSchool(e.detail.value)
     this.setData({
       currentIdx: 1
+    })
+    this.setData({
+      'school': e.detail.value,
     })
   },
   getUserAddress: function (e) {
@@ -447,8 +450,8 @@ Page({
     var tipText = ''
     if (data.userinfo.name.trim() == '') {
       tipText = '请输入教员姓名'
-    } else if (data.userinfo.school.trim() == '') {
-      tipText = '请输入详细住址'
+    } else if (data.school.trim() == '') {
+      tipText = '请输入大学名称'
     } else if (data.userinfo.address.trim() == '') {
       tipText = '请输入详细住址'
     } else if (gradesCheckedID.length <= 0) {
@@ -471,7 +474,6 @@ Page({
     var params = {
       teacherId: wx.getStorageSync('user_id'),
       name: data.userinfo.name,
-      id: this.data.userinfo.id,
       address: data.userinfo.address,
       // 选择年级
       teachGrade: teachGrade,
@@ -481,7 +483,7 @@ Page({
       teachBranchSlave: teachBranchSlave,
       // 选择学段
       teachLevel: teachLevel,
-      school: this.data.userinfo.school
+      school: this.data.school
     }
     wx.showLoading()
     http.post('/userInfo/updateUserInfo', params, function (res) {

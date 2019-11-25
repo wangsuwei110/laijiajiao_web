@@ -27,7 +27,7 @@
         <view class="panel-item">
           <text class="label"><em>*</em>大学名称</text>
           <input bindinput="getUserSchool"  class="cont" type="text" value="{{userinfo.school}}" placeholder="请输入大学名称" placeholder-class="placeholder"></input>
-          <view class="item-content {{currentIdx == 1 ? 'show' : 'hide'}}">
+          <!-- <view class="item-content {{currentIdx == 1 ? 'show' : 'hide'}}">
             <view class="item-content-inner">
               <scroll-view scroll-y style="max-height: 400rpx;" wx:if='{{school.length > 0}}'>
                 <view bindtap="selectSchool" data-parentid="1"  data-item="{{item.value}}" wx:for="{{school}}" wx:key="{{index}}" class="content-item" data-id="{{item.key}}">
@@ -44,7 +44,7 @@
               </scroll-view>
             </view>
           </view>
-          
+           -->
         </view>
         <view class="panel-item">
           <text class="label"><em>*</em>详细住址</text>
