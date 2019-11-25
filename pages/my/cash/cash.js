@@ -30,7 +30,9 @@ Page({
       cashOut: e.detail.value
     })
   },
-  saveBtn() {
+  saveBtn(e) {
+    console.log(e)
+    // return
     var that = this
     if (this.data.cashOut === '' || !this.data.cashOut) {
       wx.showToast({
@@ -48,6 +50,7 @@ Page({
     })
     wx.login({
       success(res1) {
+        console.log(res1, 'res1res1')
         if (res1.code) {
 
           http.postPromise('/user/getOpenId', { code: res1.code }).then(data => {
@@ -74,7 +77,7 @@ Page({
                 paySign: res.data.data.paySign, // 支付签名
                 success:function(res1){
                   wx.navigateTo({
-                    url: './cashSuccess/cashSuccess?id=' + res.data.data.mchBillno
+                    url: './cashSuccess/cashSuccess?id=' + res.data.data.mchBillno + '&formId=' + e.detail.formId
                   })
                 },
                 fail:function(res){
@@ -83,8 +86,13 @@ Page({
                 complete:function(res){}
             })
             }, function (err) {
-              console.log(err)
+              that.setData({
+                disable: false
+              })
             }, function () {
+              that.setData({
+                disable: false
+              })
               wx.hideLoading()
             })
 

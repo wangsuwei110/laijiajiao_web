@@ -38,14 +38,14 @@
           </view>
         </view>
       </view>
-      </view>
       <view class="explanation">
         <image mode="scaleFill" src="../../../images/expl_icon.png"></image>
         <text>每周上课次数:</text><text class="num">一周{{details.studentDemandDetail.classNum}}次</text>
       </view>
+      </view>
+      
     </view>
     
-  </view>
   <view class="spacing-10"></view>
   <view class="tutor-panel">
     <view class="panel-top">
@@ -91,6 +91,5 @@
   <view class="spacing-10"></view>
   <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>
   <view bindtap="applyTutor" class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}" style="{{details.singUpStatus === true ? 'background:#ccc' : ''}}">立即报名</view>
-
   <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 </view>

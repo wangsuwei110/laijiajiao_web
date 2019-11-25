@@ -4,7 +4,7 @@ Page({
     isIPX: getApp().isIPX,
   },
   onLoad: function (options) {
-    http.post('/userAccountLog/queryUserAccountLogDetail', {mchBillno: options.id}, function (res) {
+    http.post('/userAccountLog/queryUserAccountLogDetail', {mchBillno: options.id, formId: options.formId}, function (res) {
       console.log(res)
     })
   },
@@ -13,4 +13,9 @@ Page({
       url: '../../revenue/revenue',
     })
   },
+  formSubmit (e) {
+    wx.navigateTo({
+      url: '../../revenue/revenue',
+    })
+  }
 })
