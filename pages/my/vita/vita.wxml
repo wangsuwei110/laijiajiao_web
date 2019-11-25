@@ -13,15 +13,15 @@
           <image mode="widthFix" wx:if="{{userinfo.sex === 2}}" class="gender" src="../../../images/gender0.png"></image>
           <image mode="widthFix" wx:if="{{userinfo.sex === 1}}" class="gender" src="../../../images/gender1.png"></image>
         </view>
-        <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>起
+        <text class="ftc-E50505">{{userinfo.chargesStandard}}</text>
       </view>
       <view wx:if="{{userinfo.logonStatus === 1}}" class="info-meta attest">
         <image mode="widthFix" src="../../../images/attest_icon.png"></image>
         <text>证件认证</text>
       </view>
       <view class="info-meta">
-        <text class="label">服务学员：<text class="ftc-E50505">{{servicePersonNum}}</text></text>
-        <text class="label">已授课时：<text class="ftc-E50505">{{serviceHours}}</text></text>
+        <text class="label">服务学员：<text class="ftc-E50505">{{servicePersonNum === 0 ? '--' : servicePersonNum}}</text></text>
+        <text class="label">已授课时：<text class="ftc-E50505">{{serviceHours === 0 ? '--' : serviceHours}}</text></text>
       </view>
     </view>
   </view>

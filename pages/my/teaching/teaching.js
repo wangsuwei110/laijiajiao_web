@@ -286,7 +286,8 @@ Page({
     }
     this.setData({
       showGradeValue: showGradeValue,
-      ["subjects[" + _id + "].isHave"]: _isHave
+      ["subjects[" + _id + "].isHave"]: _isHave,
+      slave: ''
     })
     this.getProject(this.data.teachLevel, allgradesCheckedID.join(','), function(){}, _item)
   },
