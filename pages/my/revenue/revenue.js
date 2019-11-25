@@ -27,6 +27,14 @@ Page({
     }, function (err) {
       console.log(err)
     }, function () {
+      if (that.data.details === null) {
+        that.setData({
+          details: {
+            surplusMoney: 0.00,
+            accountMoney: 0.00
+          }
+        })
+      }
       wx.hideLoading()
     })
   },
