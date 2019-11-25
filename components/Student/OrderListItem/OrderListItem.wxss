@@ -116,6 +116,14 @@
     margin-top: 38rpx;
 }
 
+.hasAppraise{
+    border-bottom-right-radius: 0;
+}
+
+.hasAppraise + .payBtn{
+    border-bottom-left-radius: 0;
+}
+
 .evaluate + .btnSpace{
     padding-top: 22rpx;
 }

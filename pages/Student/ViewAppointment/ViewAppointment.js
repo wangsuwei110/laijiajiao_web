@@ -10,7 +10,7 @@ const hours = [
 
 const hoursCNList = hours.map(list => list.map(item => `${item}:00`))
 
-var appInst =  getApp();
+var appInst = getApp();
 
 
 Page({
@@ -103,7 +103,10 @@ Page({
       //console.log(weekList, timeList)
 
       this.setData({
-        weekList: weekList.map(item => `星期${weekCNList[item - 1]}`),
+        weekList: weekList.map(item => {
+          const week = data.data.orderTime.find(w => w.weekDay === item)
+          return `${week ? week.date.split('T')[0] : ''}星期${weekCNList[item - 1]}`
+        }),
         weekTimeList: timeList[0].map(item => item.cn),
         hoursList: hoursCNList[timeList[0][0].time - 1],
         timeList,
