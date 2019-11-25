@@ -1,5 +1,5 @@
 // components/Student/HomeNav/HomeNav.js
-var appInst =  getApp();
+var appInst = getApp();
 
 Component({
   /**
@@ -7,6 +7,11 @@ Component({
    */
   properties: {
     independent: {
+      type: Boolean,
+      value: false,
+    },
+
+    showTop:{
       type: Boolean,
       value: false,
     }
@@ -23,6 +28,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onToTop() {
+      this.triggerEvent('onToTop')
+    }
   }
 })

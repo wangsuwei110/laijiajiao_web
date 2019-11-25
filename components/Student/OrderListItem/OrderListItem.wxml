@@ -68,7 +68,6 @@
             去支付
         </view>
 
-
         <view class='signUpCount' wx:elif='{{item.orderTeachCount}}' catchtap='onSeeTeachClick'>
             已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </view>

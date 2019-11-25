@@ -67,9 +67,19 @@ private Integer sex;
     pageIndex: 1,
     pageSize: 20,
     isEnd: false,
+    showTop: false
   },
 
   running: false,
+
+  onToTop() {
+    this.selectComponent('#pageLayout').onToTop()
+    this.setData({ showTop: false })
+  },
+
+  onShowTop(e) {
+    this.setData({ showTop: e.detail })
+  },
 
   onChange(e) {
     const { searchData } = this.data

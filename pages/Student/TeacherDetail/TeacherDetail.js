@@ -3,6 +3,7 @@
 var http = require('../../../utils/api')
 Page({
   data: {
+    showTop: false,
     serviceHours: null,
     servicePersonNum: null,
     teacherForStudentServiceList: null,
@@ -296,6 +297,25 @@ Page({
     setTimeout(function () {
       that.canvasTap(id, color, start, end, time, w, h)
     }, time)
+  },
+
+  onToTop() {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+    this.setData({ showTop: false })
+  },
+
+  onPageScroll(e) {
+    if (e.scrollTop > 0) {
+      this.setData({
+        showTop: true
+      });
+    } else {
+      this.setData({
+        showTop: false
+      });
+    }
   },
 
   onLoad: function (options) {
