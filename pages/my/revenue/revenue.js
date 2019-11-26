@@ -3,7 +3,7 @@ Page({
   data: {
     details: null
   },
-  onLoad: function (options) {
+  onShow: function () {
     this.getAccount()
   },
   //查询用户收入
@@ -39,9 +39,9 @@ Page({
     })
   },
   // 我要提现
-  cash () {
+  cash (e) {
     wx.navigateTo({
-      url: '../cash/cash?money=' + this.data.details.surplusMoney,
+      url: '../cash/cash?money=' + this.data.details.surplusMoney + '&formId=' + e.detail.formId,
     })
   },
   revenueDetail: function () {

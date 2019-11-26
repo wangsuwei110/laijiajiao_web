@@ -74,3 +74,16 @@
 .save-btn{
   border-radius: 0;
 }
+.toast{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  width:100%;
+}
+.toast view{
+  padding:20rpx 30rpx;
+  font-size:28rpx;
+  background:rgba(0, 0, 0, 0.6);
+  color:#fff;
+  border-radius:10rpx;
+}

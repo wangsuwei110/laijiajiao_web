@@ -4,11 +4,13 @@ Page({
     isIPX: getApp().isIPX,
     cashOut: null,
     openId: null,
-    disable: false
+    disable: false,
+    formId: null
   },
   onLoad: function (options) {
     this.setData({
-      money: options.money
+      money: options.money,
+      formId: options.formId
     })
     // var that = this
     // http.post('/user/getOpenId', {code: wx.getStorageSync('code')}, function (res) {
@@ -24,6 +26,20 @@ Page({
       openId: null,
       disable: false
     })
+  },
+  // 显示错误提示
+  errFun (text) {
+    this.setData({
+      showToast: true,
+      errorText: text
+    })
+    var that = this
+    setTimeout(function () {
+      that.setData({
+        showToast: false,
+        errorText: text
+      })
+    }, 2000)
   },
   getMoney(e) {
     this.setData({
@@ -56,15 +72,12 @@ Page({
           http.postPromise('/user/getOpenId', { code: res1.code }).then(data => {
             //this.login(data.data.openid, gender)
             
-            http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  formId: e.detail.formId, cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
+            http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'),  formId: that.data.formId, cashOut: parseFloat(that.data.cashOut), openId: data.data.openid }, function (res) {
               that.setData({
                 disable: false
               })
               if (res.data.success === false) {
-                wx.showToast({
-                  title: res.data.msg,
-                  icon: 'none'
-                })
+                that.errFun(res.data.msg)
                 return
               }
               console.log(res.data.data.timeStamp, 'res.datares.data')

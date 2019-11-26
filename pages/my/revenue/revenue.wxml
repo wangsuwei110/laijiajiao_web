@@ -1,4 +1,5 @@
 <view class="revenue-container">
+<form  report-submit='true' bindsubmit="cash">
   <view class="revenur-top">
     <view class="revenue-num">
       <image class="revenue-bg" mode="scaleToFill" src="../../../images/revenue_bg.png"></image>
@@ -21,10 +22,11 @@
       <text class="name">账户明细</text>
       <view class="arrow-icon arrow-right"></view>
     </view>
-    <view bindtap="cash" class="panel-item">
+    <button  formType="submit"  class="panel-item">
       <text class="name">我要提现</text>
       <view class="arrow-icon arrow-right"></view>
-    </view>
+    </button>
   </view>
   <view class="spacing-10"></view>
+  </form>
 </view>
