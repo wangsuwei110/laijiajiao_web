@@ -60,6 +60,11 @@
   font-size: 28rpx;
   font-weight: 300;
 }
+.meta-panel button{
+  background:0;
+  text-align:left;
+  border:0;
+}
 .meta-panel .panel-item {
   position: relative;
   display: flex;

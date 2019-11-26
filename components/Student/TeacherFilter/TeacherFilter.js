@@ -17,7 +17,7 @@ Component({
    */
   data: {
     activeIndex: 0,
-    itemList: ['科目', '区域', '大学', '筛选'],
+    itemList: ['科目', '区域', '筛选'],
     address: [],
     subjects: [],
   },

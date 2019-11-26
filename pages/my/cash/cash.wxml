@@ -6,7 +6,7 @@
       <image src='../../../images/arrow_icon.png' class='arrow_icon'/>
     </view>
   </view>  -->
-<form report-submit='true' bindsubmit="saveBtn">
+
   <view class='cash'>
      <view class='top'>
         <text>提现金额</text>
@@ -28,7 +28,7 @@
       <text>全部提现</text>
     </view>
   </view>
-  <button formType="submit" open-type="getUserInfo"  class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提现</button>
-  
-</form>
+  <button bindgetuserinfo='saveBtn' open-type="getUserInfo"  class="save-btn {{isIPX ? 'view-fix-iphonex' : ''}}">确认提现</button>
+  <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
+
 </view>

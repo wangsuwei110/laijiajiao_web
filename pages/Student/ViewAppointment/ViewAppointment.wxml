@@ -1,7 +1,7 @@
 <!--pages/Student/ViewAppointment/ViewAppointment.wxml-->
 <scroll-view class='pageWrap'>
     <view class='_container'>
-        <view class='title'>{{item.studentName}} | {{item.grageSubject}}</view>
+        <view class='title'>{{item.studentName}} | {{item.gradeSubject}}</view>
 
         <navigator url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}&form=1' class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}'>
 
@@ -11,7 +11,7 @@
             </view>
 
             <view class='logo'>
-                <image class='logoIcon' mode='aspectFill' src='{{item.picture}}'/>
+                <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
                 <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
             </view>
 

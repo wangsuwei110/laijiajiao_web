@@ -7,7 +7,7 @@
     </block>
 
     <DistrictFilterModal show='{{activeIndex===2}}' address='{{address}}' addressId='{{searchParams.addressId || 0}}' bind:onChange='onFilterChange'/>
-    <SchoolFilterModal show='{{activeIndex===3}}' schoolId='{{searchParams.schoolId || 0}}' bind:onChange='onFilterChange'/>
-    <TeacherFilterModal show='{{activeIndex===4}}' sex='{{searchParams.sex||0}}' type='{{searchParams.type === null? -1:searchParams.type}}' bind:onChange='onFilterChange'/>
+    <SchoolFilterModal show='{{activeIndex===4}}' schoolId='{{searchParams.schoolId || 0}}' bind:onChange='onFilterChange'/>
+    <TeacherFilterModal show='{{activeIndex===3}}' sex='{{searchParams.sex||0}}' type='{{searchParams.type === null? -1:searchParams.type}}' bind:onChange='onFilterChange'/>
     <SubjectFilterModal show='{{activeIndex===1}}' subjects='{{subjects}}' subjectId='{{searchParams.subjectId || 0}}' bind:onChange='onFilterChange'/>
 </view>

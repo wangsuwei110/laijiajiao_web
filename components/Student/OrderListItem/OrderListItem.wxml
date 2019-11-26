@@ -40,9 +40,9 @@
         </view>
         
         <view class='btnSpace'/>
+    </view>
 
-
-        <view class='signUpCount' wx:if='{{item.subscribeStatus ===1 && item.subscribeStatus ===2 && item.orderTeachTime}}'>
+    <view class='signUpCount' wx:if='{{item.subscribeStatus ===1 && item.subscribeStatus ===2 && item.orderTeachTime}}'>
             预计试讲时间：{{item.subscribeStatus ===2?'等待教员确认时间':item.orderTeachTime}}
         </view>
 
@@ -56,10 +56,10 @@
         </view>
 
         <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
-            <view class='payBtn shrink' catchtap='onGoPay'>
+            <view class='payBtn {{!item.appraise ? "hasAppraise":""}} shrink' catchtap='onGoPay'>
                 续课
             </view>
-            <view class='evaluateBtn' wx:if='{{!item.appraise}}'>
+            <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}'>
                 评价
             </view>
         </view>
@@ -71,6 +71,4 @@
         <view class='signUpCount' wx:elif='{{item.orderTeachCount}}' catchtap='onSeeTeachClick'>
             已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </view>
-
-    </view>
 </view>
