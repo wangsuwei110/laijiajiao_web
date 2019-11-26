@@ -24,7 +24,7 @@
     <view>
         可提现余额 <text>￥{{money}}</text>
     </view>
-    <view>
+    <view bindtap='allCash'>
       <text>全部提现</text>
     </view>
   </view>

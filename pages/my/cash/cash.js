@@ -46,6 +46,12 @@ Page({
       cashOut: e.detail.value
     })
   },
+  allCash () {
+    console.log(this.data.money, 'this.data.money')
+    this.setData({
+      cashOut: this.data.money
+    })
+  },
   saveBtn(e) {
     console.log(e)
     // return
