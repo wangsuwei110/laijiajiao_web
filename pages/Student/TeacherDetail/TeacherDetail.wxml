@@ -138,7 +138,7 @@
       <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.teachBranchName}}</text>
     </view>
   </view>
-
+  
   <view class="spacing-10"></view>
   <view class="panel">
     <view class="panel-top">

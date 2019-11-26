@@ -27,10 +27,11 @@ Page({
     timeList: [],
     weekTimeList: [],
     hoursList: [],
+    RESOURCE_PERFIX: http.RESOURCE_PERFIX,
   },
 
   weekIndex: 0,
-
+  
 
   onSelectChange(e) {
     this.setData({ selectId: Number(e.currentTarget.dataset.id) })
