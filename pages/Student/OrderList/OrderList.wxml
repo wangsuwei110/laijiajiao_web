@@ -2,6 +2,6 @@
 
 <Empty wx:if='{{loaded && !orderList.length}}'/>
 <view wx:else bindtap='onStop'>
-    <OrderListItem wx:for='{{orderList}}' item='{{item}}' wx:key='{{item.sid}}' payLogId='{{payLogId}}' bind:onPayLogClick='onPayLogClick'/>
+    <OrderListItem wx:for='{{orderList}}' item='{{item}}' wx:key='{{item.sid}}' payLogId='{{payLogId}}' bind:onPayLogClick='onPayLogClick' bind:onSubmit='onSubmit'/>
     <DropDown wx:if='{{loaded}}' isEnd='{{isEnd}}'/>
 </view>

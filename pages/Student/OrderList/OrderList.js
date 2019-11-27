@@ -99,6 +99,11 @@ Page({
     this.setData({ payLogId: 0 })
   },
 
+  onSubmit(){
+    this.isEnd = false
+    this.fetchOrderList()
+  },
+  
   fetchOrderList(pageIndex = 1) {
     const { orderList, pageSize } = this.data
 

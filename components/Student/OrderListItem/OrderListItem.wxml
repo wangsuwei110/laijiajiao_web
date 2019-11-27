@@ -4,7 +4,10 @@
         <view class='topBox'>
             <text class='date'>{{item.createTimeString}}</text>
 
-            <view wx:if='{{item.subscribeStatus === 5}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
+
+            <view wx:if='{{item.endDemandFlag}}' class='topAction' catchtap='onOverClick'>结束需求</view>
+
+            <view wx:if='{{item.paymentStreamId}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
 
             <view class='popoverWrap' wx:if='{{payLogId=== item.sid}}'>
                 <view class='popover'>

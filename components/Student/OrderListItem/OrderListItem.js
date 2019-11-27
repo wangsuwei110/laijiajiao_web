@@ -27,7 +27,37 @@ Component({
       appInst.globalData.orderItem = this.data.item
     },
 
+
+    onOverClick() {
+      const { item } = this.data
+      wx.showModal({
+        title: '提示',
+        content: '是否确定结束需求',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if (result.confirm) {
+            wx.showLoading();
+            http.postPromise('/StudentDemand/endDemand', { demandId: item.sid }).then(data => {
+              wx.hideLoading();
+              wx.showToast({
+                title: '需求已结束',
+              });
+              this.triggerEvent('onSubmit')
+            }).catch(e => wx.hideLoading())
+          }
+        },
+      });
+    },
+
     onPayLogClick() {
+      const { item } = this.data
+      http.postPromise('/studentDemand/payLog', { PaymentStreamId: item.paymentStreamId }).then(data => {
+        
+      })
       this.triggerEvent(onPayLogClick, this.data.item.sid)
     },
 
