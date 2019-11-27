@@ -13,24 +13,24 @@
         <view class='leftBox'>
             <view class='quantityBox'>
                 <text class='label'>购买：</text>
-                <QuantityInput value='{{weekNum}}' bind:onChange=''/>
+                <QuantityInput value='{{weekNum}}' min='1' bind:onChange='onWeekNumChange'/>
                 <text class='unit'>周</text>
             </view>
             
-            <view class='discountLabel label'>
+            <!--<view class='discountLabel label'>
                 <text>优惠：</text>
                 <view>
                     <view class='discountLabelItem'>买1月（4周）8折</view>
                     <view class='discountLabelItem'>买2月（8周）6折</view>
                 </view>
-            </view>
+            </view>-->
         </view>
         
         <view class='amountBox'>
-            <view class='amountItem'>100 * 3 * 4</view>
-            <view class='amountItem redAmount'>100<text class='amountTxt'>( 试讲 )</text></view>
-            <view class='amountItem redAmount'>-240</view>
-            <view class='sumAmount'>¥960</view>
+            <view class='amountItem'>{{item.orderMoney}} * {{timeRange.length}} * {{weekNum}}</view>
+            <!--<view class='amountItem redAmount'>100<text class='amountTxt'>( 试讲 )</text></view>
+            <view class='amountItem redAmount'>-240</view>-->
+            <view class='sumAmount'>¥{{item.orderMoney * timeRange.length * weekNum}}</view>
         </view>
     </view>
 </view>

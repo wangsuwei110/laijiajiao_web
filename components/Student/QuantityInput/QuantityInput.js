@@ -10,7 +10,7 @@ const chackNum = function (value, min, max) {
 }
 
 const checkInputValue = function (value, _value) {
-  return `${value === 0 && _value === '' ? _value : value}`
+  return `${_value === '' ? _value : value}`
 }
 
 Component({
@@ -35,7 +35,7 @@ Component({
         this.setData({ _value: checkInputValue(chackNum(value, min, max), _value) })
       }
     },
-    
+
     value: {
       type: Number,
       value: 1,
@@ -58,19 +58,22 @@ Component({
    */
   methods: {
     onChange(e) {
-      const value = chackNum(Number(e.detail.value))
+      const { max, min } = this.data
+      const value = chackNum(Number(e.detail.value), min, max)
       this.setData({ _value: checkInputValue(value, e.detail.value) })
       this.triggerEvent('onChange', value)
     },
 
     onAddClick() {
-      const value = chackNum(Number(this.data._value) + 1)
+      const { max, min } = this.data
+      const value = chackNum(Number(this.data._value) + 1, min, max)
       this.setData({ _value: value })
       this.triggerEvent('onChange', value)
     },
 
     onSubClick() {
-      const value = chackNum(Number(this.data._value) - 1)
+      const { max, min } = this.data
+      const value = chackNum(Number(this.data._value) - 1, min, max)
       this.setData({ _value: value })
       this.triggerEvent('onChange', value)
     },

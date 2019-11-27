@@ -11,6 +11,7 @@ Page({
     item: {},
     timeRange: [],
     weekNum: 1,
+
   },
 
   onWeekChange(e) {
@@ -18,6 +19,7 @@ Page({
   },
 
   onWeekNumChange(e) {
+    console.log(e)
     this.setData({ weekNum: e.detail })
   },
 

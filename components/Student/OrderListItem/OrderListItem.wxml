@@ -2,7 +2,7 @@
 <view class='container'>
     <view class='inner'>
         <view class='topBox'>
-            <text class='date'>{{item.createTime}}</text>
+            <text class='date'>{{item.createTimeString}}</text>
 
             <view wx:if='{{item.subscribeStatus === 5}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
 
