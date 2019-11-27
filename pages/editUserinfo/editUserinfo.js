@@ -562,6 +562,15 @@ Page({
     })
   },
   onLoad: function (options) {
+    // wx.getLocation({
+    //   type: 'wgs84',
+    //   success: (res)=> {
+    //     console.log(res, 111111111)
+    //     var latitude = res.latitude
+    //     var longitude = res.longitude
+    //     this.setData({ latitude: latitude, longitude: longitude, 'userinfo.address': 32131})
+    //   }
+    // })
     gradesCheckedID = []
     gradesCheckedValue = []
     allgradesCheckedID = []

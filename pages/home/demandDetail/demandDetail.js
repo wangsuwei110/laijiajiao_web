@@ -239,14 +239,20 @@ Page({
   getDetails () {
     var that = this
     http.post('/home/queryStudentDemandSignUpTeacher', { teacherId: wx.getStorageSync('user_id'), demandId: this.data.id}, function (res) {
-      res.data.studentDemandDetail.timeRange = JSON.parse(res.data.studentDemandDetail.timeRange)
-      res.data.signUpTeacherInfo = res.data.signUpTeacherInfo.map(item => {
-        let obj = item
-        if (obj.createTime) obj.createTime = that.timeStr(obj.createTime, 1)
-        return obj
-      })
+      if (res.data.studentDemandDetail.timeRange) {
+        res.data.studentDemandDetail.timeRange = res.data.studentDemandDetail.timeRange.replace(/\'/g,'"') 
+        res.data.studentDemandDetail.timeRange = JSON.parse(res.data.studentDemandDetail.timeRange)
+      }
+      if (res.data.signUpTeacherInfo ) {
+        res.data.signUpTeacherInfo = res.data.signUpTeacherInfo.map(item => {
+          let obj = item
+          if (obj.createTime) obj.createTime = that.timeStr(obj.createTime, 1)
+          return obj
+        })
+      }
+      
       res.data.studentDemandDetail.createTime = that.timeStr(res.data.studentDemandDetail.createTime, 1)
-      res.data.studentDemandDetail.timeRanges = res.data.studentDemandDetail.timeRange.map(item => {
+      if (res.data.studentDemandDetail.timeRange) res.data.studentDemandDetail.timeRanges = res.data.studentDemandDetail.timeRange.map(item => {
         let obj = item
         if (obj.createTime) obj.createTime = that.timeFormat(obj.createTime)
         that.setData({

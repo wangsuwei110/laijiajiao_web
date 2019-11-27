@@ -19,10 +19,10 @@
     <view class="spacing-10"></view>
     <view class="remind-panel"  wx:for='{{details.newTrialStudentDemandList}}' data-status="{{item.demandSignStatus}}"  data-id='{{item.sid}}' bindtap='order'>
       <view class="remind-new">
-        <image mode="scaleToFill" src="../../../images/try.png"></image>
+        <image mode="scaleToFill"  src="../../../images/jb_icon.png"></image>
         <text>新</text>
       </view>
-      <image class="remind-icon" mode="scaleToFill" src="../../../images/jb_icon.png"></image>
+      <image class="remind-icon" mode="scaleToFill"  src="../../../images/try.png"></image>
       <view class="remind-info">
         <view class="remind-info-item">
           <text class="remind-name">新的试讲订单</text>

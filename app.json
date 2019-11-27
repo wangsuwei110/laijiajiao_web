@@ -54,6 +54,11 @@
     "pages/discount/index",
     "pages/noHome/index"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于寻找附近的检测点"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#f2eff6",
