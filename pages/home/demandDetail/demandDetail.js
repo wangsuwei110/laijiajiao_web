@@ -202,6 +202,9 @@ Page({
      return
     }
     var that = this
+    // http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: , teachGradeId: , parameterId: ,timeList: JSON.parse(this.data.details.timeRange)}, function (res) {
+
+    // })
     wx.showModal({
       content: '是否确认报名?',
       success: function(res) {
