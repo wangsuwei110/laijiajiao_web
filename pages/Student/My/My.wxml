@@ -25,7 +25,7 @@
                 <image src='../../../images/Students/my_order.png' class='itemIocn'/>
                 <text>服务订单</text>
             </CheckLogin>
-            <CheckLogin isStudent='true' class='item' class-name='itemInner' url='/pages/Student/MyCurriculum/MyCurriculum'>
+            <CheckLogin openType='reLaunch' isStudent='true' class='item' class-name='itemInner' url='/pages/Student/MyCurriculum/MyCurriculum'>
                 <image src='../../../images/Students/my_subject.png' class='itemIocn'/>
                 <text>我的课程</text>
             </CheckLogin>

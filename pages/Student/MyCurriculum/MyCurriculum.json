@@ -2,6 +2,7 @@
   "navigationBarTitleText": "我的课程",
   "usingComponents": {
     "Picker": "/components/Picker/Picker",
-    "Empty": "/components/Empty/Empty"
+    "Empty": "/components/Empty/Empty",
+    "PageLayout": "/components/PageLayout/PageLayout"
   }
 }

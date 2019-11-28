@@ -161,6 +161,13 @@ page{
     background-color: #14D101;
 }
 
+.stdSubject{
+    font-size:20rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #646464;
+}
+
 .completeBox{
     display: flex;
     align-items: center;

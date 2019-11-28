@@ -13,6 +13,10 @@ Component({
     url: {
       type: String,
       value: ''
+    },
+    openType: {
+      type: String,
+      value: ''
     }
   },
 
@@ -28,12 +32,26 @@ Component({
    */
   methods: {
     onClick() {
-      const { isStudent, url } = this.data
+      const { isStudent, url, openType } = this.data
       if (wx.getStorageSync('user_id')) {
         if (url) {
-          wx.navigateTo({
-            url
-          })
+          switch (openType) {
+            case 'reLaunch':
+              wx.reLaunch({
+                url
+              });
+              break
+            case '':
+              wx.switchTab({
+                url
+              });
+              break
+            default:
+              wx.navigateTo({
+                url
+              })
+              break
+          }
         }
         this.triggerEvent('onClick')
       } else {

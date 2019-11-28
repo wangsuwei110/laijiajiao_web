@@ -1,5 +1,5 @@
 <!--pages/Student/MyCurriculum/MyCurriculum.wxml-->
-
+<PageLayout isStudent='true'>
 <view class='topBox'>
     <Picker custom='true' options='{{studentList}}' nameKey='studentName' valueKey='sid' value='{{student.sid}}' bind:onChange='onStudentChange'>
         <view class='title'>{{student.studentName}}的排课表<view class='arrowIcon'/></view>
@@ -38,7 +38,10 @@
 
 
             <view class='contentCell' wx:for='{{hoursList}}' wx:for-item='hours' wx:key='this'>
-                <view class='stdName {{completeObj[weekIndex +"_"+hours]===2?"complete":""}}' wx:if='{{week[hours]}}' wx:for='{{week[hours]}}'>{{item.teacherName}}( {{item.teachBranchName}} ）</view>
+                <block wx:for='{{week[hours]}}' wx:if='{{week[hours]}}' wx:key='{{item.sid}}'>
+                    <view class='stdName {{completeObj[weekIndex +"_"+hours]===2?"complete":""}}'>{{item.teacherName}}</view>
+                    <view class='stdSubject'>{{item.teachBranchName}}</view>
+                </block>
 
                 <view class='completeBox' wx:if='{{completeObj[weekIndex +"_"+hours]===1}}' data-week='{{weekIndex}}' data-hours='{{hours}}' bindtap='onOverClick'>
                     <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
@@ -61,3 +64,4 @@
 
 <navigator url='/pages/Student/OrderList/OrderList' class='submitBtn'>立即续课</navigator>
 
+</PageLayout>

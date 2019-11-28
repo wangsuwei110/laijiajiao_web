@@ -17,6 +17,13 @@
     color:rgba(115,115,115,1);
 }
 
+.inner{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .ipx .item{
     height: 168rpx;
 }
