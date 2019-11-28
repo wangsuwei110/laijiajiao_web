@@ -58,9 +58,9 @@
         </view>
         <view hidden="{{activeIdx != 2}}">
           <view class="row thead">
-            <view class="column"><text>等级</text></view>
             <view class="column"><text>积分</text></view>
-            <view class="column"><text>续课率{{scrollHeight}}</text></view>
+            <view class="column"><text>任务</text></view>
+            <view class="column"><text>时间</text></view>
           </view>
           <view class="tbody">
             <scroll-view scroll-y="true" style="max-height: {{scrollHeight}}px;" bindscrolltolower="lower">

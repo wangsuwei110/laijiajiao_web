@@ -24,6 +24,7 @@ function dayTimes (index) {
 }
 Page({
   data: {
+    type: null,
     show: false,
     teachGradeId: null,
     teachBranchId: null,
@@ -62,7 +63,8 @@ Page({
     let query = wx.createSelectorQuery();
     query.select("#tabsView").boundingClientRect(function (rect) {
       that.setData({
-        scrollHeight: winHeight - rect.height
+        scrollHeight: winHeight - rect.height,
+        type: options.type
       })
     }).exec();
     this.getList()
@@ -105,7 +107,7 @@ Page({
   demandDetail: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../demandDetail/demandDetail?id=' + id,
+      url: '../demandDetail/demandDetail?id=' + id + '&type=' + this.data.type,
     })
   },
   // 所有教学区域

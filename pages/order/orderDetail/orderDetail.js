@@ -224,7 +224,8 @@ Page({
     const  current_month = this.second(date.getMonth() + 1);
     const  current_year = this.second(date.getFullYear());
     if (index) return current_year + '-' + current_month + '-' + current_date
-    return current_year + '.' + current_month + '.' + current_date
+    // return current_year + '.' + current_month + '.' + current_date
+    return current_month + '.' + current_date
   },
   timeFormat (timeStr) {
     var dataOne = timeStr.split('T')[0];

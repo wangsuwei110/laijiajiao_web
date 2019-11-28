@@ -7,7 +7,7 @@
     <view class="panel-body">
       <view class="baseinfo">
         <view class="baseinfo-item"><text class="label">发布时间：</text><text class="cont">{{details.studentDemandDetail.createTime}}</text></view>
-        <view class="baseinfo-item"><text class="label">上课区域：</text><text class="cont">{{details.studentDemandDetail.demandAddress}}</text></view>
+        <view class="baseinfo-item"><text class="label">上课区域：</text><text class="cont">{{details.studentDemandDetail.parameterName}}</text></view>
         <view class="baseinfo-item"><text class="label">上课地址：</text><text class="cont">{{details.studentDemandDetail.demandAddress}}</text></view>
         <view class="baseinfo-item"><text class="label">年级科目：</text><text class="cont">{{details.studentDemandDetail.teachGradeName}}{{details.studentDemandDetail.teachBranchName}}</text></view>
       </view>

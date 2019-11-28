@@ -108,7 +108,7 @@
   padding: 18rpx 26rpx;
 }
 .grade-type-body .column.text-left {
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
 }
 /* .column::after {
   content: '';

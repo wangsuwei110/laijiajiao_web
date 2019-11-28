@@ -202,25 +202,25 @@ Page({
      return
     }
     var that = this
-    // http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: , teachGradeId: , parameterId: ,timeList: JSON.parse(this.data.details.timeRange)}, function (res) {
-
-    // })
-    wx.showModal({
-      content: '是否确认报名?',
-      success: function(res) {
-        if (res.confirm) { //点击确定
-          http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
-            that.errFun('报名成功，请耐心等待报名结果')
-            console.log(res)
-            setTimeout(() => {
-              wx.switchTab({
-                url: '/pages/order/index/index'
+    http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: this.data.details.studentDemandDetail.teachBranchId, teachGradeId:  this.data.details.studentDemandDetail.teachGradeId, parameterId:  this.data.details.studentDemandDetail.parameterId,timeList: this.data.details.studentDemandDetail.timeRange}, function (res1) {
+        wx.showModal({
+          content: res1.data.validateCode === false ? res1.data.validateResult : '是否确认报名?',
+          success: function(res) {
+            if (res.confirm) { //点击确定
+              http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
+                that.errFun('报名成功，请耐心等待报名结果')
+                console.log(res)
+                setTimeout(() => {
+                  wx.switchTab({
+                    url: '/pages/order/index/index'
+                  })
+                }, 2000);
               })
-            }, 2000);
-          })
-        } else { //点击否
-        }
-      }
+            } else { //点击否
+            }
+          }
+        })
+       
     })
     
   },
@@ -272,7 +272,7 @@ Page({
   onLoad (options) {
     this.setData({
       id: options.id,
-      type: options.type
+      type: options.type ? options.type : null
     })
     this.getDetails()
   }

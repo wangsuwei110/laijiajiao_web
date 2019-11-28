@@ -68,9 +68,9 @@
     </view>
   </view>
   <view class="spacing-10"></view>
-  
+  <!--  -->
   <view class="tutor-panel" wx:if='{{orderType === 1}}'>
-    <view class="panel-top">
+    <view class="panel-top" style="justify-content:space-between">
       <view class="dot-icon"></view>
       <text wx:if="{{orderType == 1}}" class="title">确定试讲时间</text>
       <text bindtap='look'>查看课表</text>

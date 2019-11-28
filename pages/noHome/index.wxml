@@ -5,6 +5,16 @@
     <view   bindtap='tabFun' class="top-info-item center"><text class="numeral">--</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
     <view class="top-info-item"><text class="numeral">--</text><text>续课率</text></view>
   </view>
+  <view class="fast-entrance">
+    <view class="entrance" bindtap='demandList'>
+      <image class="entrance-icon" mode="widthFix" src="../../images/entrance_icon_1.png"></image>
+      <text class="entrance-name">家教需求</text>
+    </view>
+    <view bindtap="openHelp" class="entrance">
+      <image class="entrance-icon" mode="widthFix" src="../../images/entrance_icon_2.png"></image>
+      <text class="entrance-name">帮助中心</text>
+    </view>
+  </view>
   <view class="main-content" >
     <!-- 家教需求 -->
     <view class="panel-wrapper-4">
