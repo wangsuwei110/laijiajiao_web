@@ -56,6 +56,7 @@
 .my-info .gender {
   width: 25rpx;
   margin-left: 14rpx;
+  height:25rpx;
 }
 .my-info .phone {
   line-height: 1;

@@ -92,13 +92,13 @@ Page({
     console.log(typeof _userinfo.teacherName)
     console.log(typeof _userinfo.weiChar)
     var tipText = ''
-    if (_userinfo.headPicture.trim() == '' || !_userinfo.headPicture) {
+    if (!_userinfo.headPicture) {
       tipText = '请上传头像'
-    } else if (_userinfo.teacherName.trim() == '' || !_userinfo.teacherName) {
+    } else if (_userinfo.teacherName == '' || !_userinfo.teacherName) {
       tipText = '请输入姓名'
-    } else if (_userinfo.home.trim() == '' || !_userinfo.home) {
+    } else if (_userinfo.home == '' || !_userinfo.home) {
       tipText = '请选择籍贯'
-    } else if (_userinfo.address.trim() == '' || !_userinfo.address) {
+    } else if (_userinfo.address == '' || !_userinfo.address) {
       tipText = '请输入详细住址'
     }
     //  else if (_userinfo.weiChar.trim() == '') {

@@ -12,7 +12,7 @@ Page({
     }
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
-      var ability = res.data.pictures
+      var ability = res.data.pictures ? res.data.pictures[0].pictureUrl : []
       if (ability.length > 0) {
         ability.forEach(function (item) {
           var _pics = []

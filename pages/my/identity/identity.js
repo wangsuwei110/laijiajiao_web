@@ -130,7 +130,7 @@ Page({
     }
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
-      var pics = res.data.pictures[0].pictureUrl
+      var pics = res.data.pictures ? res.data.pictures[0].pictureUrl : []
 
       // var _pics = []
       // if (pics.length > 0) {

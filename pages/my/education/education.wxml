@@ -15,13 +15,13 @@
     </view>
     <picker class="pick-item" bindchange="bindDegreeChange" value="1" range="{{degree}}">
       <view class="picker">
-        <text class="label">学位</text>{{userinfo.degree}}
+        <text class="label">学位</text>{{userinfo.degree ? userinfo.degree : '请选择学位'}}
       </view>
       <view class="arrow-icon arrow-right"></view>
     </picker>
     <picker class="pick-item" fields="year" mode="date" start="{{yearStart}}" end="{{yearEnd}}" bindchange="bindYearChange">
       <view class="picker">
-        <text class="label">入学年份</text>{{userinfo.beginSchoolTime}}
+        <text class="label">入学年份</text>{{userinfo.beginSchoolTime ? userinfo.beginSchoolTime : '请选择入学年份'}}
       </view>
       <view class="arrow-icon arrow-right"></view>
     </picker>

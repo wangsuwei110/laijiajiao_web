@@ -106,13 +106,13 @@ Page({
     var that = this
     var _userinfo = that.data.userinfo
     var tipText = ''
-    if (_userinfo.school.trim() === '') {
+    if (_userinfo.school === '') {
       tipText = '请输入所读大学'
-    } else if (_userinfo.major.trim() === '') {
+    } else if (_userinfo.major === '') {
       tipText = '请输入所读专业'
-    } else if (_userinfo.degree.trim() === '') {
+    } else if (_userinfo.degree === '') {
       tipText = '请选择学位'
-    } else if (_userinfo.beginSchoolTime.trim() === '') {
+    } else if (_userinfo.beginSchoolTime === '') {
       tipText = '请选择入学年份'
     } else if (_userinfo.eduPic.length <= 0) {
       tipText = '请上传身份证照片'
@@ -163,7 +163,7 @@ Page({
     }
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
-      var pics = res.data.pictures[0].pictureUrl
+      var pics = res.data.pictures ? res.data.pictures[0].pictureUrl : []
       // var _pics = []
       // if (pics.length > 0) {
       //   pics.forEach(function (p) {
