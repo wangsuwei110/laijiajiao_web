@@ -5,7 +5,7 @@
       <view class="grade-top-item">
         <image class="icon"></image>
         <text class="key">我的等级：</text>
-        <text class="value">{{teacherLevel}}</text>
+        <text class="value">{{details.teacherLevel === 'T0' ? '实习' : details.teacherLevel}}</text>
       </view>
       <view class="grade-top-item">
         <image class="icon"></image>

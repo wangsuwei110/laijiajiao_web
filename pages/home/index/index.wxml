@@ -44,7 +44,7 @@
       </view>
       <view class="panel-body">
         <view class="demand-wrapper" wx:if='{{details.fitTeacherOrderList}}'>
-          <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
+          <view bindtap="demandDetail" data-id='{{item.sid}}' data-status='{{item.sid}}' wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
               <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
