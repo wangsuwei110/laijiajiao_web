@@ -59,6 +59,14 @@ Component({
       },
 
       {
+        "pagePath": "pages/Student/MyCurriculum/MyCurriculum",
+        "text": "课程",
+        "iconPath": "../../images/Students/curriculum.png",
+        "selectedIconPath": "../../images/Students/curriculumActive.png",
+        login: true,
+      },
+
+      {
         "pagePath": "pages/Student/My/My",
         "text": "我的",
         "iconPath": "../../images/Students/my.png",

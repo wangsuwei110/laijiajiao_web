@@ -1,8 +1,18 @@
 <!--components/NavigationBar/NavigationBar.wxml-->
 <slot/>
 <view class='container {{isIPhoneX?"ipx":""}} {{isStudent?"student":""}}'>
-    <navigator open-type='{{isStudent?"reLaunch":"switchTab"}}' class='item {{activeIndex===index?"active":""}}' wx:for='{{isStudent?student:teacher}}' wx:key='{{teacher.pagePath}}' url='/{{item.pagePath}}'>
-        <image class='icon' src='{{activeIndex===index?item.selectedIconPath:item.iconPath}}' mode='aspectFit'/>
-        <text class='txt'>{{item.text}}</text>
-    </navigator>
+
+    <block wx:for='{{isStudent?student:teacher}}' wx:key='{{teacher.pagePath}}'>
+        <CheckLogin wx:if='{{item.login}}' isStudent='{{isStudent}}' class-name='inner' openType='{{isStudent?"reLaunch":"switchTab"}}' class='item {{activeIndex===index?"active":""}}' url='/{{item.pagePath}}'>
+            <image class='icon' src='{{activeIndex===index?item.selectedIconPath:item.iconPath}}' mode='aspectFit'/>
+            <text class='txt'>{{item.text}}</text>
+        </CheckLogin>
+        
+        <navigator wx:else open-type='{{isStudent?"reLaunch":"switchTab"}}' class='item {{activeIndex===index?"active":""}}'  url='/{{item.pagePath}}'>
+            <image class='icon' src='{{activeIndex===index?item.selectedIconPath:item.iconPath}}' mode='aspectFit'/>
+            <text class='txt'>{{item.text}}</text>
+        </navigator>
+    </block>
+
+    
 </view>
