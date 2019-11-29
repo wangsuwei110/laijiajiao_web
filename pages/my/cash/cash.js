@@ -56,9 +56,9 @@ Page({
     console.log(e)
     // return
     var that = this
-    if (this.data.cashOut === '' || !this.data.cashOut) {
+    if (this.data.cashOut === '' || !this.data.cashOut || this.data.cashOut < 1) {
       wx.showToast({
-        title: '请输入提现金额',
+        title: '提现金额必须大于或等于1元',
         icon: 'none'
       })
       return
