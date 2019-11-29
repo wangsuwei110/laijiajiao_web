@@ -82,6 +82,17 @@ Page({
               that.setData({
                 disable: false
               })
+              // that.errFun(res.data.msg)
+              wx.hideLoading()
+              // setTimeout(function () {
+                wx.navigateTo({
+                  url: './cashSuccess/cashSuccess?cash=' + that.data.cashOut
+                })
+              // }, 2000)
+              // if (res.data.success === false) {
+              //   that.errFun(res.data.msg)
+              //   return
+              // }
               // if (res.data.success === false) {
               //   that.errFun(res.data.msg)
               //   return

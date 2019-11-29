@@ -2,10 +2,11 @@ var http = require('../../../../utils/api.js')
 Page({
   data: {
     isIPX: getApp().isIPX,
+    cashOut: null
   },
   onLoad: function (options) {
-    http.post('/userAccountLog/queryUserAccountLogDetail', {mchBillno: options.id, formId: options.formId}, function (res) {
-      console.log(res)
+    this.setData({
+      cashOut: options.cash
     })
   },
   navTo () {

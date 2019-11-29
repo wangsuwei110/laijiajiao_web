@@ -8,7 +8,7 @@
   <view class='way'>
     <view>
       <text>提现金额</text>
-      <text>¥1000</text>
+      <text>¥{{cashOut}}</text>
     </view>
     <view>
       <text>提现方式</text>
