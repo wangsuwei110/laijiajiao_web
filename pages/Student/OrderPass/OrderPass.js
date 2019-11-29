@@ -127,11 +127,11 @@ Page({
 
         //console.log(teachTime)
 
-        this.setData({ teachTime, useTeach, item: appInst.globalData.orderItem })
+        this.setData({ teachTime, useTeach})
       })
-    } else {
-      this.setData({ item: appInst.globalData.orderItem })
     }
+
+    this.setData({ item: appInst.globalData.orderItem })
 
 
     appInst.globalData.orderItem = null
