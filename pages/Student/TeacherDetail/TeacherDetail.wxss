@@ -488,6 +488,8 @@
     align-items: center;
     position: relative;
     padding: 24rpx 0;
+    box-sizing: border-box;
+    width: 100%;
   }
   .log-table .body-item::after {
     display: block;
@@ -542,7 +544,6 @@
     height: 28rpx;
     left: 0;
     top: 26rpx;
-    background-color: #f00;
   }
   .talk .talk-user {
     position: relative;

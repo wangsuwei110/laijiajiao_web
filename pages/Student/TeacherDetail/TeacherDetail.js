@@ -1,6 +1,7 @@
 // pages/Student/TeacherDetail/TeacherDetail.js
 
 var http = require('../../../utils/api')
+var util = require('../../../utils/util.js')
 Page({
   data: {
     showTop: false,
@@ -228,7 +229,10 @@ Page({
         'teachBranchs': data.teachBranchs,
         'teachAddress': data.teachAddress,
         StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
-        teacherForStudentServiceList: data.teacherForStudentServiceList,
+        teacherForStudentServiceList: data.teacherForStudentServiceList.map( item => {
+          item.orderStartStr = util.formatTime(item.orderStart,'{y}-{m}-{d} {h}:{i}')
+          return item
+        }),
         serviceHours: data.serviceHours,
         servicePersonNum: data.servicePersonNum
       })

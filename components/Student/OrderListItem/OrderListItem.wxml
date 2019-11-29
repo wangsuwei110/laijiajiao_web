@@ -45,8 +45,12 @@
         <view class='btnSpace'/>
     </view>
 
-    <view class='signUpCount' wx:if='{{item.subscribeStatus ===1}}'>
-            预计试讲时间：{{item.orderTeachTime?item.orderTeachTime:'等待教员确认时间'}}
+        <view class='signUpCount' wx:if='{{(item.subscribeStatus ===1 || item.subscribeStatus ===2) &&item.orderTeachTime}}'>
+            预计试讲时间：{{item.orderTeachTime}}
+        </view>
+        
+        <view class='signUpCount' wx:elif='{{item.subscribeStatus ===1 &&!item.orderTeachTime}}'>
+            预计试讲时间：等待教员确认时间
         </view>
 
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 6}}'>

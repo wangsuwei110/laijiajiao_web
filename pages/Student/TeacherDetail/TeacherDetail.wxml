@@ -194,11 +194,11 @@
               <text class="t-2">年级科目</text>
               <text class="t-2">接单时间</text>
             </view>
-            <view class="table-body" wx:for='{{teacherForStudentServiceList}}'>
+            <view class="table-body" wx:for='{{teacherForStudentServiceList}}' wx:key='{{item.sid}}'>
               <view class="body-item">
                 <text class="t-1">{{item.sid}}</text>
                 <text class="t-2">{{item.teachBranchName}}</text>
-                <text class="t-2">{{item.orderStart}}</text>
+                <text class="t-2">{{item.orderStartStr}}</text>
               </view>
             </view>
           </view>

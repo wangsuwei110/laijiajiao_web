@@ -1,5 +1,6 @@
 <!--pages/Student/MyCurriculum/MyCurriculum.wxml-->
 <PageLayout isStudent='true'>
+<view class='_container'>
 <view class='topBox'>
     <Picker custom='true' options='{{studentList}}' nameKey='studentName' valueKey='sid' value='{{student.sid}}' bind:onChange='onStudentChange'>
         <view class='title'>{{student.studentName}}的排课表<view class='arrowIcon'/></view>
@@ -63,5 +64,6 @@
 </view>
 
 <navigator url='/pages/Student/OrderList/OrderList' class='submitBtn'>立即续课</navigator>
+</view>
 
 </PageLayout>

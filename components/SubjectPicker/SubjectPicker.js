@@ -88,20 +88,22 @@ Component({
       return list.map(item => item.value)
     },
 
-    setPickerIndex(list, value, level) {
+    setPickerIndex(list, value, level, def = 0) {
 
       const { selected, nameList } = this.data
       const index = list.findIndex(item => item.key === value)
-      selected[level] = index < 0 ? 0 : index
-      console.log(this.nameList, index, list, value, level)
+      selected[level] = index < 0 ? def : index
+      //console.log(this.nameList, index, list, value, level)
       nameList[level] = list[index] ? list[index].value : ''
+      //console.log(selected, value, index, def, level)
       this.setData({ selected, nameList })
     },
 
     fetchFirstGrade(value) {
       const { firstList } = this.data
+      const index = 1
       if (firstList.length) {
-        value && this.setPickerIndex(firstList, value[0] || firstList[0].key, 0)
+        value && this.setPickerIndex(firstList, value[0] || firstList[index].key, 0, index)
       } else {
         http.postPromise('/teacher/listSubject', {}).then(data => {
           this.setData({
@@ -109,10 +111,10 @@ Component({
             firstList: data.data
           })
           if (value) {
-            this.setPickerIndex(data.data, value[0], 0)
-            this.fetchSecondGrade(value[0] || data.data[0].key, value)
+            this.setPickerIndex(data.data, value[index], 0, index)
+            this.fetchSecondGrade(value[0] || data.data[index].key, value)
           } else {
-            this.fetchSecondGrade(data.data[0].key)
+            this.fetchSecondGrade(data.data[index].key)
           }
           //this.level = data.data[0].key
 
@@ -164,7 +166,7 @@ Component({
         this.setData({
           thridNameList: this.generatePickerList(thridObj[teachGrade])
         })
-        
+
         if (value) {
           this.setPickerIndex(thridObj[teachGrade], value[2], 2)
           this.setData({ name: nameList[2] })
@@ -176,7 +178,7 @@ Component({
             thridObj,
             thridNameList: this.generatePickerList(data.data)
           })
-          
+
           if (value) {
             this.setPickerIndex(data.data, value[2], 2)
             this.setData({ name: nameList[2] })

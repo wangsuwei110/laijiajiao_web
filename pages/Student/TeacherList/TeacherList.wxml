@@ -1,42 +1,42 @@
 <!--pages/Student/TeacherList/TeacherList.wxml-->
 <PageLayout isStudent='true' bind:onScrollToLower='onScrollToLower' absolute='true' id='pageLayout' bind:onShowTop='onShowTop'>
-<TeacherFilter searchParams='{{searchData}}' bind:onChange='onChange' id='teacherFilter'/>
-<view bindtap='onCancel'>
-    <navigator class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
-        <view class='itemTop'>
-            <view class='logo'>
-                <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
-                <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
-            </view>
-
-            <view class='content'>
-                <view class='nameWrap'>
-                    <view class='nameInner'>
-                        <text class='name'>{{item.teacherName}}</text>
-                        <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
-                    </view>
-                    <text class='price'>{{item.chargesStandard}}</text>
+    <TeacherFilter searchParams='{{searchData}}' bind:onChange='onChange' id='teacherFilter'/>
+    <view bindtap='onCancel'>
+        <navigator class='item' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
+            <view class='itemTop'>
+                <view class='logo'>
+                    <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
+                    <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
                 </view>
-                
-                <view class='params'>{{item.schoolName}} | {{item.currentStatus}}</view>
-                <view class='params'>{{item.teachBranchSlave}}</view>
+
+                <view class='content'>
+                    <view class='nameWrap'>
+                        <view class='nameInner'>
+                            <text class='name'>{{item.teacherName}}</text>
+                            <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
+                        </view>
+                        <text class='price'>{{item.chargesStandard}}</text>
+                    </view>
+                    
+                    <view class='params'>{{item.schoolName}} | {{item.currentStatus}}</view>
+                    <view class='params'>{{item.teachBranchSlave}}</view>
+                </view>
             </view>
-        </view>
-        
-        <view class='tags'>
-            <text class='tag' wx:for='{{item.teacherTag}}' wx:key='this'>{{item}}</text>
-        </view>
-    </navigator>
+            
+            <view class='tags'>
+                <text class='tag' wx:for='{{item.teacherTag}}' wx:key='this'>{{item}}</text>
+            </view>
+        </navigator>
 
-    <DropDown isEnd='{{isEnd}}'/>
-</view>
+        <DropDown isEnd='{{isEnd}}'/>
+    </view>
 
 
-<view slot='absolute'>
-    <CheckLogin isStudent='true' class-name='addDemand' url='/pages/Student/ReleaseDemand/ReleaseDemand'>
-        <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
-    </CheckLogin>
+    <view slot='absolute'>
+        <CheckLogin isStudent='true' class-name='addDemand' url='/pages/Student/ReleaseDemand/ReleaseDemand'>
+            <image class='addDemand' src='../../../images/Students/quickRelease.png' mode='widthFix'/>
+        </CheckLogin>
 
-    <HomeNav bind:onToTop='onToTop' showTop='{{showTop}}'/>
-</view>
+        <HomeNav bind:onToTop='onToTop' showTop='{{showTop}}'/>
+    </view>
 </PageLayout>
