@@ -212,7 +212,7 @@ Page({
                 console.log(res)
                 setTimeout(() => {
                   wx.switchTab({
-                    url: '/pages/order/index/index'
+                    url: '/pages/order/index'
                   })
                 }, 2000);
               })

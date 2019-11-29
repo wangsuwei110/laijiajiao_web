@@ -1,8 +1,8 @@
 <view class="container">
 <view class="top-info">
-    <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
+    <image class="bg" mode="widthFix" src="../../images/index_top.png"></image>
     <view class="top-info-item"><text class="numeral">--</text><text>聘用率</text></view>
-    <view   bindtap='tabFun' class="top-info-item center"><text class="numeral">--</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view   bindtap='tabFun' class="top-info-item center"><text class="numeral">--</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../images/question_icon.png"></image></view></view>
     <view class="top-info-item"><text class="numeral">--</text><text>续课率</text></view>
   </view>
   <view class="fast-entrance">
@@ -19,7 +19,7 @@
     <!-- 家教需求 -->
     <view class="panel-wrapper-4">
         <view class="panel-head">
-            <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_1.png"></image>
+            <image class="head-icon" mode="scaleToFill" src="../../images/main_icon_1.png"></image>
             <text class="head-title">家教需求</text>
           </view>
       <view class="panel-body">
