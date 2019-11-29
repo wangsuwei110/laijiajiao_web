@@ -16,6 +16,14 @@ Component({
 
         this.setData({ _weekData })
       },
+    },
+    teachTime: {
+      type: Object,
+      value: {}
+    },
+    useTeach: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -48,18 +56,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onWeekChange(e) {
-      const { _weekData } = this.data
-      const week = Number(e.currentTarget.dataset.week)
-      const time = Number(e.currentTarget.dataset.time)
-      if (_weekData[week] && _weekData[week][time]) {
-        delete _weekData[week][time]
-      } else {
-        const data = _weekData[week] || {}
-        data[time] = true
-        _weekData[week] = data
-      }
 
+    onDataChange(_weekData) {
       const weekList = Object.keys(_weekData).reduce((list, week) => {
         return [...list, ...Object.keys(_weekData[week]).map(time => ({ week: Number(week), time: Number(time) }))]
       }, [])
@@ -67,6 +65,43 @@ Component({
       this.triggerEvent('onChange', weekList)
 
       this.setData({ _weekData })
+    },
+    
+    onWeekChange(e) {
+      const { _weekData, teachTime, useTeach } = this.data
+      const week = Number(e.currentTarget.dataset.week)
+      const time = Number(e.currentTarget.dataset.time)
+      if (_weekData[week] && _weekData[week][time]) {
+        delete _weekData[week][time]
+        this.onDataChange(_weekData)
+      } else {
+        const teahTimeList = teachTime[week] || []
+        const data = _weekData[week] || {}
+        if (useTeach && !teahTimeList.find(item => item === time)) {
+          wx.showModal({
+            title: '提示',
+            content: '您的上课时间不在该教员的授课时间范围内，请谨慎选择',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                data[time] = true
+                _weekData[week] = data
+                this.onDataChange(_weekData)
+              }
+            },
+            fail: () => { },
+            complete: () => { }
+          });
+        } else {
+          data[time] = true
+          _weekData[week] = data
+          this.onDataChange(_weekData)
+        }
+      }
     },
   }
 })

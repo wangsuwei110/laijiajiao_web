@@ -59,7 +59,7 @@ Page({
     console.log(e.detail)
     student.grade = e.detail.value[1]
     student.subjectId = e.detail.value[2]
-    
+
     this.setData({ student })
   },
 
@@ -76,9 +76,6 @@ Page({
     this.setData({ student })
   },
 
-
-
-
   //选择当前学员
   onStudentChange(e) {
     const { studentList } = this.data
@@ -93,24 +90,28 @@ Page({
 
 
   onGoSelectTime() {
-    const { classNum = 0, timeRange = [] } = this.data.student
+    const { teacherInfo, student } = this.data
+    const { classNum = 0, timeRange = [] } = student
+    const id = teacherInfo ? teacherInfo.teacherId : 0
     appInst.globalData.weekData = { timeRange, classNum }
 
     wx.navigateTo({
-      url: '/pages/Student/SelectClassTime/SelectClassTime',
+      url: `/pages/Student/SelectClassTime/SelectClassTime${id ? `?id=${id}` : ''}`,
     });
   },
 
   onSubmit() {
     const { student, teacherInfo } = this.data
     const demandType = teacherInfo ? 1 : 2 //demandType  :订单类型：1:单独预约，2:快速请家教
-    const { demandAddress, demandDesc,
+    const {
+      demandAddress, demandDesc,
       grade: demandGrade,
       sid, sex,
       subjectId,
       studentName,
       parameterId,
-      timeRange, classNum } = student
+      timeRange, classNum
+    } = student
 
     let res = ''
 
@@ -236,9 +237,14 @@ weekNum*	integer($int32)
     const sid = wx.getStorageSync('user_id')
 
     if (options.teacherid) {
+      
+      wx.setNavigationBarTitle({
+        title: '预约教员',
+      });
+
       http.postPromise('/userInfo/queryUserInfosDetail', {
         teacherId: options.teacherid,
-        studentId: sid
+        //studentId: sid
       }).then(data => {
         this.setData({ teacherInfo: data.data.baseInfo })
       })

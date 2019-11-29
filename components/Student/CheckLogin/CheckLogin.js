@@ -33,15 +33,18 @@ Component({
   methods: {
     onClick() {
       const { isStudent, url, openType } = this.data
+      //console.log(wx.getStorageSync('user_id'), url, openType)
       if (wx.getStorageSync('user_id')) {
+        //console.log(wx.getStorageSync('user_id'), url, openType)
         if (url) {
+          //console.log('ok')
           switch (openType) {
             case 'reLaunch':
               wx.reLaunch({
                 url
               });
               break
-            case '':
+            case 'switchTab':
               wx.switchTab({
                 url
               });

@@ -1,4 +1,5 @@
 // pages/Student/SelectClassTime/SelectClassTime.js
+const http = require('../../../utils/api')
 var appInst = getApp();
 
 Page({
@@ -10,6 +11,9 @@ Page({
 
     classNum: 0,
     timeRange: [],
+
+    teachTime: {},
+    useTeach: false,
 
     frequencyList: [
       {
@@ -48,7 +52,7 @@ Page({
     } else if (!classNum) {
       res = '请选择每周课数'
     }
-    
+
     if (res) {
       wx.showToast({
         title: res,
@@ -66,6 +70,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    if (options.id) {
+      http.postPromise('/userInfo/queryUserInfosDetail', {
+        teacherId: options.id,
+        //studentId: sid
+      }).then(data => {
+        const useTeach = !!data.data.baseInfo.teachTime
+        const teachTime = (useTeach ? JSON.parse(data.data.baseInfo.teachTime) : []).reduce((obj, item) => {
+          obj[item.week] = `${item.time}`.split(',').map(item => Number(item) + 1)
+          return obj
+        }, {})
+        //console.log(teachTime)
+
+        this.setData({ teachTime, useTeach })
+      })
+    }
+
     const weekData = appInst.globalData.weekData
     if (weekData) {
       this.setData({ classNum: weekData.classNum, timeRange: weekData.timeRange })

@@ -7,7 +7,7 @@
     </view>
 
 
-    <SelectClassTime weekData='{{timeRange}}' bind:onChange='onWeekChange'/>
+    <SelectClassTime teachTime='{{teachTime}}' useTeach='{{useTeach}}' weekData='{{timeRange}}' bind:onChange='onWeekChange'/>
 
     <view class='bottomAction'>
         <view class='leftBox'>

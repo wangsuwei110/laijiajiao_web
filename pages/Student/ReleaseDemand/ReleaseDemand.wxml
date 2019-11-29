@@ -33,7 +33,7 @@
     </view>
 
     <view class='item' bindtap='onGoSelectTime'>
-        <text class='label'>预计上课时段</text>
+        <text class='label'>上课时段</text>
         <text class='inputTxt'>{{student.timeRange && student.classNum?"已":"未"}}选择</text>
     </view>
 

@@ -6,7 +6,7 @@
             <text class='titleName'>上课时间</text>
             <text class='subTitle'>根据孩子的空闲时间，勾选可能上课的时间段</text>
         </view>
-        <SelectClassTime weekData='{{timeRange}}' bind:onChange='onWeekChange' class='table'/>
+        <SelectClassTime teachTime='{{teachTime}}' useTeach='{{useTeach}}' weekData='{{timeRange}}' bind:onChange='onWeekChange' class='table'/>
     </view>
 
     <view class='contentBox'>

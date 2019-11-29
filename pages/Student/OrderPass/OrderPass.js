@@ -11,7 +11,8 @@ Page({
     item: {},
     timeRange: [],
     weekNum: 1,
-
+    teachTime: {},
+    useTeach: true,
   },
 
   onWeekChange(e) {
@@ -112,7 +113,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ item: appInst.globalData.orderItem })
+    const teacherId = appInst.globalData.orderItem.teacherId
+    if (teacherId) {
+      http.postPromise('/userInfo/queryUserInfosDetail', {
+        teacherId,
+        //studentId: sid
+      }).then(data => {
+        const useTeach = !!data.data.baseInfo.teachTime
+        const teachTime = (useTeach?JSON.parse(data.data.baseInfo.teachTime):[]).reduce((obj, item) => {
+          obj[item.week] = `${item.time}`.split(',').map(item => Number(item) + 1)
+          return obj
+        }, {})
+
+        //console.log(teachTime)
+
+        this.setData({ teachTime, useTeach, item: appInst.globalData.orderItem })
+      })
+    } else {
+      this.setData({ item: appInst.globalData.orderItem })
+    }
+
+
     appInst.globalData.orderItem = null
 
 
