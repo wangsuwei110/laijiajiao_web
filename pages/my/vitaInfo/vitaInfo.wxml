@@ -20,7 +20,7 @@
     </view>
     <view bindtap="education" class="panel-item">
       <view class="panel-item-l"><text class="label">学历信息</text><text class="required">*</text></view>
-      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+      <view class="panel-item-r"><text  wx:if='{{!userinfo.major}}'>未填写</text><view class="arrow-icon arrow-right"></view></view>
     </view>
     <view bindtap="attestAbility" class="panel-item">
       <view class="panel-item-l"><text class="label">能力认证</text></view>
@@ -32,7 +32,7 @@
     </view>
     <view bindtap="userLabel" class="panel-item">
       <view class="panel-item-l"><text class="label">我的标签</text><text class="required">*</text></view>
-      <view class="panel-item-r"><view class="arrow-icon arrow-right"></view></view>
+      <view class="panel-item-r"><text wx:if='{{!userinfo.teacherTag}}'>未填写</text><view class="arrow-icon arrow-right"></view></view>
     </view>
   </view>
 </view>

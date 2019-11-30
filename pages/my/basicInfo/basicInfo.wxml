@@ -25,7 +25,7 @@
     </view>
     <view class="panel-item">
       <text class="label">QQ</text>
-      <input bindinput="getQQ" class="cont" type="number" value="{{userinfo.QQ}}"></input>
+      <input bindinput="getQQ" class="cont" type="number" value="{{userinfo.QQ}}"  placeholder="请输入QQ号"></input>
     </view>
   </view>
   <view class="{{isIPX ? 'placeholder-view-140' : 'placeholder-view-80'}}"></view>

@@ -49,7 +49,8 @@ Page({
       teacherId: wx.getStorageSync('user_id')
     }
     http.post('/userInfo/queryTeacherInfo', params, function (res) {
-     
+      var reg=/(\d{3})\d{4}(\d{4})/;
+      res.data.telephone = res.data.telephone.replace(reg, "$1****$2")
       if (res.code === '200') {
         that.setData({
           userinfo: res.data
