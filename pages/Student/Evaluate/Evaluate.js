@@ -8,6 +8,12 @@ Page({
     evaluate: 0
   },
 
+
+  onEvaluateChange(e) {
+    const evaluate = Number(e.currentTarget.dataset.id)
+    this.setData({ evaluate: evaluate === this.data.evaluate ? 0 : evaluate })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

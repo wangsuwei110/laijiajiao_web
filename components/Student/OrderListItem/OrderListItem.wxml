@@ -3,7 +3,7 @@
     <view class='inner'>
         <view class='topBox'>
             <text class='date'>{{createTimeStr}}</text>
-            
+
             <view wx:if='{{item.endDemandFlag}}' class='topAction' catchtap='onOverClick'>结束需求</view>
 
             <view wx:if='{{item.paymentStreamId}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
@@ -67,7 +67,7 @@
             <view class='payBtn {{!item.appraise ? "hasAppraise":""}} shrink' catchtap='onGoPay'>
                 续课
             </view>
-            <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}'>
+            <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}' catchtap='onGoEvaluate'>
                 评价
             </view>
         </view>

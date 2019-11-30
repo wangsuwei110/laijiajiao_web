@@ -18,7 +18,7 @@ Component({
           //console.log(utils.formatTime(new Date(item.createTime).getTime()), 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
           orderTeachTimeStr = utils.formatTime(new Date(item.orderTeachTime).getTime())
         }
-        
+
         this.setData({ createTimeStr, orderTeachTimeStr })
       }
     },
@@ -89,6 +89,13 @@ Component({
       this.setCacheItem()
       wx.navigateTo({
         url: `/pages/Student/NotPass/NotPass?id=${item.sid}`,
+      });
+    },
+
+    onGoEvaluate() {
+      const { item } = this.data
+      wx.navigateTo({
+        url: `/pages/Student/Evaluate/Evaluate?id=${item.sid}`,
       });
     },
 
