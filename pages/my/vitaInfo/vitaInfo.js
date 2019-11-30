@@ -6,7 +6,8 @@ Page({
     logonStatusStr: '', // 身份认证状态
     experienceStr: '',  // 家教经验
     certificateStr: '', // 能力认证
-    userinfo: {}
+    userinfo: {},
+    resumeComplete: null
   },
   // 基础信息
   basicInfo: function () {
