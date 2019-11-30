@@ -72,7 +72,12 @@ Component({
     onPayLogClick() {
       const { item } = this.data
       http.postPromise('/StudentDemand/payLog', { paymentStreamId: item.paymentStreamId }).then(data => {
-        this.setData({ payLogList: data.data })
+        this.setData({
+          payLogList: data.data.map(item => {
+            item.createTimeStr = utils.formatTime(new Date(item.createTime).getTime())
+            return item
+          })
+        })
       })
       this.triggerEvent('onPayLogClick', this.data.item.sid)
     },
