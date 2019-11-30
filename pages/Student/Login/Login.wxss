@@ -9,8 +9,10 @@ page{
 }
 
 .loginIcon{
-    width: 100%;
+    display: block;
+    width: 420rpx;
     height: 260rpx;
+    margin: 60rpx auto;
 }
 
 

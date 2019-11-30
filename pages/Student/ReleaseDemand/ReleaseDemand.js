@@ -295,8 +295,8 @@ weekNum*	integer($int32)
       }).then(data => {
         this.setData({
           teacherInfo: data.data.baseInfo,
-          teachAddress: data.data.teachAddress,
-          teachBranchs: data.data.teachBranchs,
+          teachAddress: data.data.teachAddress || [],
+          teachBranchs: data.data.teachBranchs || [],
         })
       })
     }

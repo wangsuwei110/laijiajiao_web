@@ -12,10 +12,14 @@ Component({
       type: Object,
       value: {},
       observer(item) {
+        const createTimeStr = utils.formatTime(new Date(item.createTime).getTime())
+        let orderTeachTimeStr = ''
         if (item.orderTeachTime) {
-          //console.log(item.orderTeachTime, 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
-          this.setData({ orderTeachTimeStr: utils.formatTime(new Date(item.orderTeachTime).getTime()) })
+          //console.log(utils.formatTime(new Date(item.createTime).getTime()), 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
+          orderTeachTimeStr = utils.formatTime(new Date(item.orderTeachTime).getTime())
         }
+        
+        this.setData({ createTimeStr, orderTeachTimeStr })
       }
     },
     payLogId: Number
@@ -26,6 +30,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    createTimeStr: '',
     orderTeachTimeStr: ''
   },
 
@@ -65,7 +70,7 @@ Component({
 
     onPayLogClick() {
       const { item } = this.data
-      http.postPromise('/studentDemand/payLog', { PaymentStreamId: item.paymentStreamId }).then(data => {
+      http.postPromise('/StudentDemand/payLog', { paymentStreamId: item.paymentStreamId }).then(data => {
 
       })
       this.triggerEvent('onPayLogClick', this.data.item.sid)
