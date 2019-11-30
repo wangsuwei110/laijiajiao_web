@@ -9,9 +9,9 @@ function timeWeek (index) {
   else if (index === 7) return '周日'
 }
 function dayTimes (index) {
-  if (index === 1) return '上午'
-  else if (index === 2) return '下午'
-  else if (index === 3) return '晚上'
+  if (index === 0) return '上午'
+  else if (index === 1) return '下午'
+  else if (index === 2) return '晚上'
 }
 Page({
   data: {
