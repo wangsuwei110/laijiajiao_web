@@ -27,7 +27,7 @@
                     <text class='price'>{{item.chargesStandard}}</text>
                 </view>
 
-                <view class='desc'>聘用率{{item.employRate}}% 续课率{{item.resumptionRate}}%</view>
+                <view class='desc'>聘用率{{item.employRate?item.employRate+'%':'--'}} 续课率{{item.resumptionRate?item.resumptionRate+'%':'--'}}</view>
             </view>
 
             <view class='arrowIcon'/>
