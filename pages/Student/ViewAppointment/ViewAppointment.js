@@ -76,10 +76,10 @@ Page({
       this.weekIndex = index
       const weekTimeList = timeList[index].map(item => item.cn)
       const time = timeList[index][0].time
-      this.setData({ weekTimeList, hoursList: hoursCNList[time - 1] })
+      this.setData({ weekTimeList, hoursList: hoursCNList[time] })
     } else if (e.detail.column === 1) {
       const time = timeList[this.weekIndex][index].time
-      this.setData({ hoursList: hoursCNList[time - 1] })
+      this.setData({ hoursList: hoursCNList[time] })
     }
   },
 
@@ -97,7 +97,7 @@ Page({
 
     http.postPromise('/StudentDemand/listTeacher', { demandId: options.id }).then(data => {
       const weekList = [...new Set(data.data.orderTime.map(item => {
-        item.cn = timeCNList[item.time - 1]
+        item.cn = timeCNList[item.time]
         return item.weekDay
       }))]
       const timeList = weekList.map(key => data.data.orderTime.filter(item => item.weekDay === key))
@@ -109,7 +109,7 @@ Page({
           return `${week ? week.date.split('T')[0] : ''}星期${weekCNList[item - 1]}`
         }),
         weekTimeList: timeList[0].map(item => item.cn),
-        hoursList: hoursCNList[timeList[0][0].time - 1],
+        hoursList: hoursCNList[timeList[0][0].time],
         timeList,
         orderTime: data.data.orderTime,
         teacherList: data.data.teacherList,
