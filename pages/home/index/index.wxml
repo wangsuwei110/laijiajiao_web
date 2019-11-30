@@ -39,7 +39,7 @@
     <view class="panel-wrapper-4">
       <view class="panel-head">
         <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_1.png"></image>
-        <text class="head-title">适合我的家教需求</text>
+        <text class="head-title">{{details.fitTeacherOrderList ? '适合我的家教需求' : '所有家教需求'}}</text>
         <text  bindtap='demandList' class="head-link-btn">更多></text> 
       </view>
       <view class="panel-body">

@@ -1,7 +1,7 @@
 <view class="basic-info">
   <view bindtap="updateAvatar" class="basic-avatar">
     <text class="label">头像（本人正面照片）</text>
-    <image class="avatar" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../../images/avatar.png'}}"></image>
+    <image class="avatar" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../../images/default_avatar.png'}}"></image>
     <view class="arrow-icon arrow-right"></view>
   </view>
   <view class="spacing-10"></view>
@@ -11,9 +11,12 @@
       <input bindinput="getTeachName" class="cont" type="text" value="{{userinfo.teacherName}}"></input>
     </view>
     <picker class="birthplace-item" mode="region" bindchange="bindRegionChange">
-      <view class="picker">
-        <text class="label">籍贯</text>{{userinfo.home || ''}}
+      <view class="picker" wx:if='{{userinfo.home}}'>
+        <text class="label">籍贯</text>{{userinfo.home}}
       </view>
+      <view class="picker" wx:else>
+          <text class="label">籍贯</text><text style="color:#999">请选择籍贯</text>
+        </view>
     </picker>
     <view class="panel-item">
       <text class="label">住址</text>

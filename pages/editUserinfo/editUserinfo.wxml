@@ -46,11 +46,28 @@
           </view>
            -->
         </view>
-        <view class="panel-item">
+        <!-- <view class="panel-item">
           <text class="label"><em>*</em>详细住址</text>
           <input bindinput="getUserAddress" class="cont" type="text" value="{{userinfo.address}}" placeholder="请输入详细住址" placeholder-class="placeholder"></input>
-        </view>
-            <view catchtap="toggleTechType" data-id="2" class="panel-item">
+        </view> -->
+
+    <view catchtap="toggleTechType" data-id="6" class="panel-item">
+        <text class="label"><em>*</em>授课区域</text>
+        <text class="cont">{{showAddress ? showAddress : '请选择授课区域'}}</text>
+        <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 6 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>
+        <view class="item-content {{currentIdx == 6 ? 'show' : 'hide'}}">
+            <view class="item-content-inner">
+              <scroll-view scroll-y style="max-height: 400rpx;">
+                <view catchtap="selectAddress" data-id="{{index}}"  data-item="{{item}}" data-parameterId="{{item.parameterId}}" wx:for="{{teachAddress}}" wx:key="{{index}}" class="content-item">
+                  <view class="item-icon {{item.flag === true ? 'selected': ''}}"></view>
+                  <text class="{{item.flag === true ? 'selected': ''}}">{{item.name}}</text>
+                  <image hidden="{{item.flag === false}}" class="hook-icon" mode="scaleToFill" src="../../../images/hook_icon.png"></image>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+      </view>
+      <view catchtap="toggleTechType" data-id="2" class="panel-item">
       <text class="label"><em>*</em>辅导学段</text>
       <text class="cont">{{showValue ? showValue : '请选择辅导学段'}}</text>
       <view class="arrow-icon arrow-bottom"  style="{{currentIdx == 2 ? 'transform: rotate(315deg)' : 'transform: rotate(135deg)'}}"></view>

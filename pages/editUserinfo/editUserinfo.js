@@ -4,6 +4,7 @@ var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allg
 teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
 Page({
   data: {
+    showAddress: '',
     userinfo: {
       name: '',
       school: '',
@@ -61,6 +62,35 @@ Page({
   getUserAddress: function (e) {
     this.setData({ 'userinfo.address': e.detail.value })
   },
+    // 选择授课区域
+    selectAddress (e) {
+      let _item = e.currentTarget.dataset.item
+      let _id = e.currentTarget.dataset.id
+      let flag = null
+      let showAddress = ''
+      flag = _item.flag === true ? false : true
+      this.setData({
+        ["teachAddress[" + _id + "].flag"]: flag
+      })
+      if (flag === true) {
+        addressCheckedValue.push(_item.name)
+        addressCheckedID.push(_item.parameterId)
+       
+      } else {
+        addressCheckedValue.splice(addressCheckedID.indexOf(_item.parameterId), 1)
+        addressCheckedID.splice(addressCheckedID.indexOf(_item.parameterId), 1)
+        
+      }
+      console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
+      if (addressCheckedValue.length >= 2) {
+        showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
+      } else {
+        showAddress = addressCheckedValue.join(',')
+      }
+      this.setData({
+        showAddress: showAddress
+      })
+    },
   // 选择辅授科目
   selectTeachBranch (e) {
     var that = this
@@ -90,6 +120,28 @@ Page({
     this.setData({
       slave: slave,
       ["teachBranchSlave[" + _id + "].isHave"]: _isHave
+    })
+  },
+  /**
+   * 获取授课资料信息
+   */
+  getGradesInfo: function () {
+    var that = this;
+    // 1:教员等级 11:收费标准 31:授课学段 38:学员年级 54:日期 62:个人标签 78:授课区域 95:科目:小学
+    var params = {
+      teacherId: wx.getStorageSync('user_id'),
+      parentId: '62,78'
+    }
+    wx.showLoading({})
+    var _teachAddress = {}  // 授课区域
+    http.post('/parameter/queryParameters', params, function (res) {
+      _teachAddress = res.data[0].teachAddress
+      that.setData({
+        teachAddress: _teachAddress,
+      })
+    }, function (err) {
+      console.log(err)
+    }, function () {
     })
   },
   toggleTechType: function (e) {
@@ -452,15 +504,19 @@ Page({
       tipText = '请输入教员姓名'
     } else if (data.school.trim() == '') {
       tipText = '请输入大学名称'
-    } else if (data.userinfo.address.trim() == '') {
-      tipText = '请输入详细住址'
-    } else if (gradesCheckedID.length <= 0) {
+    }
+    //  else if (data.userinfo.address.trim() == '') {
+    //   tipText = '请输入详细住址'
+    // } 
+    else if (gradesCheckedID.length <= 0) {
       tipText = '请选择授课学段'
     } else if (allgradesCheckedID.length <= 0) {
       tipText = '请选择授课年级'
     } else if (!this.data.importantSubId || this.data.importantSubId === '') {
       tipText = '请选择主授科目'
-    } 
+    }  else if (addressCheckedID.length <= 0) {
+      tipText = '请选择授课区域'
+    }
     if (tipText != '') {
       wx.showToast({
         title: tipText,
@@ -483,6 +539,7 @@ Page({
       teachBranchSlave: teachBranchSlave,
       // 选择学段
       teachLevel: teachLevel,
+      teachAddress: addressCheckedID.join(','),
       school: this.data.school
     }
     wx.showLoading()
@@ -561,7 +618,9 @@ Page({
       wx.hideLoading()
     })
   },
+  
   onLoad: function (options) {
+    this.getGradesInfo()
     // wx.getLocation({
     //   type: 'wgs84',
     //   success: (res)=> {
