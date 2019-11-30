@@ -101,7 +101,7 @@ Component({
     onGoEvaluate() {
       const { item } = this.data
       wx.navigateTo({
-        url: `/pages/Student/Evaluate/Evaluate?id=${item.sid}`,
+        url: `/pages/Student/Evaluate/Evaluate?id=${item.sid}&teacherid=${item.teacherId}`,
       });
     },
 

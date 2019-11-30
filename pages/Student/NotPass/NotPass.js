@@ -30,7 +30,8 @@ Page({
     wx.showLoading();
 
     http.postPromise('/StudentDemand/updateAdoptStatus', { demandId: this.demandId, appraise, status: 3 }).then(data => {
-      const isSigle = data.msg === '感谢您的配合，是否开放本需求让更多教员来报名？'
+      const isSigle = data.msg === '感谢您的配合，是否开放本需求让更多教员来报名?'
+      
       wx.showModal({
         title: '提示',
         content: data.msg,
