@@ -96,3 +96,6 @@ page {
   font-size: 30rpx;
   color: #666;
 }
+.tip2{
+  margin-top:-45rpx;
+}

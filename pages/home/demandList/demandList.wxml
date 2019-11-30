@@ -16,7 +16,7 @@
         <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{orderList}}' class="demand-item">
           <view class="item-title">
             <text class="dot"></text>
-            <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+            <text class="name">{{item.teachBranchName}}</text>
             <text class="date">{{item.createTime}}</text>
           </view>
           <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">

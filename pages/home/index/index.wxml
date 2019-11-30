@@ -29,7 +29,7 @@
           <text class="remind-time">{{item.createTime}}</text>
         </view>
         <view class="remind-info-item">
-          <text class="remind-type">{{item.teachGradeName}} {{item.teachBranchName}}</text>
+          <text class="remind-type">{{item.teachBranchName}}</text>
           <image class="boll-icon" mode="scaleToFill" src="../../../images/boll_icon.png"></image>
           <text class="remind-text">{{item.demandSignStatus === 1 ? '请尽快确认试讲时间' : item.timeCha}}</text>
         </view>
@@ -47,7 +47,7 @@
           <view bindtap="demandDetail" data-id='{{item.sid}}' data-status='{{item.sid}}' wx:for='{{details.fitTeacherOrderList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
-              <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+              <text class="name">{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
             <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
@@ -73,7 +73,7 @@
           <view bindtap="demandDetail" data-id='{{item.sid}}' wx:for='{{details.studentDemandList}}' class="demand-item">
             <view class="item-title">
               <text class="dot"></text>
-              <text class="name">{{item.teachGradeName}}、{{item.teachBranchName}}</text>
+              <text class="name">{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
             <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
