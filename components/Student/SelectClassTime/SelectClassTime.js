@@ -35,17 +35,17 @@ Component({
     week: Array.from({ length: 7 }).map((item, index) => index + 1),
     dataList: [
       {
-        id: 1,
+        id: 0,
         name: '上午',
         time: '（08:00-12:00）',
       },
       {
-        id: 2,
+        id: 1,
         name: '下午',
         time: '（12:00-18:00）',
       },
       {
-        id: 3,
+        id: 2,
         name: '晚上',
         time: '（18:00-23:00）',
       }

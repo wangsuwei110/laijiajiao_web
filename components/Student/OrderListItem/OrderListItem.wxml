@@ -46,9 +46,9 @@
     </view>
 
         <view class='signUpCount' wx:if='{{(item.subscribeStatus ===1 || item.subscribeStatus ===2) &&item.orderTeachTime}}'>
-            预计试讲时间：{{item.orderTeachTime}}
+            预计试讲时间：{{item.orderTeachTimeStr}}
         </view>
-        
+
         <view class='signUpCount' wx:elif='{{item.subscribeStatus ===1 &&!item.orderTeachTime}}'>
             预计试讲时间：等待教员确认时间
         </view>
