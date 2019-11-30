@@ -18,6 +18,7 @@ Component({
       type: Array,
       value: [0, 0, 0],
       observer(value) {
+        console.log(value, 'props')
         this.fetchFirstGrade(value)
         //const {firstList} = this.data
       },
@@ -103,7 +104,15 @@ Component({
       const { firstList } = this.data
       const index = 1
       if (firstList.length) {
-        value && this.setPickerIndex(firstList, value[0] || firstList[index].key, 0, index)
+
+        if (value) {
+          this.setPickerIndex(firstList, value[0] || firstList[index].key, 0, index)
+          this.fetchSecondGrade(value[0] || firstList[index].key, value)
+        } else {
+          this.fetchSecondGrade(firstList[index].key)
+        }
+
+        //value && this.setPickerIndex(firstList, value[0] || firstList[index].key, 0, index)
       } else {
         http.postPromise('/teacher/listSubject', {}).then(data => {
           this.setData({

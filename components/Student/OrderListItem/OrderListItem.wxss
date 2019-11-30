@@ -240,3 +240,21 @@
     font-weight:bold;
     color:rgba(51,51,51,1);
 }
+
+.waitIcon{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 14rpx;
+}
+
+.singUpIcon{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 12rpx;
+}
+
+.passIcon{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+}

@@ -25,7 +25,7 @@ Page({
     const sid = wx.getStorageSync('user_id')
     const phone = wx.getStorageSync('user_phone')
     sid && http.postPromise('/student/findStudent', { sid: wx.getStorageSync('user_id') }).then(data => {
-      this.setData({ student: data.data[0], phone: phone.replace(phone.substr(3, 4), '****') })
+      this.setData({ student: data.data[0], phone: Array.from(phone).map((key, index) => index > 2 && index < 7 ? '*' : key).join('') })
     })
   },
 

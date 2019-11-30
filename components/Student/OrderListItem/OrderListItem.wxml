@@ -46,16 +46,18 @@
     </view>
 
         <view class='signUpCount' wx:if='{{(item.subscribeStatus ===1 || item.subscribeStatus ===2) &&item.orderTeachTime}}'>
-            预计试讲时间：{{item.orderTeachTime}}
+            <image class='waitIcon' src='../../../../../../../images/Students/waitOrder.png'/>预计试讲时间：{{orderTeachTimeStr}}
         </view>
-        
+
         <view class='signUpCount' wx:elif='{{item.subscribeStatus ===1 &&!item.orderTeachTime}}'>
             预计试讲时间：等待教员确认时间
         </view>
 
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 6}}'>
-            <view class='passBtn' catchtap='onPassClick'>试讲通过</view>
-            <view class='unPassBtn' catchtap='onNoPassClick'>试讲不通过</view>
+            <view class='passBtn' catchtap='onPassClick'>
+            <image class='passIcon' src='../../../../../../../images/Students/pass.png'/>试讲通过</view>
+            <view class='unPassBtn' catchtap='onNoPassClick'>
+            <image class='passIcon' src='../../../../../../../images/Students/noPass.png'/>试讲不通过</view>
         </view>
 
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 3 && item.demandType===1}}'>
@@ -76,6 +78,6 @@
         </view>
 
         <view class='signUpCount' wx:elif='{{item.orderTeachCount}}' catchtap='onSeeTeachClick'>
-            已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
+            <image class='singUpIcon' src='../../../../../../../images/Students/signUp.png'/>已有<text class='emphasis'>{{item.orderTeachCount || 0}}</text>教员报名
         </view>
 </view>

@@ -1,5 +1,6 @@
 // components/Student/OrderListItem/OrderListItem.js
 const http = require('../../../utils/api')
+const utils = require('../../../utils/util')
 var appInst = getApp();
 
 Component({
@@ -7,7 +8,16 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    item: Object,
+    item: {
+      type: Object,
+      value: {},
+      observer(item) {
+        if (item.orderTeachTime) {
+          //console.log(item.orderTeachTime, 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
+          this.setData({ orderTeachTimeStr: utils.formatTime(new Date(item.orderTeachTime).getTime()) })
+        }
+      }
+    },
     payLogId: Number
   },
 
@@ -16,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    orderTeachTimeStr: ''
   },
 
   /**
@@ -56,9 +66,9 @@ Component({
     onPayLogClick() {
       const { item } = this.data
       http.postPromise('/studentDemand/payLog', { PaymentStreamId: item.paymentStreamId }).then(data => {
-        
+
       })
-      this.triggerEvent(onPayLogClick, this.data.item.sid)
+      this.triggerEvent('onPayLogClick', this.data.item.sid)
     },
 
     onSeeTeachClick() {

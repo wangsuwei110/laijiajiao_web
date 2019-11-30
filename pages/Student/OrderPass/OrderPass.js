@@ -43,9 +43,13 @@ Page({
     wx.login({
       success: (result) => {
         if (result.code) {
-
           wx.showLoading();
-          http.postPromise('/weixin/prepay', { code: result.code, demandId: item.sid, timeRange: JSON.stringify(timeRange), weekNum, orderMoney:  (this.data.item.orderMoney * this.data.timeRange.length * this.data.weekNum)}).then(data => {
+          http.postPromise('/weixin/prepay', {
+            code: result.code,
+            orderMoney: item.orderMoney * timeRange.length * weekNum,
+            demandId: item.sid, timeRange: JSON.stringify(timeRange),
+            weekNum
+          }).then(data => {
             //this.triggerEvent('onSubmit')
             //console.log(data.data.data)
             wx.requestPayment(Object.assign({
@@ -121,7 +125,7 @@ Page({
         const useTeach = !!data.data.teachTime
         const teachTime = (useTeach ? JSON.parse(data.data.teachTime) : []).reduce((obj, item) => {
           ////`${item.time}`.split(',').map(item => Number(item) + 1)
-          const arr = `${item.time}`.split(',').map(item => Number(item) + 1)
+          const arr = `${item.time}`.split(',').map(item => Number(item))
           //console.log(Set)
           obj[item.week] = [...new Set([...(obj[item.week] || []), ...arr])]
           return obj
