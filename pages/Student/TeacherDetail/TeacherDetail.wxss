@@ -102,6 +102,7 @@
 
   .girlIcon{
         width: 28rpx;
+        height: 28rpx;
         margin-left: 8rpx;
     }
 

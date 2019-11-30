@@ -11,7 +11,7 @@
             <view class='popoverWrap' wx:if='{{payLogId=== item.sid}}'>
                 <view class='popover'>
                     <view class='popoverInner'>
-                        <view class='payItem'>
+                        <view class='payItem' wx:for='{{payLogList}}'>
                             <text class='payLabel'>2019-07-02 22:00 | 购买1周3课时</text>
                             <text class='payAmount'>¥40.00</text>
                         </view>

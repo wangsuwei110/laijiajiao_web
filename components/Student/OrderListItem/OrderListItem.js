@@ -31,7 +31,8 @@ Component({
    */
   data: {
     createTimeStr: '',
-    orderTeachTimeStr: ''
+    orderTeachTimeStr: '',
+    payLogList: []
   },
 
   /**
@@ -71,7 +72,7 @@ Component({
     onPayLogClick() {
       const { item } = this.data
       http.postPromise('/StudentDemand/payLog', { paymentStreamId: item.paymentStreamId }).then(data => {
-
+        this.setData({ payLogList: data.data })
       })
       this.triggerEvent('onPayLogClick', this.data.item.sid)
     },
