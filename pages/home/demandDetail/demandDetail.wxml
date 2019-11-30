@@ -66,7 +66,7 @@
       <view class="applicant-list">
         <view class="applicant-item" wx:for='{{details.signUpTeacherInfo}}'>
           <view class="applicant-avatar">
-            <image mode="scaleToFill" src="{{item.picture}}"></image>
+            <image mode="scaleToFill" src="{{RESOURCE_PERFIX + item.picture}}"></image>
           </view>
           <view class="applicant-desc">
             <view>

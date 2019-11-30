@@ -78,7 +78,7 @@ Page({
       urls: [e.target.dataset.url]
     })
   },
-  onLoad: function () {
+  onShow: function () {
     this.getUserInfo()
   }
 })

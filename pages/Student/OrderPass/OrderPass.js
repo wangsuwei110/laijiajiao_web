@@ -43,7 +43,6 @@ Page({
     wx.login({
       success: (result) => {
         if (result.code) {
-
           wx.showLoading();
           http.postPromise('/weixin/prepay', {
             code: result.code,

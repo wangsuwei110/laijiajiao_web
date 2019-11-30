@@ -15,6 +15,7 @@ function dayTimes(index) {
 }
 Page({
   data: {
+    RESOURCE_PERFIX: http.RESOURCE_PERFIX,
     type: null,
     showToast: null,
     errorText: null,
