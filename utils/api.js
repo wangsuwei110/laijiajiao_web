@@ -24,6 +24,11 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
         onSuccess(res.data)
       } else if (res.data.code == '401') {
         wx.removeStorageSync('token')
+        wx.removeStorageSync('user_id')
+        wx.removeStorageSync('user_name')
+        wx.removeStorageSync('user_phone')
+        wx.removeStorageSync('user_type')
+        
         wx.showToast({
           title: '登录失效，请重新登录',
           icon: 'none',

@@ -3,7 +3,7 @@
     <view class='inner'>
         <view class='topBox'>
             <text class='date'>{{createTimeStr}}</text>
-            
+
             <view wx:if='{{item.endDemandFlag}}' class='topAction' catchtap='onOverClick'>结束需求</view>
 
             <view wx:if='{{item.paymentStreamId}}' class='topAction' catchtap='onPayLogClick'>支付记录</view>
@@ -11,9 +11,9 @@
             <view class='popoverWrap' wx:if='{{payLogId=== item.sid}}'>
                 <view class='popover'>
                     <view class='popoverInner'>
-                        <view class='payItem'>
-                            <text class='payLabel'>2019-07-02 22:00 | 购买1周3课时</text>
-                            <text class='payAmount'>¥40.00</text>
+                        <view class='payItem' wx:for='{{payLogList}}' wx:key='{{item.paymentId}}'>
+                            <text class='payLabel'>{{createTimeStr}} | {{item.paymentDesc}}</text>
+                            <text class='payAmount'>¥{{item.paymentAccount}}</text>
                         </view>
                     </view>
                 </view>
@@ -67,7 +67,7 @@
             <view class='payBtn {{!item.appraise ? "hasAppraise":""}} shrink' catchtap='onGoPay'>
                 续课
             </view>
-            <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}'>
+            <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}' catchtap='onGoEvaluate'>
                 评价
             </view>
         </view>

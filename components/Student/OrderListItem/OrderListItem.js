@@ -18,7 +18,7 @@ Component({
           //console.log(utils.formatTime(new Date(item.createTime).getTime()), 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
           orderTeachTimeStr = utils.formatTime(new Date(item.orderTeachTime).getTime())
         }
-        
+
         this.setData({ createTimeStr, orderTeachTimeStr })
       }
     },
@@ -31,7 +31,8 @@ Component({
    */
   data: {
     createTimeStr: '',
-    orderTeachTimeStr: ''
+    orderTeachTimeStr: '',
+    payLogList: []
   },
 
   /**
@@ -71,7 +72,12 @@ Component({
     onPayLogClick() {
       const { item } = this.data
       http.postPromise('/StudentDemand/payLog', { paymentStreamId: item.paymentStreamId }).then(data => {
-
+        this.setData({
+          payLogList: data.data.map(item => {
+            item.createTimeStr = utils.formatTime(new Date(item.createTime).getTime())
+            return item
+          })
+        })
       })
       this.triggerEvent('onPayLogClick', this.data.item.sid)
     },
@@ -89,6 +95,13 @@ Component({
       this.setCacheItem()
       wx.navigateTo({
         url: `/pages/Student/NotPass/NotPass?id=${item.sid}`,
+      });
+    },
+
+    onGoEvaluate() {
+      const { item } = this.data
+      wx.navigateTo({
+        url: `/pages/Student/Evaluate/Evaluate?id=${item.sid}`,
       });
     },
 

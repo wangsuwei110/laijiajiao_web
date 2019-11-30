@@ -1,7 +1,7 @@
 // pages/Student/ViewAppointment/ViewAppointment.js
 const http = require('../../../utils/api')
 const weekCNList = ['一', '二', '三', '四', '五', '六', '日']
-const timeCNList = ['上午', '中午', '晚上']
+const timeCNList = ['上午', '下午', '晚上']
 const hours = [
   [8, 9, 10, 12],
   [12, 13, 14, 15, 16, 17, 18],
