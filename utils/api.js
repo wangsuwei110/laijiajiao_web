@@ -29,7 +29,7 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
           icon: 'none',
           success: function () {
             wx.reLaunch({
-              url: '/pages/login/login'
+              url: '/pages/index/index'
             })
           }
         })

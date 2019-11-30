@@ -147,6 +147,7 @@ margin-top: 20rpx;
     align-items: center;
     justify-content: center;
     height: 100%;
+    padding-right: 30rpx;
 }
 
 .checkBox{

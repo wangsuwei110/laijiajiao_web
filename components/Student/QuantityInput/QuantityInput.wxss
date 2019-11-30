@@ -25,6 +25,7 @@
 }
 
 .input{
+    flex:1;
     width: 60rpx;
     height: 48rpx;
     min-height: auto;

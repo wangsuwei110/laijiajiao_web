@@ -78,7 +78,9 @@ Page({
       }).then(data => {
         const useTeach = !!data.data.baseInfo.teachTime
         const teachTime = (useTeach ? JSON.parse(data.data.baseInfo.teachTime) : []).reduce((obj, item) => {
-          obj[item.week] = `${item.time}`.split(',').map(item => Number(item) + 1)
+          const arr = `${item.time}`.split(',').map(item => Number(item) + 1)
+          //console.log(Set)
+          obj[item.week] = [...new Set([...(obj[item.week] || []), ...arr])]
           return obj
         }, {})
         //console.log(teachTime)

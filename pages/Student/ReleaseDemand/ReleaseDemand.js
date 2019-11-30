@@ -25,7 +25,9 @@ Page({
     gradeList: [],
     student: {
       sid: 0
-    }
+    },
+    teachAddress: [],
+    teachBranchs: [],
   },
 
 
@@ -43,7 +45,7 @@ Page({
 
   onAddressChange(e) {
     const { student } = this.data
-    console.log(student)
+    //console.log(student)
     student.demandAddress = e.detail.value
     this.setData({ student })
   },
@@ -101,7 +103,7 @@ Page({
   },
 
   onSubmit() {
-    const { student, teacherInfo } = this.data
+    const { student, teacherInfo, teachAddress, teachBranchs } = this.data
     const demandType = teacherInfo ? 1 : 2 //demandType  :订单类型：1:单独预约，2:快速请家教
     const {
       demandAddress, demandDesc,
@@ -112,6 +114,44 @@ Page({
       parameterId,
       timeRange, classNum
     } = student
+
+    const _Func = function () {
+      wx.showLoading();
+
+      http.postPromise('/StudentDemand/addStudentDemand', {
+        studentId: sid,
+        teacherId: teacherInfo && teacherInfo.teacherId,
+        demandType,
+        demandAddress,
+        demandDesc,
+        demandGrade,
+        subjectId,
+        sex,
+        parameterId,
+        studentName,
+        timeRange: JSON.stringify(timeRange),
+        classNum,
+        orderType: 1,
+      }).then(data => {
+        wx.showModal({
+          title: '提示',
+          content: teacherInfo ? '预约成功，请等待教员确定试讲时间' : '已发布，请耐心等待报名结果',
+          showCancel: false,
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if (result.confirm) {
+              wx.redirectTo({
+                url: '/pages/Student/OrderList/OrderList'
+              });
+            }
+          },
+        });
+        wx.hideLoading();
+      }).catch(e => {
+        wx.hideLoading();
+      })
+    }
 
     let res = ''
 
@@ -132,42 +172,49 @@ Page({
         title: res,
         icon: 'none',
       });
-    } else {
-      wx.showLoading();
+    } else if (teacherInfo) {
+      const gradeItem = teachBranchs.find(item => demandGrade === item.teachGradeId)
+      const addressItem = teachAddress.find(item => demandAddress === item.parameterId)
 
-      http.postPromise('/StudentDemand/addStudentDemand', {
-        studentId: sid,
-        teacherId: teacherInfo && teacherInfo.teacherId,
-        demandType,
-        demandAddress,
-        demandDesc,
-        demandGrade,
-        subjectId,
-        sex,
-        parameterId,
-        studentName,
-        timeRange: JSON.stringify(timeRange),
-        classNum,
-        orderType: 1,
-      }).then(data => {
+      if (!gradeItem || !addressItem) {
         wx.showModal({
           title: '提示',
-          content: data.msg,
-          showCancel: false,
+          content: !addressItem ? '您的上课区域不在该教员的授课区域内，请谨慎选择' : '您的年级科目不在该教员的可授范围内，请谨慎选择',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#000000',
           confirmText: '确定',
           confirmColor: '#3CC51F',
           success: (result) => {
             if (result.confirm) {
-              wx.redirectTo({
-                url: '/pages/Student/OrderList/OrderList'
-              });
+
+              if (!addressItem && !gradeItem) {
+                wx.showModal({
+                  title: '提示',
+                  content: '您的年级科目不在该教员的可授范围内，请谨慎选择',
+                  showCancel: true,
+                  cancelText: '取消',
+                  cancelColor: '#000000',
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                  success: (result) => {
+                    if (result.confirm) {
+                      _Func()
+                    }
+                  },
+                });
+              } else {
+                _Func()
+              }
             }
           },
         });
-        wx.hideLoading();
-      }).catch(e => {
-        wx.hideLoading();
-      })
+      } else {
+        _Func()
+      }
+
+    } else {
+      _Func()
     }
 
     /* 
@@ -237,7 +284,7 @@ weekNum*	integer($int32)
     const sid = wx.getStorageSync('user_id')
 
     if (options.teacherid) {
-      
+
       wx.setNavigationBarTitle({
         title: '预约教员',
       });
@@ -246,7 +293,11 @@ weekNum*	integer($int32)
         teacherId: options.teacherid,
         //studentId: sid
       }).then(data => {
-        this.setData({ teacherInfo: data.data.baseInfo })
+        this.setData({
+          teacherInfo: data.data.baseInfo,
+          teachAddress: data.data.teachAddress,
+          teachBranchs: data.data.teachBranchs,
+        })
       })
     }
 
