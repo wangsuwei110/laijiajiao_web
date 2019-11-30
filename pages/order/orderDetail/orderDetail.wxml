@@ -1,6 +1,6 @@
 <view class="order-detail-container">
   <view class="order-panel">
-    <view class="paenel-title">{{details.teachGradeName}} {{details.teachBranchName}}</view>
+    <view class="paenel-title">{{details.teachBranchName}}</view>
     <view class="panel-cont">
       <view class="cont-item"  wx:if='{{orderType === 0 || orderType === 5}}'>
         <text class="label">发布时间</text>
@@ -17,11 +17,11 @@
       </view>
 
 
-      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3}}'>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3 || orderType === 7}}'>
         <text class="label">订单创建</text>
         <text class="text">{{details.signTime}}</text>
       </view>
-      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 4 || orderType === 2 || orderType === 3}}'>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 4 || orderType === 2 || orderType === 3 || orderType === 7}}'>
         <text class="label">联系手机</text>
         <text class="text">{{details.parentPhoneNum}}</text>
       </view>
@@ -31,11 +31,11 @@
         <text class="text">{{details.demandAddress}}</text>
       </view>
 
-      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3}}'>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3 || orderType === 7}}'>
         <text class="label">每周上课次数</text>
         <text class="text">一周{{details.timeRange.length}}次</text>
       </view>
-      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3}}'>
+      <view class="cont-item"  wx:if='{{orderType === 1 || orderType === 2 || orderType === 3 || orderType === 7}}'>
         <text class="label">具体需求</text>
         <text class="text">{{details.demandDesc}}</text>
       </view>
