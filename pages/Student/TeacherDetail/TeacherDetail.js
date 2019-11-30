@@ -219,18 +219,18 @@ Page({
           })
         })
       }
-
+      console.log(data.baseInfo)
       that.setData({
         collectFlag: data.collectFlag,
-        'userinfo': data.baseInfo,
+        userinfo: data.baseInfo,
         'labels': data.chooseTags,
         'experienceList': data.expirencePictureList,
         'certificateList': data.certificatePictureList,
         'teachBranchs': data.teachBranchs,
         'teachAddress': data.teachAddress,
         StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
-        teacherForStudentServiceList: data.teacherForStudentServiceList.map( item => {
-          item.orderStartStr = util.formatTime(item.orderStart,'{y}-{m}-{d} {h}:{i}')
+        teacherForStudentServiceList: data.teacherForStudentServiceList.map(item => {
+          item.orderStartStr = util.formatTime(new Date(item.orderStart), '{y}-{m}-{d} {h}:{i}')
           return item
         }),
         serviceHours: data.serviceHours,
