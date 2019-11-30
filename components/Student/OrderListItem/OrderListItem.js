@@ -13,13 +13,14 @@ Component({
       value: {},
       observer(item) {
         const createTimeStr = utils.formatTime(new Date(item.createTime).getTime())
+        const appraiseTimeStr = utils.formatTime(new Date(item.appraiseTime).getTime())
         let orderTeachTimeStr = ''
         if (item.orderTeachTime) {
           //console.log(utils.formatTime(new Date(item.createTime).getTime()), 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
           orderTeachTimeStr = utils.formatTime(new Date(item.orderTeachTime).getTime())
         }
 
-        this.setData({ createTimeStr, orderTeachTimeStr })
+        this.setData({ createTimeStr, orderTeachTimeStr, appraiseTimeStr })
       }
     },
     payLogId: Number
@@ -32,6 +33,7 @@ Component({
   data: {
     createTimeStr: '',
     orderTeachTimeStr: '',
+    appraiseTimeStr: '',
     payLogList: []
   },
 

@@ -14,9 +14,9 @@
         <image wx:if='{{evaluate === 3}}' src='../../../images/Students/evaluate_2.png' class='evaluateIcon' data-id='3' catchtap='onEvaluateChange'/>
         <image wx:else src='../../../images/Students/def_evaluate_2.png' class='evaluateIcon' data-id='3' catchtap='onEvaluateChange'/>
     </view>
-    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写评价' maxlength='1000'/>
+    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写评价' maxlength='1000' value='{{appraise}}' bindinput='onChange'/>
 </view>
 
-<view class='addBtn'>确认提交</view>
+<view class='addBtn' bindtap='onSubmit'>确认提交</view>
 
 <HomeNav independent='true'/>

@@ -12,6 +12,11 @@ Page({
     appraise: ''
   },
 
+  onChange(event) {
+    this.setData({
+      appraise: event.detail.value
+    })
+  },
 
   onEvaluateChange(e) {
     const evaluate = Number(e.currentTarget.dataset.id)
@@ -37,7 +42,7 @@ Page({
     } else {
       wx.showLoading();
 
-      http.postPromise('StudentDemand/appraise', { evaluate, appraise, demandId: this.demandId, teacherId: this.teacherId }).then(data => {
+      http.postPromise('/StudentDemand/appraise', { appraiseLevel: evaluate, appraise, demandId: this.demandId, teacherId: this.teacherId }).then(data => {
         wx.hideLoading();
         wx.showModal({
           title: '提示',
