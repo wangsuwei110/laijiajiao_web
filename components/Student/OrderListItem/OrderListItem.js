@@ -13,6 +13,7 @@ Component({
       value: {},
       observer(item) {
         if (item.orderTeachTime) {
+          //console.log(item.orderTeachTime, 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
           this.setData({ orderTeachTimeStr: utils.formatTime(new Date(item.orderTeachTime).getTime()) })
         }
       }
@@ -67,7 +68,7 @@ Component({
       http.postPromise('/studentDemand/payLog', { PaymentStreamId: item.paymentStreamId }).then(data => {
 
       })
-      this.triggerEvent(onPayLogClick, this.data.item.sid)
+      this.triggerEvent('onPayLogClick', this.data.item.sid)
     },
 
     onSeeTeachClick() {
