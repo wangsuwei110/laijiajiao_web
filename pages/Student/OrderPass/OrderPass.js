@@ -44,10 +44,12 @@ Page({
       success: (result) => {
         if (result.code) {
           wx.showLoading();
+          const orderMoney = item.orderMoney * timeRange.length * weekNum
+          const timeRange = JSON.stringify(timeRange)
           http.postPromise('/weixin/prepay', {
             code: result.code,
-            orderMoney: item.orderMoney * timeRange.length * weekNum,
-            demandId: item.sid, timeRange: JSON.stringify(timeRange),
+            orderMoney,
+            demandId: item.sid, timeRange,
             weekNum
           }).then(data => {
             //this.triggerEvent('onSubmit')
@@ -64,9 +66,22 @@ Page({
                   confirmColor: '#3CC51F',
                   success: (result) => {
                     if (result.confirm) {
-                      wx.navigateBack({
-                        delta: 1
-                      });
+                      wx.login({
+                        success: (res) => {
+                          if (res.code) {
+                            http.postPromise('/weixin/wxNotify', {
+                              code: res.code,
+                              orderMoney,
+                              demandId: item.sid, timeRange,
+                              weekNum
+                            }).then(data => {
+                              wx.navigateBack({
+                                delta: 1
+                              });
+                            })
+                          }
+                        }
+                      })
                     }
                   },
                   fail: () => { },
