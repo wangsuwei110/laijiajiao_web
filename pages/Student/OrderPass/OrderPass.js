@@ -66,7 +66,10 @@ Page({
                   confirmColor: '#3CC51F',
                   success: (result) => {
                     if (result.confirm) {
-                      wx.login({
+                      wx.navigateBack({
+                        delta: 1
+                      });
+                      /* wx.login({
                         success: (res) => {
                           if (res.code) {
                             http.postPromise('/weixin/wxNotify', {
@@ -75,13 +78,11 @@ Page({
                               demandId: item.sid, timeRange:_timeRange,
                               weekNum
                             }).then(data => {
-                              wx.navigateBack({
-                                delta: 1
-                              });
+                              
                             })
                           }
                         }
-                      })
+                      }) */
                     }
                   }
                 });
