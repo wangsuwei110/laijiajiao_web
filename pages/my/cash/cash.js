@@ -47,13 +47,13 @@ Page({
     })
   },
   allCash () {
-    console.log(this.data.money, 'this.data.money')
+    //console.log(this.data.money, 'this.data.money')
     this.setData({
       cashOut: this.data.money
     })
   },
   saveBtn(e) {
-    console.log(e)
+    //console.log(e)
     // return
     var that = this
     if (this.data.cashOut === '' || !this.data.cashOut || this.data.cashOut < 1) {
@@ -72,7 +72,7 @@ Page({
     })
     wx.login({
       success(res1) {
-        console.log(res1, 'res1res1')
+        //console.log(res1, 'res1res1')
         if (res1.code) {
 
           http.postPromise('/user/getOpenId', { code: res1.code }).then(data => {
@@ -97,10 +97,10 @@ Page({
               //   that.errFun(res.data.msg)
               //   return
               // }
-              // console.log(res.data.data.timeStamp, 'res.datares.data')
+              // //console.log(res.data.data.timeStamp, 'res.datares.data')
               // wx.hideLoading()
               // var data = wx.getLaunchOptionsSync()//获取场景代码
-              // console.log(data.scene)
+              // //console.log(data.scene)
               // if (data.scene == 1047 || data.scene == 1011 || data.scene == 1025 || data.scene == 1124){
               //   wx.sendBizRedPacket ({
               //     timeStamp: res.data.data.timeStamp, // 支付签名时间戳，
@@ -114,7 +114,7 @@ Page({
               //       })
               //     },
               //     fail:function(res){
-              //       console.log(res)
+              //       //console.log(res)
               //     },
               //     complete:function(res){}
               // })
@@ -143,10 +143,10 @@ Page({
           return false
 
           // http.post('/wxRedPack/sendRedPack', { teacherId: wx.getStorageSync('user_id'), code: res1.code, cashOut: that.data.cashOut }, function (res) {
-          //   console.log(res.data)
+          //   //console.log(res.data)
           //   var data = res.data
           //   if (res.code === '200') {
-          //     console.log(data, '111111')
+          //     //console.log(data, '111111')
           //   } else {
           //     wx.showToast({
           //       title: res.msg,
@@ -154,7 +154,7 @@ Page({
           //     })
           //   }
           // }, function (err) {
-          //   console.log(err)
+          //   //console.log(err)
           // }, function () {
           //   wx.hideLoading()
           // })

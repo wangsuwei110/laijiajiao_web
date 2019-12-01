@@ -18,7 +18,7 @@ Component({
       type: Array,
       value: [0, 0, 0],
       observer(value) {
-        console.log(value, 'props')
+        //console.log(value, 'props')
         this.fetchFirstGrade(value)
         //const {firstList} = this.data
       },

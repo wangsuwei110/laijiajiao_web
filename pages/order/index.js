@@ -72,7 +72,7 @@ Page({
       title: '加载中...'
     })
     http.post('/teacher/queryDemandsByTeacher', this.data.form, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         data = data.map(item => {
@@ -80,14 +80,14 @@ Page({
           if (obj.createTime) obj.createTime = that.timeFormat(obj.createTime)
           if (obj.orderTeachTime) {
             let M = that.timeStr(obj.orderTeachTime, 1).split('-')
-            console.log(M)
-            console.log(M[0] + '/' + that.second(M[1]) + '/' + that.second(M[2]), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
+            //console.log(M)
+            //console.log(M[0] + '/' + that.second(M[1]) + '/' + that.second(M[2]), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
             obj.timeCha = that.timeFn(new Date(M[0] + '/' + that.second(M[1]) + '/' + that.second(M[2])).getTime()) + that.timeStr(obj.orderTeachTime) + '试讲'
           }
-          console.log(obj.timeCha, '111')
+          //console.log(obj.timeCha, '111')
           return obj
         })
-        console.log(data, 'datadata')
+        //console.log(data, 'datadata')
         that.setData({
           list: data
         })
@@ -99,7 +99,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       wx.hideLoading()
     })
@@ -155,7 +155,7 @@ Page({
     })
     this.getList()
     // 请求数据
-    console.log(e.currentTarget.dataset)
+    //console.log(e.currentTarget.dataset)
   },
   revenueList: function () {
 
@@ -164,7 +164,7 @@ Page({
    * 报名/支付订单详情
    */
   orderDetail: function (e) {
-    console.log(this.data.status)
+    //console.log(this.data.status)
     var orderType = e.currentTarget.dataset.type;
     wx.navigateTo({
       url: './orderDetail/orderDetail?orderType=' + orderType + '&id=' + e.currentTarget.dataset.id

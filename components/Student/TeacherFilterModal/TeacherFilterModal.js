@@ -10,7 +10,7 @@ Component({
       observer(show, old) {
         if (!show && old) {
           const { type, sex } = this.data
-          console.log(type, sex)
+          //console.log(type, sex)
           this.setData({ _type: type === null ? -1 : type, _sex: sex === null ? 0 : sex })
         }
       },
@@ -19,7 +19,7 @@ Component({
       type: Number,
       value: -1,
       observer(type) {
-        console.log(type)
+        //console.log(type)
         this.setData({ _type: type === null ? -1 : type })
       },
     },

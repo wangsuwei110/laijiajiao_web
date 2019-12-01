@@ -57,7 +57,7 @@ Page({
         }
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       },
       complete: function () {
         wx.hideLoading()
@@ -86,7 +86,7 @@ Page({
     var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}[0-9Xx]$)/
     var _userinfo = this.data.userinfo
     var tipText = ''
-    console.log(reg.test(_userinfo.IDcardNumber))
+    //console.log(reg.test(_userinfo.IDcardNumber))
     if (!reg.test(_userinfo.IDcardNumber)) {
       tipText = '请输入正确的身份证号'
     } else if (_userinfo.IDcardPic.length <= 0) {

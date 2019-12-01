@@ -210,7 +210,7 @@ Page({
             if (res.confirm) { //点击确定
               http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
                 that.errFun('报名成功，请耐心等待报名结果')
-                console.log(res)
+                //console.log(res)
                 setTimeout(() => {
                   wx.switchTab({
                     url: '/pages/order/index'

@@ -1,5 +1,5 @@
 var http = require('../../utils/api.js')
-console.log(222)
+//console.log(222)
 var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allgradesCheckedValue = [],
 teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
 Page({
@@ -81,7 +81,7 @@ Page({
         addressCheckedID.splice(addressCheckedID.indexOf(_item.parameterId), 1)
         
       }
-      console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
+      //console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
       if (addressCheckedValue.length >= 2) {
         showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
       } else {
@@ -105,7 +105,7 @@ Page({
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
-      console.log("uuuu")
+      //console.log("uuuu")
       teachBranchSlaveId.splice(allgradesCheckedID.indexOf(_key), 1)
       teachBranchValue.splice(teachBranchValue.indexOf(_item.value), 1)
     }
@@ -140,7 +140,7 @@ Page({
         teachAddress: _teachAddress,
       })
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
     })
   },
@@ -155,7 +155,7 @@ Page({
   },
   // 选择学校 
   selectSchool (e) {
-    console.log(e, '1111111111')
+    //console.log(e, '1111111111')
     let key =  e.currentTarget.dataset.item
     this.setData({
       currentIdx: -1,
@@ -187,7 +187,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       wx.hideLoading()
     })
@@ -211,7 +211,7 @@ Page({
       var data = res.data
       if (res.code === '200') {
         if (data && data.length > 0) {
-          console.log(data, 'datadatadata')
+          //console.log(data, 'datadatadata')
             if (!teachGrade && teachGrade !== '') {
               let _grades = data
               // 查询到辅导年级回显辅导年级
@@ -252,7 +252,7 @@ Page({
                     teachBranchValue = []
                     allgradesCheckedID = []
                     allgradesCheckedValue = []
-                    console.log(that.data.subjects, 'that.data.subjectssss')
+                    //console.log(that.data.subjects, 'that.data.subjectssss')
                     _grades = _grades.map(item => {
                       let obj = item
                       obj.isHave = 0
@@ -295,10 +295,10 @@ Page({
                 return item.value
               })
               // 检索当切换辅导年级时  辅导科目存在的某一科目无该辅导科目
-              console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
-              console.log(item, 'itemitemitemitemitem')
+              //console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
+              //console.log(item, 'itemitemitemitemitem')
               if (minGrades.indexOf(that.data.importantSubId) === -1 && item) {
-                console.log('检索', item)
+                //console.log('检索', item)
                 if (item.isHave) {
                   that.setData({
                     isCurrentSubject: null,
@@ -316,12 +316,12 @@ Page({
               let teachBranchSlave = [], slave = ''
               // 生成辅授科目list
               for (let j = 0; j < _grades2.length; j++) {
-                console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
+                //console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
                 if (j !== that.data.isCurrentSubject && (that.data.isCurrentSubject || that.data.isCurrentSubject === 0)) {
                   teachBranchSlave.push(_grades2[j])
                 }
               }
-              console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
+              //console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
               for (let j = 0; j < teachBranchSlave.length; j++) {
                 for (let m = 0; m < checkSlaveId.length; m++) {
                   if (teachBranchSlave[j].key === parseInt(checkSlaveId[m])) {
@@ -345,7 +345,7 @@ Page({
           // })
         } else {
           if (!teachGrade && teachGrade !== '') {
-            console.log(teachGrade)
+            //console.log(teachGrade)
             that.setData({
               importantSub: null,
               importantSubId: null,
@@ -382,7 +382,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
     })
   },
@@ -431,7 +431,7 @@ Page({
       allgradesCheckedID.splice(allgradesCheckedID.indexOf(_key), 1)
       allgradesCheckedValue.splice(allgradesCheckedValue.indexOf(_item.value), 1)
     }
-    console.log(allgradesCheckedValue, 'allgradesCheckedValueallgradesCheckedValue')
+    //console.log(allgradesCheckedValue, 'allgradesCheckedValueallgradesCheckedValue')
     this.setData({
       allgradesCheckedValue: allgradesCheckedValue
     })
@@ -461,15 +461,15 @@ Page({
     })
     let showVal = []
     if (_isHave === 1) {
-      console.log('push')
+      //console.log('push')
       gradesCheckedID.push(_key)
       gradesCheckedValue.push(_item.value)
     } else {
-      console.log('oooooo11')
+      //console.log('oooooo11')
       gradesCheckedID.splice(gradesCheckedID.indexOf(_key), 1)
       gradesCheckedValue.splice(gradesCheckedValue.indexOf(_item.value), 1)
     }
-    console.log(gradesCheckedValue, 'gradesCheckedValuegradesCheckedValue')
+    //console.log(gradesCheckedValue, 'gradesCheckedValuegradesCheckedValue')
     this.setData({
       gradesCheckedValue: gradesCheckedValue
     })
@@ -486,7 +486,7 @@ Page({
     this.getProject(gradesCheckedID.join(','), null, function() {}, _item)
   },
   getArrDifference(arr1, arr2) {
-    console.log(arr1, arr2, 'arr2arr2')
+    //console.log(arr1, arr2, 'arr2arr2')
     return arr1.concat(arr2).filter(function(v, i, arr) {
       return arr.indexOf(v) !== arr.lastIndexOf(v);
     });
@@ -580,7 +580,7 @@ Page({
     var _subjects = []
     var _subjects1 = []
     http.post('/teacher/listSubject', {}, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         if (data && data.length > 0) {
@@ -613,7 +613,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       wx.hideLoading()
     })
@@ -624,7 +624,7 @@ Page({
     // wx.getLocation({
     //   type: 'wgs84',
     //   success: (res)=> {
-    //     console.log(res, 111111111)
+    //     //console.log(res, 111111111)
     //     var latitude = res.latitude
     //     var longitude = res.longitude
     //     this.setData({ latitude: latitude, longitude: longitude, 'userinfo.address': 32131})

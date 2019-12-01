@@ -84,7 +84,7 @@ Component({
      'selectedList': function (selectedList) {
        const { options, nameKey } = this.data
        
-       console.log(names)
+       //console.log(names)
        this.setData({
          names
        })

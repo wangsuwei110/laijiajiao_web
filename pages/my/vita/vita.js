@@ -242,15 +242,15 @@ Page({
    * 预览图片
    */
   previewImg: function (e) {
-    console.log(e)
+    //console.log(e)
     wx.previewImage({
       current: e.currentTarget.dataset.url,
       urls: e.currentTarget.dataset.urls,
       success: function (res) {
-        console.log(res)
+        //console.log(res)
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       }
     })
   },

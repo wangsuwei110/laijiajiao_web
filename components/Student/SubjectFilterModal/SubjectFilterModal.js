@@ -9,7 +9,7 @@ Component({
       type: Boolean,
       value: false,
       observer(show, old) {
-        console.log(show, old)
+        //console.log(show, old)
         if (show && !old && !this.loaded) {
           this.loaded = true
           http.postPromise('/teacher/findAllSubject', {}).then(data => {

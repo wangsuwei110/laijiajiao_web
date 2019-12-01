@@ -37,7 +37,7 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
-        console.log(res)
+        //console.log(res)
         that.setData({
           ["userinfo.headPicture"]: res.tempFilePaths[0]
         })
@@ -72,7 +72,7 @@ Page({
         }
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       },
       complete: function () {
         wx.hideLoading()
@@ -89,8 +89,8 @@ Page({
   },
   saveUserinfo: function () {
     var _userinfo = this.data.userinfo
-    console.log(typeof _userinfo.teacherName)
-    console.log(typeof _userinfo.weiChar)
+    //console.log(typeof _userinfo.teacherName)
+    //console.log(typeof _userinfo.weiChar)
     var tipText = ''
     if (!_userinfo.headPicture) {
       tipText = '请上传头像'

@@ -10,11 +10,11 @@ Page({
   getAccount () {
     var that = this
     http.post('/userAccount/queryUserAccount', {teacherId: wx.getStorageSync('user_id')}, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
       data.surplusMoney = data.surplusMoney.toFixed(2)
       if (res.code === '200') {
-        console.log(data, '111111')
+        //console.log(data, '111111')
         that.setData({
           details: res.data
         })
@@ -25,7 +25,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       if (that.data.details === null) {
         that.setData({

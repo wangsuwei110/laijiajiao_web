@@ -13,7 +13,7 @@ Page({
     wx.showLoading()
     http.post('/userInfo/queryTeacherInfoByType', params, function (res) {
       var ability = res.data.pictures ? res.data.pictures : []
-      console.log(ability)
+      //console.log(ability)
       if (ability.length > 0) {
         ability.forEach(function (item) {
           var _pics = []
@@ -24,7 +24,7 @@ Page({
           item.pictureUrl = _pics
         })
       }
-      console.log(ability)
+      //console.log(ability)
       that.setData({
         'ability': ability
       })
@@ -38,15 +38,15 @@ Page({
     })
   },
   previewImg: function (e) {
-    console.log(e)
+    //console.log(e)
     wx.previewImage({
       current: e.currentTarget.dataset.url,
       urls: this.data.ability[e.currentTarget.dataset.id].pictureUrl,
       success: function (res) {
-        console.log(res)
+        //console.log(res)
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       }
     })
   },

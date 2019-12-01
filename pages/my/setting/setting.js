@@ -7,7 +7,7 @@ Page({
     vacationStatus: 0
   },
   switchChange: function (e) {
-    console.log('switch1 发生 change 事件，携带值为', e.detail.value)
+    //console.log('switch1 发生 change 事件，携带值为', e.detail.value)
     var _vacationStatus = e.detail.value ? 1 : 0
     var params = {
       teacherId: wx.getStorageSync('user_id'),
@@ -48,7 +48,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(this.data.vacationStatus)
+    //console.log(this.data.vacationStatus)
     this.setData({ 'vacationStatus': wx.getStorageSync('vacationStatus')})
   }
 })

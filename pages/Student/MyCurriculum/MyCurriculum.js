@@ -66,7 +66,7 @@ Page({
         list[weekIndex] = weekList
       })
 
-      console.log(list)
+      //console.log(list)
 
       this.setData({ curriculum: data.data, loaded: true, time: orderTeachTime, timeStr, dateList: list, completeObj })
     })

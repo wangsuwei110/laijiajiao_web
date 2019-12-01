@@ -212,14 +212,14 @@ Page({
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
-      console.log("uuuu")
+      //console.log("uuuu")
       teachBranchSlaveId.splice(teachBranchSlaveId.indexOf(_key), 1)
       teachBranchValue.splice(teachBranchValue.indexOf(_item.value), 1)
     }
     this.setData({
       teachBranchValue: teachBranchValue
     })
-    console.log(teachBranchValue, 'teachBranchValueteachBranchValueteachBranchValue')
+    //console.log(teachBranchValue, 'teachBranchValueteachBranchValueteachBranchValue')
     if (teachBranchValue.length > 2) {
       slave = this.data.teachBranchValue[0] + ',' + this.data.teachBranchValue[1] + '...'
     } else {
@@ -275,7 +275,7 @@ Page({
       allgradesCheckedID.splice(allgradesCheckedID.indexOf(_key), 1)
       allgradesCheckedValue.splice(allgradesCheckedValue.indexOf(_item.value), 1)
     }
-    console.log(allgradesCheckedValue, 'allgradesCheckedValueallgradesCheckedValue')
+    //console.log(allgradesCheckedValue, 'allgradesCheckedValueallgradesCheckedValue')
     this.setData({
       allgradesCheckedValue: allgradesCheckedValue
     })
@@ -314,15 +314,15 @@ Page({
     })
     let showVal = []
     if (_isHave === 1) {
-      console.log('push')
+      //console.log('push')
       gradesCheckedID.push(_key)
       gradesCheckedValue.push(_item.value)
     } else {
-      console.log('oooooo11')
+      //console.log('oooooo11')
       gradesCheckedID.splice(gradesCheckedID.indexOf(_key), 1)
       gradesCheckedValue.splice(gradesCheckedValue.indexOf(_item.value), 1)
     }
-    console.log(gradesCheckedValue, 'gradesCheckedValuegradesCheckedValue')
+    //console.log(gradesCheckedValue, 'gradesCheckedValuegradesCheckedValue')
     this.setData({
       gradesCheckedValue: gradesCheckedValue
     })
@@ -340,7 +340,7 @@ Page({
   },
 
   getArrDifference(arr1, arr2) {
-    console.log(arr1, arr2, 'arr2arr2')
+    //console.log(arr1, arr2, 'arr2arr2')
     return arr1.concat(arr2).filter(function(v, i, arr) {
       return arr.indexOf(v) !== arr.lastIndexOf(v);
     });
@@ -361,7 +361,7 @@ Page({
       var data = res.data
       if (res.code === '200') {
         if (data && data.length > 0) {
-          console.log(data, 'datadatadata')
+          //console.log(data, 'datadatadata')
             if (!teachGrade && teachGrade !== '') {
               let _grades = data
               // 查询到辅导年级回显辅导年级
@@ -402,7 +402,7 @@ Page({
                     teachBranchValue = []
                     allgradesCheckedID = []
                     allgradesCheckedValue = []
-                    console.log(that.data.subjects, 'that.data.subjectssss')
+                    //console.log(that.data.subjects, 'that.data.subjectssss')
                     _grades = _grades.map(item => {
                       let obj = item
                       obj.isHave = 0
@@ -445,10 +445,10 @@ Page({
                 return item.value
               })
               // 检索当切换辅导年级时  辅导科目存在的某一科目无该辅导科目
-              console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
-              console.log(item, 'itemitemitemitemitem')
+              //console.log(minGrades, that.data.importantSubId, '111111111111', minGrades.indexOf(that.data.importantSubId))
+              //console.log(item, 'itemitemitemitemitem')
               if (minGrades.indexOf(that.data.importantSubId) === -1 && item) {
-                console.log('检索', item)
+                //console.log('检索', item)
                 if (item.isHave) {
                   that.setData({
                     isCurrentSubject: null,
@@ -466,12 +466,12 @@ Page({
               let teachBranchSlave = [], slave = ''
               // 生成辅授科目list
               for (let j = 0; j < _grades2.length; j++) {
-                console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
+                //console.log(that.data.isCurrentSubject, j, 'that.data.isCurrentSubjectthat.data.isCurrentSubject')
                 if (j !== that.data.isCurrentSubject && (that.data.isCurrentSubject || that.data.isCurrentSubject === 0)) {
                   teachBranchSlave.push(_grades2[j])
                 }
               }
-              console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
+              //console.log(teachBranchSlave, 'teachBranchSlaveteachBranchSlave')
               for (let j = 0; j < teachBranchSlave.length; j++) {
                 for (let m = 0; m < checkSlaveId.length; m++) {
                   if (teachBranchSlave[j].key === parseInt(checkSlaveId[m])) {
@@ -495,7 +495,7 @@ Page({
           // })
         } else {
           if (!teachGrade && teachGrade !== '') {
-            console.log(teachGrade)
+            //console.log(teachGrade)
             that.setData({
               importantSub: null,
               importantSubId: null,
@@ -532,7 +532,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
     })
   },
@@ -557,7 +557,7 @@ Page({
       addressCheckedID.splice(addressCheckedID.indexOf(_item.parameterId), 1)
       
     }
-    console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
+    //console.log(addressCheckedID, _item.parameterId, addressCheckedValue, '_item.parameterId_item.parameterId')
     if (addressCheckedValue.length >= 2) {
       showAddress = addressCheckedValue[0] + ',' +  addressCheckedValue[1] + '...'
     } else {
@@ -603,9 +603,9 @@ Page({
         checkSlaveId: res.data[0].teachBranchSlave,
         checkedTime: res.data[0].teachTime ? JSON.parse(res.data[0].teachTime) : []
       })
-      console.log(addressCheckedValue, '111')
+      //console.log(addressCheckedValue, '111')
       for (var i = 0; i < that.data.checkedTime.length; i++) {
-        console.log(that.data.checkedTime[i].week, '111')
+        //console.log(that.data.checkedTime[i].week, '111')
         that.data.checkedTime[i].week = that.data.checkedTime[i].week - 1
         that.setData({
           ["weekTime[" + that.data.checkedTime[i].week + "][" + that.data.checkedTime[i].time + "].checked"]: true
@@ -613,7 +613,7 @@ Page({
       }
       that.getGradesAndSubject()
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
     })
   },
@@ -630,7 +630,7 @@ Page({
     // 授课时间
 //     var gradesCheckedID = [], gradesCheckedValue = [], allgradesCheckedID = [], allgradesCheckedValue = [], importantSubId
 // teachBranchSlaveId = [], teachBranchValue = [], addressCheckedID = [], addressCheckedValue = [], showAddress = '', showValue = ''
-    console.log(gradesCheckedID, allgradesCheckedID, this.data.importantSubId, teachBranchSlaveId)
+    //console.log(gradesCheckedID, allgradesCheckedID, this.data.importantSubId, teachBranchSlaveId)
     var teachWeekTime = []
     if (this.data.weekTime.length > 0) {
       this.data.weekTime.forEach(function (item, index) {
@@ -653,7 +653,7 @@ Page({
           teachWeekTime1.push({week: teachWeekTime[i].week, time: teachWeekTime[i].time[m]})
         }
       }
-      console.log(teachWeekTime1, 'teachWeekTimeteachWeekTime')
+      //console.log(teachWeekTime1, 'teachWeekTimeteachWeekTime')
     }
     addressCheckedID = this.unique(addressCheckedID)
     var tipText = ''
@@ -685,7 +685,7 @@ Page({
       teachAddress: addressCheckedID.join(','),
       teachTime: teachWeekTime1
     }
-    // console.log(params)
+    // //console.log(params)
     http.post('/userInfo/updateUserInfoByParameter', params, function (res) {
       wx.showToast({
         title: '保存成功',
@@ -724,10 +724,10 @@ Page({
     wx.showLoading({
       title: '加载中...'
     })
-    console.log(this.data.checkLevelId, 'this.data.checkLevelIdthis.data.checkLevelId')
+    //console.log(this.data.checkLevelId, 'this.data.checkLevelIdthis.data.checkLevelId')
     var _grades = [], checkLevelId = this.data.checkLevelId.split(',')
     http.post('/teacher/listSubject', {}, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         if (data && data.length > 0) {
@@ -737,7 +737,7 @@ Page({
           })
           for (let j = 0; j < _grades.length; j++) {
             for (let m = 0; m < checkLevelId.length; m++) {
-              console.log(parseInt(checkLevelId[m]), _grades[j].key)
+              //console.log(parseInt(checkLevelId[m]), _grades[j].key)
               if (_grades[j].key === parseInt(checkLevelId[m])) {
                 _grades[j].isHave = 1
                 gradesCheckedValue.push(_grades[j].value)
@@ -773,7 +773,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
     })
   },
