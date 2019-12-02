@@ -12,10 +12,10 @@ Page({
       current: e.currentTarget.dataset.url,
       urls: this.data.achievementInfo.pictureUrl,
       success: function (res) {
-        console.log(res)
+        //console.log(res)
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       }
     })
   },
@@ -53,7 +53,7 @@ Page({
     })
   },
   onLoad: function (o) {
-    console.log(o)
+    //console.log(o)
     var id = o.id
     this.getAchievementInfo(id)
   }

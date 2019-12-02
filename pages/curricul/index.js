@@ -109,7 +109,7 @@ Page({
       that.setData({
         details:sumData
       })
-      console.log(sumData)
+      //console.log(sumData)
     })
     
   },

@@ -10,11 +10,11 @@ Page({
     }
   },
   getAchievementName: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.data.achievement.name = e.detail.value;
   },
   getAchievementDesc: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.data.achievement.desc = e.detail.value;
   },
   uploadImg: function () {
@@ -51,7 +51,7 @@ Page({
         }
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       },
       complete: function () {
         wx.hideLoading()

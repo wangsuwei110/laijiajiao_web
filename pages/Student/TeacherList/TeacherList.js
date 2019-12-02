@@ -83,6 +83,7 @@ private Integer sex;
 
   onChange(e) {
     const { searchData } = this.data
+
     this.setData({ searchData: Object.assign({}, searchData, e.detail) }, () => this.fetchList())
   },
 
@@ -96,14 +97,47 @@ private Integer sex;
     if (!this.running) {
       this.running = true
       const { searchData, teacherList, pageSize } = this.data
-      http.postPromise('/teacher/list', Object.assign({}, searchData, { pageIndex, pageSize })).then(data => {
+      const { type: isGraduate, sex, schoolId: school, addressId: teachAddress, subjectId: teachBrance } = searchData
+      const _searchData = { isGraduate, sex, school, teachAddress, teachBrance, createTime: "2018", teacherPoints: 1 }
+      const ___searchData = Object.keys(_searchData).reduce((obj, key) => {
+        if (_searchData[key] !== null) {
+          obj[key] = _searchData[key]
+        }
+        return obj
+      }, {})
+      //, { pageIndex, pageSize }
+
+      http.postPromise('/userInfo/queryAllTeacherInfosByStudents', Object.assign({}, ___searchData, { pageIndex, pageSize })).then(data => {
+        const dataList = (data.data.dataList || []).map(item => {
+          if (item.teacherTag) {
+            item.teacherTag = JSON.parse(item.teacherTag)
+          }
+
+          if (item.teachBrance) {
+            item.teachBrance = JSON.parse(item.teachBrance)
+            item.teachBranchSlave = item.teachBrance.map(item => item.teachBranchName).join(',')
+          }
+
+          return item
+        })
+
+        const list = pageIndex === 1 ? dataList : dataList ? [...teacherList, ...dataList] : teacherList
+
+        //console.log(list.length, data.data.total)
         this.setData({
-          teacherList: pageIndex === 1 ? data.data : data.data ? [...teacherList, ...data.data] : teacherList,
+          teacherList: list,
           pageIndex,
-          isEnd: !data.data || data.data.length < pageSize,
+          isEnd: !dataList || dataList.length < pageSize || list.length >= data.data.total,
           //pageCount: data.data ? 1000 : pageIndex
         })
         this.running = false
+      }).catch(e => {
+        this.running = false
+        this.setData({
+          teacherList: [],
+          isEnd: true,
+          //pageCount: data.data ? 1000 : pageIndex
+        })
       })
     }
 
@@ -121,6 +155,8 @@ private Integer sex;
    * 页面上拉触底事件的处理函数
    */
   onScrollToLower: function () {
-    this.fetchList(this.data.pageIndex + 1)
+    if (!this.data.isEnd) {
+      this.fetchList(this.data.pageIndex + 1)
+    }
   },
 })

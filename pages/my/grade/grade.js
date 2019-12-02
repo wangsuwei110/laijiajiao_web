@@ -42,12 +42,12 @@ Page({
     } else {
       this.getIntegralLogList()
     }
-    console.log(e.currentTarget.dataset)
+    //console.log(e.currentTarget.dataset)
   },
   getGradeList: function () {
     var that = this;
     http.get('/levelRules/queryAllLevelRules', function (res) {
-      console.log(res)
+      //console.log(res)
       that.setData({ 'gradeList': res.data.dataList })
     }, function (err) {
 
@@ -116,7 +116,7 @@ Page({
     }, function () { })
   },
   lower: function (e) {
-    console.log(e)
+    //console.log(e)
     if (this.data.isMore) {
       this.getIntegralLogList()
     }

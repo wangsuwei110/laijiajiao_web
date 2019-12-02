@@ -44,7 +44,7 @@
                     <view class='stdSubject'>{{item.teachBranchName}}</view>
                 </block>
 
-                <view class='completeBox' wx:if='{{completeObj[weekIndex +"_"+hours]===1}}' data-week='{{weekIndex}}' data-hours='{{hours}}' bindtap='onOverClick'>
+                <view class='completeBox' wx:if='{{completeObj[weekIndex +"_"+hours]<=1}}' data-week='{{weekIndex}}' data-hours='{{hours}}' bindtap='onOverClick'>
                     <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
                     结课
                 </view>

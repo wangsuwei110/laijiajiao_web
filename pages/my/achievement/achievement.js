@@ -26,7 +26,7 @@ Page({
     })
   },
   achievementDetail: function (e) {
-    console.log(e)
+    //console.log(e)
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '../achievementDetail/achievementDetail?id=' + id,

@@ -64,7 +64,7 @@ Page({
     })
   },
   tabFun (e) {
-    console.log(e)
+    //console.log(e)
     if (e.currentTarget.dataset.index === 3) {
       wx.reLaunch({
         url: '/pages/noLogin/index',
@@ -135,7 +135,7 @@ Page({
   getHome () {
     var that = this
     http.post('/home/queryTeacherInfosByHome', {}, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
 
       if (data.newTrialStudentDemandList) {
@@ -143,7 +143,7 @@ Page({
           let obj = item
           obj.createTime = timeFormat(obj.createTime)
           if (obj.orderTeachTime) {
-            console.log(new Date(obj.orderTeachTime).getTime(), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
+            //console.log(new Date(obj.orderTeachTime).getTime(), 'new Date(obj.orderTeachTime)new Date(obj.orderTeachTime)')
             obj.timeCha = that.timeFn(new Date(obj.orderTeachTime).getTime()) + that.timeStr(obj.orderTeachTime) + '试讲'
           }
           return obj
@@ -154,7 +154,7 @@ Page({
           let obj = item
           obj.createTime = timeFormat(obj.createTime)
           if (obj.timeRange && (obj.timeRange.indexOf("'") !== -1 || obj.timeRange.indexOf('"') !== -1)) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
-          console.log(obj.timeRange, 'obj.timeRange' + index , typeof obj.timeRange)
+          //console.log(obj.timeRange, 'obj.timeRange' + index , typeof obj.timeRange)
           if (typeof obj.timeRange !== 'string') { obj.timeRange = obj.timeRange.map((itemA, indexA) => {
               let objA = itemA
               if ((indexA + 1) === obj.timeRange.length) objA = timeWeek(objA.week) + dayTimes(objA.time)
@@ -171,7 +171,7 @@ Page({
           let obj = item
           obj.createTime = timeFormat(obj.createTime)
           if (obj.timeRange ) obj.timeRange = JSON.parse(obj.timeRange.replace(/'/g, '"'))
-          console.log(obj.timeRange, 'obj.timeRange')
+          //console.log(obj.timeRange, 'obj.timeRange')
           obj.timeRange = obj.timeRange.map(itemA => {
             let objA = itemA
             objA = timeWeek(objA.week) + dayTimes(objA.time) + '，'
@@ -187,12 +187,12 @@ Page({
           return obj
         })
       }
-      console.log(data, '11111')
+      //console.log(data, '11111')
       that.setData({
         details: data
       })
       if (res.code === '200') {
-        console.log(data, '111111')
+        //console.log(data, '111111')
       } else {
         wx.showToast({
           title: res.msg,
@@ -200,7 +200,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       wx.hideLoading()
     })

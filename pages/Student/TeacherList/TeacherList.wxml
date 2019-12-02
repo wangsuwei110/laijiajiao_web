@@ -12,19 +12,19 @@
                 <view class='content'>
                     <view class='nameWrap'>
                         <view class='nameInner'>
-                            <text class='name'>{{item.teacherName}}</text>
+                            <text class='name'>{{item.name}}</text>
                             <image src='../../../images/Students/Authentication.png' class='authentication' mode='widthFix'/>
                         </view>
                         <text class='price'>{{item.chargesStandard}}</text>
                     </view>
                     
-                    <view class='params'>{{item.schoolName}} | {{item.currentStatus}}</view>
+                    <view class='params'>{{item.school}} | {{item.beginSchoolTime}}</view>
                     <view class='params'>{{item.teachBranchSlave}}</view>
                 </view>
             </view>
             
             <view class='tags'>
-                <text class='tag' wx:for='{{item.teacherTag}}' wx:key='this'>{{item}}</text>
+                <text class='tag' wx:for='{{item.teacherTag}}' wx:key='{{item.parameterId}}'>{{item.name}}</text>
             </view>
         </navigator>
 

@@ -64,7 +64,7 @@ Page({
       pageIndex, pageSize, teacherId: wx.getStorageSync('user_id'),
       paymentType: (this.data.activeIdx - 1) < 0 ? null : (this.data.activeIdx - 1)
     }).then(data => {
-      console.log(data, 'datadata')
+      //console.log(data, 'datadata')
       this.pageIndex = pageIndex
       this.isEnd = !data.data.dataList || data.data.dataList.length < pageSize
       data.data.dataList = data.data.dataList.map(item => {

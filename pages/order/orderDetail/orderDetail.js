@@ -146,7 +146,7 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    console.log(options)
+    //console.log(options)
     that.setData({
       'orderType': parseInt(options.orderType),
       id: options.id
@@ -178,12 +178,12 @@ Page({
     else return n
   },
   bindDateChange (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       ["details.weekDayTime["+ this.data.checkIndex +"].index"]: e.detail.value,
       time: this.data.details.weekDayTime[this.data.checkIndex].array[e.detail.value]
     })
-    console.log(this.data.details)
+    //console.log(this.data.details)
   },
   checkboxFun (e) {
     this.setData({
@@ -196,7 +196,7 @@ Page({
     this.setData({
       time: this.data.details.weekDayTime[this.data.checkIndex].time === '1' ? '08:00' : this.data.details.weekDayTime[this.data.checkIndex].time === '2' ? '12:00' : '20:00'
     })
-    console.log(this.data.time, '111111111')
+    //console.log(this.data.time, '111111111')
   },
   addAbility () {
     if (this.data.checkIndex === null) {
@@ -219,7 +219,7 @@ Page({
     })
   },
   timeDate (date, index) {
-    console.log(date, 'datedatedatedate')
+    //console.log(date, 'datedatedatedate')
     const  current_date = date.getDate();
     const  current_month = this.second(date.getMonth() + 1);
     const  current_year = this.second(date.getFullYear());
@@ -244,12 +244,12 @@ Page({
     } 
   },
   bindPickerChange (e) {
-    console.log(e)
+    //console.log(e)
   },
   getOrderDetails () {
     var that = this
     http.post('/teacher/queryStudemtDemandDetail', {demandId: this.data.id, status: this.data.orderType, teacherId: wx.getStorageSync('user_id')}, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       var data = res.data
       if (res.code === '200') {
         if (data.createTime) data.createTime = that.timeFormat(data.createTime)
@@ -259,7 +259,7 @@ Page({
           data.timeRange = JSON.parse(data.timeRange.replace(/\'/g, '"'))
           data.weekDayTime = data.timeRange.map(item => {
             let obj = item
-            console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)
+            //console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)
             return {
               weekDayTimes: that.timeDate(new Date(obj.weekDayTime)),
               timeWeek: timeWeek(parseInt(obj.week)),
@@ -288,7 +288,7 @@ Page({
         })
       }
     }, function (err) {
-      console.log(err)
+      //console.log(err)
     }, function () {
       wx.hideLoading()
     })

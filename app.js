@@ -5,7 +5,7 @@ App({
     weekData: null
   },
   onLaunch: function (options) {
-    console.log("[onLaunch] 本次场景值:", options.scene)
+    //console.log("[onLaunch] 本次场景值:", options.scene)
     // 获取手机信息
     let sysModel = wx.getSystemInfoSync().model;
     if (sysModel.indexOf('iPhone X') != -1) {

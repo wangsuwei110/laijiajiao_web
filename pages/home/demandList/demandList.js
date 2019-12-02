@@ -79,7 +79,7 @@ Page({
       isEnd: false,
       current: e.currentTarget.dataset.idxs,
     })
-    console.log(e.currentTarget.dataset.id)
+    //console.log(e.currentTarget.dataset.id)
     if (this.data.activeIdx === 0) {
       this.setData({
         teachGradeId: e.currentTarget.dataset.id,
@@ -114,7 +114,7 @@ Page({
   getArea () {
     var that = this
     http.post('/parameter/queryParametersByType', {parentId: 78}, function (res) {
-      console.log(res)
+      //console.log(res)
       that.area = res.data
     })
   },
@@ -122,7 +122,7 @@ Page({
   getGrad () {
     var that = this
     http.post('/grade/queryAllGradelist', {}, function (res) {
-      console.log(res)
+      //console.log(res)
       that.grade = res.data
     })
   },
@@ -130,7 +130,7 @@ Page({
   getSubject () {
     var that = this
     http.post('/grade/queryAllBranchlist', {}, function (res) {
-      console.log(res)
+      //console.log(res)
       that.subject = res.data
     })
   },
@@ -147,7 +147,7 @@ Page({
       subjectId: this.data.teachBranchId,
       demandGrade: this.data.teachGradeId
     }).then(data => {
-      console.log(data, 'datadata')
+      //console.log(data, 'datadata')
       this.pageIndex = pageIndex
       this.isEnd = !data.data.studentDemandList || data.data.studentDemandList.dataList.length < pageSize
       data.data.studentDemandList.dataList = data.data.studentDemandList.dataList.map(item => {
@@ -170,7 +170,7 @@ Page({
     
   },
   onReady: function () {
-    console.log('页面初次渲染完成')
+    //console.log('页面初次渲染完成')
   },
   onReachBottom: function () {
     this.getList(this.pageIndex + 1)

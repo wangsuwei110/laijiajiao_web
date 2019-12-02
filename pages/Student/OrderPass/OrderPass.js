@@ -20,7 +20,7 @@ Page({
   },
 
   onWeekNumChange(e) {
-    console.log(e)
+    //console.log(e)
     this.setData({ weekNum: e.detail })
   },
 
@@ -44,10 +44,12 @@ Page({
       success: (result) => {
         if (result.code) {
           wx.showLoading();
+          const orderMoney = item.orderMoney * timeRange.length * weekNum
+          const _timeRange = JSON.stringify(timeRange)
           http.postPromise('/weixin/prepay', {
             code: result.code,
-            orderMoney: item.orderMoney * timeRange.length * weekNum,
-            demandId: item.sid, timeRange: JSON.stringify(timeRange),
+            orderMoney,
+            demandId: item.sid, timeRange:_timeRange,
             weekNum
           }).then(data => {
             //this.triggerEvent('onSubmit')
@@ -67,14 +69,26 @@ Page({
                       wx.navigateBack({
                         delta: 1
                       });
+                      /* wx.login({
+                        success: (res) => {
+                          if (res.code) {
+                            http.postPromise('/weixin/wxNotify', {
+                              code: res.code,
+                              orderMoney,
+                              demandId: item.sid, timeRange:_timeRange,
+                              weekNum
+                            }).then(data => {
+                              
+                            })
+                          }
+                        }
+                      }) */
                     }
-                  },
-                  fail: () => { },
-                  complete: () => { }
+                  }
                 });
               },
               'fail': res => {
-                console.log(res)
+                //console.log(res)
                 wx.showModal({
                   title: '提示',
                   content: '支付失败',
@@ -121,7 +135,7 @@ Page({
         teacherId,
         //studentId: sid
       }).then(data => {
-        console.log(data.data.teachTime)
+        //console.log(data.data.teachTime)
         const useTeach = !!data.data.teachTime
         const teachTime = (useTeach ? JSON.parse(data.data.teachTime) : []).reduce((obj, item) => {
           ////`${item.time}`.split(',').map(item => Number(item) + 1)

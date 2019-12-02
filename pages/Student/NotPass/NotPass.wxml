@@ -6,7 +6,7 @@
         {{item.teachName}} | {{item.studentName}} | {{item.gradeSubject}}
     </view>
 
-    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写试讲不通过的原因，以便我们为您更好的服务' value='{{appraise}}' bindinput='onChange'/>
+    <textarea class='textArea' placeholder-class='placeHolder' maxlength='1000' placeholder='请填写试讲不通过的原因，以便我们为您更好的服务' value='{{appraise}}' bindinput='onChange'/>
 </view>
 
 <view class='addBtn' bindtap='onSubmit'>确认提交</view>

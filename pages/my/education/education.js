@@ -26,7 +26,7 @@ Page({
     })
   },
   bindDegreeChange: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       'userinfo.degree': this.data.degree[e.detail.value]
     })
@@ -69,14 +69,14 @@ Page({
           icon: 'none'
         })
         if (data.code === '200') {
-          console.log(that.data.userinfo)
+          //console.log(that.data.userinfo)
           that.setData({
             'userinfo.eduPic': that.data.userinfo.eduPic.concat(that.data.RESOURCE_PERFIX + data.data.url)
           })
         }
       },
       fail: function (err) {
-        console.log(err)
+        //console.log(err)
       },
       complete: function () {
         wx.hideLoading()
@@ -172,7 +172,7 @@ Page({
       //   })
       // }
       var _userinfo = res.data.userInfos
-      console.log(_userinfo, '111')
+      //console.log(_userinfo, '111')
       that.setData({
         'userinfo': _userinfo,
         'userinfo.eduPic': pics

@@ -37,7 +37,7 @@
         </view>
         
         <view class='evaluate' wx:if='{{item.appraise}}'>
-            <text>2019-07-15 12:20 （好评）</text>
+            <text>{{appraiseTimeStr}}（{{item.appraiseLevel === 1?'好评':item.appraiseLevel === 1?'中评':'差评'}}）</text>
             <view class='evaluateTxt'>{{item.appraise}}</view>
         </view>
         

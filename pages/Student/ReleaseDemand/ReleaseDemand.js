@@ -58,7 +58,7 @@ Page({
 
   onGradeChange(e) {
     const { student } = this.data
-    console.log(e.detail)
+    //console.log(e.detail)
     student.grade = e.detail.value[1]
     student.subjectId = e.detail.value[2]
 
@@ -68,7 +68,7 @@ Page({
   /*  onSubjectChange(e) {
      const { student } = this.data
      student.subjectId = e.detail.value
-     console.log(student, e)
+     //console.log(student, e)
      this.setData({ student })
    }, */
 

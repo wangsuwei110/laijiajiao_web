@@ -5,18 +5,18 @@
     </view>
     <view class='evaluateContainer'>
         <text class='evaluateTitle'>评价等级</text>
-        <image wx:if='{{evaluate === 1}}' src='../../../images/Students/evaluate_1.png' class='evaluateIcon' data-id='1' cachetap='onEvaluateChange'/>
-        <image wx:else src='../../../images/Students/def_evaluate_1.png' class='evaluateIcon' data-id='1' cachetap='onEvaluateChange'/>
+        <image wx:if='{{evaluate === 1}}' src='../../../images/Students/evaluate_1.png' class='evaluateIcon' data-id='1' catchtap='onEvaluateChange'/>
+        <image wx:else src='../../../images/Students/def_evaluate_1.png' class='evaluateIcon' data-id='1' catchtap='onEvaluateChange'/>
         
-        <image wx:if='{{evaluate === 2}}' src='../../../images/Students/evaluate_3.png' class='evaluateIcon' data-id='2' cachetap='onEvaluateChange'/>
-        <image wx:else src='../../../images/Students/def_evaluate_3.png' class='evaluateIcon' data-id='2' cachetap='onEvaluateChange'/>
+        <image wx:if='{{evaluate === 2}}' src='../../../images/Students/evaluate_3.png' class='evaluateIcon' data-id='2' catchtap='onEvaluateChange'/>
+        <image wx:else src='../../../images/Students/def_evaluate_3.png' class='evaluateIcon' data-id='2' catchtap='onEvaluateChange'/>
 
-        <image wx:if='{{evaluate === 3}}' src='../../../images/Students/evaluate_2.png' class='evaluateIcon' data-id='3' cachetap='onEvaluateChange'/>
-        <image wx:else src='../../../images/Students/def_evaluate_2.png' class='evaluateIcon' data-id='3' cachetap='onEvaluateChange'/>
+        <image wx:if='{{evaluate === 3}}' src='../../../images/Students/evaluate_2.png' class='evaluateIcon' data-id='3' catchtap='onEvaluateChange'/>
+        <image wx:else src='../../../images/Students/def_evaluate_2.png' class='evaluateIcon' data-id='3' catchtap='onEvaluateChange'/>
     </view>
-    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写评价'/>
+    <textarea class='textArea' placeholder-class='placeHolder' placeholder='请填写评价' maxlength='1000' value='{{appraise}}' bindinput='onChange'/>
 </view>
 
-<view class='addBtn'>确认提交</view>
+<view class='addBtn' bindtap='onSubmit'>确认提交</view>
 
 <HomeNav independent='true'/>

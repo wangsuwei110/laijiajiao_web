@@ -76,7 +76,7 @@ Page({
     
   },
   saveUserinfoTags: function () {
-    console.log(this.data.ids)
+    //console.log(this.data.ids)
     var params = {
       teacherId: wx.getStorageSync('user_id'),
       tag: this.data.ids.join(',')
