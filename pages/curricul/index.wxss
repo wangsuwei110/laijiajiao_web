@@ -156,6 +156,11 @@
   border-radius: 7rpx;
   margin-right:2rpx;
 }
+.active-ka image{
+  width:23rpx;
+  height: 23rpx;
+  margin-right: 5rpx;
+}
 .tit-beizhu{
   width: 100%;
   padding: 22rpx 0;

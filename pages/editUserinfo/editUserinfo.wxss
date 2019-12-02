@@ -13,7 +13,7 @@ page {
   display: flex;
   position: relative;
   align-items: center;
-  padding: 28rpx 0;
+  padding-top:28rpx;
   line-height: 1;
 }
 .label em{
@@ -27,7 +27,7 @@ page {
   width: 100%;
   left: 0;
   bottom: 0;
-  height: 1rpx;
+  /* height: 1rpx; */
   background-color: #e5e5e5;
   -webkit-transform: scale(1, 0.5);
   transform: scale(1, 0.5);
@@ -94,7 +94,7 @@ page {
   width: 100%;
   left: 0;
   bottom: 0;
-  height: 1rpx;
+  /* height: 1rpx; */
   background-color: #e5e5e5;
   -webkit-transform: scale(1, 0.5);
   transform: scale(1, 0.5);

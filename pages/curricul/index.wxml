@@ -50,6 +50,7 @@
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
                 <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
+                   <image src='../../images/calander.png' />
                     打卡
                 </view>
               </view>
@@ -77,7 +78,7 @@
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
                 <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
-                    打卡
+                     <image src='../../images/calander.png' />                     打卡
                 </view>
               </view>
           </view>
@@ -100,7 +101,7 @@
               </view>
               <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}" >
                 <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
-                    打卡
+                     <image src='../../images/calander.png' />                      打卡
                 </view>
               </view>
           </view>
