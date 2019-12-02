@@ -93,6 +93,7 @@ Page({
     },
   // 选择辅授科目
   selectTeachBranch (e) {
+    console.log(teachBranchSlaveId, 'teachBranchSlaveId')
     var that = this
     let _item = e.currentTarget.dataset.item
     let _id = e.currentTarget.dataset.id
@@ -105,8 +106,8 @@ Page({
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
-      //console.log("uuuu")
-      teachBranchSlaveId.splice(allgradesCheckedID.indexOf(_key), 1)
+      console.log("uuuu")
+      teachBranchSlaveId.splice(teachBranchValue.indexOf(_item.value), 1)
       teachBranchValue.splice(teachBranchValue.indexOf(_item.value), 1)
     }
     this.setData({
@@ -498,6 +499,7 @@ Page({
     });
   },
   editUserinfo: function () {
+    console.log(teachBranchSlaveId, 'teachBranchSlaveId')
     var data = this.data
     var tipText = ''
     if (data.userinfo.name.trim() == '') {
@@ -542,6 +544,7 @@ Page({
       teachAddress: addressCheckedID.join(','),
       school: this.data.school
     }
+    console.log(teachBranchSlave)
     wx.showLoading()
     http.post('/userInfo/updateUserInfo', params, function (res) {
       wx.showToast({
