@@ -106,13 +106,8 @@ Page({
       teachBranchSlaveId.push(_key)
       teachBranchValue.push(_item.value)
     } else {
-<<<<<<< HEAD
       console.log("uuuu")
       teachBranchSlaveId.splice(teachBranchValue.indexOf(_item.value), 1)
-=======
-      //console.log("uuuu")
-      teachBranchSlaveId.splice(allgradesCheckedID.indexOf(_key), 1)
->>>>>>> d0ba646afae543938ee4691a8dfc6bd711274e2f
       teachBranchValue.splice(teachBranchValue.indexOf(_item.value), 1)
     }
     this.setData({
