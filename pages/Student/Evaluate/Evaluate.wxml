@@ -1,8 +1,6 @@
 <!--pages/Student/Evaluate/Evaluate.wxml-->
 <view class='container'>
-    <view class='title'>
-        张小二 | 二年级数学
-    </view>
+    <view class='title'>{{item.teachName}} | {{item.studentName}} | {{item.gradeSubject}}</view>
     <view class='evaluateContainer'>
         <text class='evaluateTitle'>评价等级</text>
         <image wx:if='{{evaluate === 1}}' src='../../../images/Students/evaluate_1.png' class='evaluateIcon' data-id='1' catchtap='onEvaluateChange'/>

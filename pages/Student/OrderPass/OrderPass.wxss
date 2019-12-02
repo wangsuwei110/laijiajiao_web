@@ -141,3 +141,11 @@ page{
     color: #fff;
     margin-top: 22rpx;
 }
+
+.payNotice{
+    text-align: center;
+    margin-top: 36rpx;
+    font-size: 24rpx;
+    color: #999;
+    line-height: 2;
+}

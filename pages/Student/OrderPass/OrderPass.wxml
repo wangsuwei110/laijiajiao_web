@@ -37,4 +37,9 @@
 
 <view class='saveBtn' bindtap='onPay'>支付课时费</view>
 
+
+<view class='payNotice'>请您放心支付，该笔费用暂时由平台保管 
+<view>每次结课后由平台与教员结算</view>
+课程中不满意可随时申请退款</view>
+
 <HomeNav independent='true'/>

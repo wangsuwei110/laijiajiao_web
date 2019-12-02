@@ -102,6 +102,7 @@ Component({
 
     onGoEvaluate() {
       const { item } = this.data
+      this.setCacheItem()
       wx.navigateTo({
         url: `/pages/Student/Evaluate/Evaluate?id=${item.sid}&teacherid=${item.teacherId}`,
       });

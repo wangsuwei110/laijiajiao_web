@@ -173,8 +173,9 @@ Page({
         icon: 'none',
       });
     } else if (teacherInfo) {
+      //console.log(teachAddress, demandAddress)
       const gradeItem = teachBranchs.find(item => demandGrade === item.teachGradeId)
-      const addressItem = teachAddress.find(item => demandAddress === item.parameterId)
+      const addressItem = teachAddress.find(item => parameterId === item.parameterId)
 
       if (!gradeItem || !addressItem) {
         wx.showModal({

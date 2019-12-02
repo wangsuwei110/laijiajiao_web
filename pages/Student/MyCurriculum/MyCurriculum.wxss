@@ -76,6 +76,7 @@
     position: absolute;
     bottom: -32rpx;
     width: 30rpx;
+    height: 69rpx;
 }
 
 .leftLock{
@@ -189,6 +190,7 @@
 
 .completeIcon{
     width: 16rpx;
+    height: 16rpx;
     margin-right: 8rpx;
 }
 
