@@ -49,7 +49,8 @@ Page({
           http.postPromise('/weixin/prepay', {
             code: result.code,
             orderMoney,
-            demandId: item.sid, timeRange:_timeRange,
+            demandId: item.sid, timeRange: _timeRange,
+            isResumption: this.passed ? 1 : 0,
             weekNum
           }).then(data => {
             //this.triggerEvent('onSubmit')
@@ -130,6 +131,7 @@ Page({
    */
   onLoad: function (options) {
     const teacherId = appInst.globalData.orderItem.teacherId
+    this.passed = options.passed ? true : false
     if (teacherId) {
       http.postPromise('/userInfo/queryUserInfosDetail', {
         teacherId,

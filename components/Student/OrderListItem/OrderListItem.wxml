@@ -31,6 +31,12 @@
             <text class='label'>每周上课次数：</text>
             一周{{item.classNum}}次
         </view>
+
+        <view class='paramItem' wx:if='{{item.paymentStreamId}}'>
+            <text class='label'>教员联系手机：</text>
+            {{item.teacherPhone}}
+        </view>
+
         <view class='paramItem'>
             <text class='label'>具体辅导需求：</text>
             {{item.demandDesc}}
@@ -64,14 +70,14 @@
         </view>
 
         <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
-            <view class='payBtn {{!item.appraise ? "hasAppraise":""}} shrink' catchtap='onGoPay'>
+            <view class='payBtn {{!item.appraise ? "hasAppraise":""}} shrink' catchtap='onGoPay' data-passed='1'>
                 续课
             </view>
             <view class='payBtn evaluateBtn' wx:if='{{!item.appraise}}' catchtap='onGoEvaluate'>
                 评价
             </view>
         </view>
-
+        
         <view class='payBtn' catchtap='onGoPay' wx:elif='{{item.subscribeStatus === 7}}'>
             去支付
         </view>
