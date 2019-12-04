@@ -146,6 +146,7 @@ Page({
       wx.setStorageSync('user_phone', res.data.telephone)
       wx.setStorageSync('registerDate', res.data.registerDate)
       wx.setStorageSync('vacationStatus', res.data.vacationStatus)
+      wx.setStorageSync('auditStatus', res.data.auditStatus)
       wx.setStorageSync('user_type', 2)
       if (!res.data.teacherName || res.data.teacherName == '') {
         wx.redirectTo({

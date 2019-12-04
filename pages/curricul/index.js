@@ -32,7 +32,7 @@ Page({
   prev () {
     this.setData({
       endDate: this.data.startDate,
-      startDate: this.fun_date(-6, new Date(this.data.startDate))
+      startDate: this.fun_date(-7, new Date(this.data.startDate))
     })
     let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
@@ -42,7 +42,7 @@ Page({
   next () {
     this.setData({
       startDate: this.data.endDate,
-      endDate: this.fun_date(6, new Date(this.data.endDate))
+      endDate: this.fun_date(7, new Date(this.data.endDate))
     })
     let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
@@ -68,7 +68,7 @@ Page({
     return time2;
   },
   timeDate (date, index) {
-    const  current_date = date.getDate();
+    const  current_date = date.getDate() - new Date().getDay() + 1;
     const  current_month = this.second(date.getMonth() + 1);
     const  current_year = this.second(date.getFullYear());
     const  hours = this.second(date.getHours());
@@ -151,7 +151,7 @@ Page({
     let orderTeachTime = this.timeDate(new Date(), 1).split('/')
     this.setData({
       startDate: this.timeDate(new Date(), 1),
-      endDate: this.fun_date(6, new Date())
+      endDate: this.fun_date(7, new Date())
     })
     this.getList(orderTeachTime[0] + '-' + orderTeachTime[1] + '-' + orderTeachTime[2])
   },

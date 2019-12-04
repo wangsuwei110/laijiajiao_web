@@ -55,6 +55,7 @@ Page({
         that.setData({
           userinfo: res.data
         })
+        wx.setStorageSync('auditStatus', res.data.auditStatus)
         wx.setStorageSync('teacherLevel', res.data.teacherLevel)
       } else {
         wx.showToast({

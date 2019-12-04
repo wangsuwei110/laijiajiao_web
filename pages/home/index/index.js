@@ -24,7 +24,8 @@ function dayTimes (index) {
 }
 Page({
   data: {
-    details: ''
+    details: '',
+    auditStatus: 0
   },
   // 下拉刷新
  onPullDownRefresh () {
@@ -37,6 +38,9 @@ Page({
   wx.stopPullDownRefresh();
 },
   onLoad: function () {
+    this.setData({
+      auditStatus: wx.getStorageSync('auditStatus')
+    })
     wx.setNavigationBarTitle({
       title:  '来家教'
     })
