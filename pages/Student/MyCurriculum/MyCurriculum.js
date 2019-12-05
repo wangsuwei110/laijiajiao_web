@@ -89,6 +89,11 @@ Page({
       confirmColor: '#3CC51F',
       success: (result) => {
         if (result.confirm) {
+
+          wx.requestSubscribeMessage({
+            tmplIds: ['UPhBQDD3ckPKFhoDLHuKwDwTRV0YTZkqyZo9ewszwQI']
+          })
+
           http.postPromise('/StudentDemand/conclusion', { sid, teacherId, demandId }).then(data => {
             wx.showToast({
               title: '结课成功',
