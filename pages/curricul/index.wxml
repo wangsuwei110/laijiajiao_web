@@ -2,12 +2,12 @@
   <view class='weeks'>
       <!-- <view class='weeks-tit'>李圆圆的课程表</view> -->
       <view class='change-time'>
-        <view bindtap='prev'>
+        <view bindtap='onPrev'>
           <image src='../../images/arrow_icon.png' class='arrow_icon' />
           <span>上一周</span>
         </view>
-        <em>{{startDate}}—{{endDate}} </em>
-        <view bindtap='next'>
+        <em>{{timeStr}}</em>
+        <view bindtap='onNext'>
           <span>下一周</span>
           <image src='../../images/arrow_icon.png' class='arrow_icon-right' />
         </view>

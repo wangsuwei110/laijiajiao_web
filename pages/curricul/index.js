@@ -9,6 +9,7 @@ function timeWeek (index) {
   else if (index === 6) return '周六'
   else if (index === 7) return '周日'
 }
+const ONE_DAY = 864e5
 Page({
 
   /**
@@ -17,7 +18,9 @@ Page({
   data: {
     startDate: null,
     endDate: null,
-    details: null
+    details: null,
+    time: new Date(),
+    timeStr: ''
   },
 
   /**
@@ -78,9 +81,33 @@ Page({
     if (index) return current_year + '/' + current_month + '/' + current_date
     return current_year + '/' + current_month + '/' + current_date + ' ' + hours + ':' + minutes + ':' + seconds
   },
-  getList (orderTeachTime) {
+  onNext() {
+    const { time } = this.data
+    this.fetchCurriculum(new Date(time.getTime() + ONE_DAY * 7))
+  },
+
+  onPrev() {
+    const { time } = this.data
+    this.fetchCurriculum(new Date(time.getTime() - ONE_DAY * 7))
+  },
+  generateDateStr(date) {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+
+    return `${year}.${month < 10 ? 0 : ''}${month}.${day < 10 ? 0 : ''}${day}`
+  },
+  fetchCurriculum(orderTeachTime = this.data.time) {
+    //console.log(this.data.time)
     var that = this
-    http.post('/Timetable/queryTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), orderTeachTime: orderTeachTime}, function (res) {
+    http.post('/Timetable/queryTimeTableByTeacherId', { teacherId: wx.getStorageSync('user_id'), orderTeachTime }, function (res) {
+      const wDay = orderTeachTime.getDay()
+      const time = orderTeachTime.getTime()
+
+      const prev = wDay === 0 ? 6 : (wDay - 1)
+      const next = wDay === 0 ? 0 : (7 - wDay)
+
+      const timeStr = `${that.generateDateStr(new Date(time - prev * ONE_DAY))}-${that.generateDateStr(new Date(time + next * ONE_DAY))}`
       res.data = res.data.map(item => {
         let obj = item
         obj.week = timeWeek(JSON.parse(obj.weekNum))
@@ -107,12 +134,47 @@ Page({
       var sumData = [];
       sumData= [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
       that.setData({
-        details:sumData
+        details:sumData,
+        timeStr: timeStr,
+        time: orderTeachTime
       })
-      //console.log(sumData)
     })
-    
   },
+  // getList (orderTeachTime) {
+  //   var that = this
+  //   http.post('/Timetable/queryTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), orderTeachTime: orderTeachTime}, function (res) {
+  //     res.data = res.data.map(item => {
+  //       let obj = item
+  //       obj.week = timeWeek(JSON.parse(obj.weekNum))
+  //       return obj
+  //     })
+  //     var ary1 = [], ary2 = [], ary3 = [], ary4 = [], ary5 = [], ary6 = [], ary7 = []
+  //     for (var j = 0; j < res.data.length; j++) {
+  //       if (res.data[j].weekNum === 1) {
+  //         ary1.push(res.data[j])
+  //       } else if (res.data[j].weekNum === 2) {
+  //         ary2.push(res.data[j])
+  //       }  else if (res.data[j].weekNum === 3) {
+  //         ary3.push(res.data[j])
+  //       }  else if (res.data[j].weekNum === 4) {
+  //         ary4.push(res.data[j])
+  //       }  else if (res.data[j].weekNum === 5) {
+  //         ary5.push(res.data[j])
+  //       }  else if (res.data[j].weekNum === 6) {
+  //         ary6.push(res.data[j])
+  //       }  else if (res.data[j].weekNum === 7) {
+  //         ary7.push(res.data[j])
+  //       } 
+  //     }
+  //     var sumData = [];
+  //     sumData= [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
+  //     that.setData({
+  //       details:sumData
+  //     })
+  //     //console.log(sumData)
+  //   })
+    
+  // },
   // 显示错误提示
   errFun (text) {
     this.setData({
@@ -153,7 +215,7 @@ Page({
       startDate: this.timeDate(new Date(), 1),
       endDate: this.fun_date(7, new Date())
     })
-    this.getList(orderTeachTime[0] + '-' + orderTeachTime[1] + '-' + orderTeachTime[2])
+    this.fetchCurriculum(new Date())
   },
 
   /**

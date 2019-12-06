@@ -59,7 +59,8 @@ Page({
     var leave4=leave3%(60*1000)   //计算分钟数后剩余的毫秒数
     var minseconds=Math.round(leave4/1000)
     var timeFn = dayDiff+"天后";
-    return timeFn;
+    if  (dayDiff === -1) return ''
+    else timeFn;
   },
   second(n) {
     if (n < 10) return '0' + n

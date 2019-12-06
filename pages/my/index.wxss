@@ -145,12 +145,8 @@
   font-size:24rpx;
   color:#666;
   text-align:center;
-<<<<<<< HEAD
   padding:60rpx 0;
   width:100%;
-=======
-  padding:60rpx;
->>>>>>> 911653addd5b0cff8e8b92d43c85bf95c96fa95a
 }
 .bottom view{
   margin-top:10rpx;
