@@ -235,11 +235,11 @@ Page({
     return newTimeStr;
   },
   arrayFun (index) {
-    if (index === 1) {
+    if (index === 0) {
       return ['08:00', '09:00', '10:00', '11:00']
-    } else if (index === 2) {
+    } else if (index === 1) {
       return ['12:00', '13:00', '14:00', '15:00']
-    }  else if (index === 3) {
+    }  else if (index === 2) {
       return ['20:00', '21:00', '22:00', '23:00']
     } 
   },

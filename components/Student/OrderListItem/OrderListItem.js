@@ -108,12 +108,13 @@ Component({
       });
     },
 
-    onGoPay() {
+    onGoPay(e) {
       const { item } = this.data
+      const passed = Number(e.currentTarget.dataset.passed)
       this.setCacheItem()
 
       wx.navigateTo({
-        url: `/pages/Student/OrderPass/OrderPass?id=${item.sid}`,
+        url: `/pages/Student/OrderPass/OrderPass?id=${item.sid}${passed ? '&passed=1' : ''}`,
       });
     },
 

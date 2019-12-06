@@ -208,7 +208,8 @@ Page({
           content: res1.data.validateCode === false ? res1.data.validateResult : '是否确认报名?',
           success: function(res) {
             if (res.confirm) { //点击确定
-              http.post('/teacher/signUpStudentDemand', { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
+              http.post('/teacher/signUpStudentDemand', 
+              { teacherId: wx.getStorageSync('user_id'), demandId: that.data.id }, function (res) {
                 that.errFun('报名成功，请耐心等待报名结果')
                 //console.log(res)
                 setTimeout(() => {
@@ -216,13 +217,20 @@ Page({
                     url: '/pages/order/index'
                   })
                 }, 2000);
-              })
+              }, function () {
+                console.log(555)
+              }, function (res) {
+
+               console.log(res)
+              }, true)
             } else { //点击否
             }
           }
         })
        
-    })
+    }, function (res) {
+      console.log(555)
+    }, function () {}, true)
     
   },
   timeStr(timeStr, index) {

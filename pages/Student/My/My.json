@@ -3,6 +3,7 @@
   "usingComponents": {
     "PageLayout": "/components/PageLayout/PageLayout",
     "CheckLogin": "/components/Student/CheckLogin/CheckLogin",
-    "HomeNav": "/components/Student/HomeNav/HomeNav"
+    "HomeNav": "/components/Student/HomeNav/HomeNav",
+    "BottomInfo": "/components/Student/BottomInfo/BottomInfo"
   }
 }

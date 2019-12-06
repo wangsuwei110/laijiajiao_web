@@ -3,6 +3,7 @@
 ._container{
     background-color: #fff;
     padding-bottom: 70rpx;
+    margin-bottom: 20rpx;
 }
 
 .myBg{

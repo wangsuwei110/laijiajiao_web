@@ -46,10 +46,17 @@ Page({
           wx.showLoading();
           const orderMoney = item.orderMoney * timeRange.length * weekNum
           const _timeRange = JSON.stringify(timeRange)
+
+          wx.requestSubscribeMessage({
+            tmplIds: ['3x11joEYp8Gk7Jl_kEFjLFZ0gg1U7FwFGencGDW_hXY']
+          })
+
           http.postPromise('/weixin/prepay', {
             code: result.code,
             orderMoney,
-            demandId: item.sid, timeRange:_timeRange,
+            teacherId: item.teacherId,
+            demandId: item.sid, timeRange: _timeRange,
+            isResumption: this.passed ? 1 : 0,
             weekNum
           }).then(data => {
             //this.triggerEvent('onSubmit')
@@ -130,6 +137,7 @@ Page({
    */
   onLoad: function (options) {
     const teacherId = appInst.globalData.orderItem.teacherId
+    this.passed = options.passed ? true : false
     if (teacherId) {
       http.postPromise('/userInfo/queryUserInfosDetail', {
         teacherId,

@@ -23,6 +23,7 @@
       </view>
       <view bindtap="openTeaching" class="meta">
         <image mode="widthFix" class="meta-icon" src="../../images/my_meta_2.png"></image>
+        <p wx:if='{{!userinfo.teachTime}}'>请完善授课时间</p>
         <text class="meta-name">授课资料</text>
       </view>
       <view bindtap="openRevenue" class="meta">

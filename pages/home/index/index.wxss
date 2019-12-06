@@ -338,3 +338,13 @@
   font-size: 28rpx;
   color: #737373;
 }
+.audio{
+  width:100%;
+  text-align: center;
+  font-size:26rpx;
+  color: #fff;
+  background: rgb(250, 218, 141);
+  position: fixed;
+  bottom: 0;
+  padding:10rpx 0;
+}

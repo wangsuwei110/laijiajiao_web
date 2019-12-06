@@ -39,21 +39,36 @@ function request(url, params, method, onSuccess, onFail, onComplete, isPromise) 
           }
         })
       } else {
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none'
-        })
-
+        
+        if (res.data.msg === '您的身份信息还未审核通过，请至“我的”-“简历信息”中完善信息！') {
+          wx.showModal({
+            content: '您的身份信息还未审核通过，请至“我的”-“简历信息”中完善信息！',
+            success: function(res) {
+              if (res.confirm) { //点击确定
+                wx.navigateTo({
+                  url: '/pages/my/vitaInfo/vitaInfo'
+                })
+              } else { //点击否
+              }
+            }
+          })      
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
         if (isPromise) {
-          onFail()
+          console.log(333)
+          onFail(res.data.msg)
         }
       }
     },
     fail: function (err) {
       onFail(err)
     },
-    complete: function () {
-      if (onComplete) onComplete()
+    complete: function (res) {
+      if (onComplete) onComplete(res)
     }
   })
 }
