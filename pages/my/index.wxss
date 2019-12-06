@@ -145,7 +145,8 @@
   font-size:26rpx;
   color:#666;
   text-align:center;
-  padding:20rpx;
+  padding:60rpx 0;
+  width:100%;
 }
 .bttom view{
   margin-top:10rpx;

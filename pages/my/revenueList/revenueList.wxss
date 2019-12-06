@@ -76,3 +76,7 @@ page {
   color: #999999;
   font-size: 26rpx;
 }
+.container{
+  text-align:center;
+  padding-top:20%;
+}
