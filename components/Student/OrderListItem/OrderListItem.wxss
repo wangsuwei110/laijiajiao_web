@@ -52,6 +52,21 @@
     color:rgba(77,182,245,1);
 }
 
+.endTag{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:125rpx;
+    height:34rpx;
+    border:2rpx solid #999;
+    border-radius:5rpx;
+
+    font-size:24rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color:#999;
+}
+
 .title{
     display: flex;
     align-items: center;

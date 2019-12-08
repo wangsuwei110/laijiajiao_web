@@ -118,9 +118,9 @@ Component({
       });
     },
 
-    onPassClick() {
-      //this.onGoPay()
-      const { item } = this.data
+    onPassClick(e) {
+      this.onGoPay(e)
+      /* const { item } = this.data
       wx.showModal({
         title: '提示',
         content: '是否确定通过试讲',
@@ -138,7 +138,7 @@ Component({
             }).catch(e => wx.hideLoading())
           }
         },
-      });
+      }); */
     },
   }
 })
