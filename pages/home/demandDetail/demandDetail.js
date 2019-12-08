@@ -203,7 +203,7 @@ Page({
      return
     }
     var that = this
-    http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: this.data.details.studentDemandDetail.teachBranchId, teachGradeId:  this.data.details.studentDemandDetail.teachGradeId, parameterId:  this.data.details.studentDemandDetail.parameterId,timeList: this.data.details.studentDemandDetail.timeRange}, function (res1) {
+    http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: this.data.details.studentDemandDetail.teachBranchId, teachGradeId:  this.data.details.studentDemandDetail.teachGradeId, parameterId:  this.data.details.studentDemandDetail.parameterId,teachTime: this.data.details.studentDemandDetail.timeRange}, function (res1) {
         wx.showModal({
           content: res1.data.validateCode === false ? res1.data.validateResult : '是否确认报名?',
           success: function(res) {
