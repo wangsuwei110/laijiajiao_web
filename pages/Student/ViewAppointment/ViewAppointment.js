@@ -45,7 +45,7 @@ Page({
 
     const _hours = hours[item.time][e.detail.value[2]]
     
-    const confirmDate = `${item.date.split('T')[0]}T${_hours< 10?'0':''}${_hours}:00:00.000+0000`
+    const confirmDate = `${item.date.split('T')[0]} ${_hours< 10?'0':''}${_hours}:00:00`
 
     http.postPromise('/StudentDemand/confirmTeacher', {
       teacherId: selectId,
