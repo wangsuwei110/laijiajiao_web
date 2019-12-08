@@ -59,35 +59,22 @@ Page({
       if (res.code === '200') {
         switch (res.data.auditStatus) {
           case 0: 
-            _auditStatusStr = '未审核'
-            break
-          case 1:
             _auditStatusStr = '审核中'
             break
-          case 2:
+          case 1:
             _auditStatusStr = '审核通过'
             break
-          case 3:
-            _auditStatusStr = '审核未通过'
+          case 2:
+            _auditStatusStr = '审核失败'
             break
-          default:
-            _auditStatusStr = '未知'
         }
         switch (res.data.logonStatus) {
           case 0:
-            _logonStatusStr = '未填写'
+            _logonStatusStr = '未认证'
             break
           case 1:
-            _logonStatusStr = '认证中'
+            _logonStatusStr = '已认证'
             break
-          case 2:
-            _logonStatusStr = '认证通过'
-            break
-          case 3:
-            _logonStatusStr = '认证失败'
-            break
-          default:
-            _logonStatusStr = '未知'
         }
 
         switch (Number(res.data.certificate)) {

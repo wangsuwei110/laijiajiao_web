@@ -4,7 +4,7 @@
     <view class="my-info">
       <view class="avatar">
         <image bindtap="previewImg" data-url="{{RESOURCE_PERFIX + userinfo.headPicture}}" mode="aspectFill" src="{{userinfo.headPicture ? RESOURCE_PERFIX + userinfo.headPicture : '../../images/default_avatar.jpg'}}"></image>
-        <view class="level">{{userinfo.teacherLevel === 'T0' ? '实习' : userinfo.teacherLevel}}</view>
+        <view class="level">{{userinfo.teacherLevel === 'T0'  || details.teacherLevel === null ? '实习' : userinfo.teacherLevel}}</view>
       </view>
       <view class="name">
         <text>{{userinfo.teacherName}}</text>

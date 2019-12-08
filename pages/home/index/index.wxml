@@ -2,7 +2,7 @@
   <view class="top-info">
     <image class="bg" mode="widthFix" src="../../../images/index_top.png"></image>
     <view class="top-info-item"><text class="numeral">{{details.employRate === '0.00%' ? '--' : details.employRate }}</text><text>聘用率</text></view>
-    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel === 'T0' ? '实习' : details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
+    <view bindtap="openGrade" class="top-info-item center"><text class="numeral">{{details.teacherLevel === 'T0' || details.teacherLevel === null || details.teacherLevel === null ? '实习' : details.teacherLevel}}</text><view class="sub-meta"><text>我的等级</text><image class="explanation-icon" mode="scaleToFill" src="../../../images/question_icon.png"></image></view></view>
     <view class="top-info-item"><text class="numeral">{{details.resumptionRate == '0.00%' ? '--' : details.resumptionRate}}</text><text>续课率</text></view>
   </view>
   <view class="fast-entrance">
