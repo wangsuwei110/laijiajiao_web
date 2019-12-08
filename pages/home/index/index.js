@@ -37,7 +37,7 @@ Page({
   // 停止下拉动作
   wx.stopPullDownRefresh();
 },
-  onLoad: function () {
+  onShow: function () {
     this.setData({
       auditStatus: wx.getStorageSync('auditStatus')
     })

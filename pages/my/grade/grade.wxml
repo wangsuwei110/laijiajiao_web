@@ -28,7 +28,7 @@
           <view id="tBody" class="tbody">
             <scroll-view scroll-y="true" style="max-height: {{scrollHeight}}px;">
               <view wx:for="{{gradeList}}" wx:key="index" class="row">
-                <view class="column"><text>{{item.teacherLevelName === 'T0' ? '实习' : item.teacherLevelName}}</text></view>
+                <view class="column"><text>{{item.teacherLevelName === 'T0'  || details.teacherLevel === null ? '实习' : item.teacherLevelName}}</text></view>
                 <view class="column"><text>{{item.teacherPointsSection ? item.teacherPointsSection : '--'}}</text></view>
                 <view class="column"><text>{{item.resumptionRate ? item.resumptionRate : '--'}}</text></view>
                 <view class="column"><text>{{item.classWage ? item.classWage : '--'}}</text></view>

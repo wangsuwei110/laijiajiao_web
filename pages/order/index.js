@@ -58,11 +58,13 @@ Page({
     var seconds=Math.round(leave3/1000)
     var leave4=leave3%(60*1000)   //计算分钟数后剩余的毫秒数
     var minseconds=Math.round(leave4/1000)
+    console.log(dayDiff, '111')
     var timeFn = dayDiff+"天后";
-    if  (dayDiff === -1) return ''
-    else timeFn;
+    if  (dayDiff < -1) return -(dayDiff)+'天前'
+    else if (dateDiff === -1)return '当天' 
+    else return  timeFn
   },
-  second(n) {
+  second (n) {
     if (n < 10) return '0' + n
     else return n
   },
