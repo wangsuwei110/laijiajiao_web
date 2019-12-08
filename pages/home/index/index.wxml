@@ -54,7 +54,7 @@
               <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
            <view class="join" wx:else>
-            <text>{{item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
+            <text>{{item.status === 3 ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
           </view>
             <view class="demand-ul">
               <view class="demand-li">
@@ -80,7 +80,7 @@
               <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
             <view class="join" wx:else>
-            <text>{{item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
+            <text>{{item.status === 3 ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
           </view>
             <view class="demand-ul">
               <view class="demand-li">
