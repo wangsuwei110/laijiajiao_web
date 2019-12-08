@@ -31,7 +31,7 @@ Page({
   },
 
   weekIndex: 0,
-  
+
 
   onSelectChange(e) {
     this.setData({ selectId: Number(e.currentTarget.dataset.id) })
@@ -40,9 +40,12 @@ Page({
 
   onDateChang(e) {
     const { timeList, selectId } = this.data
-    //console.log(e.detail.value)
+    
     const item = timeList[e.detail.value[0]][e.detail.value[1]]
-    const confirmDate = item.date.split('T')[0] + 'T' + hoursCNList[item.time - 1][e.detail.value[2]] + ':00.000+0000'
+
+    const _hours = hours[item.time][e.detail.value[2]]
+    
+    const confirmDate = `${item.date.split('T')[0]}T${_hours< 10?'0':''}${_hours}:00:00.000+0000`
 
     http.postPromise('/StudentDemand/confirmTeacher', {
       teacherId: selectId,
