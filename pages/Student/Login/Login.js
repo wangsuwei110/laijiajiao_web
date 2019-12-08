@@ -133,16 +133,10 @@ Page({
         })
       }
     }).catch(err => {
-      /* err && wx.showToast({
+      err && wx.showToast({
         title: '登录出错，请稍后再试',
         icon: 'none',
-        duration: 2000,
-      }) */
-
-      wx.showToast({
-        title: err,
-        icon: 'none',
-        duration: 2000,
+        duration: 3000,
       })
 
     }).then(() => {
