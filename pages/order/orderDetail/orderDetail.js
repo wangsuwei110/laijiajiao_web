@@ -194,7 +194,7 @@ Page({
       }
     })
     this.setData({
-      time: this.data.details.weekDayTime[this.data.checkIndex].time === '1' ? '08:00' : this.data.details.weekDayTime[this.data.checkIndex].time === '2' ? '12:00' : '20:00'
+      time: this.data.details.weekDayTime[this.data.checkIndex].time === '0' ? '08:00' : this.data.details.weekDayTime[this.data.checkIndex].time === '1' ? '12:00' : '20:00'
     })
     //console.log(this.data.time, '111111111')
   },

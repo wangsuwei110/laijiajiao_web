@@ -61,8 +61,8 @@ Page({
     console.log(dayDiff, '111')
     var timeFn = dayDiff+"天后";
     if  (dayDiff < -1) return -(dayDiff)+'天前'
-    else if (dateDiff === -1)return '当天' 
-    else return  timeFn
+    else if (dayDiff === -1)return '今天' 
+    else return timeFn
   },
   second (n) {
     if (n < 10) return '0' + n
