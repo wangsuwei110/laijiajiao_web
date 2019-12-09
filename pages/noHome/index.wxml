@@ -32,11 +32,11 @@
               <text class="date">{{item.createTime}}</text>
             </view>
             <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名111</text>
+              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
             <view class="join" wx:else>
-              <text>暂无报名</text>
-            </view>
+            <text>{{item.status === 3 ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
+          </view>
             <view class="demand-ul">
               <view class="demand-li">
                 <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
