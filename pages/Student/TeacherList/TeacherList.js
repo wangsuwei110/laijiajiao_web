@@ -107,7 +107,7 @@ private Integer sex;
         return obj
       }, {})
       //, { pageIndex, pageSize }
-
+      
       http.postPromise('/userInfo/queryAllTeacherInfosByStudents', Object.assign(studentId ? { studentId } : {}, ___searchData, { pageIndex, pageSize })).then(data => {
         const dataList = (data.data.dataList || []).map(item => {
           if (item.teacherTag) {
@@ -143,14 +143,14 @@ private Integer sex;
     }
   },
 
-  onLoad(options) {
+  /* onLoad(options) {
     const { searchData } = this.data
     console.log(options)
     if (options.subject) {
       searchData.subjectId = options.subject
       this.setData({ searchData })
     }
-  },
+  }, */
 
   /**
    * 生命周期函数--监听页面显示
@@ -159,7 +159,7 @@ private Integer sex;
     this.fetchList()
   },
 
-
+  
   /**
    * 页面上拉触底事件的处理函数
    */

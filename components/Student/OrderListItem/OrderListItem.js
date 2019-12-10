@@ -12,15 +12,12 @@ Component({
       type: Object,
       value: {},
       observer(item) {
-        const createTimeStr = utils.formatTime(new Date(item.createTime.replace('-', '/')).getTime())
-        const appraiseTimeStr = utils.formatTime(new Date(item.appraiseTime.replace('-', '/')).getTime())
-        let orderTeachTimeStr = ''
-        if (item.orderTeachTime) {
-          //console.log(utils.formatTime(new Date(item.createTime).getTime()), 'ok',utils.formatTime(new Date(item.orderTeachTime).getTime()))
-          orderTeachTimeStr = utils.formatTime(new Date(item.orderTeachTime.replace('-', '/')).getTime())
-        }
+        /* console.log(new Date(item.createTime.replace('-', '/')),item.createTime)
+        const createTimeStr = item.createTime ? utils.formatTime(new Date(item.createTime.replace('-', '/')).getTime()) : ''
+        const appraiseTimeStr = item.appraiseTime ? utils.formatTime(new Date(item.appraiseTime.replace('-', '/')).getTime()) : ''
+        const orderTeachTimeStr = item.orderTeachTime ? utils.formatTime(new Date(item.orderTeachTime.replace('-', '/')).getTime()) : ''
 
-        this.setData({ createTimeStr, orderTeachTimeStr, appraiseTimeStr })
+        this.setData({ createTimeStr, orderTeachTimeStr, appraiseTimeStr }) */
       }
     },
     payLogId: Number
