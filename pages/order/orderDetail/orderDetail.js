@@ -253,6 +253,7 @@ Page({
       var data = res.data
       if (res.code === '200') {
         if (data.createTime) data.createTime = that.timeFormat(data.createTime)
+        if (data.createTime) data.signTime = that.timeFormat(data.signTime)
         if (data.orderTeachTime) data.orderTeachTime = that.timeFormat(data.orderTeachTime)
         // 获取每周上课次数
         if (data.timeRange) {
