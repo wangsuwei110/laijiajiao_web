@@ -117,7 +117,7 @@ Page({
     // 停止下拉动作
     wx.stopPullDownRefresh();
   },
-  onLoad: function () {
+  onShow: function () {
     const that = this;
     let winHeight = wx.getSystemInfoSync().windowHeight;
     let query = wx.createSelectorQuery();
