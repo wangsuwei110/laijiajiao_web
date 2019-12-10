@@ -2,9 +2,16 @@ const formatTime = (time, cFormat) => {
   if (arguments.length === 0) {
     return null
   }
+
+  const _arr = time.split('T')
+  const dateList = _arr.shift().split('-').map(item => Number(item))
+  const timeList = _arr.shift().split('.').shift().split(':').map(item => Number(item))
+
+  dateList[1] -= 1
+  
   const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
-  let date
-  if (typeof time === 'object') {
+  const date = new Date(dateList[0], dateList[1], dateList[2], timeList[0], timeList[1], timeList[2])
+  /* if (typeof time === 'object') {
     date = time
   } else {
     if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
@@ -14,7 +21,7 @@ const formatTime = (time, cFormat) => {
       time = time * 1000
     }
     date = new Date(time)
-  }
+  } */
   const formatObj = {
     y: date.getFullYear(),
     m: date.getMonth() + 1,

@@ -98,7 +98,7 @@ Page({
       }
       if (list.length > 0) {
         list.forEach(function (item) {
-          item.createTime = util.formatTime(new Date(item.createTime).getTime(), '{y}-{m}-{d} {h}:{i}')
+          item.createTime = util.formatTime(item.createTime, '{y}-{m}-{d} {h}:{i}')
         })
       }
       _integralLogList = _integralLogList.concat(list)

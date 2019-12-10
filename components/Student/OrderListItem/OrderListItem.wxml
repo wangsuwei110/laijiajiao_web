@@ -2,7 +2,7 @@
 <view class='container'>
     <view class='inner'>
         <view class='topBox'>
-            <text class='date'>{{item.createTime}}</text>
+            <text class='date'>{{createTimeStr}}</text>
 
             <view wx:if='{{item.endDemandFlag && item.status === 3}}' class='endTag'>已结束</view>
             <view wx:elif='{{item.endDemandFlag}}' class='topAction' catchtap='onOverClick'>结束需求</view>
@@ -14,7 +14,7 @@
                 <view class='popover'>
                     <view class='popoverInner'>
                         <view class='payItem' wx:for='{{payLogList}}' wx:key='{{item.paymentId}}'>
-                            <text class='payLabel'>{{item.createTime}} | {{item.paymentDesc}}</text>
+                            <text class='payLabel'>{{item.createTimeStr}} | {{item.paymentDesc}}</text>
                             <text class='payAmount'>¥{{item.paymentAccount}}</text>
                         </view>
                     </view>
@@ -45,7 +45,7 @@
         </view>
         
         <view class='evaluate' wx:if='{{item.appraise}}'>
-            <text>{{item.appraiseTime}}（{{item.appraiseLevel === 1?'好评':item.appraiseLevel === 1?'中评':'差评'}}）</text>
+            <text>{{appraiseTimeStr}}（{{item.appraiseLevel === 1?'好评':item.appraiseLevel === 1?'中评':'差评'}}）</text>
             <view class='evaluateTxt'>{{item.appraise}}</view>
         </view>
         
@@ -53,7 +53,7 @@
     </view>
 
         <view class='signUpCount' wx:if='{{(item.subscribeStatus ===1 || item.subscribeStatus ===2) &&item.orderTeachTime}}'>
-            <image class='waitIcon' src='../../../../../../../images/Students/waitOrder.png'/>预计试讲时间：{{item.orderTeachTime}}
+            <image class='waitIcon' src='../../../../../../../images/Students/waitOrder.png'/>预计试讲时间：{{orderTeachTimeStr}}
         </view>
 
         <view class='signUpCount' wx:elif='{{item.subscribeStatus ===1 &&!item.orderTeachTime}}'>

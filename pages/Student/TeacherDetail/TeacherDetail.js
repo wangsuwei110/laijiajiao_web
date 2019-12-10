@@ -230,7 +230,7 @@ Page({
         'teachAddress': data.teachAddress,
         StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
         teacherForStudentServiceList: data.teacherForStudentServiceList.map(item => {
-          item.orderStartStr = util.formatTime(new Date(item.orderStart), '{y}-{m}-{d} {h}:{i}')
+          item.orderStartStr = util.formatTime(item.orderStart, '{y}-{m}-{d} {h}:{i}')
           return item
         }),
         serviceHours: data.serviceHours,
