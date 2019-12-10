@@ -9,7 +9,7 @@ Page({
   },
 
   onTeacherClick() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/noHome/index',
       success: (result) => {
 
@@ -20,10 +20,10 @@ Page({
   },
 
   onStudentClick() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/Student/index/index',
       success: (result) => {
-        
+
       },
       fail: () => { },
       complete: () => { }
@@ -41,14 +41,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (wx.getStorageSync('user_id')) {
+      if (wx.getStorageSync('user_type') === 1) {
+        wx.reLaunch({
+          url: '/pages/Student/index/index',
+        });
+      } else {
+        wx.switchTab({
+          url: '/pages/home/index/index',
+        })
+      }
+    }
   },
 
   /**

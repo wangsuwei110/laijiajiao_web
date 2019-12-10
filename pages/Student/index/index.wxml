@@ -8,9 +8,9 @@
 
 
     <view class='subjectContainer'>
-        <navigator class='subjectItem' wx:for='{{subjectList}}' wx:key='this'>
+        <navigator class='subjectItem' wx:for='{{subjectList}}' wx:key='{{item.key}}' url='/pages/Student/TeacherList/TeacherList?subject={{item.key}}'>
             <image class='subjectIcon' mode='aspectFix' />
-            <text class='subjectTxt'>{{item}}</text>
+            <text class='subjectTxt'>{{item.value}}</text>
         </navigator>
     </view>
 

@@ -96,6 +96,7 @@ private Integer sex;
 
     if (!this.running) {
       this.running = true
+      const studentId = wx.getStorageSync('user_id')
       const { searchData, teacherList, pageSize } = this.data
       const { type: isGraduate, sex, schoolId: school, addressId: teachAddress, subjectId: teachBrance } = searchData
       const _searchData = { isGraduate, sex, school, teachAddress, teachBrance, createTime: "2018", teacherPoints: 1 }
@@ -107,7 +108,7 @@ private Integer sex;
       }, {})
       //, { pageIndex, pageSize }
 
-      http.postPromise('/userInfo/queryAllTeacherInfosByStudents', Object.assign({}, ___searchData, { pageIndex, pageSize })).then(data => {
+      http.postPromise('/userInfo/queryAllTeacherInfosByStudents', Object.assign(studentId ? { studentId } : {}, ___searchData, { pageIndex, pageSize })).then(data => {
         const dataList = (data.data.dataList || []).map(item => {
           if (item.teacherTag) {
             item.teacherTag = JSON.parse(item.teacherTag)
@@ -140,7 +141,15 @@ private Integer sex;
         })
       })
     }
+  },
 
+  onLoad(options) {
+    const { searchData } = this.data
+    console.log(options)
+    if (options.subject) {
+      searchData.subjectId = options.subject
+      this.setData({ searchData })
+    }
   },
 
   /**

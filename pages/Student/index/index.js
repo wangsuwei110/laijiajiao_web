@@ -1,11 +1,14 @@
 // pages/Student/index/index.js
+
+const http = require('../../../utils/api')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    subjectList: ['语文', '语文', '语文', '语文', '语文', '语文', '语文', '语文'],
+    subjectList: [],
     showTop: false
   },
 
@@ -19,14 +22,15 @@ Page({
     this.setData({ showTop: e.detail })
   },
 
-
-  
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    http.postPromise('/StudentDemand/homepageInfo').then(data => {
+      this.setData({
+        subjectList: data.data
+      })
+    })
   },
 
   /**
