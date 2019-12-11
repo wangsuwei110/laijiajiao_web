@@ -84,6 +84,10 @@ private Integer sex;
   onChange(e) {
     const { searchData } = this.data
 
+    if (e.detail.subjectId) {
+      searchData.branchs = null
+    }
+
     this.setData({ searchData: Object.assign({}, searchData, e.detail) }, () => this.fetchList())
   },
 
@@ -98,8 +102,8 @@ private Integer sex;
       this.running = true
       const studentId = wx.getStorageSync('user_id')
       const { searchData, teacherList, pageSize } = this.data
-      const { type: isGraduate, sex, schoolId: school, addressId: teachAddress, subjectId: teachBrance } = searchData
-      const _searchData = { isGraduate, sex, school, teachAddress, teachBrance, createTime: "2018", teacherPoints: 1 }
+      const { type: isGraduate, sex, schoolId: school, addressId: teachAddress, subjectId: teachBrance, branchs } = searchData
+      const _searchData = { isGraduate, sex, school, teachAddress, teachBrance, createTime: "2018", teacherPoints: 1, branchs }
       const ___searchData = Object.keys(_searchData).reduce((obj, key) => {
         if (_searchData[key] !== null) {
           obj[key] = _searchData[key]
@@ -107,7 +111,7 @@ private Integer sex;
         return obj
       }, {})
       //, { pageIndex, pageSize }
-      
+
       http.postPromise('/userInfo/queryAllTeacherInfosByStudents', Object.assign(studentId ? { studentId } : {}, ___searchData, { pageIndex, pageSize })).then(data => {
         const dataList = (data.data.dataList || []).map(item => {
           if (item.teacherTag) {
@@ -143,14 +147,14 @@ private Integer sex;
     }
   },
 
-  /* onLoad(options) {
+  onLoad(options) {
     const { searchData } = this.data
-    console.log(options)
+    //console.log(options)
     if (options.subject) {
-      searchData.subjectId = options.subject
+      searchData.branchs = options.subject
       this.setData({ searchData })
     }
-  }, */
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -159,7 +163,7 @@ private Integer sex;
     this.fetchList()
   },
 
-  
+
   /**
    * 页面上拉触底事件的处理函数
    */
