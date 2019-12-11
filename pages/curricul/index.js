@@ -198,8 +198,8 @@ Page({
       success: function(res) {
         if (res.confirm) { //点击确定
           http.post('/Timetable/updateTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), classId: e.currentTarget.dataset.classid}, function (res) {
+            that.fetchCurriculum(that.data.time)
             that.errFun('打卡成功')
-            that.getList(orderTeachTime)
           })
         } else { //点击否
         }
