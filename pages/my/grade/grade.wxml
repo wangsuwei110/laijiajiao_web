@@ -10,7 +10,7 @@
       <view class="grade-top-item">
         <image class="icon"></image>
         <text class="key">我的积分：</text>
-        <text class="value">{{totalPoints}}</text>
+        <text class="value">{{teacherPoints}}</text>
       </view>
     </view>
     <view class="grade-center">

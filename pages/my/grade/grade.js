@@ -2,6 +2,7 @@ var http = require('../../../utils/api.js')
 var util = require('../../../utils/util.js')
 Page({
   data: {
+    teacherPoints: 0,
     activeIdx: 0,
     teacherLevel: 'T0',
     totalPoints: '',
@@ -46,9 +47,9 @@ Page({
   },
   getGradeList: function () {
     var that = this;
-    http.get('/levelRules/queryAllLevelRules', function (res) {
+    http.post('/levelRules/queryAllLevelRules', { teacherId: wx.getStorageSync('user_id')}, function (res) {
       //console.log(res)
-      that.setData({ 'gradeList': res.data.dataList })
+      that.setData({ 'gradeList': res.data.levelRules.dataList, teacherLevel: res.data.teacherLevel, teacherPoints: res.data.teacherPoints })
     }, function (err) {
 
     }, function () { })
@@ -126,7 +127,7 @@ Page({
     query.select('#tBody').boundingClientRect();
     query.exec((res) => {
       this.setData({
-        'teacherLevel': wx.getStorageSync('teacherLevel'),
+        // 'teacherLevel': wx.getStorageSync('teacherLevel'),
         'scrollHeight': wx.getSystemInfoSync().windowHeight - (res[0].top + 40)
       })
     })

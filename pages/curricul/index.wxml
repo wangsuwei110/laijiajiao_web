@@ -42,7 +42,7 @@
           {{item[0].week}}
         </view>
         <view class="tit-list-style">
-          <view class="tit-list-style-name" wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 1}}">
+          <view class="tit-list-style-name" wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 0}}">
               <view class="tit-list-style-name-top">
               
                 <view class="name">  <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
@@ -56,21 +56,21 @@
               </view>
           </view>
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 2 && item[1].timeNum === 3}}" >
+          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 1 && item[1].timeNum === 2}}" >
           </view>
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 2}}">
+          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 1}}">
           </view>
          
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && (item[0].timeNum === 1 || item[0].timeNum === 3)}}">
+          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && (item[0].timeNum === 0 || item[0].timeNum === 2)}}">
           </view>
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 &&  (item[0].timeNum === 1 || item[0].timeNum === 3)}}">
+          <view class="tit-list-style-name"  wx:if="{{item.length === 1 &&  (item[0].timeNum === 0 || item[0].timeNum === 2)}}">
           </view>
           
         
-          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 2}}">
+          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 1}}">
               <view class="tit-list-style-name-top"  >
                
                 <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
@@ -83,17 +83,17 @@
               </view>
           </view>
      
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 2}}">
+          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 1}}">
           </view>
 
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 1 && item[1].timeNum === 3}}" >
+          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 0 && item[1].timeNum === 2}}" >
           </view>
 
           
   
 
-          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 3}}">
+          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 2}}">
               <view class="tit-list-style-name-top"  >
                
                 <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}3</view>
@@ -106,7 +106,7 @@
               </view>
           </view>
 
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 1 && item[1].timeNum === 2}}" >
+          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 0 && item[1].timeNum === 1}}" >
           </view>
 
       </view>
