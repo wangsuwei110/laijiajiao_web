@@ -40,16 +40,15 @@
 
             <view class='contentCell' wx:for='{{hoursList}}' wx:for-item='hours' wx:key='this'>
                 <block wx:for='{{week[hours]}}' wx:if='{{week[hours]}}' wx:key='{{item.sid}}'>
-                    <view class='stdName {{completeObj[weekIndex +"_"+hours]===2?"complete":""}}'>{{item.teacherName}}</view>
+                    <view class='stdName {{item.status===2?"complete":""}}'>{{item.teacherName}}</view>
                     <view class='stdSubject'>{{item.teachBranchName}}</view>
-                </block>
 
-                <view class='completeBox' wx:if='{{completeObj[weekIndex +"_"+hours]<=1}}' data-week='{{weekIndex}}' data-hours='{{hours}}' bindtap='onOverClick'>
-                    <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
-                    结课
-                </view>
+                    <view class='completeBox' wx:if='{{item.status<=1}}' data-id='{{item.sid}}' bindtap='onOverClick'>
+                        <image src='../../../images/Students/completeIcon.png' mode='widthFix' class='completeIcon'/>
+                        结课
+                    </view>
+                </block>
             </view>
-        
         </view>
 
         <view class='tableRow'>

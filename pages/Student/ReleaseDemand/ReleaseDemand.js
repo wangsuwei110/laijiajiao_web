@@ -173,6 +173,9 @@ Page({
         icon: 'none',
       });
     } else if (teacherInfo) {
+      wx.requestSubscribeMessage({
+        tmplIds: ['KB10ybjYSdInA9O9sobfhwr6yXxYMIpQ8cBIR0stX2o']
+      })
       //console.log(teachAddress, demandAddress)
       const gradeItem = teachBranchs.find(item => demandGrade === item.teachGradeId)
       const addressItem = teachAddress.find(item => parameterId === item.parameterId)

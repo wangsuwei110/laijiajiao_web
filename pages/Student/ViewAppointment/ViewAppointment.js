@@ -29,7 +29,7 @@ Page({
     hoursList: [],
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
   },
-
+  
   weekIndex: 0,
 
 

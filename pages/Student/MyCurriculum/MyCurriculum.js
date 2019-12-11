@@ -73,11 +73,26 @@ Page({
   },
 
   onOverClick(e) {
-    const week = Number(e.currentTarget.dataset.week)
-    const hours = Number(e.currentTarget.dataset.hours)
-    const { dateList, student } = this.data
+    const { curriculum } = this.data
+    const id = Number(e.currentTarget.dataset.id)
 
-    const { sid, teacherId, demandId } = dateList[week][hours][0]
+    const item = curriculum.find(item => item.sid === id)
+
+    if (!item) {
+      return wx.showToast({
+        title: '课程不存在',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+      });
+    }
+    
+    const { sid, teacherId, demandId } = item
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['UPhBQDD3ckPKFhoDLHuKwDwTRV0YTZkqyZo9ewszwQI']
+    })
 
     wx.showModal({
       title: '提示',
@@ -90,9 +105,7 @@ Page({
       success: (result) => {
         if (result.confirm) {
 
-          wx.requestSubscribeMessage({
-            tmplIds: ['UPhBQDD3ckPKFhoDLHuKwDwTRV0YTZkqyZo9ewszwQI']
-          })
+
 
           http.postPromise('/StudentDemand/conclusion', { sid, teacherId, demandId }).then(data => {
             wx.showToast({
