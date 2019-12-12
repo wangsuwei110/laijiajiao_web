@@ -46,9 +46,14 @@ Page({
     this.setData({ student })
   },
 
-  onGradeChange(event) {
+
+  onGradeChange(e) {
     const { student } = this.data
-    student.grade = event.detail.value[0]
+    //console.log(e.detail)
+    student.teachLevel = e.detail.value[0]
+    student.grade = e.detail.value[1]
+    student.subjectId = e.detail.value[2]
+
     this.setData({ student })
   },
 
@@ -63,28 +68,25 @@ Page({
     let res = ''
     if (!student.studentName) {
       res = '请输入学员姓名'
-    } else if (!student.grade) {
-      res = '请选择年级'
     } else if (!student.subjectId) {
-      res = '请选择辅导科目'
+      res = '请选择年级科目'
     }
-
+    
     if (res) {
       wx.showToast({
         title: res,
         icon: 'none',
       });
     } else {
-
       student.sex = ~~student.sex
-      delete student.deleteStatus
 
       const {
         sex,
         sid,
         studentName,
         subjectId,
-        grade
+        grade,
+        teachLevel,
       } = student
 
       http.postPromise('/student/update', {
@@ -92,6 +94,7 @@ Page({
         sid,
         studentName,
         subjectId,
+        teachLevel,
         grade
       }).then(data => {
         wx.setStorageSync('user_name', studentName)
@@ -101,14 +104,7 @@ Page({
       })
     }
   },
-
-  onCloseClick() {
-    const grade = this.selectComponent('#grade')
-    const subject = this.selectComponent('#subject')
-    grade && grade.onCancel()
-    subject && subject.onCancel()
-  },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */

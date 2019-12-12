@@ -54,6 +54,8 @@ Component({
       const secondItem = secondObj[firstItem.key][list[1]]
       const thirdItem = thridObj[secondItem.key][list[2]]
 
+      //console.log(firstItem, secondItem, thirdItem, thridObj, list)
+
       this.setData({ names: thirdItem.value })
       this.triggerEvent('onChange', {
         value: [firstItem.key, secondItem.key, thirdItem.key]
@@ -91,13 +93,15 @@ Component({
 
     setPickerIndex(list, value, level, def = 0) {
 
-      const { selected, nameList } = this.data
+      const { selected, names } = this.data
       const index = list.findIndex(item => item.key === value)
+      const name = list[index] ? list[index].value : ''
       selected[level] = index < 0 ? def : index
       //console.log(this.nameList, index, list, value, level)
-      nameList[level] = list[index] ? list[index].value : ''
+      //nameList[level] = list[index] ? list[index].value : ''
       //console.log(selected, value, index, def, level)
-      this.setData({ selected, nameList })
+      //console.log(name,level)
+      this.setData({ selected, names: level === 2 ? name : names })
     },
 
     fetchFirstGrade(value) {
@@ -151,17 +155,19 @@ Component({
         })
       } else {
         http.postPromise('/teacher/listSubject', { teachLevel }).then(data => {
-          secondObj[teachLevel] = data.data
-          this.setData({
-            secondNameList: this.generatePickerList(data.data),
-            secondObj
-          })
+          if (data.data && data.data.length) {
+            secondObj[teachLevel] = data.data
+            this.setData({
+              secondNameList: this.generatePickerList(data.data),
+              secondObj
+            })
 
-          if (value) {
-            this.setPickerIndex(data.data, value[1], 1)
-            this.fetchThirdGrade(value[1] || data.data[0].key, value)
-          } else {
-            this.fetchThirdGrade(data.data[0].key)
+            if (value) {
+              this.setPickerIndex(data.data, value[1], 1)
+              this.fetchThirdGrade(value[1] || data.data[0].key, value)
+            } else {
+              this.fetchThirdGrade(data.data[0].key)
+            }
           }
         })
       }
@@ -178,21 +184,22 @@ Component({
 
         if (value) {
           this.setPickerIndex(thridObj[teachGrade], value[2], 2)
-          this.setData({ name: nameList[2] })
+          //this.setData({ names: nameList[2] })
         }
       } else {
         http.postPromise('/teacher/listSubject', { teachGrade, teachLevel: this.level }).then(data => {
-          thridObj[teachGrade] = data.data
-          this.setData({
-            thridObj,
-            thridNameList: this.generatePickerList(data.data)
-          })
+          if (data.data && data.data.length) {
+            thridObj[teachGrade] = data.data
+            this.setData({
+              thridObj,
+              thridNameList: this.generatePickerList(data.data)
+            })
 
-          if (value) {
-            this.setPickerIndex(data.data, value[2], 2)
-            this.setData({ name: nameList[2] })
+            if (value) {
+              this.setPickerIndex(data.data, value[2], 2)
+              //this.setData({ name: nameList[2] })
+            }
           }
-
         })
       }
     },

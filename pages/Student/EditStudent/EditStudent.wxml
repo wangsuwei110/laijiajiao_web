@@ -1,6 +1,6 @@
 <!--pages/Student/EditStudent/EditStudent.wxml-->
 
-<view class='mainContainer' bindtap='onCloseClick'>
+<view class='mainContainer'>
     
     <view class='contenBox'>
         <view class='title'>学员信息</view>
@@ -12,9 +12,7 @@
         </view>
 
         <view class='selectContianer'>
-            <ToggleTechType id='grade' class='selectItem' options='{{gradeList}}' nameKey='value' label='选择年级' multiple='{{false}}' value='{{[student.grade]}}' bind:onChange='onGradeChange'/>
-
-            <ToggleTechType id='subject' class='selectItem' options='{{subjectList}}' valueKey='sid' nameKey='nameCn' label='辅导科目' multiple='{{false}}' value='{{[student.subjectId]}}' bind:onChange='onSubjectChange'/>
+            <SubjectPicker label='年级科目' class='selectItem' value='{{[student.teachLevel,student.grade,student.subjectId]}}' bind:onChange='onGradeChange'/>
         </view>
     </view>
 

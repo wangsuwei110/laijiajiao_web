@@ -4,6 +4,7 @@
     "Switch": "/components/Student/Switch/Switch",
     "BottomInfo": "/components/Student/BottomInfo/BottomInfo",
     "ClickContainer": "/components/ClickContainer/ClickContainer",
-    "ToggleTechType": "/components/ToggleTechType/ToggleTechType"
+    "ToggleTechType": "/components/ToggleTechType/ToggleTechType",
+    "SubjectPicker": "/components/SubjectPicker/SubjectPicker"
   }
 }

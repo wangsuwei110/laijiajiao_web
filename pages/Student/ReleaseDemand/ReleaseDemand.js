@@ -59,6 +59,7 @@ Page({
   onGradeChange(e) {
     const { student } = this.data
     //console.log(e.detail)
+    student.teachLevel = e.detail.value[0]
     student.grade = e.detail.value[1]
     student.subjectId = e.detail.value[2]
 
@@ -314,9 +315,9 @@ weekNum*	integer($int32)
       this.setData({ subjectList: data.data.dataList })
     })
 
-    http.postPromise('/grade/list').then(data => {
+    /* http.postPromise('/grade/list').then(data => {
       this.setData({ gradeList: data.data })
-    })
+    }) */
 
     http.postPromise('/parameter/queryParametersByType', { parentId: 78 }).then(data => {
       this.setData({ areaList: data.data })

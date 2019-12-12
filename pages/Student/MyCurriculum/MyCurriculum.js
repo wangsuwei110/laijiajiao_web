@@ -105,8 +105,6 @@ Page({
       success: (result) => {
         if (result.confirm) {
 
-
-
           http.postPromise('/StudentDemand/conclusion', { sid, teacherId, demandId }).then(data => {
             wx.showToast({
               title: '结课成功',

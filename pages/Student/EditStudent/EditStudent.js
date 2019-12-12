@@ -44,7 +44,11 @@ Page({
 
   onGradeChange(event) {
     const { student } = this.data
-    student.grade = event.detail.value[0]
+    //console.log(e.detail)
+    student.teachLevel = event.detail.value[0]
+    student.grade = event.detail.value[1]
+    student.subjectId = event.detail.value[2]
+
     this.setData({ student })
   },
 
@@ -75,6 +79,7 @@ Page({
       student.sex = ~~student.sex
       const { sex,
         sid,
+        teachLevel,
         studentName,
         subjectId,
         grade } = student
@@ -82,6 +87,7 @@ Page({
       http.postPromise('/student/update', {
         sex,
         sid,
+        teachLevel,
         studentName,
         subjectId,
         grade
@@ -91,14 +97,6 @@ Page({
         });
       })
     }
-  },
-
-
-  onCloseClick() {
-    const grade = this.selectComponent('#grade')
-    const subject = this.selectComponent('#subject')
-    grade && grade.onCancel()
-    subject && subject.onCancel()
   },
 
   /**

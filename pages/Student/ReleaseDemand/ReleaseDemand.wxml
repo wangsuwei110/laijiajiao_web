@@ -29,7 +29,7 @@
     </view>
     
     <view class='item'>
-        <SubjectPicker id='grade' class='selectBox' options='{{gradeList}}' nameKey='value' label='年级科目' value='{{student.grade}}' bind:onChange='onGradeChange'/>
+        <SubjectPicker class='selectBox' label='年级科目' value='{{[student.teachLevel,student.grade,student.subjectId]}}' bind:onChange='onGradeChange'/>
     </view>
 
     <view class='item' bindtap='onGoSelectTime'>
