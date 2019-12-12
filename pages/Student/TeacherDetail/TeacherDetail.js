@@ -265,6 +265,9 @@ Page({
     })
   },
   canvasTap: function (id, color, start, end, time, w, h) {
+
+    end = Number(`${end}`.replace('%', ''))
+    
     var that = this
 
     //圆环的绘制

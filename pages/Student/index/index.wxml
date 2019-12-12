@@ -14,10 +14,10 @@
         </navigator>
     </view>
 
-    <HomeContentBox title='教员风采' moreUrl='a'>
-        <text slot='titleAppend'>累计教员 326名 ></text>
+    <HomeContentBox title='教员风采' moreUrl='/pages/Student/TeacherList/TeacherList'>
+        <text slot='titleAppend'>累计教员 {{total}}名 ></text>
         <view>
-            <HomeTeacher first='true'/>
+            <HomeTeacher first='true' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' item='{{item}}'/>
         </view>
     </HomeContentBox>
 

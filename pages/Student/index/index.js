@@ -9,7 +9,9 @@ Page({
    */
   data: {
     subjectList: [],
-    showTop: false
+    showTop: false,
+    teacherList: [],
+    total: 0
   },
 
 
@@ -29,6 +31,18 @@ Page({
     http.postPromise('/StudentDemand/homepageInfo').then(data => {
       this.setData({
         subjectList: data.data
+      })
+    })
+
+    http.postPromise('/userInfo/queryAllTeacherInfosByStudents', {}).then(data => {
+      this.setData({
+        teacherList: data.data.dataList.slice(0, 2).map(item => {
+          if (item.teachBrance) {
+            item.teachBrance = JSON.parse(item.teachBrance)
+            item.teachBranchSlave = item.teachBrance.map(item => item.teachBranchName).join(',')
+          }
+          return item
+        }), total: data.data.total
       })
     })
   },

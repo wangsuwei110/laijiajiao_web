@@ -25,14 +25,6 @@
     border-radius: 100%;
 }
 
-.rankIcon{
-    right: 0;
-    bottom: 5rpx;
-    position: absolute;
-    width: 28rpx;
-    height: 28rpx;
-}
-
 .infoWrap{
     flex: 1;
     width: 1%;
@@ -50,4 +42,21 @@
     font-weight:500;
     color:rgba(67,67,67,1);
     margin-right: 16rpx;
+}
+
+.level{
+    position: absolute;
+    right: -10rpx;
+    bottom: 5rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rpx;
+    height: 40rpx;
+    border-radius:50%;
+    background-color: #FA0C0C;
+    font-size:20rpx;
+    font-family:Noto Sans S Chinese;
+    font-weight:300;
+    color: #fff;
 }

@@ -1,15 +1,15 @@
 <!--components/Student/HomeTeacher/HomeTeacher.wxml-->
-<navigator class='container {{first?"first":""}}'>
+<navigator class='container {{first?"first":""}}' url='/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}'>
     <view class='iconImgWrap'>
-        <image class='iconImg' mode='aspectFill'/>
-        <image class='rankIcon' mode='aspectFill'/>
+        <image class='iconImg' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
+        <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
     </view>
 
     <view class='infoWrap'>
         <view>
-            <text class='teacherName'>李教员</text>
+            <text class='teacherName'>{{item.name}}</text>
         </view>
-        <view>上海交通大学 | 大二在校</view>
-        <view>小学语文，小学数学，初中数学</view>
+        <view>{{item.school}} | {{item.beginSchoolTime}}</view>
+        <view>{{item.teachBranchSlave}}</view>
     </view>
 </navigator>

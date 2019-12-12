@@ -255,6 +255,7 @@ Page({
     })
   },
   canvasTap: function (id, color, start, end, time, w, h) {
+    end = Number(`${end}`.replace('%', ''))
     var that = this
 
     //圆环的绘制
@@ -265,7 +266,7 @@ Page({
     ctx2.setLineWidth("2")
     ctx2.setLineCap("butt")
     ctx2.stroke()
-
+    
 
     //圆环的绘制
     var num = (2 * Math.PI / 100 * start) - 0.5 * Math.PI
