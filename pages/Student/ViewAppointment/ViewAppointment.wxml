@@ -36,7 +36,10 @@
     </view>
 </scroll-view>
 
-<picker mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
+
+<view class='addBtn' bindtap='onGoPay' wx:if='{{teacher && teacher.passFlag}}'>立即支付</view>
+
+<picker wx:else mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
     <view class='addBtn'>预约试讲</view>
 </picker>
 

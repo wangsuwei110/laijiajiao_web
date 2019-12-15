@@ -27,25 +27,51 @@ Page({
     timeList: [],
     weekTimeList: [],
     hoursList: [],
+    teacher: null,
     RESOURCE_PERFIX: http.RESOURCE_PERFIX,
   },
-  
+
   weekIndex: 0,
+
+  onGoPay() {
+    const { item, teacher } = this.data
+    item.teacherId = teacher.teacherId
+    appInst.globalData.orderItem = item
+    wx.navigateTo({
+      url: '/pages/Student/OrderPass/OrderPass?from=2',
+    });
+  },
 
 
   onSelectChange(e) {
-    this.setData({ selectId: Number(e.currentTarget.dataset.id) })
+    const { teacherList } = this.data
+    const selectId = Number(e.currentTarget.dataset.id)
+    const teacher = teacherList.find(item => item.teacherId === selectId)
+
+    if (teacher) {
+      if (teacher.status === 3) {
+        wx.showModal({
+          title: '提示',
+          content: '当前教员试讲未通过无法选择',
+          showCancel: false,
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+        });
+      } else {
+        this.setData({ selectId, teacher })
+      }
+    }
   },
 
 
   onDateChang(e) {
     const { timeList, selectId } = this.data
-    
+
     const item = timeList[e.detail.value[0]][e.detail.value[1]]
 
     const _hours = hours[item.time][e.detail.value[2]]
-    
-    const confirmDate = `${item.date.split('T')[0]} ${_hours< 10?'0':''}${_hours}:00:00`
+
+    const confirmDate = `${item.date.split('T')[0]} ${_hours < 10 ? '0' : ''}${_hours}:00:00`
 
     http.postPromise('/StudentDemand/confirmTeacher', {
       teacherId: selectId,

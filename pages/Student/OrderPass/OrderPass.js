@@ -74,7 +74,7 @@ Page({
                   success: (result) => {
                     if (result.confirm) {
                       wx.navigateBack({
-                        delta: 1
+                        delta: this.from === 2 ? 2 : 1
                       });
                       /* wx.login({
                         success: (res) => {
@@ -164,7 +164,7 @@ Page({
 
     appInst.globalData.orderItem = null
 
-
+    this.from = Number(options.from || 0)
     this.demandId = options.id
   },
 
