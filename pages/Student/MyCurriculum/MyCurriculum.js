@@ -54,7 +54,7 @@ Page({
         //const week = dateObj.getDay()
         //const hours = dateObj.getHours()
         const weekIndex = item.weekNum - 1
-        const index = item.timeNum - 1
+        const index = item.timeNum
 
         const weekList = list[weekIndex] || [[], [], []]
         const hoursList = weekList[index] || []
@@ -73,7 +73,7 @@ Page({
   },
 
   onOverClick(e) {
-    const { curriculum } = this.data
+    const { curriculum, student } = this.data
     const id = Number(e.currentTarget.dataset.id)
 
     const item = curriculum.find(item => item.sid === id)
@@ -87,7 +87,7 @@ Page({
         mask: false,
       });
     }
-    
+
     const { sid, teacherId, demandId } = item
 
     wx.requestSubscribeMessage({
@@ -96,7 +96,7 @@ Page({
 
     wx.showModal({
       title: '提示',
-      content: '结课成功后，将由平台支付本次课时费',
+      content: '请确定教员已完成本节课，结课成功后，平台将支付本次课时费，请谨慎操作。',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',

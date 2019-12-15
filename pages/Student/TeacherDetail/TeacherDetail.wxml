@@ -80,14 +80,15 @@
   </view>
   <view class="spacing-10"></view>
 
-  <view class="panel">
+  <view class="panel" >
     <view class="panel-top">
       <view class="dot"></view>
       <text class="title">个人标签</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{labels.length}}'>
       <text class="tag" wx:for="{{labels}}" wx:key="index">{{item.name}}</text>
     </view>
+    <view class="null-tip" wx:else><text>暂无数据</text></view>
   </view>
   <view class="spacing-10"></view>
 
@@ -96,7 +97,7 @@
       <view class="dot"></view>
       <text class="title">家教经验</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{experience.pictureUrl && experience.pictureUrl.length}}'>
       <view wx:for="{{experienceList}}"  wx:for-item="experience" wx:key="{{index}}" class="experience">
         <view class="experience-text">
           <!-- <text>{{item.pictureTitle}}</text> -->
@@ -109,6 +110,7 @@
         </view>
       </view>
     </view>
+    <view class="null-tip" wx:else><text>暂无数据</text></view>
   </view>
   <view class="spacing-10"></view>
 
@@ -117,7 +119,7 @@
       <view class="dot"></view>
       <text class="title">所获证书</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{certificateList.length}}'>
       <view class="certificate">
         <view class="certificate-inner">
           <view wx:for="{{certificateList}}" wx:for-item="certificate" wx:key="{{index}}" class="certificate-item">
@@ -127,6 +129,7 @@
         </view>
       </view>
     </view>
+    <view class="null-tip" wx:else><text>暂无数据</text></view>
   </view>
   <view class="spacing-10"></view>
   <view class="panel">
@@ -134,9 +137,10 @@
       <view class="dot"></view>
       <text class="title">可教科目</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{teachBranchs.length}}'>
       <text wx:for="{{teachBranchs}}" wx:key="{{index}}" class="subject">{{item.teachBranchName}}</text>
     </view>
+    <view class="null-tip" wx:else><text>暂无数据</text></view>
   </view>
   
   <view class="spacing-10"></view>
@@ -145,9 +149,10 @@
       <view class="dot"></view>
       <text class="title">可教区域</text>
     </view>
-    <view class="panel-body">
+    <view class="panel-body" wx:if='{{teachAddress.length}}'>
       <text wx:for="{{teachAddress}}" wx:key="{{index}}" class="subject">{{item.name}}</text>
     </view>
+    <view class="null-tip" wx:else><text>暂无数据</text></view>
   </view>
 
 

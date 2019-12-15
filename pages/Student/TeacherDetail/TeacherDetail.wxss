@@ -570,6 +570,7 @@
     color: #979797;
   }
   .null-tip {
+    font-size: 24rpx;
     text-align: center;
     padding: 40rpx;
   }

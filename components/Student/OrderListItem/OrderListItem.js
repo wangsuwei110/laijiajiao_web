@@ -12,7 +12,7 @@ Component({
       type: Object,
       value: {},
       observer(item) {
-        console.log(new Date(item.createTime.replace('-', '/')),item.createTime)
+        //console.log(new Date(item.createTime.replace('-', '/')),item.createTime)
         const createTimeStr = item.createTime ? utils.formatTime(item.createTime) : ''
         const appraiseTimeStr = item.appraiseTime ? utils.formatTime(item.appraiseTime) : ''
         const orderTeachTimeStr = item.orderTeachTime ? utils.formatTime(item.orderTeachTime) : ''
@@ -70,7 +70,7 @@ Component({
 
     onPayLogClick() {
       const { item } = this.data
-      http.postPromise('/StudentDemand/payLog', { paymentStreamId: item.paymentStreamId }).then(data => {
+      http.postPromise('/StudentDemand/payLog', { demandId: item.sid }).then(data => {
         this.setData({
           payLogList: data.data.map(item => {
             item.createTimeStr = utils.formatTime(item.createTime)

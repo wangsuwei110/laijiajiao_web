@@ -1,5 +1,7 @@
 // pages/Student/Evaluate/Evaluate.js
 
+var appInst =  getApp();
+
 const http = require('../../../utils/api')
 
 Page({

@@ -11,7 +11,8 @@ Page({
     subjectList: [],
     showTop: false,
     teacherList: [],
-    total: 0
+    total: 0,
+    RESOURCE_PERFIX:http.RESOURCE_PERFIX
   },
 
 
