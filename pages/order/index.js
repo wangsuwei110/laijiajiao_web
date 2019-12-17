@@ -27,14 +27,14 @@ Page({
       }
     ]
   },
-  timeFormat (timeStr) {
+  timeFormat(timeStr) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
     var newTimeStr = dataOne + ' ' + dataThree
     return newTimeStr;
   },
-  timeStr (timeStr, index) {
+  timeStr(timeStr, index) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
@@ -42,34 +42,42 @@ Page({
     if (index) return dataOne
     return dataThree;
   },
+
+  getDaysDateObj(timestamp) {
+    const date = timestamp ? new Date(timestamp) : new Date()
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  },
+
   // 计算两个时间差 dateBegin 开始时间
   timeFn(dateEnd) {
+    const ONE_DAY = 864e5
+    const ONE_HOURS = 36e5
+    const ONE_MIN = 6e4
     //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-    var dateStart = new Date();//获取当前时间
-    var dateDiff = dateEnd -  dateStart.getTime();//时间差的毫秒数
-    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-    var leave1=dateDiff%(24*3600*1000)  //计算天数后剩余的毫秒数
-    var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+    var dateStart = this.getDaysDateObj()//获取当前时间
+    var dateDiff = this.getDaysDateObj(dateEnd).getTime() - dateStart.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / ONE_DAY);//计算出相差天数
+    var leave1 = dateDiff % ONE_DAY //计算天数后剩余的毫秒数
+    /* var hours = Math.floor(leave1 / ONE_HOURS)//计算出小时数
     //计算相差分钟数
-    var leave2=leave1%(3600*1000)  //计算小时数后剩余的毫秒数
-    var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+    var leave2 = leave1 % ONE_HOURS  //计算小时数后剩余的毫秒数
+    var minutes = Math.floor(leave2 / ONE_MIN)//计算相差分钟数
     //计算相差秒数
-    var leave3=leave2%(60*1000)   //计算分钟数后剩余的毫秒数
-    var seconds=Math.round(leave3/1000)
-    var leave4=leave3%(60*1000)   //计算分钟数后剩余的毫秒数
-    var minseconds=Math.round(leave4/1000)
-    console.log(dayDiff, '111')
-    var timeFn = dayDiff+"天后";
-    if  (dayDiff < -1) return -(dayDiff)+'天前'
-    else if (dayDiff === -1)return '今天' 
-    else return timeFn
+    var leave3 = leave2 % (ONE_MIN)   //计算分钟数后剩余的毫秒数
+    var seconds = Math.round(leave3 / 1000)
+    var leave4 = leave3 % (ONE_MIN)   //计算分钟数后剩余的毫秒数
+    var minseconds = Math.round(leave4 / 1000) */
+    //console.log(dayDiff, '111')
+    if (dayDiff < 0) return -(dayDiff) + '天前'
+    else if (dayDiff === 0) return '今天'
+    else return `${dayDiff}天后`
   },
-  second (n) {
+  second(n) {
     if (n < 10) return '0' + n
     else return n
   },
   // 订单列表
-  getList () {
+  getList() {
     var that = this
     wx.showLoading({
       title: '加载中...'
@@ -129,7 +137,7 @@ Page({
     }).exec();
     this.setData({
       form: {
-        teacherId: wx.getStorageSync('user_id'), 
+        teacherId: wx.getStorageSync('user_id'),
         demandSignStatus: this.data.status,
         pageIndex: 1,
         pageSize: 10000
@@ -146,11 +154,11 @@ Page({
       status: _idx === 1 ? '0,5' : _idx === 0 ? null : _idx === 3 ? '4' : _idx === 2 ? '1,2,3' : '',
       list: []
     })
-    
+
     this.setData({
       activeIdx: _idx,
       form: {
-        teacherId: wx.getStorageSync('user_id'), 
+        teacherId: wx.getStorageSync('user_id'),
         demandSignStatus: this.data.status,
         pageIndex: 1,
         pageSize: 10000
