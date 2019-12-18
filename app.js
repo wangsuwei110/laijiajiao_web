@@ -7,13 +7,31 @@ App({
   },
 
   onShow() {
-    /* wx.login({
+    wx.login({
       success: (result) => {
-        http.postPromise('/user/getUserIdentity', { code: result.code }).then(data => {
-          
+        http.postPromise('/user/getUserIdentity', { code: result.code }).then(res => {
+          wx.setStorageSync('user_id', res.data.userId)
+          wx.setStorageSync('user_name', res.data.userName)
+          wx.setStorageSync('user_phone', res.data.phone)
+          wx.setStorageSync('user_type', res.data.type)
+          if (!res.data.userName) {
+            wx.redirectTo({
+              url: res.data.type === 1 ? '/pages/Student/LoginInfo/LoginInfo' : '/pages/editUserinfo/editUserinfo',
+            })
+          } else {
+            if (res.data.type === 1) {
+              wx.reLaunch({
+                url: '/pages/Student/index/index',
+              })
+            } else {
+              wx.switchTab({
+                url: '/pages/home/index/index'
+              })
+            }
+          }
         })
       },
-    }); */
+    });
   },
 
   onLaunch: function (options) {

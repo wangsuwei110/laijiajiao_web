@@ -12,7 +12,7 @@ Page({
     showTop: false,
     teacherList: [],
     total: 0,
-    RESOURCE_PERFIX:http.RESOURCE_PERFIX
+    RESOURCE_PERFIX: http.RESOURCE_PERFIX
   },
 
 
@@ -33,6 +33,10 @@ Page({
       this.setData({
         subjectList: data.data
       })
+    })
+
+    http.postPromise('/StudentDemand/queryGoodApprise').then(data => {
+      
     })
 
     http.postPromise('/userInfo/queryAllTeacherInfosByStudents', {}).then(data => {

@@ -221,5 +221,11 @@ Page({
   },
   revenueList: function () {
 
-  }
+  },
+
+  onLoad() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['rgndJEZd9POlvDVvBnI2ChxfYYu3xbtwISR7NCVzlNc']
+    })
+  },
 })

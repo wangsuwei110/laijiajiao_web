@@ -138,6 +138,10 @@ Page({
 
       this.fetchCurriculum(student.sid, new Date())
     })
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
+    })
   },
 
   /**

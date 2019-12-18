@@ -8,6 +8,10 @@ Page({
     this.setData({
       cashOut: options.cash
     })
+    
+    wx.requestSubscribeMessage({
+      tmplIds: ['UPhBQDD3ckPKFhoDLHuKwDwTRV0YTZkqyZo9ewszwQI']
+    })
   },
   navTo () {
     wx.navigateTo({

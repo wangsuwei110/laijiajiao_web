@@ -202,6 +202,11 @@ Page({
      })
      return
     }
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['x8RRaxzYPJd4HIoNWpmPNQI--U642a8hnsmWJLplNrk']
+    })
+
     var that = this
     http.post('/teacher/validateSignParameters', { teacherId: wx.getStorageSync('user_id'), teachBranchId: this.data.details.studentDemandDetail.teachBranchId, teachGradeId:  this.data.details.studentDemandDetail.teachGradeId, parameterId:  this.data.details.studentDemandDetail.parameterId,teachTime: this.data.details.studentDemandDetail.timeRange}, function (res1) {
         wx.showModal({

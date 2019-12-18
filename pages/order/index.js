@@ -125,6 +125,13 @@ Page({
     // 停止下拉动作
     wx.stopPullDownRefresh();
   },
+
+  onLoad() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['3x11joEYp8Gk7Jl_kEFjLFZ0gg1U7FwFGencGDW_hXY']
+    })
+  },
+
   onShow: function () {
     const that = this;
     let winHeight = wx.getSystemInfoSync().windowHeight;

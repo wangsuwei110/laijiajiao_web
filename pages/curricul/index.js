@@ -1,6 +1,6 @@
 // pages/curricul/index.js
 var http = require('../../utils/api.js')
-function timeWeek (index) {
+function timeWeek(index) {
   if (index === 1) return '周一'
   else if (index === 2) return '周二'
   else if (index === 3) return '周三'
@@ -28,11 +28,15 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title:  wx.getStorageSync('user_name') + '的排课表'
+      title: wx.getStorageSync('user_name') + '的排课表'
+    })
+    
+    wx.requestSubscribeMessage({
+      tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
     })
   },
   // 上一周
-  prev () {
+  prev() {
     this.setData({
       endDate: this.data.startDate,
       startDate: this.fun_date(-7, new Date(this.data.startDate))
@@ -42,7 +46,7 @@ Page({
     this.getList(orderTeachTime)
   },
   // 下一周
-  next () {
+  next() {
     this.setData({
       startDate: this.data.endDate,
       endDate: this.fun_date(7, new Date(this.data.endDate))
@@ -58,25 +62,25 @@ Page({
 
   },
   // 查看教员课程表
-  second (n) {
+  second(n) {
     if (n < 10) return '0' + n
     else return n
   },
-  fun_date(index, date){
+  fun_date(index, date) {
     var date1 = date,
-    time1=date1.getFullYear()+"-"+(date1.getMonth()+1)+"-"+date1.getDate();//time1表示当前时间
+      time1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();//time1表示当前时间
     var date2 = new Date(date1);
-    date2.setDate(date1.getDate()+index);
-    var time2 = date2.getFullYear()+"/"+this.second(date2.getMonth()+1)+"/"+this.second(date2.getDate());
+    date2.setDate(date1.getDate() + index);
+    var time2 = date2.getFullYear() + "/" + this.second(date2.getMonth() + 1) + "/" + this.second(date2.getDate());
     return time2;
   },
-  timeDate (date, index) {
-    const  current_date = date.getDate() - new Date().getDay() + 1;
-    const  current_month = this.second(date.getMonth() + 1);
-    const  current_year = this.second(date.getFullYear());
-    const  hours = this.second(date.getHours());
-    const  minutes = this.second(date.getMinutes());
-    const  seconds = this.second(date.getSeconds());
+  timeDate(date, index) {
+    const current_date = date.getDate() - new Date().getDay() + 1;
+    const current_month = this.second(date.getMonth() + 1);
+    const current_year = this.second(date.getFullYear());
+    const hours = this.second(date.getHours());
+    const minutes = this.second(date.getMinutes());
+    const seconds = this.second(date.getSeconds());
     let endDate = null
     if (index) return current_year + '/' + current_month + '/' + current_date
     return current_year + '/' + current_month + '/' + current_date + ' ' + hours + ':' + minutes + ':' + seconds
@@ -119,22 +123,22 @@ Page({
           ary1.push(res.data[j])
         } else if (res.data[j].weekNum === 2) {
           ary2.push(res.data[j])
-        }  else if (res.data[j].weekNum === 3) {
+        } else if (res.data[j].weekNum === 3) {
           ary3.push(res.data[j])
-        }  else if (res.data[j].weekNum === 4) {
+        } else if (res.data[j].weekNum === 4) {
           ary4.push(res.data[j])
-        }  else if (res.data[j].weekNum === 5) {
+        } else if (res.data[j].weekNum === 5) {
           ary5.push(res.data[j])
-        }  else if (res.data[j].weekNum === 6) {
+        } else if (res.data[j].weekNum === 6) {
           ary6.push(res.data[j])
-        }  else if (res.data[j].weekNum === 7) {
+        } else if (res.data[j].weekNum === 7) {
           ary7.push(res.data[j])
-        } 
+        }
       }
       var sumData = [];
-      sumData= [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
+      sumData = [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
       that.setData({
-        details:sumData,
+        details: sumData,
         timeStr: timeStr,
         time: orderTeachTime
       })
@@ -173,10 +177,10 @@ Page({
   //     })
   //     //console.log(sumData)
   //   })
-    
+
   // },
   // 显示错误提示
-  errFun (text) {
+  errFun(text) {
     this.setData({
       showToast: true,
       errorText: text
@@ -189,15 +193,15 @@ Page({
       })
     }, 2000)
   },
-  timetableFun (e) {
+  timetableFun(e) {
     let str = this.data.startDate.split('/')
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
     var that = this
     wx.showModal({
       content: '是否确认打卡?',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) { //点击确定
-          http.post('/Timetable/updateTimeTableByTeacherId', {teacherId: wx.getStorageSync('user_id'), classId: e.currentTarget.dataset.classid}, function (res) {
+          http.post('/Timetable/updateTimeTableByTeacherId', { teacherId: wx.getStorageSync('user_id'), classId: e.currentTarget.dataset.classid }, function (res) {
             that.fetchCurriculum(that.data.time)
             that.errFun('打卡成功')
           })

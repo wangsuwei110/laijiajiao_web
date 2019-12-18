@@ -135,7 +135,7 @@ Page({
       serviceTabIndex: event.target.dataset.id
     })
   },
-  timeFormat (timeStr) {
+  timeFormat(timeStr) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
@@ -222,7 +222,7 @@ Page({
         'teachBranchs': data.teachBranchs,
         'teachAddress': data.teachAddress,
         StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
-        teacherForStudentServiceList : data.teacherForStudentServiceList,
+        teacherForStudentServiceList: data.teacherForStudentServiceList,
         serviceHours: data.serviceHours,
         servicePersonNum: data.servicePersonNum
       })
@@ -266,7 +266,7 @@ Page({
     ctx2.setLineWidth("2")
     ctx2.setLineCap("butt")
     ctx2.stroke()
-    
+
 
     //圆环的绘制
     var num = (2 * Math.PI / 100 * start) - 0.5 * Math.PI
@@ -302,6 +302,8 @@ Page({
       });
     }
     this.getUserinfo(options.id || wx.getStorageSync('user_id'))
-
+    wx.requestSubscribeMessage({
+      tmplIds: ['1DIuaSZQTzvHEtIPLgzzSAYqKVZAlJHmuF2h_qORl3c', '1DIuaSZQTzvHEtIPLgzzSAYqKVZAlJHmuF2h_qORl3c']
+    })
   }
 })
