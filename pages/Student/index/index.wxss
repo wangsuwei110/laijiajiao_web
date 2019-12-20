@@ -45,3 +45,20 @@
     width: 166rpx;
     height: 55rpx;
 }
+
+.homeWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx 0;
+}
+
+.homeIcon{
+    width: 118rpx;
+    height: 118rpx;
+}
+
+.homeArrow{
+    width: 14rpx;
+    height: 25rpx;
+}

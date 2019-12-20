@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    appriseList: [],
     subjectList: [],
     showTop: false,
     teacherList: [],
@@ -34,9 +35,11 @@ Page({
         subjectList: data.data
       })
     })
-
+    
     http.postPromise('/StudentDemand/queryGoodApprise').then(data => {
-      
+      this.setData({
+        appriseList: data.data.data.slice(0, 2)
+      })
     })
 
     http.postPromise('/userInfo/queryAllTeacherInfosByStudents', {}).then(data => {

@@ -1,7 +1,7 @@
 <!--components/Student/HomeReportItem/HomeReportItem.wxml-->
 <view class='container {{first?"first":""}}'>
     <image class='icon' src='../../../images/mess.png' mode='widthFix'/>
-    <text class='studentName'>朱学员</text>
-    <view class='content'>老师教学方法很好，上课生动活泼，很容易理解</view>
+    <text class='studentName'>{{item.teacherName}}</text>
+    <view class='content'>{{item.appraise}}</view>
 </view>
 

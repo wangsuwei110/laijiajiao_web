@@ -1,5 +1,5 @@
 var http = require('../../../utils/api.js')
-function timeWeek (index) {
+function timeWeek(index) {
   if (index === 1) return '周一'
   else if (index === 2) return '周二'
   else if (index === 3) return '周三'
@@ -8,11 +8,13 @@ function timeWeek (index) {
   else if (index === 6) return '周六'
   else if (index === 7) return '周日'
 }
-function dayTimes (index) {
+
+function dayTimes(index) {
   if (index === 0) return '上午'
   else if (index === 1) return '下午'
   else if (index === 2) return '晚上'
 }
+
 Page({
   data: {
     time: null,
@@ -144,6 +146,7 @@ Page({
     checkIndex: null,
     dates: null
   },
+
   onLoad: function (options) {
     var that = this;
     //console.log(options)
@@ -160,7 +163,7 @@ Page({
     that.getOrderDetails()
   },
   // 显示错误提示
-  errFun (text) {
+  errFun(text) {
     this.setData({
       showToast: true,
       errorText: text
@@ -173,19 +176,22 @@ Page({
       })
     }, 2000)
   },
-  second (n) {
+
+  second(n) {
     if (n < 10) return '0' + n
     else return n
   },
-  bindDateChange (e) {
+
+  bindDateChange(e) {
     //console.log(e.detail.value)
     this.setData({
-      ["details.weekDayTime["+ this.data.checkIndex +"].index"]: e.detail.value,
+      ["details.weekDayTime[" + this.data.checkIndex + "].index"]: e.detail.value,
       time: this.data.details.weekDayTime[this.data.checkIndex].array[e.detail.value]
     })
     //console.log(this.data.details)
   },
-  checkboxFun (e) {
+
+  checkboxFun(e) {
     this.setData({
       checkIndex: e.currentTarget.dataset.index,
       dates: e.currentTarget.dataset.date,
@@ -198,19 +204,25 @@ Page({
     })
     //console.log(this.data.time, '111111111')
   },
-  addAbility () {
+
+
+  geneterMoneyList(moneyList) {
+    return moneyList.store((a, b) => a.paymentId - b.paymentId)
+  },
+
+  addAbility() {
     if (this.data.checkIndex === null) {
       this.errFun('请选择试讲时间')
       return
     }
     this.setData({
-      'formData.orderTeachTime': this.data.dates + ' ' +  this.data.time + ':00',
+      'formData.orderTeachTime': this.data.dates + ' ' + this.data.time + ':00',
       'formData.teacherId': wx.getStorageSync('user_id')
     })
     var that = this
     http.post('/teacher/updateNewTrialDemand', this.data.formData, function (res) {
       that.errFun('试讲时间确定成功')
-      setTimeout(function() {
+      setTimeout(function () {
         that.setData({
           orderType: 2
         })
@@ -218,48 +230,65 @@ Page({
       }, 2000)
     })
   },
-  timeDate (date, index) {
+
+  timeDate(date, index) {
     //console.log(date, 'datedatedatedate')
-    const  current_date = date.getDate();
-    const  current_month = this.second(date.getMonth() + 1);
-    const  current_year = this.second(date.getFullYear());
+    const current_date = date.getDate();
+    const current_month = this.second(date.getMonth() + 1);
+    const current_year = this.second(date.getFullYear());
     if (index) return current_year + '-' + current_month + '-' + current_date
     // return current_year + '.' + current_month + '.' + current_date
     return current_month + '.' + current_date
   },
-  timeFormat (timeStr) {
+
+  timeFormat(timeStr) {
     var dataOne = timeStr.split('T')[0];
     var dataTwo = timeStr.split('T')[1];
     var dataThree = dataTwo.split('+')[0].split('.')[0];
     var newTimeStr = dataOne + ' ' + dataThree
     return newTimeStr;
   },
-  arrayFun (index) {
+
+  arrayFun(index) {
     if (index === 0) {
       return ['08:00', '09:00', '10:00', '11:00']
     } else if (index === 1) {
       return ['12:00', '13:00', '14:00', '15:00']
-    }  else if (index === 2) {
+    } else if (index === 2) {
       return ['20:00', '21:00', '22:00', '23:00']
-    } 
+    }
   },
-  bindPickerChange (e) {
+
+  bindPickerChange(e) {
     //console.log(e)
   },
-  getOrderDetails () {
+
+  getOrderDetails() {
     var that = this
-    http.post('/teacher/queryStudemtDemandDetail', {demandId: this.data.id, status: this.data.orderType, teacherId: wx.getStorageSync('user_id')}, function (res) {
+    http.post('/teacher/queryStudemtDemandDetail', { demandId: this.data.id, status: this.data.orderType, teacherId: wx.getStorageSync('user_id') }, function (res) {
       //console.log(res.data)
       var data = res.data
       if (res.code === '200') {
+
+        //按paymentId 排序
+        const _moneyList = that.geneterMoneyList(data.orderMoneyList || [])
+        //找首次支付项
+        const payItem = _moneyList.find(item => item.paymentType === 2)
+        if (payItem) {
+          data._orderMoney = payItem.paymentAccount
+        }
+
+        data._moneyList = _moneyList.filter(item => item.paymentType === 4)
+
         if (data.createTime) data.createTime = that.timeFormat(data.createTime)
         if (data.createTime) data.signTime = that.timeFormat(data.signTime)
         if (data.orderTeachTime) data.orderTeachTime = that.timeFormat(data.orderTeachTime)
         // 获取每周上课次数
+
         if (data.timeRange) {
           data.timeRange = JSON.parse(data.timeRange.replace(/\'/g, '"'))
           data.weekDayTime = data.timeRange.map(item => {
-            let obj = item
+            let obj = ite
             //console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)
             return {
               weekDayTimes: that.timeDate(new Date(obj.weekDayTime)),
@@ -296,7 +325,7 @@ Page({
   },
 
   // 查看课表
-  look () {
+  look() {
     wx.switchTab({
       url: '/pages/curricul/index'
     })

@@ -157,6 +157,15 @@
 .explanation .num {
   color: #e50505;
 }
+
+.explanationRow{
+  margin-top: 30rpx;
+}
+
+.explanationRow + .explanationRow{
+  margin-top: 10rpx;
+}
+
 .pay-panel .panel-top .cost {
   line-height: 1;
   font-size: 32rpx;

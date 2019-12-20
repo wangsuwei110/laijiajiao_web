@@ -123,8 +123,13 @@
         <view class="explanation" wx:if='{{orderType === 0}}'>
           <text style='margin-left:0;'>具体需求:</text><text>{{details.demandDesc}}</text>
         </view>
-        <view class="explanation explanation1" wx:if='{{orderType === 4}}'>
-          <text style='margin-left:0;'>首次支付:</text><text class="num">￥{{details.orderMoney}}</text>
+
+        <view class="explanation explanation1 explanationRow" wx:if='{{details._orderMoney}}'>
+          <text style='margin-left:0;'>首次支付:</text><text class="num">￥{{details._orderMoney}}</text>
+        </view>
+
+        <view class="explanation explanation1 explanationRow" wx:for='{{details._moneyList}}' wx:key='{{item.paymentId}}'>
+          <text style='margin-left:0;'>续课支付:</text><text class="num">￥{{item.paymentAccount}}</text>
         </view>
 
       </view>

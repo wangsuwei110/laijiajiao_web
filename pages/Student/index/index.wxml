@@ -17,16 +17,30 @@
     <HomeContentBox title='教员风采' moreUrl='/pages/Student/TeacherList/TeacherList'>
         <navigator url='/pages/Student/TeacherList/TeacherList' slot='titleAppend'>累计教员 {{total}}名 ></navigator>
         <view>
-            <HomeTeacher first='true' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' item='{{item}}'/>
+            <HomeTeacher first='{{!index}}' wx:for='{{teacherList}}' wx:key='{{item.teacherId}}' item='{{item}}'/>
         </view>
     </HomeContentBox>
 
     <HomeContentBox title='学员反馈' moreUrl='a'>
         <text slot='titleAppend'>好评率99.8%</text>
         <view>
-            <HomeReportItem first='true'/>
+            <HomeReportItem first='{{!index}}' wx:for='{{appriseList}}' wx:key='{{item.sid}}' item='{{item}}'/>
         </view>
     </HomeContentBox>
+
+    <HomeContentBox title='服务流程'>
+        <view class='homeWrap'>
+            <image src='../../../images/Students/home1.png' mode='aspectFill' class='homeIcon'/>
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+            <image src='../../../images/Students/home2.png' mode='aspectFill' class='homeIcon'/>
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+            <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+            <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+        </view>
+    </HomeContentBox>
+
+    <BottomInfo/>
 
     <view slot='absolute'>
         <CheckLogin isStudent='true' class-name='addDemand' url='/pages/Student/ReleaseDemand/ReleaseDemand'>
