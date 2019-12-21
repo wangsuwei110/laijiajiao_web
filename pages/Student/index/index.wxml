@@ -12,6 +12,11 @@
             <image class='subjectIcon' mode='aspectFix' src='{{RESOURCE_PERFIX}}/haojiajiao/share/IMG/{{item.pictureName}}'/>
             <text class='subjectTxt'>{{item.value}}</text>
         </navigator>
+
+        <navigator class='subjectItem' url='/pages/Student/TeacherList/TeacherList'>
+            <image class='subjectIcon' mode='aspectFix' src='../../../images/Students/homeMore.png'/>
+            <text class='subjectTxt'>更多</text>
+        </navigator>
     </view>
 
     <HomeContentBox title='教员风采' moreUrl='/pages/Student/TeacherList/TeacherList'>
@@ -28,15 +33,50 @@
         </view>
     </HomeContentBox>
 
+
+    <HomeContentBox title='更多学科'>
+        <view class='subjectContainer'>
+            <navigator class='moreSubjectItem' wx:for='{{moreSubjectList}}' wx:key='{{item.key}}' url='/pages/Student/TeacherList/TeacherList?subject={{item.key}}'>
+                <image class='subjectIcon' mode='aspectFix' src='{{RESOURCE_PERFIX}}/haojiajiao/share/IMG/{{item.pictureName}}'/>
+                <text class='subjectTxt'>{{item.value}}</text>
+            </navigator>
+        </view>
+    </HomeContentBox>
+
     <HomeContentBox title='服务流程'>
         <view class='homeWrap'>
-            <image src='../../../images/Students/home1.png' mode='aspectFill' class='homeIcon'/>
+            <view class='serverItem'>
+                <image src='../../../images/Students/home1.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>搜索教员
+                    <view>免费预约</view>                            
+                </view>
+            </view>
+            
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
-            <image src='../../../images/Students/home2.png' mode='aspectFill' class='homeIcon'/>
+
+            <view class='serverItem'>
+                <image src='../../../images/Students/home2.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>或者客服
+                    <view>免费推荐</view>                            
+                </view>
+            </view>
+
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
-            <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+            <view class='serverItem'>
+                <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>双方接洽
+                    <view>安排试讲</view>                            
+                </view>
+            </view>
+            
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
-            <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+            <view class='serverItem'>
+                <image src='../../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>约定时间
+                    <view>上门授课</view>                            
+                </view>
+            </view>
+            
         </view>
     </HomeContentBox>
 

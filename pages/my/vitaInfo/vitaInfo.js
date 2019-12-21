@@ -58,7 +58,7 @@ Page({
     http.post('/userInfo/queryTeacherInfo', params, function (res) {
       if (res.code === '200') {
         switch (res.data.auditStatus) {
-          case 0: 
+          case 0:
             _auditStatusStr = '审核中'
             break
           case 1:
@@ -120,6 +120,20 @@ Page({
       wx.hideLoading()
     })
   },
+
+
+  onShowNoticeModal() {
+    wx.showModal({
+      title: '提示',
+      content: '填写正确的基础信息、身份认证、学历信息后您的简历信息才会被审核，审核通过后学员才能看到您。',
+      showCancel: false,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+    });
+  },
+
   onLoad: function () {
   },
   onShow: function () {

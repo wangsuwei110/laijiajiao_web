@@ -38,6 +38,8 @@
   margin-bottom: 40rpx;
 }
 .userinfo-content .con-1 .con-1-l {
+  display: flex;
+  align-items: center;
   flex: 1;
 }
 .userinfo-content .con-1 .check-status {
@@ -100,4 +102,10 @@
   width: 26rpx;
   height: 16rpx;
   transform: rotateZ(-90deg)
+}
+
+
+.explanationIcon{
+  width: 28rpx;
+  height: 28rpx;
 }

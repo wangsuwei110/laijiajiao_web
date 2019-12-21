@@ -6,7 +6,7 @@ App({
     weekData: null
   },
 
-  onShow() {
+  /* onShow() {
     wx.login({
       success: (result) => {
         http.postPromise('/user/getUserIdentity', { code: result.code }).then(res => {
@@ -32,7 +32,7 @@ App({
         })
       },
     });
-  },
+  }, */
 
   onLaunch: function (options) {
     //console.log("[onLaunch] 本次场景值:", options.scene)

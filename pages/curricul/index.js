@@ -20,7 +20,8 @@ Page({
     endDate: null,
     details: null,
     time: new Date(),
-    timeStr: ''
+    timeStr: '',
+    curriculumList: [],
   },
 
   /**
@@ -30,7 +31,7 @@ Page({
     wx.setNavigationBarTitle({
       title: wx.getStorageSync('user_name') + '的排课表'
     })
-    
+
     wx.requestSubscribeMessage({
       tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
     })
@@ -112,12 +113,23 @@ Page({
       const next = wDay === 0 ? 0 : (7 - wDay)
 
       const timeStr = `${that.generateDateStr(new Date(time - prev * ONE_DAY))}-${that.generateDateStr(new Date(time + next * ONE_DAY))}`
+
+      const sumData = Array.from({ length: 7 });
+      //res.data.unshift(res.data[0])
+
+
+      
       res.data = res.data.map(item => {
-        let obj = item
-        obj.week = timeWeek(JSON.parse(obj.weekNum))
-        return obj
+        item.week = timeWeek(item.weekNum)
+        const itemList = sumData[item.weekNum - 1] || { week: timeWeek(item.weekNum), list: Array.from({ length: 3 }).map(item => []) };
+        itemList.list[item.timeNum].push(item)
+        sumData[item.weekNum - 1] = itemList
+        return item
       })
-      var ary1 = [], ary2 = [], ary3 = [], ary4 = [], ary5 = [], ary6 = [], ary7 = []
+      
+      console.log(sumData)
+
+      /* var ary1 = [], ary2 = [], ary3 = [], ary4 = [], ary5 = [], ary6 = [], ary7 = []
       for (var j = 0; j < res.data.length; j++) {
         if (res.data[j].weekNum === 1) {
           ary1.push(res.data[j])
@@ -136,8 +148,9 @@ Page({
         }
       }
       var sumData = [];
-      sumData = [ary1, ary2, ary3, ary4, ary5, ary6, ary7]
+      sumData = [ary1, ary2, ary3, ary4, ary5, ary6, ary7] */
       that.setData({
+        curriculumList: res.data,
         details: sumData,
         timeStr: timeStr,
         time: orderTeachTime

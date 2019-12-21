@@ -5,6 +5,7 @@
       <view class="con-1">
         <view class="con-1-l">
           <text class="name">{{userinfo.teacherName || ''}}</text><text class="check-status">（{{auditStatusStr || '-'}}）</text>
+          <image class="explanationIcon" mode="scaleToFill" src="../../../images/question_icon.png" bindtap='onShowNoticeModal'/>
         </view>
         <text bindtap="basicInfo" class="link-btn">基础信息></text>
       </view>

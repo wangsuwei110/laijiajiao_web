@@ -10,6 +10,7 @@ Page({
   data: {
     appriseList: [],
     subjectList: [],
+    moreSubjectList: [],
     showTop: false,
     teacherList: [],
     total: 0,
@@ -31,11 +32,14 @@ Page({
    */
   onLoad: function (options) {
     http.postPromise('/StudentDemand/homepageInfo').then(data => {
+      const topList = ['语文', '数学', '英语', '奥数', '物理', '化学', '生物']
+      const moreList = ['政治', '历史', '地理', '高数', '声乐', '古筝', '长笛', '美术', '日语', '德语', '法语', '韩语']
       this.setData({
-        subjectList: data.data
+        subjectList: topList.map(str => data.data.find(item => item.value === str)),
+        moreSubjectList: moreList.map(str => data.data.find(item => item.value === str)),
       })
     })
-    
+
     http.postPromise('/StudentDemand/queryGoodApprise').then(data => {
       this.setData({
         appriseList: data.data.data.slice(0, 2)

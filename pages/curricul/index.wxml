@@ -37,82 +37,29 @@
   </view>
 
   <view class="tit-count">
-    <view class="tit-list" wx:for='{{details}}'  wx:if='{{item.length!=0}}'>
+    <view class="tit-list" wx:for='{{details}}'  wx:if='{{weekItem}}' wx:for-item="weekItem" wx:key='{{weekItem.week}}'>
         <view class="tit-list-time">
-          {{item[0].week}}
+          {{weekItem.week}}
         </view>
         <view class="tit-list-style">
-          <view class="tit-list-style-name" wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 0}}">
+          
+          <view class="tit-list-style-name"  wx:for='{{weekItem.list}}' wx:for-item="timeItem" wx:for-index="timeIndex" wx:key='{{timeIndex}}'>
+            <block  wx:for='{{timeItem}}' wx:key='{{itemName.classId}}' wx:for-item="itemName">
               <view class="tit-list-style-name-top">
-              
-                <view class="name">  <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
-                <view class="style">({{itemName.teachBranchName}})</view>
-              </view>
-              <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
-                <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
-                   <image src='../../images/calander.png' />
-                    打卡
+                
+                  <view class="name">  <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
+                  <view class="name">{{itemName.teachBranchName}}</view>
                 </view>
-              </view>
-          </view>
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 1 && item[1].timeNum === 2}}" >
-          </view>
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 1}}">
-          </view>
-         
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && (item[0].timeNum === 0 || item[0].timeNum === 2)}}">
-          </view>
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 &&  (item[0].timeNum === 0 || item[0].timeNum === 2)}}">
-          </view>
-          
-        
-          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 1}}">
-              <view class="tit-list-style-name-top"  >
-               
-                <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}</view>
-                <view class="style">({{itemName.teachBranchName}})</view>
-              </view>
-              <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
-                <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
-                     <image src='../../images/calander.png' />                     打卡
+                <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}">
+                  <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
+                    <image src='../../images/calander.png' />
+                      打卡
+                  </view>
                 </view>
-              </view>
+            </block>
           </view>
-     
-          <view class="tit-list-style-name"  wx:if="{{item.length === 1 && item[0].timeNum === 1}}">
-          </view>
-
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 0 && item[1].timeNum === 2}}" >
-          </view>
-
-          
-  
-
-          <view class="tit-list-style-name"  wx:for='{{item}}' wx:for-item="itemName" wx:if="{{itemName.timeNum === 2}}">
-              <view class="tit-list-style-name-top"  >
-               
-                <view class="name"> <view class="{{itemName.status === 0 ? 'icon-blue' : itemName.status === 1 ? 'icon-red' : itemName.status === 2 ? 'icon-green' : ''}}"></view>{{itemName.studentName}}3</view>
-                <view class="style">({{itemName.teachBranchName}})</view>
-              </view>
-              <view class="tit-list-style-name-bot" wx:if="{{itemName.status === 0}}" >
-                <view class="active-ka" data-classId="{{itemName.classId}}" bindtap='timetableFun'>
-                     <image src='../../images/calander.png' />                      打卡
-                </view>
-              </view>
-          </view>
-
-          <view class="tit-list-style-name"  wx:if="{{item.length === 2 && item[0].timeNum === 0 && item[1].timeNum === 1}}" >
-          </view>
-
       </view>
     </view>
-
-  
 
     <view class="tit-beizhu">
         <view class="tit-beizhu-title">
