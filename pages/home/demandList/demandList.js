@@ -61,8 +61,14 @@ Page({
   isEnd: false,
   onLoad: function (options) {
     const that = this;
+    
     let winHeight = wx.getSystemInfoSync().windowHeight;
     let query = wx.createSelectorQuery();
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['rgndJEZd9POlvDVvBnI2ChxfYYu3xbtwISR7NCVzlNc']
+    })
+
     query.select("#tabsView").boundingClientRect(function (rect) {
       that.setData({
         scrollHeight: winHeight - rect.height,
@@ -221,11 +227,5 @@ Page({
   },
   revenueList: function () {
 
-  },
-
-  onLoad() {
-    wx.requestSubscribeMessage({
-      tmplIds: ['rgndJEZd9POlvDVvBnI2ChxfYYu3xbtwISR7NCVzlNc']
-    })
   },
 })

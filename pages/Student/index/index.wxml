@@ -1,8 +1,8 @@
 <!--pages/Student/index/index.wxml-->
 <PageLayout isStudent='true' absolute='true' id='pageLayout' bind:onShowTop='onShowTop'>
-    <swiper class='swiper'>
+    <swiper>
         <swiper-item>
-            <image class='swiper' mode='widthFix' src=''/>
+            <image class='swiper' mode='widthFix' src='{{RESOURCE_PERFIX}}/haojiajiao/share/IMG/student_banar.png'/>
         </swiper-item>
     </swiper>
 
