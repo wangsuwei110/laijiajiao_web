@@ -26,8 +26,8 @@
         </view>
     </HomeContentBox>
 
-    <HomeContentBox title='学员反馈' moreUrl='a'>
-        <text slot='titleAppend'>好评率99.8%</text>
+    <HomeContentBox title='学员反馈' moreUrl='/pages/Student/TeacherList/TeacherList'>
+        <text slot='titleAppend'>好评率{{rate}}</text>
         <view>
             <HomeReportItem first='{{!index}}' wx:for='{{appriseList}}' wx:key='{{item.sid}}' item='{{item}}'/>
         </view>

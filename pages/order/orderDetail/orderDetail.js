@@ -207,7 +207,7 @@ Page({
 
 
   geneterMoneyList(moneyList) {
-    return moneyList.store((a, b) => a.paymentId - b.paymentId)
+    return moneyList.sort((a, b) => a.paymentId - b.paymentId)
   },
 
   addAbility() {
@@ -271,7 +271,8 @@ Page({
       if (res.code === '200') {
 
         //按paymentId 排序
-        const _moneyList = that.geneterMoneyList(data.orderMoneyList || [])
+        const _moneyList = that.geneterMoneyList(JSON.parse(data.orderMoneyList) || [])
+        console.log(_moneyList, JSON.parse(data.orderMoneyList))
         //找首次支付项
         const payItem = _moneyList.find(item => item.paymentType === 2)
         if (payItem) {
@@ -288,7 +289,7 @@ Page({
         if (data.timeRange) {
           data.timeRange = JSON.parse(data.timeRange.replace(/\'/g, '"'))
           data.weekDayTime = data.timeRange.map(item => {
-            let obj = ite
+            let obj = item
             //console.log(timeWeek(obj.week), 'timeWeek(obj.week)timeWeek(obj.week)', obj.week)
             return {
               weekDayTimes: that.timeDate(new Date(obj.weekDayTime)),

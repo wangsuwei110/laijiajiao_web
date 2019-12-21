@@ -14,6 +14,7 @@ Page({
     showTop: false,
     teacherList: [],
     total: 0,
+    rate: '',
     RESOURCE_PERFIX: http.RESOURCE_PERFIX
   },
 
@@ -31,6 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const studentId = wx.getStorageSync('user_id')
     http.postPromise('/StudentDemand/homepageInfo').then(data => {
       const topList = ['语文', '数学', '英语', '奥数', '物理', '化学', '生物']
       const moreList = ['政治', '历史', '地理', '高数', '声乐', '古筝', '长笛', '美术', '日语', '德语', '法语', '韩语']
@@ -42,11 +44,12 @@ Page({
 
     http.postPromise('/StudentDemand/queryGoodApprise').then(data => {
       this.setData({
-        appriseList: data.data.data.slice(0, 2)
+        rate: data.data.data.rate,
+        appriseList: data.data.data.goodApprise.slice(0, 2)
       })
     })
 
-    http.postPromise('/userInfo/queryAllTeacherInfosByStudents', {}).then(data => {
+    http.postPromise('/userInfo/queryAllTeacherInfosByStudents', studentId ? { studentId } : {}).then(data => {
       this.setData({
         teacherList: data.data.dataList.slice(0, 2).map(item => {
           if (item.teachBrance) {
