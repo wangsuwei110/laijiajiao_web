@@ -90,9 +90,9 @@ Page({
 
     const { sid, teacherId, demandId } = item
 
-    wx.requestSubscribeMessage({
+    /* wx.requestSubscribeMessage({
       tmplIds: ['UPhBQDD3ckPKFhoDLHuKwDwTRV0YTZkqyZo9ewszwQI']
-    })
+    }) */
 
     wx.showModal({
       title: '提示',

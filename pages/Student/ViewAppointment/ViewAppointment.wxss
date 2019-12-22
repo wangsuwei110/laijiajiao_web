@@ -109,12 +109,16 @@ page{
     margin-left: 12rpx;
 }
 
-.desc{
+.desc,.redDesc{
     font-size:24rpx;
 font-family:Noto Sans S Chinese;
 font-weight:300;
 color:rgba(115,115,115,1);
 margin-top: 20rpx;
+}
+
+.redDesc{
+    color: #FA0C0C;
 }
 
 .price{

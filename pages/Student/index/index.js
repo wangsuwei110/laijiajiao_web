@@ -45,13 +45,13 @@ Page({
     http.postPromise('/StudentDemand/queryGoodApprise').then(data => {
       this.setData({
         rate: data.data.data.rate,
-        appriseList: data.data.data.goodApprise.slice(0, 2)
+        appriseList: data.data.data.goodApprise.slice(0, 5)
       })
     })
 
     http.postPromise('/userInfo/queryAllTeacherInfosByStudents', studentId ? { studentId } : {}).then(data => {
       this.setData({
-        teacherList: data.data.dataList.slice(0, 2).map(item => {
+        teacherList: data.data.dataList.slice(0, 5).map(item => {
           if (item.teachBrance) {
             item.teachBrance = JSON.parse(item.teachBrance)
             item.teachBranchSlave = item.teachBrance.map(item => item.teachBranchName).join(',')

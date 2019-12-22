@@ -26,8 +26,8 @@
                     
                     <text class='price'>{{item.chargesStandard}}</text>
                 </view>
-                <view class='desc' wx:if='{{item.passFlag}}'>已试讲通过过</view>
-                <view class='desc' wx:elif='{{item.status ===3}}'>试讲不通过</view>
+                <view class='redDesc' wx:if='{{item.passFlag}}'>已试讲通过过</view>
+                <view class='redDesc' wx:elif='{{item.status ===3}}'>试讲不通过</view>
                 <view class='desc' wx:else>聘用率{{item.employRate?item.employRate:'--'}} 续课率{{item.resumptionRate?item.resumptionRate:'--'}}</view>
             </view>
 

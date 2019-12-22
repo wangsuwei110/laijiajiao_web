@@ -217,7 +217,7 @@
           <view class="talk" wx:for='{{StudentAppraiseForTeacherList}}'>
             <image class="talk-icon" mode="widthFix" src="../../../images/mess.png"></image>
             <view class="talk-user">
-              <text class="name">{{item.teacherName}}</text><text class="date">{{item.appraiseTime}}</text>
+              <text class="name">{{item.teacherName}}</text><text class="date">{{item.appraiseTimeStr}}</text>
               <view class="content">
                 <text>{{item.appraise}}</text>
               </view>

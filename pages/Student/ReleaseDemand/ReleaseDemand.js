@@ -154,7 +154,7 @@ Page({
       })
 
       wx.requestSubscribeMessage({
-        tmplIds: ['KB10ybjYSdInA9O9sobfhwr6yXxYMIpQ8cBIR0stX2o', 'hWYWzWwSHDOwVP19CkH-g43SltRkR9QwxLYEom62VUI']
+        tmplIds: [teacherInfo ? 'KB10ybjYSdInA9O9sobfhwr6yXxYMIpQ8cBIR0stX2o' : 'hWYWzWwSHDOwVP19CkH-g43SltRkR9QwxLYEom62VUI']
       })
     }
 

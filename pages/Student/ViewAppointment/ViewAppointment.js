@@ -142,7 +142,7 @@ Page({
         timeList,
         orderTime: data.data.orderTime,
         teacherList: data.data.teacherList,
-        selectId: data.data.teacherList.length ? data.data.teacherList[0].teacherId : 0
+        //selectId: data.data.teacherList.length ? data.data.teacherList[0].teacherId : 0
       })
     })
   },

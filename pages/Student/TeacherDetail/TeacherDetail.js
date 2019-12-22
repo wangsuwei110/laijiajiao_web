@@ -228,7 +228,10 @@ Page({
         'certificateList': data.certificatePictureList,
         'teachBranchs': data.teachBranchs,
         'teachAddress': data.teachAddress,
-        StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList,
+        StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList.map(item => {
+          item.appraiseTimeStr =  util.formatTime(item.appraiseTime, '{y}-{m}-{d} {h}:{i}')
+          return item
+        }),
         teacherForStudentServiceList: data.teacherForStudentServiceList.map(item => {
           item.orderStartStr = util.formatTime(item.orderStart, '{y}-{m}-{d} {h}:{i}')
           return item
@@ -267,7 +270,7 @@ Page({
   canvasTap: function (id, color, start, end, time, w, h) {
 
     end = Number(`${end}`.replace('%', ''))
-    
+
     var that = this
 
     //圆环的绘制

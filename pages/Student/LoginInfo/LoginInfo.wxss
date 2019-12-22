@@ -71,14 +71,15 @@ page{
     font-size:26rpx;
     font-family:Microsoft YaHei;
     font-weight:300;
-    padding: 0 20rpx;
 }
 
 .label{
+    width: 140rpx;
     font-size:26rpx;
     font-family:Microsoft YaHei;
     font-weight:300;
     color:rgba(115,115,115,1);
+    margin-right: 20rpx;
 }
 
 

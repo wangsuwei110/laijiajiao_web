@@ -68,7 +68,7 @@
         </view>
 
         <view class='signUpCount' wx:elif='{{item.subscribeStatus === 3 && item.demandType===1}}'>
-            <view class='unPassBtn' catchtap='onNoPassClick'>{{item.orderTeachTime}} 试讲不通过</view>
+            <view class='unPassBtn' catchtap='onNoPassClick'>{{orderTeachTimeStr}} 试讲不通过</view>
         </view>
 
         <view class='actionWrap' wx:elif='{{item.subscribeStatus === 4}}'>
