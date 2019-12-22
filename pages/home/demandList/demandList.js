@@ -61,7 +61,7 @@ Page({
   isEnd: false,
   onLoad: function (options) {
     const that = this;
-    
+
     let winHeight = wx.getSystemInfoSync().windowHeight;
     let query = wx.createSelectorQuery();
 
@@ -90,21 +90,22 @@ Page({
     //console.log(e.currentTarget.dataset.id)
     if (this.data.activeIdx === 0) {
       this.setData({
-        teachGradeId: e.currentTarget.dataset.id,
-        teachBranchId: null,
+        teachBranchId: e.currentTarget.dataset.id,
+        teachGradeId: null,
         parameterId: null
       })
     } else if (this.data.activeIdx === 1) {
       this.setData({
-        teachBranchId: e.currentTarget.dataset.id,
-        teachGradeId: null,
-        parameterId: null
+        parameterId: e.currentTarget.dataset.id,
+        teachBranchId: null,
+        teachGradeId: null
       })
     } else if (this.data.activeIdx === 2) {
       this.setData({
         demandType: Number(e.currentTarget.dataset.id),
         teachBranchId: null,
-        teachGradeId: null
+        teachGradeId: null,
+        parameterId: null
       })
     }
     this.getList()
@@ -198,14 +199,17 @@ Page({
       activeIdx: _idx,
       current: null
     })
+
+    console.log(_idx)
+
     // 请求数据
     if (_idx === 0) {
       this.setData({
-        shai: this.grade
+        shai: this.subject
       })
     } else if (_idx === 1) {
       this.setData({
-        shai: this.subject
+        shai: this.area
       })
     } else if (_idx === 2) {
       this.setData({

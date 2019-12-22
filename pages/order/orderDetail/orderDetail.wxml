@@ -13,7 +13,7 @@
       
       <view class="cont-item" wx:if='{{orderType === 4}}'>
         <text class="label">支付时间</text>
-        <text class="text">{{details.orderTeachTime}}</text>
+        <text class="text">{{details.orderStart}}</text>
       </view>
 
 

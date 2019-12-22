@@ -127,7 +127,7 @@ Page({
         return item
       })
       
-      console.log(sumData)
+      //console.log(sumData)
 
       /* var ary1 = [], ary2 = [], ary3 = [], ary4 = [], ary5 = [], ary6 = [], ary7 = []
       for (var j = 0; j < res.data.length; j++) {
