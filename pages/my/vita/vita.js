@@ -228,7 +228,7 @@ Page({
       })
       that.canvasTap('employRate', '#32BE78', 0, data.baseInfo.employRate, 10, 20, 20)
       that.canvasTap('resumptionRate', '#4DB6F5', 0, data.baseInfo.resumptionRate, 10, 20, 20)
-      that.canvasTap('praiseRate', '#E50505', 0, 0, 10, 20, 20)
+      that.canvasTap('praiseRate', '#E50505', 0, data.baseInfo.appraiseRate, 10, 20, 20)
     }, function (err) {
       wx.showToast({
         title: err.msg,

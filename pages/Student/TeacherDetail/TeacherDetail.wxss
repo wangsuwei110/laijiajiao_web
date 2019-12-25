@@ -575,17 +575,23 @@
     padding: 40rpx;
   }
 
+  .submitBtnSpace{
+    height: 100rpx;
+  }
+
   .submitBtn{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20rpx;
     height:76rpx;
     background:rgba(54,171,241,1);
-    border-radius:5rpx;
 
     font-size:32rpx;
-font-family:Noto Sans S Chinese;
-font-weight:400;
-color: #fff;
+    font-family:Noto Sans S Chinese;
+    font-weight:400;
+    color: #fff;
   }

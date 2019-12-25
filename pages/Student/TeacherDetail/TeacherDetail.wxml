@@ -217,7 +217,7 @@
           <view class="talk" wx:for='{{StudentAppraiseForTeacherList}}'>
             <image class="talk-icon" mode="widthFix" src="../../../images/mess.png"></image>
             <view class="talk-user">
-              <text class="name">{{item.teacherName}}</text><text class="date">{{item.appraiseTimeStr}}</text>
+              <text class="name">{{item.studentName}}</text><text class="date">{{item.appraiseTimeStr}}</text>
               <view class="content">
                 <text>{{item.appraise}}</text>
               </view>
@@ -230,7 +230,7 @@
       </block>
     </view>
   </view>
-  
+  <view class='submitBtnSpace'/>
   <CheckLogin wx:if='{{!formOrder}}' class-name='submitBtn' url='/pages/Student/ReleaseDemand/ReleaseDemand?teacherid={{userinfo.teacherId}}'>预约教员</CheckLogin>
 </view>
 

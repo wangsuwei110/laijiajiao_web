@@ -3,7 +3,7 @@
     <view catchtap="switchTab" wx:for="{{tabs}}" style="position: relative;" data-idx="{{index}}" data-code="{{item.code}}" wx:key="{{index}}" class="tabs-item {{activeIdx == index ? 'active' : ''}}">
       <text>{{item.name}}</text>
        <view class="select-wrapper" wx:if='{{activeIdx == index && show}}'>
-        <view catchtap='shaiFun'  wx:for='{{shai}}'  wx:for-index="idxA" data-idxs="{{idxA}}"  class="{{activeIdx === index && current === idxA ? 'active' : ''}}"   data-id="{{activeIdx === 0 ? item.teachBranchId : activeIdx === 1 ? item.parameterId : activeIdx === 2 ? item.parameterId : ''}}">{{activeIdx === 0 ? item.teachBranchName : activeIdx === 1 ? item.name : activeIdx === 2 ? item.name : item}}</view>
+        <view catchtap='shaiFun'  wx:for='{{shai}}'  wx:for-index="idxA" data-idxs="{{idxA}}"  class="{{(activeIdx === 2?demandType:activeIdx === 1?parameterId:teachBranchId) === (activeIdx === 0 ? item.teachBranchId : activeIdx === 1 ? item.parameterId : activeIdx === 2 ? item.parameterId : '') ? 'active' : ''}}"   data-id="{{activeIdx === 0 ? item.teachBranchId : activeIdx === 1 ? item.parameterId : activeIdx === 2 ? item.parameterId : ''}}">{{activeIdx === 0 ? item.teachBranchName : activeIdx === 1 ? item.name : activeIdx === 2 ? item.name : item}}</view>
       </view>
     </view>
 

@@ -90,22 +90,22 @@ Page({
     //console.log(e.currentTarget.dataset.id)
     if (this.data.activeIdx === 0) {
       this.setData({
-        teachBranchId: e.currentTarget.dataset.id,
-        teachGradeId: null,
-        parameterId: null
+        teachBranchId: Number(e.currentTarget.dataset.id),
+        //teachGradeId: null,
+        //parameterId: null
       })
     } else if (this.data.activeIdx === 1) {
       this.setData({
-        parameterId: e.currentTarget.dataset.id,
-        teachBranchId: null,
-        teachGradeId: null
+        parameterId: Number(e.currentTarget.dataset.id),
+        //teachBranchId: null,
+        //teachGradeId: null
       })
     } else if (this.data.activeIdx === 2) {
       this.setData({
         demandType: Number(e.currentTarget.dataset.id),
-        teachBranchId: null,
-        teachGradeId: null,
-        parameterId: null
+        //teachBranchId: null,
+        //teachGradeId: null,
+        //parameterId: null
       })
     }
     this.getList()

@@ -229,7 +229,7 @@ Page({
         'teachBranchs': data.teachBranchs,
         'teachAddress': data.teachAddress,
         StudentAppraiseForTeacherList: data.StudentAppraiseForTeacherList.map(item => {
-          item.appraiseTimeStr =  util.formatTime(item.appraiseTime, '{y}-{m}-{d} {h}:{i}')
+          item.appraiseTimeStr = util.formatTime(item.appraiseTime, '{y}-{m}-{d} {h}:{i}')
           return item
         }),
         teacherForStudentServiceList: data.teacherForStudentServiceList.map(item => {
@@ -241,7 +241,7 @@ Page({
       })
       that.canvasTap('employRate', '#32BE78', 0, data.baseInfo.employRate, 10, 20, 20)
       that.canvasTap('resumptionRate', '#4DB6F5', 0, data.baseInfo.resumptionRate, 10, 20, 20)
-      that.canvasTap('praiseRate', '#E50505', 0, 0, 10, 20, 20)
+      that.canvasTap('praiseRate', '#E50505', 0, data.baseInfo.appraiseRate, 10, 20, 20)
     }, function (err) {
       wx.showToast({
         title: err.msg,

@@ -116,7 +116,7 @@ Page({
 
       const sumData = Array.from({ length: 7 });
       //res.data.unshift(res.data[0])
-
+      
 
       
       res.data = res.data.map(item => {
