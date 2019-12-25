@@ -42,6 +42,15 @@ Page({
     });
   },
 
+  onShowModal() {
+    wx.showModal({
+      title: '提示',
+      content: '请先选择教员',
+      showCancel: false,
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+    });
+  },
 
   onSelectChange(e) {
     const { teacherList } = this.data
