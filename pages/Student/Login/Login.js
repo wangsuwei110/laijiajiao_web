@@ -57,7 +57,7 @@ Page({
   }),
 
 
-  onLogin(gender) {
+  onLogin(gender, avatarUrl) {
     wx.login({
       success: resData => {
         if (resData.code) {
@@ -83,7 +83,7 @@ Page({
             })
 
             http.postPromise('/user/getOpenId', { code: resData.code }).then(data => {
-              this.login(data.data.openid, gender)
+              this.login(data.data.openid, gender, avatarUrl)
             }).catch(err => {
               err && wx.showToast({
                 title: err.msg,
@@ -106,17 +106,18 @@ Page({
     //console.log(e)
     if (e.detail.userInfo) {
       //var gender = e.detail.userInfo.gender
-      this.onLogin(e.detail.userInfo.gender)
+      this.onLogin(e.detail.userInfo.gender, e.detail.userInfo.avatarUrl)
     }
   },
 
-  login: function (openId, gender) {
+  login: function (openId, gender, headPicture) {
     var params = {
       loginPhone: this.data.phone,
       identifyCode: this.data.code,
       loginType: 1, // 1: 学生，2：老师
       gender: gender, // 0：未知、1：男、2：女
-      openId: openId
+      openId: openId,
+      headPicture
     }
     http.postPromise('/user/login', params).then(res => {
       wx.setStorageSync('user_id', res.data.studentId)

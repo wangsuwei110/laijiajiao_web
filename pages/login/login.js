@@ -72,7 +72,7 @@ Page({
   onGotUserInfo: function (e) {
     var that = this
     if (e.detail.userInfo) {
-      var gender = e.detail.userInfo.gender
+      const { avatarUrl, gender } = e.detail.userInfo
       wx.login({
         success(res) {
           if (res.code) {
@@ -96,12 +96,12 @@ Page({
               title: '登录中...',
             })
             wx.setStorage({
-              key:"code",
+              key: "code",
               data: res.code
             })
             http.post('/user/getOpenId', params, function (res) {
               var openId = res.data.openid
-              that.login(openId, gender)
+              that.login(openId, gender, avatarUrl)
             }, function (err) {
               wx.showToast({
                 title: err.msg,
@@ -123,18 +123,19 @@ Page({
       })
     }
   },
-  goTo () {
+  goTo() {
     wx.reLaunch({
       url: '/pages/noHome/index'
     })
   },
-  login: function (openId, gender) {
+  login: function (openId, gender, headPicture) {
     var params = {
       loginPhone: this.data.phone,
       identifyCode: this.data.code,
       loginType: 2, // 1: 学生，2：老师
       gender: gender, // 0：未知、1：男、2：女
-      openId: openId
+      openId: openId,
+      headPicture
     }
     http.post('/user/login', params, function (res) {
       wx.showToast({
