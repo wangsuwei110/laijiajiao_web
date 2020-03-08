@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (wx.getStorageSync('user_id')) {
+    /* if (wx.getStorageSync('user_id')) {
       if (wx.getStorageSync('user_type') === 1) {
         wx.reLaunch({
           url: '/pages/Student/index/index',
@@ -58,9 +58,9 @@ Page({
           url: '/pages/home/index/index',
         })
       }
-    }
+    } */
   },
-  
+
   /**
    * 生命周期函数--监听页面隐藏
    */

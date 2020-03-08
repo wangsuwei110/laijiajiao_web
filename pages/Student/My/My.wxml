@@ -5,7 +5,7 @@
 
         <view class="myInfo">
             <view class="avatar">
-                <image src='{{student.picture?RESOURCE_PERFIX+student.picture:"../../../images/Students/myIcon.jpg"}}' class='avatarIcon' bindtap="tabFun" mode='aspectFill'/>
+                <image src='{{student.picture?student.picture:"../../../images/Students/myIcon.jpg"}}' class='avatarIcon' bindtap="tabFun" mode='aspectFill'/>
             </view>
             <text wx:if='{{!student.sid}}' bindtap="openVita" class="linkBtn">点击登录</text>
             

@@ -55,7 +55,7 @@
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
 
             <view class='serverItem'>
-                <image src='../../../images/Students/home2.png' mode='aspectFill' class='homeIcon'/>
+                <image src='../../../images/1-02@2x.png' mode='aspectFill' class='homeIcon'/>
                 <view class='serverTxt'>或者客服
                     <view>免费推荐</view>                            
                 </view>
@@ -63,7 +63,7 @@
 
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
             <view class='serverItem'>
-                <image src='../../../images/Students/home3.png' mode='aspectFill' class='homeIcon'/>
+                <image src='../../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
                 <view class='serverTxt'>双方接洽
                     <view>安排试讲</view>                            
                 </view>
@@ -71,9 +71,44 @@
             
             <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
             <view class='serverItem'>
-                <image src='../../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
+                <image src='../../../images/1-04@2x.png' mode='aspectFill' class='homeIcon'/>
                 <view class='serverTxt'>约定时间
                     <view>上门授课</view>                            
+                </view>
+            </view>
+            
+        </view>
+        <view class='homeWrapLine'/>
+        <view class='homeWrap'>
+            <view class='serverItem'>
+                <image src='../../../images/2-1@2x.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>发布需求
+                    <view>教员报名</view>                            
+                </view>
+            </view>
+            
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+
+            <view class='serverItem'>
+                <image src='../../../images/2-2@2x.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>报名甄选
+                    <view>确定试讲</view>                            
+                </view>
+            </view>
+
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+            <view class='serverItem'>
+                <image src='../../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>上门试讲
+                    <view>检验效果</view>                            
+                </view>
+            </view>
+            
+            <image src='../../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+            <view class='serverItem'>
+                <image src='../../../images/1-04@2x.png' mode='aspectFill' class='homeIcon'/>
+                <view class='serverTxt'>试讲通过
+                    <view>支付排课</view>                            
                 </view>
             </view>
             

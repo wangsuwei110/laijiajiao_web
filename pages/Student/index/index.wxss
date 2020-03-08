@@ -50,6 +50,11 @@
     height: 55rpx;
 }
 
+.homeWrapLine{
+    border-top: 2rpx solid #F2EFF6;
+    margin: 0 30rpx;
+}
+
 .homeWrap{
     display: flex;
     align-items: center;

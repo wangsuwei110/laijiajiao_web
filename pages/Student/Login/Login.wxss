@@ -10,7 +10,7 @@ page{
 
 .loginIcon{
     display: block;
-    width: 420rpx;
+    width: 155rpx;
     height: 260rpx;
     margin: 60rpx auto;
 }

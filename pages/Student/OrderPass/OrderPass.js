@@ -159,6 +159,12 @@ Page({
       })
     }
 
+    http.getPromise('/StudentDemand/queryStudentDemandDetail', {
+      id:appInst.globalData.orderItem.sid
+    }).then(data => {
+      
+    })
+
     this.setData({ item: appInst.globalData.orderItem })
 
 

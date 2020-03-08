@@ -37,11 +37,11 @@
     </view>
 </scroll-view>
 
-<view class='addBtn' bindtap='onShowModal' wx:if='{{!teacher}}'>立即支付</view>
+<view class='addBtn' bindtap='onShowModal' wx:if='{{!teacher}}'>预约试讲</view>
 
 <view class='addBtn' bindtap='onGoPay' wx:elif='{{teacher && teacher.passFlag}}'>立即支付</view>
 
-<picker wx:else mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
+<picker wx:elif='{{teacher}}' mode='multiSelector' range='{{[weekList,weekTimeList,hoursList]}}' bindcolumnchange='onColumnChange' bindchange='onDateChang'>
     <view class='addBtn'>预约试讲</view>
 </picker>
 

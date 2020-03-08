@@ -86,7 +86,6 @@ Component({
     const { isStudent, teacher, student } = this.data
     const curPages = getCurrentPages();
     const router = curPages.pop()
-
     const activeIndex = (isStudent ? student : teacher).findIndex(item => router.route === item.pagePath)
 
     this.setData({ activeIndex: activeIndex < 0 ? 0 : activeIndex })
