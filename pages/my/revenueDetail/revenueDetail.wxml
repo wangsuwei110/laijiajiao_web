@@ -19,7 +19,7 @@
     </view>
     <view class='items'>
       <text>备注</text>
-      <text>{{details.paymentDesc}}</text>
+      <text>{{details.studentName}} {{details.teachBranchName}} {{details.paymentDesc}}</text>
     </view>
   </view>
 </view>

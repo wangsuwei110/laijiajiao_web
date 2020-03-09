@@ -211,7 +211,7 @@ Page({
     let orderTeachTime = str[0] + '-' + str[1] + '-' + str[2] + ' ' + '00:00:00'
     var that = this
     wx.showModal({
-      content: '是否确认打卡?',
+      content: '请确定已到达授课地址附近，违规打卡将受惩处',
       success: function (res) {
         if (res.confirm) { //点击确定
           http.post('/Timetable/updateTimeTableByTeacherId', { teacherId: wx.getStorageSync('user_id'), classId: e.currentTarget.dataset.classid }, function (res) {

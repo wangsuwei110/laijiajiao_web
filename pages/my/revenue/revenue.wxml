@@ -10,7 +10,7 @@
   <view class="meta-panel">
     <view class="panel-item">
       <view class="name">
-        <text class="total-name">总收入</text>
+        <text class="total-name">结课总收入</text>
         <text class="total-num">￥{{details.accountMoney}}</text>
       </view>
       <text class="usage-time">{{details.stayTime}}</text>

@@ -36,6 +36,7 @@ Page({
   onGoPay() {
     const { item, teacher } = this.data
     item.teacherId = teacher.teacherId
+    item.teachName = teacher.name
     appInst.globalData.orderItem = item
     wx.navigateTo({
       url: '/pages/Student/OrderPass/OrderPass?from=2',
