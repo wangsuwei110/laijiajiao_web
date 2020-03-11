@@ -302,8 +302,5 @@ Page({
       });
     }
     this.getUserinfo(options.id || wx.getStorageSync('user_id'))
-    wx.requestSubscribeMessage({
-      tmplIds: ['1DIuaSZQTzvHEtIPLgzzSAYqKVZAlJHmuF2h_qORl3c', '1DIuaSZQTzvHEtIPLgzzSAYqKVZAlJHmuF2h_qORl3c']
-    })
   }
 })

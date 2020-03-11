@@ -74,6 +74,12 @@ Page({
     })
   },
 
+  onOpenNoticeClick(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
+    })
+  },
+
   onOverClick(e) {
     const { curriculum, student } = this.data
     const id = Number(e.currentTarget.dataset.id)
@@ -141,9 +147,7 @@ Page({
       this.fetchCurriculum(student.sid, new Date())
     })
 
-    wx.requestSubscribeMessage({
-      tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
-    })
+    
   },
 
   /**

@@ -8,6 +8,7 @@ Page({
    */
   data: {
     item: {},
+    price: 0,
     timeRange: [],
     weekNum: 1,
     teachTime: {},
@@ -25,7 +26,7 @@ Page({
   },
 
   onPay() {
-    const { item, timeRange, weekNum } = this.data;
+    const { item, timeRange, weekNum,price } = this.data;
     let res = "";
     if (!timeRange.length) {
       res = "请选择上课时间";
@@ -44,7 +45,7 @@ Page({
       success: result => {
         if (result.code) {
           wx.showLoading();
-          const orderMoney = item.orderMoney * timeRange.length * weekNum;
+          const orderMoney = price * timeRange.length * weekNum;
           const _timeRange = JSON.stringify(timeRange);
 
           wx.requestSubscribeMessage({
@@ -147,6 +148,14 @@ Page({
     const teacherId = appInst.globalData.orderItem.teacherId;
     this.passed = options.passed ? true : false;
     if (teacherId) {
+      http
+        .getPromise("/teacher/queryTeacherInfo", {
+          teacherId
+        })
+        .then(data => {
+          this.setData({ price: data.data.unitPrice });
+        });
+
       http
         .postPromise("/userInfo/queryUserInfosDetail", {
           teacherId

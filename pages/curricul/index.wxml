@@ -77,6 +77,8 @@
 
   </view>
 
+  <view class='submitBtn' bindtap='onOpenNoticeClick'>开启上课提醒</view>
+
   <view class='toast' wx:if='{{showToast}}'><view>{{errorText}}</view></view>
 
 </view>

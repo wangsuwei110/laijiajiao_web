@@ -32,10 +32,17 @@ Page({
       title: wx.getStorageSync('user_name') + '的排课表'
     })
 
+/*     wx.requestSubscribeMessage({
+      tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
+    }) */
+  },
+
+  onOpenNoticeClick(){
     wx.requestSubscribeMessage({
       tmplIds: ['tIJJCwfwdGv-mNCU60HetaLFaADvwWX3So0yNeRBOVM']
     })
   },
+
   // 上一周
   prev() {
     this.setData({

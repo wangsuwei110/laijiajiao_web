@@ -19,7 +19,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
+	"libVersion": "2.10.3",
 	"appid": "wx4e6192d8e025df02",
 	"projectname": "xuebang",
 	"isGameTourist": false,

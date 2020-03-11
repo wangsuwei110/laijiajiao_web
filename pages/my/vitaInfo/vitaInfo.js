@@ -135,6 +135,10 @@ Page({
   },
 
   onLoad: function () {
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['1DIuaSZQTzvHEtIPLgzzSAYqKVZAlJHmuF2h_qORl3c']
+    })
   },
   onShow: function () {
     this.getUserInfo()

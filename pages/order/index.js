@@ -126,12 +126,6 @@ Page({
     wx.stopPullDownRefresh();
   },
 
-  onLoad() {
-    wx.requestSubscribeMessage({
-      tmplIds: ['3x11joEYp8Gk7Jl_kEFjLFZ0gg1U7FwFGencGDW_hXY']
-    })
-  },
-
   onShow: function () {
     const that = this;
     let winHeight = wx.getSystemInfoSync().windowHeight;
@@ -157,6 +151,14 @@ Page({
     if (this.data.activeIdx == _idx) {
       return;
     }
+    
+    if(Number(_idx) === 3){
+      wx.requestSubscribeMessage({
+        tmplIds: ['3x11joEYp8Gk7Jl_kEFjLFZ0gg1U7FwFGencGDW_hXY']
+      })
+    }
+
+
     this.setData({
       status: _idx === 1 ? '0,5' : _idx === 0 ? null : _idx === 3 ? '4' : _idx === 2 ? '1,2,3' : '',
       list: []

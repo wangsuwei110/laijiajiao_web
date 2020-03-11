@@ -230,3 +230,18 @@
   justify-content: center;
   font-size: 24rpx;
 }
+
+.submitBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22rpx;
+  height: 76rpx;
+  border-radius: 6rpx;
+  font-size: 30rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:400;
+  color: #fff;
+
+  background:linear-gradient(-90deg,rgba(40,161,236,1),rgba(3,136,217,1));
+}

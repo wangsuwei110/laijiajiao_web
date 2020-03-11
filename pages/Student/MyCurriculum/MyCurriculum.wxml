@@ -63,6 +63,8 @@
 </view>
 
 <navigator url='/pages/Student/OrderList/OrderList' class='submitBtn'>立即续课</navigator>
+
+<view class='submitBtn' bindtap='onOpenNoticeClick'>开启上课提醒</view>
 </view>
 
 </PageLayout>

@@ -27,10 +27,10 @@
         </view>
         
         <view class='amountBox'>
-            <view class='amountItem'>{{item.orderMoney}} * {{timeRange.length}} * {{weekNum}}</view>
+            <view class='amountItem'>{{price}} * {{timeRange.length}} * {{weekNum}}</view>
             <!--<view class='amountItem redAmount'>100<text class='amountTxt'>( 试讲 )</text></view>
             <view class='amountItem redAmount'>-240</view>-->
-            <view class='sumAmount'>¥{{item.orderMoney * timeRange.length * weekNum}}</view>
+            <view class='sumAmount'>¥{{price * timeRange.length * weekNum}}</view>
         </view>
     </view>
 </view>
