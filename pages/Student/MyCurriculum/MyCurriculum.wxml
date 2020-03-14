@@ -38,7 +38,7 @@
             <text class='dateCell'>周{{dateStrList[weekIndex]}}</text>
 
 
-            <view class='contentCell' wx:for='{{hoursList}}' wx:for-item='hours' wx:key='this'>
+            <view class='contentCell cellCenter' wx:for='{{hoursList}}' wx:for-item='hours' wx:key='this'>
                 <block wx:for='{{week[hours]}}' wx:if='{{week[hours]}}' wx:key='{{item.sid}}'>
                     <view class='stdName {{item.status===2?"complete":""}}'>{{item.teacherName}}</view>
                     <view class='stdSubject'>{{item.teachBranchName}}</view>

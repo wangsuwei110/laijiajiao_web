@@ -135,12 +135,16 @@
 }
 
 .contentCell{
+    
+    flex: 1;
+    padding: 28rpx 0 26rpx 0;
+}
+
+.cellCenter{
     display:flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    padding: 28rpx 0 26rpx 0;
 }
 
 .stdName{
