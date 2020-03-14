@@ -255,7 +255,9 @@ Page({
     })
   },
   canvasTap: function (id, color, start, end, time, w, h) {
-    end = Number(`${end}`.replace('%', ''))
+    end = end ? Number(`${end}`.replace("%", "")) : 0;
+
+    end = isNaN(end) ? 0 : end;
     var that = this
 
     //圆环的绘制

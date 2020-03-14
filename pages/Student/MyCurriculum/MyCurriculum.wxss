@@ -135,6 +135,10 @@
 }
 
 .contentCell{
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     padding: 28rpx 0 26rpx 0;
 }
@@ -185,7 +189,7 @@
     font-family:Microsoft YaHei;
     font-weight:300;
     color:rgba(229,5,5,1);
-    margin: 10rpx 0 0 22rpx;
+    margin: 10rpx 0 0 0rpx;
 }
 
 .completeIcon{

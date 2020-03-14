@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "来家教",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "ServiceFlow": "/components/ServiceFlow/ServiceFlow"
+  }
 }

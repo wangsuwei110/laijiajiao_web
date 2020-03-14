@@ -1,0 +1,36 @@
+<!--components/ServiceFlow/ServiceFlow.wxml-->
+
+<view class='homeWrap'>
+    <view class='serverItem'>
+        <image src='../../images/Students/home1.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>搜索需求免费报名</view>
+    </view>
+    <image src='../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+    <view class='serverItem'>
+        <image src='../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>报名通过上门试讲</view>
+    </view>
+    <image src='../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+    <view class='serverItem'>
+        <image src='../../images/1-04@2x.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>试讲通过支付排课</view>
+    </view>
+</view>
+
+<view class='homeWrapLine'/>
+<view class='homeWrap'>
+    <view class='serverItem'>
+        <image src='../../images/2-1@2x.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>学员直接预约试讲</view>
+    </view>
+    <image src='../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+    <view class='serverItem'>
+        <image src='../../images/Students/home4.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>确定时间上门试讲</view>
+    </view>
+    <image src='../../images/Students/homeArrow.png' mode='aspectFill' class='homeArrow'/>
+    <view class='serverItem'>
+        <image src='../../images/1-04@2x.png' mode='aspectFill' class='homeIcon'/>
+        <view class='serverTxt'>试讲通过支付排课</view>
+    </view>
+</view>

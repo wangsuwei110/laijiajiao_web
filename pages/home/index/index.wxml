@@ -117,6 +117,18 @@
         </view>
       </view>
     </view>
+
+
+    <view class="panel-wrapper-4">
+      <view class="panel-head">
+        <image class="head-icon" mode="scaleToFill" src="../../../images/main_icon_2.png"></image>
+        <text class="head-title">服务流程</text>
+      </view>
+      <view class="panel-body">
+        <ServiceFlow/>
+      </view>
+    </view>
+
   </view>
 
   <view class='audio' wx:if='{{auditStatus !== 1}}'>请先完善"我的-简历信息"并等待审核通过，否则学员看不到您</view>

@@ -1,0 +1,44 @@
+/* components/ServiceFlow/ServiceFlow.wxss */
+
+.homeWrapLine {
+  border-top: 2rpx solid #f2eff6;
+}
+
+.homeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx 0rpx 100rpx 0rpx;
+}
+
+.homeIcon {
+  width: 118rpx;
+  height: 118rpx;
+}
+
+.homeArrow {
+  width: 14rpx;
+  height: 25rpx;
+}
+
+.serverItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.serverTxt {
+  position: absolute;
+  top: 128rpx;
+  left: 0;
+  width: 100%;
+
+  font-size: 24rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: 300;
+  color: rgba(115, 115, 115, 1);
+
+  text-align: center;
+}
