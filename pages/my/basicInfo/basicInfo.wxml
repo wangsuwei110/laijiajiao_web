@@ -12,7 +12,7 @@
     </view>
     <picker class="birthplace-item" mode="region" bindchange="bindRegionChange">
       <view class="picker" wx:if='{{userinfo.home}}'>
-        <text class="label">籍贯</text>{{userinfo.home}}
+        <text class="label">籍贯</text>{{userinfo.home || ''}}
       </view>
       <view class="picker" wx:else>
           <text class="label">籍贯</text><text style="color:#999">请选择籍贯</text>

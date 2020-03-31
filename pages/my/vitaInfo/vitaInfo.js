@@ -65,7 +65,7 @@ Page({
             _auditStatusStr = '审核通过'
             break
           case 2:
-            _auditStatusStr = '审核失败'
+            _auditStatusStr = '审核不通过'
             break
         }
         switch (res.data.logonStatus) {

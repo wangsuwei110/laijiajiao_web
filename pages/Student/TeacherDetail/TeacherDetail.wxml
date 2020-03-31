@@ -71,11 +71,11 @@
       <text class="title">基本信息</text>
     </view>
     <view class="panel-body identity">
-      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home}}</text></view>
-        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime}}</text></view>
-        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school}}</text></view>
-        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major}}</text></view>
-        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address}}</text></view>
+      <view class="identity-item w-50"><text class="label">籍贯：</text><text class="name">{{userinfo.home ||''}}</text></view>
+        <view class="identity-item w-50"><text class="label">身份：</text><text class="name">{{userinfo.beginSchoolTime||''}}</text></view>
+        <view class="identity-item w-50"><text class="label">高校：</text><text class="name">{{userinfo.school||''}}</text></view>
+        <view class="identity-item w-50"><text class="label">专业：</text><text class="name">{{userinfo.major||''}}</text></view>
+        <view class="identity-item w-100"><text class="label">住址：</text><text class="name">{{userinfo.address||''}}</text></view>
     </view>
   </view>
   <view class="spacing-10"></view>

@@ -4,7 +4,7 @@
         <view class='topBox'>
             <text class='date'>{{createTimeStr}}</text>
 
-            <view wx:if='{{item.endDemandFlag && item.status === 3}}' class='endTag'>已结束</view>
+            <view wx:if='{{item.endDemandFlag && (item.status === 3 || item.status===2)}}' class='endTag'>已结束</view>
             <view wx:elif='{{item.endDemandFlag}}' class='topAction' catchtap='onOverClick'>结束需求</view>
 
             

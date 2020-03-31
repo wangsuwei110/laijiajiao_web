@@ -4,7 +4,7 @@
     <navigator class='collectLink' open-type='reLaunch' url='/pages/Student/TeacherList/TeacherList'>立即收藏</navigator>
 </Empty>
 <block wx:elif='{{loaded}}'>
-<view class='item' wx:for='{{collectList}}' wx:key='{{item.teacherId}}'>
+<navigator url="/pages/Student/TeacherDetail/TeacherDetail?id={{item.teacherId}}" class='item' wx:for='{{collectList}}' wx:key='{{item.teacherId}}'>
     <view class='logo'>
         <image class='logoIcon' mode='aspectFill' src='{{item.picture? RESOURCE_PERFIX+item.picture:"../../../images/Students/myIcon.jpg"}}'/>
         <text class='level'>{{item.teacherLevel === 'T0' ? '实习' : item.teacherLevel}}</text>
@@ -19,11 +19,11 @@
         <view class='school'>{{item.schoolName}} | {{item.currentStatus}}</view>
     </view>
 
-    <view class='cancelBtn' bindtap='onCancelCollect' data-id='{{item.teacherId}}'>
+    <view class='cancelBtn' catchtap='onCancelCollect' data-id='{{item.teacherId}}'>
         <image src='../../../images/Students/collect.png' class='cancelIcon' mode='widthFix'/>
         取消收藏
     </view>
-</view>
+</navigator>
 
 <HomeNav independent='true'/>
 </block>

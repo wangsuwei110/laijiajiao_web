@@ -54,7 +54,7 @@
               <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
            <view class="join" wx:else>
-            <text>{{item.status === 3 ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
+            <text>{{(item.status === 3 || item.status===2) ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
           </view>
             <view class="demand-ul">
               <view class="demand-li">
@@ -80,7 +80,7 @@
               <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
             </view>
             <view class="join" wx:else>
-            <text>{{item.status === 3 ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
+            <text>{{(item.status === 3 || item.status===2) ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
           </view>
             <view class="demand-ul">
               <view class="demand-li">
@@ -107,7 +107,7 @@
       <view class="panel-body">
         <view class="dynamic-wrapper">
           <view class="dynamic-item" wx:for='{{details.StudentLogVoList}}' wx:for-index="idx" wx:if='{{idx < 5}}'>
-            <image class="user-avatar" mode="scaleToFill" src="../../../images/default_avatar.jpg"></image>
+            <image class="user-avatar" mode="scaleToFill" src="{{item.picture?item.picture:'../../../images/default_avatar.jpg'}}"></image>
             <view class="user-desc">
               <text class="name">{{item.studentName}}</text>
               <text class="date">{{item.createTime}}</text>
