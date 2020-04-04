@@ -16,7 +16,7 @@ Page({
     },
 
     onWeekChange(e) {
-        console.log(e.detail);
+        //console.log(e.detail);
         this.setData({ timeRange: e.detail });
     },
 
@@ -60,7 +60,7 @@ Page({
                         timeRange: _timeRange,
                         isResumption: this.passed ? 1 : 0,
                         weekNum,
-                        chargesStandard: this.price
+                        chargesStandard: price
                     })
                         .then(data => {
                             //this.triggerEvent('onSubmit')
