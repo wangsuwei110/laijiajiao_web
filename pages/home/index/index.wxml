@@ -50,12 +50,16 @@
               <text class="name">{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
-            <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
+
+            <view class="join">
+                <text wx:if="{{item.demandType === 1 || item.status === 3 || item.status===2  || item.demandSignUpNum === 0}}">
+                {{item.demandType === 1 ? '指定教员':(item.status === 3 || item.status===2) ? '已结束':'暂无报名'}}
+                </text>
+                <block wx:else>
+                    <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+                </block>
             </view>
-           <view class="join" wx:else>
-            <text>{{(item.status === 3 || item.status===2) ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
-          </view>
+
             <view class="demand-ul">
               <view class="demand-li">
                 <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>
@@ -76,12 +80,16 @@
               <text class="name">{{item.teachBranchName}}</text>
               <text class="date">{{item.createTime}}</text>
             </view>
-            <view class="join" wx:if="{{item.demandSignUpNum !== 0}}">
-              <text class="join-num" >{{item.demandSignUpNum}}</text><text>人报名</text>
+
+            <view class="join">
+                <text wx:if="{{item.demandType === 1 || item.status === 3 || item.status===2  || item.demandSignUpNum === 0}}">
+                {{item.demandType === 1 ? '指定教员':(item.status === 3 || item.status===2) ? '已结束':'暂无报名'}}
+                </text>
+                <block wx:else>
+                    <text class="join-num">{{item.demandSignUpNum}}</text><text>人报名</text>
+                </block>
             </view>
-            <view class="join" wx:else>
-            <text>{{(item.status === 3 || item.status===2) ? '已结束' : item.demandType === 1 ? '指定教员' : '暂无报名'}}</text>
-          </view>
+            
             <view class="demand-ul">
               <view class="demand-li">
                 <text class="label">授课地址:</text><text class="cont">{{item.demandAddress}}</text>

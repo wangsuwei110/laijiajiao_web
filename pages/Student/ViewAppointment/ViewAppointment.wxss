@@ -20,7 +20,6 @@ page{
 .item{
     display: flex;
     align-items: center;
-    padding: 30rpx 0;
 }
 
 .item + .item{
@@ -150,7 +149,7 @@ margin-top: 20rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 185rpx;
     padding-right: 30rpx;
 }
 
